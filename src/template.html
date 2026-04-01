@@ -170,54 +170,58 @@
     <div class="work-scroll-hint">Drag to explore <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
   </div>
   <div class="hscroll" id="hscroll">
+
     <div class="wcard">
-      <div class="wcard-bg">I</div>
+      <div class="wcard-bg" style="background-image:url('/images/work-jpa.jpg');background-size:cover;background-position:top center;font-size:0;">&#8203;</div>
       <div class="wcard-link" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
       <div class="wcard-info">
         <div class="wcard-num">01 / 03</div>
-        <div class="wcard-cat">E-commerce · Local SEO · Stavanger</div>
-        <div class="wcard-title">Barbershop Sandnes</div>
-        <div class="wcard-desc">Ranked #1 on Google for "Barbershop Stavanger" within 3 months. WooCommerce build with online booking — tripled monthly enquiries from organic search alone.</div>
+        <div class="wcard-cat">Education · WordPress · Chennai, India</div>
+        <div class="wcard-title">JPA Solutions</div>
+        <div class="wcard-desc">Full website design and development for a leading MSME-certified software training institute in Chennai. Built for enquiry conversion and course discovery — serving 18,000+ students annually.</div>
         <div class="wcard-chips">
           <div class="wchip">WordPress</div>
-          <div class="wchip">WooCommerce</div>
-          <div class="wchip">Local SEO</div>
           <div class="wchip">UI Design</div>
+          <div class="wchip">SEO</div>
+          <div class="wchip">Lead Forms</div>
         </div>
       </div>
     </div>
+
     <div class="wcard">
-      <div class="wcard-bg">II</div>
+      <div class="wcard-bg" style="background-image:url('/images/work-tenderlyst-web.jpg');background-size:cover;background-position:top center;font-size:0;">&#8203;</div>
       <div class="wcard-link" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
       <div class="wcard-info">
         <div class="wcard-num">02 / 03</div>
-        <div class="wcard-cat">Web App · Custom CRM · Norway</div>
-        <div class="wcard-title">NorHaus Micro Living</div>
-        <div class="wcard-desc">Next.js SSR site with a bespoke lead management CRM. Figma-designed, TypeScript-built — with a clean admin the client runs independently without any dev help.</div>
+        <div class="wcard-cat">SaaS · RFP Platform · Global</div>
+        <div class="wcard-title">Tenderlyst — Web</div>
+        <div class="wcard-desc">AI-powered RFP and proposal management platform for Energy & IT sectors. Full UI/UX design and frontend build — helping teams win contracts faster with built-in compliance tooling.</div>
         <div class="wcard-chips">
+          <div class="wchip">React</div>
+          <div class="wchip">UI/UX Design</div>
           <div class="wchip">Figma</div>
-          <div class="wchip">Next.js</div>
-          <div class="wchip">TypeScript</div>
-          <div class="wchip">Custom CRM</div>
+          <div class="wchip">AI Integration</div>
         </div>
       </div>
     </div>
+
     <div class="wcard">
-      <div class="wcard-bg">III</div>
+      <div class="wcard-bg" style="background-image:url('/images/work-tenderlyst-app.jpg');background-size:cover;background-position:top center;font-size:0;">&#8203;</div>
       <div class="wcard-link" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
       <div class="wcard-info">
         <div class="wcard-num">03 / 03</div>
-        <div class="wcard-cat">SaaS Tool · AI-powered · React</div>
-        <div class="wcard-title">LinkedIn Lead Hunter</div>
-        <div class="wcard-desc">AI-powered prospecting dashboard with Groq API. Identifies ideal clients, generates personalised outreach, and manages the full sales pipeline in one clean interface.</div>
+        <div class="wcard-cat">SaaS · RFP Platform · Norway</div>
+        <div class="wcard-title">Tenderlyst — App</div>
+        <div class="wcard-desc">Norwegian-localised Tenderlyst application targeting Energi & IT-sektorer. Multilingual frontend with language switcher, demo booking flow, and full proposal management dashboard.</div>
         <div class="wcard-chips">
-          <div class="wchip">React</div>
-          <div class="wchip">Groq AI</div>
-          <div class="wchip">Figma</div>
+          <div class="wchip">Next.js</div>
+          <div class="wchip">TypeScript</div>
+          <div class="wchip">i18n</div>
           <div class="wchip">TailwindCSS</div>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -419,55 +423,3 @@
     animation-duration: 0.001s;
   }
 </style>
-
-<script>
-  (function() {
-    console.log('[devndespro] Required field watcher initialising...');
-
-    function watchField(inputSelector) {
-      const input = document.querySelector(inputSelector);
-      if (!input) { console.warn('[devndespro] Not found:', inputSelector); return; }
-
-      const star = input.closest('.f-f') && input.closest('.f-f').querySelector('.f-req');
-      if (!star) { console.warn('[devndespro] No star for:', inputSelector); return; }
-
-      console.log('[devndespro] Watching:', inputSelector);
-
-      function check(source) {
-        const filled = input.value.trim() !== '';
-        console.log('[devndespro]', inputSelector, '| trigger:', source, '| filled:', filled);
-        star.classList.toggle('hidden', filled);
-      }
-
-      input.addEventListener('input',          () => check('input'));
-      input.addEventListener('change',         () => check('change'));
-      input.addEventListener('blur',           () => check('blur'));
-      input.addEventListener('animationstart', () => check('autofill-animation'));
-
-      // Poll to catch silent browser autofill
-      [200, 500, 1000, 1500, 2000, 3000].forEach(d =>
-        setTimeout(() => check('poll-' + d + 'ms'), d)
-      );
-    }
-
-    watchField('input[name="name"]');
-    watchField('input[name="email"]');
-    watchField('textarea[name="message"]');
-
-    // Service hidden input
-    const serviceInput = document.getElementById('service-input');
-    const reqService   = document.getElementById('req-service');
-    if (serviceInput && reqService) {
-      function checkService(source) {
-        const filled = serviceInput.value.trim() !== '';
-        console.log('[devndespro] service | trigger:', source, '| filled:', filled);
-        reqService.classList.toggle('hidden', filled);
-      }
-      new MutationObserver(() => checkService('MutationObserver'))
-        .observe(serviceInput, { attributes: true, attributeFilter: ['value'] });
-      serviceInput.addEventListener('input', () => checkService('input'));
-    }
-
-    console.log('[devndespro] Watcher setup complete.');
-  })();
-</script>

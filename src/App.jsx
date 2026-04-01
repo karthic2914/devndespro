@@ -226,6 +226,42 @@ function App() {
     const serviceSuggestButtons = Array.from(document.querySelectorAll('.service-suggest'));
     const selectedServices = new Set();
 
+    // ── Required field asterisk watchers ──────────────────────────────
+    const reqFieldSelectors = [
+      'input[name="name"]',
+      'input[name="email"]',
+      'textarea[name="message"]',
+    ];
+
+    reqFieldSelectors.forEach((selector) => {
+      const input = document.querySelector(selector);
+      if (!input) return;
+      const star = input.closest('.f-f')?.querySelector('.f-req');
+      if (!star) return;
+
+      const check = () => star.classList.toggle('hidden', input.value.trim() !== '');
+
+      input.addEventListener('input', check);
+      input.addEventListener('change', check);
+      input.addEventListener('blur', check);
+
+      // Poll to catch silent browser autofill
+      [200, 500, 1000, 1500, 2000, 3000].forEach((d) => setTimeout(check, d));
+    });
+
+    // Service asterisk — watch hidden input via MutationObserver
+    const reqServiceStar = document.getElementById('req-service');
+    if (serviceInput && reqServiceStar) {
+      const checkSvc = () =>
+        reqServiceStar.classList.toggle('hidden', serviceInput.value.trim() !== '');
+      new MutationObserver(checkSvc).observe(serviceInput, {
+        attributes: true,
+        attributeFilter: ['value'],
+      });
+      serviceInput.addEventListener('input', checkSvc);
+    }
+    // ─────────────────────────────────────────────────────────────────
+
     const syncServiceInput = () => {
       if (serviceInput) serviceInput.value = Array.from(selectedServices).join(', ');
     };
