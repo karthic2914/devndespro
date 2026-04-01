@@ -419,50 +419,36 @@
   (function() {
     function watchField(inputSelector, reqSelector) {
       const input = document.querySelector(inputSelector);
-      const req = reqSelector ? document.querySelector(reqSelector) : null;
-      if (!input) return;
-
-      // Find the .f-req in the same label if no specific selector
-      const label = input.closest('.f-f') ? input.closest('.f-f').querySelector('.f-req') : null;
-      const star = req || label;
-      if (!star) return;
+      const label = input && input.closest('.f-f') ? input.closest('.f-f').querySelector('.f-req') : null;
+      const star = reqSelector ? document.querySelector(reqSelector) : label;
+      if (!input || !star) return;
 
       function check() {
-        if (input.value.trim()) {
-          star.classList.add('hidden');
-        } else {
-          star.classList.remove('hidden');
-        }
+        star.classList.toggle('hidden', input.value.trim() !== '');
       }
 
       input.addEventListener('input', check);
       input.addEventListener('change', check);
+      input.addEventListener('animationstart', check); // catches autofill
+      
+      // Check on load with a small delay for autofill to populate
+      setTimeout(check, 300);
+      setTimeout(check, 1000);
     }
 
     watchField('input[name="name"]');
     watchField('input[name="email"]');
     watchField('textarea[name="message"]');
 
-    // Service field — watch the hidden input
     const serviceInput = document.getElementById('service-input');
     const reqService = document.getElementById('req-service');
     if (serviceInput && reqService) {
       const observer = new MutationObserver(function() {
-        if (serviceInput.value.trim()) {
-          reqService.classList.add('hidden');
-        } else {
-          reqService.classList.remove('hidden');
-        }
+        reqService.classList.toggle('hidden', serviceInput.value.trim() !== '');
       });
       observer.observe(serviceInput, { attributes: true, attributeFilter: ['value'] });
-
-      // Also watch via input event
       serviceInput.addEventListener('input', function() {
-        if (serviceInput.value.trim()) {
-          reqService.classList.add('hidden');
-        } else {
-          reqService.classList.remove('hidden');
-        }
+        reqService.classList.toggle('hidden', serviceInput.value.trim() !== '');
       });
     }
   })();
