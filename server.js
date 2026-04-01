@@ -76,17 +76,7 @@ async function sendViaZoho({ name, email, company, service, message }) {
     </div>
   `;
 
-  const textcontent = [
-    'New inquiry from devndespro.com',
-    `Name: ${name}`,
-    `Email: ${email}`,
-    `Company: ${company || 'N/A'}`,
-    `Service: ${service}`,
-    'Message:',
-    message
-  ].join('\n');
-
-  // Send notification to devndespro
+ // Send notification to devndespro
   const zohoResponse = await fetch(apiUrl, {
     method: 'POST',
     headers: {
@@ -99,8 +89,7 @@ async function sendViaZoho({ name, email, company, service, message }) {
       to: [{ email_address: { address: toAddress, name: 'devndespro' } }],
       reply_to: [{ address: email, name }],
       subject,
-      htmlbody,
-      textcontent
+      htmlbody
     })
   });
 
