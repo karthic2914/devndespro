@@ -1,5 +1,3 @@
-
-
 <!-- LOADER -->
 <div id="loader">
   <div class="loader-logo">devndes<span>pro</span></div>
@@ -34,7 +32,6 @@
       <li><a href="#work">Work</a></li>
       <li><a href="#skills-section">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
-
     </ul>
     <a href="#contact" class="nav-cta">Start a Project</a>
   </div>
@@ -332,8 +329,6 @@
   </div>
 </section>
 
-
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="c-wrap">
@@ -354,12 +349,22 @@
         <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none">
         <p class="f-note">Share your scope, timeline, and goals. The message will be sent directly to our inbox.</p>
         <div class="f-row">
-          <div class="f-f"><label class="f-l">Your Name</label><input type="text" name="name" placeholder="Ola Nordmann" required></div>
-          <div class="f-f"><label class="f-l">Email Address</label><input type="email" name="email" placeholder="ola@bedrift.no" required></div>
+          <div class="f-f">
+            <label class="f-l">Your Name <span class="f-req" aria-hidden="true">*</span></label>
+            <input type="text" name="name" placeholder="Ola Nordmann" required>
+          </div>
+          <div class="f-f">
+            <label class="f-l">Email Address <span class="f-req" aria-hidden="true">*</span></label>
+            <input type="email" name="email" placeholder="ola@bedrift.no" required>
+          </div>
         </div>
         <div class="f-row">
-          <div class="f-f"><label class="f-l">Company</label><input type="text" name="company" placeholder="Your company (optional)"></div>
-          <div class="f-f"><label class="f-l">Service Needed</label>
+          <div class="f-f">
+            <label class="f-l">Company</label>
+            <input type="text" name="company" placeholder="Your company (optional)">
+          </div>
+          <div class="f-f">
+            <label class="f-l">Service Needed <span class="f-req" id="req-service" aria-hidden="true">*</span></label>
             <input type="hidden" name="service" id="service-input" value="">
             <div class="service-picker">
               <input type="text" id="service-entry" class="service-entry" placeholder="Type a service and press Enter">
@@ -375,7 +380,10 @@
             </div>
           </div>
         </div>
-        <div class="f-f"><label class="f-l">About Your Project</label><textarea name="message" placeholder="What are you trying to achieve? What's your timeline?" required></textarea></div>
+        <div class="f-f">
+          <label class="f-l">About Your Project <span class="f-req" aria-hidden="true">*</span></label>
+          <textarea name="message" placeholder="What are you trying to achieve? What's your timeline?" required></textarea>
+        </div>
         <p class="f-status" id="form-status" aria-live="polite"></p>
         <button type="submit" class="f-btn" id="fsb">Send Message <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
       </form>
@@ -394,4 +402,68 @@
   </ul>
 </footer>
 
+<style>
+  .f-req {
+    color: #FF6B2B;
+    margin-left: 3px;
+    font-size: 0.95em;
+    transition: opacity 0.3s ease;
+  }
+  .f-req.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+</style>
 
+<script>
+  (function() {
+    function watchField(inputSelector, reqSelector) {
+      const input = document.querySelector(inputSelector);
+      const req = reqSelector ? document.querySelector(reqSelector) : null;
+      if (!input) return;
+
+      // Find the .f-req in the same label if no specific selector
+      const label = input.closest('.f-f') ? input.closest('.f-f').querySelector('.f-req') : null;
+      const star = req || label;
+      if (!star) return;
+
+      function check() {
+        if (input.value.trim()) {
+          star.classList.add('hidden');
+        } else {
+          star.classList.remove('hidden');
+        }
+      }
+
+      input.addEventListener('input', check);
+      input.addEventListener('change', check);
+    }
+
+    watchField('input[name="name"]');
+    watchField('input[name="email"]');
+    watchField('textarea[name="message"]');
+
+    // Service field — watch the hidden input
+    const serviceInput = document.getElementById('service-input');
+    const reqService = document.getElementById('req-service');
+    if (serviceInput && reqService) {
+      const observer = new MutationObserver(function() {
+        if (serviceInput.value.trim()) {
+          reqService.classList.add('hidden');
+        } else {
+          reqService.classList.remove('hidden');
+        }
+      });
+      observer.observe(serviceInput, { attributes: true, attributeFilter: ['value'] });
+
+      // Also watch via input event
+      serviceInput.addEventListener('input', function() {
+        if (serviceInput.value.trim()) {
+          reqService.classList.add('hidden');
+        } else {
+          reqService.classList.remove('hidden');
+        }
+      });
+    }
+  })();
+</script>

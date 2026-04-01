@@ -352,6 +352,9 @@ function App() {
           throw new Error(errorMessage);
         }
 
+        // Use first name only
+        const firstName = payload.name.split(' ')[0];
+
         // Hide form and show success message
         contactForm.style.display = 'none';
         const successMsg = document.createElement('div');
@@ -363,7 +366,7 @@ function App() {
         successMsg.innerHTML = `
           <i class="fa-solid fa-circle-check" style="font-size:3.5rem;color:#3DD68C;margin-bottom:1.2rem;display:block;"></i>
           <h3 style="font-size:1.8rem;margin-bottom:0.8rem;font-family:inherit;">Message Sent!</h3>
-          <p style="opacity:0.7;margin-bottom:1.5rem;">Thanks <strong>${payload.name}</strong>, we'll get back to you within 24 hours.</p>
+          <p style="opacity:0.7;margin-bottom:1.5rem;">Thanks <strong>${firstName}</strong>, we'll get back to you within 24 hours.</p>
           <p style="opacity:0.5;font-size:0.85rem;">Check your inbox — a confirmation email is on its way.</p>
         `;
         contactForm.parentNode.appendChild(successMsg);
