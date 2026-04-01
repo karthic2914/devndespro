@@ -176,7 +176,7 @@
         <img src="/images/work-jpa.png" alt="JPA Solutions website" class="wcard-img" loading="lazy">
         <div class="wcard-img-overlay"></div>
         <a href="https://www.jpasolutions.in" target="_blank" rel="noopener" class="wcard-visit" aria-label="Visit JPA Solutions">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
       </div>
       <div class="wcard-info">
@@ -190,7 +190,6 @@
           <div class="wchip">SEO</div>
           <div class="wchip">Lead Forms</div>
         </div>
-        <a href="#contact" class="wcard-enquire">Enquire about this →</a>
       </div>
     </div>
 
@@ -199,7 +198,7 @@
         <img src="/images/work-tenderlyst-web.png" alt="Tenderlyst Norwegian web" class="wcard-img" loading="lazy">
         <div class="wcard-img-overlay"></div>
         <a href="https://tenderlyst.com" target="_blank" rel="noopener" class="wcard-visit" aria-label="Visit Tenderlyst">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
       </div>
       <div class="wcard-info">
@@ -213,7 +212,6 @@
           <div class="wchip">Figma</div>
           <div class="wchip">i18n</div>
         </div>
-        <a href="#contact" class="wcard-enquire">Enquire about this →</a>
       </div>
     </div>
 
@@ -222,7 +220,7 @@
         <img src="/images/work-tenderlyst-app.png" alt="Tenderlyst App" class="wcard-img" loading="lazy">
         <div class="wcard-img-overlay"></div>
         <a href="https://tenderlyst.com" target="_blank" rel="noopener" class="wcard-visit" aria-label="Visit Tenderlyst App">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
       </div>
       <div class="wcard-info">
@@ -236,10 +234,14 @@
           <div class="wchip">TailwindCSS</div>
           <div class="wchip">AI Integration</div>
         </div>
-        <a href="#contact" class="wcard-enquire">Enquire about this →</a>
       </div>
     </div>
 
+  </div>
+
+  <div class="work-cta rv">
+    <p class="work-cta-text">Like what you see? Let's build something just as impactful for you.</p>
+    <a href="#contact" class="btn-main">Start a Similar Project</a>
   </div>
 </section>
 
@@ -465,20 +467,18 @@
     position: absolute;
     top: 14px;
     right: 14px;
-    background: rgba(255,107,43,0.92);
+    width: 36px;
+    height: 36px;
+    background: rgba(255,107,43,0.9);
     color: #fff;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 6px 12px;
-    border-radius: 4px;
-    text-decoration: none;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    font-size: 0.85rem;
+    text-decoration: none;
     opacity: 0;
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     transition: opacity 0.3s ease, transform 0.3s ease;
     z-index: 2;
   }
@@ -488,32 +488,42 @@
     transform: translateY(0);
   }
 
-  /* Always show on touch devices */
   @media (hover: none) {
-    .wcard-visit {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .wcard-visit { opacity: 1; transform: translateY(0); }
   }
 
-  .wcard-enquire {
-    display: inline-block;
-    margin-top: 1rem;
-    color: #FF6B2B;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-  }
-
-  .wcard-enquire:hover { opacity: 0.7; }
-
-  /* Responsive: stack cards vertically on mobile */
   @media (max-width: 767px) {
     .wcard-img-wrap { height: 200px; }
     .wcard-visit { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Work CTA ───────────────────────────────────────── */
+  .work-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding: 2rem 2.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .work-cta-text {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    max-width: 480px;
+    margin: 0;
+  }
+
+  @media (max-width: 767px) {
+    .work-cta {
+      flex-direction: column;
+      text-align: center;
+      padding: 1.5rem;
+    }
+    .work-cta-text { max-width: 100%; }
   }
 
   /* ── Required asterisk styles ───────────────────────── */
