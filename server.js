@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { Pool } from 'pg';
@@ -8,6 +9,11 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
+
+app.use(cors({
+  origin: ['https://www.devndespro.com', 'https://devndespro.com'],
+  methods: ['GET', 'POST'],
+}));
 
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: true }));
@@ -22,7 +28,6 @@ const dbPool = databaseUrl
 
 async function ensureLeadTable() {
   if (!dbPool) return;
-
   await dbPool.query(`
     CREATE TABLE IF NOT EXISTS contact_leads (
       id BIGSERIAL PRIMARY KEY,
@@ -81,6 +86,7 @@ async function sendViaZoho({ name, email, company, service, message }) {
     message
   ].join('\n');
 
+  // Send notification to devndespro
   const zohoResponse = await fetch(apiUrl, {
     method: 'POST',
     headers: {
@@ -89,24 +95,9 @@ async function sendViaZoho({ name, email, company, service, message }) {
       Authorization: `Zoho-enczapikey ${zeptoToken}`
     },
     body: JSON.stringify({
-      from: {
-        address: fromAddress,
-        name: 'devndespro Website'
-      },
-      to: [
-        {
-          email_address: {
-            address: toAddress,
-            name: 'devndespro'
-          }
-        }
-      ],
-      reply_to: [
-        {
-          address: email,
-          name
-        }
-      ],
+      from: { address: fromAddress, name: 'devndespro Website' },
+      to: [{ email_address: { address: toAddress, name: 'devndespro' } }],
+      reply_to: [{ address: email, name }],
       subject,
       htmlbody,
       textcontent
@@ -117,6 +108,33 @@ async function sendViaZoho({ name, email, company, service, message }) {
     const details = await zohoResponse.text();
     throw new Error(`Zoho send failed: ${details}`);
   }
+
+  // Send auto-reply to user
+  await fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Zoho-enczapikey ${zeptoToken}`
+    },
+    body: JSON.stringify({
+      from: { address: fromAddress, name: 'devndespro' },
+      to: [{ email_address: { address: email, name } }],
+      subject: `We received your message, ${name}!`,
+      htmlbody: `
+        <div style="font-family:Arial,sans-serif;line-height:1.6;color:#222;max-width:600px;">
+          <h2 style="color:#c0392b;">Thanks for reaching out, ${safe(name)}!</h2>
+          <p>We've received your inquiry and will get back to you within <strong>24 hours</strong>.</p>
+          <p>Here's a summary of what you sent us:</p>
+          <p><strong>Service:</strong> ${safe(service)}</p>
+          <p><strong>Message:</strong><br>${safe(message).replace(/\n/g, '<br>')}</p>
+          <br>
+          <p>Talk soon,<br><strong>Mahadevan</strong><br>devndespro</p>
+          <p style="color:#888;font-size:12px;">Stavanger, Norway · hello@devndespro.com</p>
+        </div>
+      `
+    })
+  });
 }
 
 app.get('/api/health', (_req, res) => {

@@ -90,8 +90,6 @@ function App() {
 
     if (navToggle) navToggle.addEventListener('click', onToggleClick);
 
-    // Use per-section anchor points so nav clicks land on the visual start of
-    // each section, not on padded container edges.
     const sectionScrollAnchors = {
       '#services': '#services .svc-top',
       '#work': '#work .work-head',
@@ -126,14 +124,11 @@ function App() {
 
       e.preventDefault();
 
-      // Immediately reveal any hidden elements in the target section so they
-      // don't flicker invisible while the IntersectionObserver fires async.
       target.querySelectorAll('.rv,.rl,.rr').forEach((el) => el.classList.add('on'));
 
       const anchorSelector = hash ? sectionScrollAnchors[hash] : null;
       const scrollTarget = anchorSelector ? document.querySelector(anchorSelector) || target : target;
 
-      // Offset scroll by nav height so fixed nav doesn't cover section content.
       const navHeight = nav ? nav.offsetHeight : 90;
       const top = scrollTarget.getBoundingClientRect().top + window.scrollY - navHeight - 8;
       window.scrollTo({ top, behavior: 'smooth' });
@@ -316,7 +311,6 @@ function App() {
       const formData = new FormData(contactForm);
       const payload = Object.fromEntries(formData.entries());
 
-      // Quietly drop bot submissions via honeypot field.
       if (payload.website) return;
 
       if (!payload.service) {
@@ -340,12 +334,11 @@ function App() {
 
         if (!response.ok) {
           let errorMessage = '';
-
           try {
             const errorData = await response.json();
             errorMessage = errorData?.error || '';
           } catch {
-            // Ignore JSON parse errors and fallback to status handling below.
+            // ignore
           }
 
           if (!errorMessage && response.status === 404 && contactForm.action === '/api/contact') {
@@ -359,24 +352,34 @@ function App() {
           throw new Error(errorMessage);
         }
 
-        submitBtn.innerHTML = 'Message Sent <i class="fa-solid fa-check" aria-hidden="true"></i>';
-        submitBtn.style.background = '#3DD68C';
-        submitBtn.style.borderColor = '#3DD68C';
-        submitBtn.style.color = '#080806';
-        if (formStatus) formStatus.textContent = 'Thanks. Your message has been sent successfully.';
-        contactForm.reset();
+        // Hide form and show success message
+        contactForm.style.display = 'none';
+        const successMsg = document.createElement('div');
+        successMsg.style.cssText = `
+          text-align: center;
+          padding: 3rem 2rem;
+          color: #fff;
+        `;
+        successMsg.innerHTML = `
+          <i class="fa-solid fa-circle-check" style="font-size:3.5rem;color:#3DD68C;margin-bottom:1.2rem;display:block;"></i>
+          <h3 style="font-size:1.8rem;margin-bottom:0.8rem;font-family:inherit;">Message Sent!</h3>
+          <p style="opacity:0.7;margin-bottom:1.5rem;">Thanks <strong>${payload.name}</strong>, we'll get back to you within 24 hours.</p>
+          <p style="opacity:0.5;font-size:0.85rem;">Check your inbox — a confirmation email is on its way.</p>
+        `;
+        contactForm.parentNode.appendChild(successMsg);
+
         selectedServices.clear();
         syncServiceInput();
         renderSelectedServices();
+
       } catch (error) {
+        submitBtn.disabled = false;
         submitBtn.innerHTML = 'Try Again <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>';
         if (formStatus) {
           formStatus.textContent =
             error?.message || 'Could not send right now. Please try again in a moment.';
         }
-      } finally {
         setTimeout(() => {
-          submitBtn.disabled = false;
           submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>';
           submitBtn.style.background = '';
           submitBtn.style.borderColor = '';
