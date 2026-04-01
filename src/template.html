@@ -428,11 +428,17 @@
 
 <style>
   /* ── Work card image styles ─────────────────────────── */
-  .wcard--img .wcard-bg { display: none; }
+  .wcard--img .wcard-bg {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+  }
 
   .wcard--img {
     display: flex;
     flex-direction: column;
+    padding: 0 !important;
+    justify-content: flex-start !important;
   }
 
   .wcard-img-wrap {
@@ -447,8 +453,8 @@
 
   .wcard--img .wcard-info {
     flex: 1;
-    margin-top: 0;
-    padding-top: 1.2rem;
+    padding: 1.2rem !important;
+    margin-top: 0 !important;
   }
 
   .wcard-img {
@@ -507,7 +513,7 @@
   @media (max-width: 767px) {
     .wcard-img-wrap { height: 130px; }
     .wcard-visit { opacity: 1; transform: translateY(0); }
-    .wcard--img .wcard-info { padding-top: 0.8rem; }
+    .wcard--img .wcard-info { padding: 0.8rem !important; }
   }
 
   /* ── Work CTA ───────────────────────────────────────── */
