@@ -413,43 +413,61 @@
     opacity: 0;
     pointer-events: none;
   }
+  @keyframes onAutoFillStart { from {} to {} }
+  input:-webkit-autofill {
+    animation-name: onAutoFillStart;
+    animation-duration: 0.001s;
+  }
 </style>
 
 <script>
   (function() {
-    function watchField(inputSelector, reqSelector) {
-      const input = document.querySelector(inputSelector);
-      const label = input && input.closest('.f-f') ? input.closest('.f-f').querySelector('.f-req') : null;
-      const star = reqSelector ? document.querySelector(reqSelector) : label;
-      if (!input || !star) return;
+    console.log('[devndespro] Required field watcher initialising...');
 
-      function check() {
-        star.classList.toggle('hidden', input.value.trim() !== '');
+    function watchField(inputSelector) {
+      const input = document.querySelector(inputSelector);
+      if (!input) { console.warn('[devndespro] Not found:', inputSelector); return; }
+
+      const star = input.closest('.f-f') && input.closest('.f-f').querySelector('.f-req');
+      if (!star) { console.warn('[devndespro] No star for:', inputSelector); return; }
+
+      console.log('[devndespro] Watching:', inputSelector);
+
+      function check(source) {
+        const filled = input.value.trim() !== '';
+        console.log('[devndespro]', inputSelector, '| trigger:', source, '| filled:', filled);
+        star.classList.toggle('hidden', filled);
       }
 
-      input.addEventListener('input', check);
-      input.addEventListener('change', check);
-      input.addEventListener('animationstart', check); // catches autofill
-      
-      // Check on load with a small delay for autofill to populate
-      setTimeout(check, 300);
-      setTimeout(check, 1000);
+      input.addEventListener('input',          () => check('input'));
+      input.addEventListener('change',         () => check('change'));
+      input.addEventListener('blur',           () => check('blur'));
+      input.addEventListener('animationstart', () => check('autofill-animation'));
+
+      // Poll to catch silent browser autofill
+      [200, 500, 1000, 1500, 2000, 3000].forEach(d =>
+        setTimeout(() => check('poll-' + d + 'ms'), d)
+      );
     }
 
     watchField('input[name="name"]');
     watchField('input[name="email"]');
     watchField('textarea[name="message"]');
 
+    // Service hidden input
     const serviceInput = document.getElementById('service-input');
-    const reqService = document.getElementById('req-service');
+    const reqService   = document.getElementById('req-service');
     if (serviceInput && reqService) {
-      const observer = new MutationObserver(function() {
-        reqService.classList.toggle('hidden', serviceInput.value.trim() !== '');
-      });
-      observer.observe(serviceInput, { attributes: true, attributeFilter: ['value'] });
-      serviceInput.addEventListener('input', function() {
-        reqService.classList.toggle('hidden', serviceInput.value.trim() !== '');
-      });
+      function checkService(source) {
+        const filled = serviceInput.value.trim() !== '';
+        console.log('[devndespro] service | trigger:', source, '| filled:', filled);
+        reqService.classList.toggle('hidden', filled);
+      }
+      new MutationObserver(() => checkService('MutationObserver'))
+        .observe(serviceInput, { attributes: true, attributeFilter: ['value'] });
+      serviceInput.addEventListener('input', () => checkService('input'));
     }
+
+    console.log('[devndespro] Watcher setup complete.');
   })();
 </script>
