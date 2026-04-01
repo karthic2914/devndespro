@@ -332,7 +332,7 @@ nav.s{padding:18px 64px;background:rgba(8,8,6,.94);backdrop-filter:blur(24px);bo
 .hscroll::-webkit-scrollbar{display:none}
 .hscroll:active{cursor:grabbing}
 .wcard{
-  flex:0 0 520px;height:640px;
+  flex:0 0 400px;height:640px;
   background:var(--bg2);
   position:relative;overflow:hidden;
   scroll-snap-align:start;
