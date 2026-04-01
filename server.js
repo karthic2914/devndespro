@@ -1,0 +1,175 @@
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { Pool } from 'pg';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+const port = Number(process.env.PORT || 3000);
+
+app.use(express.json({ limit: '1mb' }));
+app.use(express.urlencoded({ extended: true }));
+
+const databaseUrl = process.env.DATABASE_URL;
+const dbPool = databaseUrl
+  ? new Pool({
+      connectionString: databaseUrl,
+      ssl: process.env.PGSSLMODE === 'disable' ? false : { rejectUnauthorized: false }
+    })
+  : null;
+
+async function ensureLeadTable() {
+  if (!dbPool) return;
+
+  await dbPool.query(`
+    CREATE TABLE IF NOT EXISTS contact_leads (
+      id BIGSERIAL PRIMARY KEY,
+      name TEXT NOT NULL,
+      email TEXT NOT NULL,
+      company TEXT,
+      service TEXT NOT NULL,
+      message TEXT NOT NULL,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+  `);
+}
+
+const safe = (value) =>
+  String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
+async function sendViaZoho({ name, email, company, service, message }) {
+  const zeptoTokenRaw = process.env.ZOHO_ZEPTOMAIL_TOKEN;
+  const fromAddress = process.env.ZOHO_FROM_EMAIL;
+  const toAddress =
+    process.env.ZOHO_TO_EMAIL || process.env.CONTACT_TO_EMAIL || 'hello@devndespro.com';
+  const apiUrl = process.env.ZOHO_ZEPTOMAIL_API_URL || 'https://api.zeptomail.com/v1.1/email';
+
+  if (!zeptoTokenRaw || !fromAddress || !toAddress) {
+    throw new Error(
+      'Server email is not configured. Set ZOHO_ZEPTOMAIL_TOKEN, ZOHO_FROM_EMAIL, and ZOHO_TO_EMAIL.'
+    );
+  }
+
+  const zeptoToken = String(zeptoTokenRaw).replace(/^Zoho-enczapikey\s+/i, '');
+
+  const subject = `New project inquiry: ${safe(name)}`;
+  const htmlbody = `
+    <div style="font-family:Arial,sans-serif;line-height:1.6;color:#222;">
+      <h2 style="margin:0 0 12px;">New inquiry from devndespro.com</h2>
+      <p><strong>Name:</strong> ${safe(name)}</p>
+      <p><strong>Email:</strong> ${safe(email)}</p>
+      <p><strong>Company:</strong> ${safe(company || 'N/A')}</p>
+      <p><strong>Service:</strong> ${safe(service)}</p>
+      <p><strong>Message:</strong><br>${safe(message).replace(/\n/g, '<br>')}</p>
+    </div>
+  `;
+
+  const textcontent = [
+    'New inquiry from devndespro.com',
+    `Name: ${name}`,
+    `Email: ${email}`,
+    `Company: ${company || 'N/A'}`,
+    `Service: ${service}`,
+    'Message:',
+    message
+  ].join('\n');
+
+  const zohoResponse = await fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Zoho-enczapikey ${zeptoToken}`
+    },
+    body: JSON.stringify({
+      from: {
+        address: fromAddress,
+        name: 'devndespro Website'
+      },
+      to: [
+        {
+          email_address: {
+            address: toAddress,
+            name: 'devndespro'
+          }
+        }
+      ],
+      reply_to: [
+        {
+          address: email,
+          name
+        }
+      ],
+      subject,
+      htmlbody,
+      textcontent
+    })
+  });
+
+  if (!zohoResponse.ok) {
+    const details = await zohoResponse.text();
+    throw new Error(`Zoho send failed: ${details}`);
+  }
+}
+
+app.get('/api/health', (_req, res) => {
+  res.status(200).json({ ok: true, service: 'contact-api' });
+});
+
+app.post('/api/contact', async (req, res) => {
+  const {
+    name = '',
+    email = '',
+    company = '',
+    service = '',
+    message = '',
+    website = ''
+  } = req.body || {};
+
+  if (website) {
+    return res.status(200).json({ ok: true });
+  }
+
+  if (!name || !email || !service || !message) {
+    return res.status(400).json({ ok: false, error: 'Missing required fields' });
+  }
+
+  try {
+    if (dbPool) {
+      await dbPool.query(
+        `INSERT INTO contact_leads(name, email, company, service, message) VALUES ($1, $2, $3, $4, $5)`,
+        [name, email, company || null, service, message]
+      );
+    }
+
+    await sendViaZoho({ name, email, company, service, message });
+
+    return res.status(200).json({ ok: true });
+  } catch (error) {
+    return res.status(500).json({ ok: false, error: error.message || 'Unexpected server error' });
+  }
+});
+
+const distPath = path.join(__dirname, 'dist');
+app.use(express.static(distPath));
+
+app.use((_req, res) => {
+  res.sendFile(path.join(distPath, 'index.html'));
+});
+
+ensureLeadTable()
+  .catch((error) => {
+    console.error('Failed to initialize database table:', error.message);
+  })
+  .finally(() => {
+    app.listen(port, () => {
+      console.log(`Server listening on port ${port}`);
+    });
+  });
