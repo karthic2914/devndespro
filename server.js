@@ -109,7 +109,7 @@ async function sendViaZoho({ name, email, company, service, message }) {
     throw new Error(`Zoho send failed: ${details}`);
   }
 
-  // Send auto-reply to user
+  // Send auto-reply to user (no textcontent — not supported here)
   await fetch(apiUrl, {
     method: 'POST',
     headers: {
@@ -123,7 +123,7 @@ async function sendViaZoho({ name, email, company, service, message }) {
       subject: `We received your message, ${name}!`,
       htmlbody: `
         <div style="font-family:Arial,sans-serif;line-height:1.6;color:#222;max-width:600px;">
-          <h2 style="color:#c0392b;">Thanks for reaching out, ${safe(name)}!</h2>
+          <h2 style="color:#FF6B2B;">Thanks for reaching out, ${safe(name)}!</h2>
           <p>We've received your inquiry and will get back to you within <strong>24 hours</strong>.</p>
           <p>Here's a summary of what you sent us:</p>
           <p><strong>Service:</strong> ${safe(service)}</p>
