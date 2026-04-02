@@ -888,7 +888,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:44px 64px;
   .sp-grid{grid-template-columns:1fr}
 }
 @media (min-width:768px) and (max-width:1024px){
-  .nav-toggle{margin-right:6px}
-  .wa{right:22px;bottom:86px}
-  .to-top{right:22px;bottom:22px}
+  .nav-toggle{margin-right:30px}
+  .wa{right:50px;bottom:86px}
+  .to-top{right:51px;bottom:22px}
 }
