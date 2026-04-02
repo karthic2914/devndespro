@@ -16,6 +16,7 @@
     width:42px;
     height:42px;
     z-index:1400;
+    position:relative;
   }
   .nav-r{
     position:fixed;
