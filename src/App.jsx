@@ -76,17 +76,23 @@ function App() {
       });
     };
 
-    const closeMobileMenu = () => {
-      if (!nav) return;
-      nav.classList.remove('open');
-      if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
-    };
+const closeMobileMenu = () => {
+  if (!nav) return;
+  nav.classList.remove('open');
+  if (navToggle) {
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+  }
+};
 
-    const onToggleClick = () => {
-      if (!nav || !navToggle) return;
-      const isOpen = nav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    };
+const onToggleClick = () => {
+  if (!nav || !navToggle) return;
+  const isOpen = nav.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  navToggle.innerHTML = isOpen
+    ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>'
+    : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+};
 
     if (navToggle) navToggle.addEventListener('click', onToggleClick);
 
