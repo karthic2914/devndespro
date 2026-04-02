@@ -478,7 +478,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:44px 64px;
   html{font-size:106.25%}
 
   /* NAV */
-  nav,nav.s{padding:20px 24px}
+  nav,nav.s{padding:20px 28px 20px 24px}
   .logo-img{height:60px}
   .nav-toggle{
     display:inline-flex;
@@ -691,26 +691,26 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:44px 64px;
   .f-nav{justify-content:center}
 
   /* FLOATING BUTTONS */
-  .wa{
-    right:14px;
-    bottom:78px;
+    .wa{
+    right:22px;
+    bottom:86px;
     top:auto;
     width:50px;
     height:50px;
     border-radius:50%;
     transform:none;
     z-index:950;
-  }
+    }
   .wa:hover{transform:translateY(-2px)}
   .wa-tip{display:none}
 
-  .to-top{
-    right:14px;
-    bottom:18px;
-    width:46px;
-    height:46px;
-    z-index:960;
-  }
+.to-top{
+  right:22px;
+  bottom:22px;
+  width:46px;
+  height:46px;
+  z-index:960;
+}
   .to-top-label,.to-top-tip{display:none}
 }
 
@@ -886,4 +886,9 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:44px 64px;
   .logo-img{height:44px}
   .f-logo-img{height:46px}
   .sp-grid{grid-template-columns:1fr}
+}
+@media (min-width:768px) and (max-width:1024px){
+  .nav-toggle{margin-right:6px}
+  .wa{right:22px;bottom:86px}
+  .to-top{right:22px;bottom:22px}
 }
