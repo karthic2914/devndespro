@@ -90,7 +90,7 @@
     margin-top:8px;
     border-top:1px solid var(--line);
   }
-  .hero-desc{max-width:100%;font-size:.88rem}
+  .hero-desc{max-width:100%;font-size:.88rem;margin-bottom:0}
   .hero-actions{
     display:flex;
     flex-direction:row;
@@ -101,6 +101,28 @@
   }
   .btn-main,.btn-ghost{padding:14px 28px;font-size:.7rem}
   .scroll-cue{position:static;margin-top:10px;padding-left:0}
+
+  /* ── HERO SERVICES ── */
+  .hero-services{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    list-style:none;
+    margin-bottom:4px;
+  }
+  .hero-services li{
+    font-size:.78rem;
+    color:var(--dim2);
+    letter-spacing:.06em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .hero-services li i{
+    color:var(--orange);
+    font-size:.7rem;
+    flex-shrink:0;
+  }
 
   /* ── SERVICES ── */
   .svc-top{padding:64px 28px 36px;grid-template-columns:1fr;gap:20px}
@@ -139,7 +161,7 @@
   footer{padding:24px 28px;flex-wrap:wrap;gap:14px;justify-content:center;text-align:center}
   .f-nav{justify-content:center}
 
-  /* ── WHATSAPP — side tab middle right ── */
+  /* ── WHATSAPP ── */
   .wa{
     position:fixed;
     top:50%;
@@ -150,7 +172,6 @@
     height:46px;
     border-radius:10px 0 0 10px;
     z-index:950;
-    border-radius:10px 0 0 10px;
   }
   .wa:hover{transform:translateY(-50%) translateX(-2px)}
   .wa-tip{display:none}
@@ -166,4 +187,5 @@
   }
   .to-top-label{display:none}
   .to-top-tip{display:none}
-}
+
+} /* ── END TABLET ── */

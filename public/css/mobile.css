@@ -8,7 +8,7 @@
   #cur,#cur-r{display:none}
 
   /* ── NAV ── */
-  nav,nav.s{padding:14px 18px}
+  nav,nav.s{padding:14px 20px 14px 18px}
   .logo-img{height:50px}
   .nav-toggle{
     display:inline-flex;
@@ -16,6 +16,7 @@
     height:42px;
     z-index:1400;
     position:relative;
+    margin-right:2px;
   }
   .nav-r{
     position:fixed;
@@ -79,9 +80,9 @@
   .hss-n{font-size:1.3rem}
   .hss-l{font-size:.5rem;letter-spacing:.08em;line-height:1.3}
 
-  /* Hero bottom — more spacing before buttons */
+  /* ── HERO BOTTOM ── */
   .hero-bottom{
-    padding:20px 18px 36px;
+    padding:28px 18px 40px;
     flex-direction:column;
     align-items:flex-start;
     gap:0;
@@ -91,8 +92,32 @@
   .hero-desc{
     font-size:.82rem;
     max-width:100%;
+    margin-bottom:20px;
+  }
+
+  /* ── HERO SERVICES ── */
+  .hero-services{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    list-style:none;
     margin-bottom:24px;
   }
+  .hero-services li{
+    font-size:.76rem;
+    color:var(--dim2);
+    letter-spacing:.06em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .hero-services li i{
+    color:var(--orange);
+    font-size:.68rem;
+    flex-shrink:0;
+  }
+
+  /* ── HERO ACTIONS ── */
   .hero-actions{
     display:flex;
     flex-direction:column;
@@ -114,7 +139,7 @@
     display:block;
     font-size:.72rem;
   }
-  .scroll-cue{position:static;margin-top:16px;padding-left:0}
+  .scroll-cue{position:static;margin-top:20px;padding-left:0}
 
   /* ── TICKER ── */
   .ti{font-size:.72rem;padding:0 18px}
@@ -173,7 +198,7 @@
   .f-nav{justify-content:center;flex-wrap:wrap;gap:14px}
   .f-logo-img{height:50px}
 
-  /* ── WHATSAPP — side tab middle right ── */
+  /* ── WHATSAPP ── */
   .wa{
     position:fixed;
     top:50%;
@@ -192,15 +217,16 @@
   /* ── TO TOP ── */
   .to-top{
     position:fixed;
-    bottom:18px;
-    right:16px;
+    bottom:24px;
+    right:18px;
     width:44px;
     height:44px;
     z-index:960;
   }
   .to-top-label{display:none}
   .to-top-tip{display:none}
-}
+
+} /* ── END MOBILE ── */
 
 /* ══════════════════════════════════════════
    SMALL MOBILE — max-width: 390px
@@ -208,11 +234,15 @@
 @media(max-width:390px){
   html{font-size:96.875%}
   .hero-display{font-size:clamp(2.1rem,10vw,3.2rem)}
+  .hero-desc{font-size:.8rem;margin-bottom:16px}
+  .hero-services li{font-size:.72rem}
   .wcard{flex:0 0 272px;height:370px}
   .svc-name{font-size:1.05rem}
   .hss-n{font-size:1.1rem}
+  .hss-l{font-size:.46rem}
   .logo-img{height:42px}
   .f-logo-img{height:44px}
   .sp-grid{grid-template-columns:1fr}
   .btn-main,.btn-ghost{padding:14px 16px;font-size:.68rem}
-}
+  nav,nav.s{padding:12px 18px 12px 16px}
+} /* ── END SMALL MOBILE ── */
