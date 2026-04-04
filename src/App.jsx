@@ -56,6 +56,18 @@ function App() {
       el.addEventListener('mouseenter', onHoverIn);
       el.addEventListener('mouseleave', onHoverOut);
     });
+    // ── WA button click tracking ──
+const waBtn = document.querySelector('.wa');
+const onWaClick = () => {
+  if (typeof gtag === 'function') {
+    gtag('event', 'generate_lead', {
+      event_category: 'WhatsApp',
+      event_label: 'WA Button Clicked',
+      value: 1
+    });
+  }
+};
+if (waBtn) waBtn.addEventListener('click', onWaClick);
 
     const nav = document.getElementById('nav');
     const navToggle = document.querySelector('.nav-toggle');
@@ -419,6 +431,14 @@ function App() {
         contactForm.parentNode.appendChild(successMsg);
 
         selectedServices.clear();
+        // GA4 lead tracking
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', {
+            event_category: 'Contact Form',
+            event_label: 'Enquiry Submitted',
+            value: 1
+          });
+        }
         syncServiceInput();
         renderSelectedServices();
 
@@ -453,6 +473,8 @@ function App() {
         el.removeEventListener('mouseenter', onHoverIn);
         el.removeEventListener('mouseleave', onHoverOut);
       });
+
+      if (waBtn) waBtn.removeEventListener('click', onWaClick);
 
       if (hs) {
         hs.removeEventListener('mousedown', onMouseDown);
