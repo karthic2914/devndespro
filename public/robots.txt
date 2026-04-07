@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://www.devndespro.com/sitemap.xml
+LLMS: https://www.devndespro.com/llms.txt

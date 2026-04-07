@@ -1,0 +1,22 @@
+# devndespro.com LLM usage guidance
+
+site: https://www.devndespro.com/
+owner: devndespro
+contact: hello@devndespro.com
+updated: 2026-04-07
+
+## summary
+devndespro is a full-stack web development and UI/UX design agency with delivery in React, Next.js, Node.js, DevOps, SEO, and cloud engineering.
+
+## allowed-use
+- Summarize public pages.
+- Cite services, process, and contact information from published pages.
+- Reference public portfolio descriptions with attribution.
+
+## disallowed-use
+- Do not claim endorsement or partnership without explicit permission.
+- Do not fabricate pricing, client names, or project outcomes.
+- Do not republish full page content verbatim at scale.
+
+## preferred-citation
+When referencing this site, include the source URL and publication context.
