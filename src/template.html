@@ -398,6 +398,33 @@
   </div>
 </section>
 
+<!-- INSIGHTS -->
+<section id="insights">
+  <div class="rv">
+    <div class="s-label">Why It Works</div>
+    <h2 class="s-h">Built for ranking.<br><em>Built for revenue.</em></h2>
+    <p class="faq-intro">The strongest websites do more than look polished. They explain the offer clearly, answer buyer questions early, and create enough depth for search engines and AI systems to understand the business with confidence. That is the standard we build toward. Each engagement is structured to improve clarity, conversion, and long-term visibility instead of chasing short-lived design trends or one-off launches that become hard to maintain.</p>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item rv">
+      <h3 class="faq-q">Strategy Comes Before Visuals</h3>
+      <p class="faq-a">Before a homepage or product screen is designed, we define user intent, business priorities, and the exact path a visitor should take. That produces stronger messaging, better page hierarchy, and cleaner calls to action. Instead of adding sections just to fill space, we create content blocks that answer real buying questions, reduce confusion, and move visitors toward contact, demo requests, or enquiries. This planning stage has a direct effect on rankings because clearer content structure helps crawlers understand what the page is actually about.</p>
+    </div>
+    <div class="faq-item rv">
+      <h3 class="faq-q">Engineering Quality Supports SEO</h3>
+      <p class="faq-a">Technical SEO is often treated as a checklist, but it depends heavily on implementation quality. Fast rendering, consistent metadata, image dimensions, semantic headings, and stable layouts all come from engineering discipline. We approach SEO as part of delivery, not as a patch added later. That means decisions around React, Next.js, assets, APIs, and deployment are made with both usability and crawlability in mind. The result is a site that is easier to index, easier to maintain, and more resilient as content grows.</p>
+    </div>
+    <div class="faq-item rv">
+      <h3 class="faq-q">Content Depth Creates Better Conversion</h3>
+      <p class="faq-a">Short pages can look elegant, but they often leave serious buyers without enough context to trust the offer. We improve this by adding useful depth: service explanations, industry context, delivery approach, timeline expectations, and practical next steps. Good content does not mean padding. It means covering the questions a thoughtful client will ask before making contact. When the right information is visible on the page, visitors spend more time reading, search systems see stronger topical relevance, and sales conversations begin with better-qualified leads.</p>
+    </div>
+    <div class="faq-item rv">
+      <h3 class="faq-q">Long-Term Partnerships Need Durable Systems</h3>
+      <p class="faq-a">Many businesses outgrow their websites because the original build was too shallow, too rigid, or too dependent on quick fixes. Our goal is to create durable systems that can support new content, new service lines, and new marketing campaigns without forcing a rebuild every few months. That includes scalable design patterns, structured copy, maintainable frontend code, and practical deployment workflows. When the foundation is right, growth efforts compound over time instead of breaking under the weight of new requirements.</p>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="c-wrap">
@@ -666,10 +693,19 @@
   }
 
   /* ── FAQ ─────────────────────────────────────────────── */
-  #faq {
+  #faq,
+  #insights {
     padding: 6rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+  }
+
+  .faq-intro {
+    margin-top: 1rem;
+    max-width: 900px;
+    font-size: 0.96rem;
+    line-height: 1.8;
+    opacity: 0.82;
   }
 
   .faq-grid {
@@ -708,6 +744,7 @@
 
   @media (max-width: 767px) {
     .faq-grid { grid-template-columns: 1fr; }
-    #faq { padding: 4rem 1.25rem; }
+    #faq,
+    #insights { padding: 4rem 1.25rem; }
   }
 </style>
