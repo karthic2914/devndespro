@@ -487,6 +487,20 @@
   </div>
 </section>
 
+<section id="seo-links" class="seo-links">
+  <div class="seo-links-wrap">
+    <h2 class="seo-links-title">Local Service Pages</h2>
+    <p class="seo-links-note">Explore dedicated pages for each service area and location focus.</p>
+    <ul class="seo-links-grid">
+      <li><a href="/seo/web-design-stavanger.html">Web Design Stavanger</a></li>
+      <li><a href="/seo/web-design-norway.html">Web Design Norway</a></li>
+      <li><a href="/seo/ux-ui-designer-norway.html">UX UI Designer Norway</a></li>
+      <li><a href="/seo/freelance-web-developer-norway.html">Freelance Web Developer Norway</a></li>
+      <li><a href="/seo/graphic-design-norway.html">Graphic Design Norway</a></li>
+    </ul>
+  </div>
+</section>
+
 <footer>
   <a href="#" class="f-logo"><img src="/images/DDDP_logo_mark.webp" alt="devndespro logo" class="f-logo-img" width="1280" height="655" loading="lazy" decoding="async"></a>
   <p class="f-copy">© 2026 devndespro · Stavanger, Norway · Chennai, India · Europe · USA · APAC</p>
@@ -495,6 +509,8 @@
     <li><a href="#work">Work</a></li>
     <li><a href="#skills-section">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="/seo/web-design-stavanger.html">Stavanger</a></li>
+    <li><a href="/seo/web-design-norway.html">Norway</a></li>
   </ul>
 </footer>
 
@@ -742,9 +758,62 @@
     margin: 0;
   }
 
+  .seo-links {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 3rem;
+  }
+
+  .seo-links-wrap {
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.4rem;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .seo-links-title {
+    margin: 0;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .seo-links-note {
+    margin: 0.55rem 0 0;
+    opacity: 0.7;
+    font-size: 0.9rem;
+  }
+
+  .seo-links-grid {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.65rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .seo-links-grid a {
+    display: inline-flex;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    text-decoration: none;
+    color: #e8e8dc;
+    font-size: 0.86rem;
+    transition: border-color 0.25s ease, color 0.25s ease;
+  }
+
+  .seo-links-grid a:hover {
+    border-color: rgba(230,106,57,0.45);
+    color: #fff;
+  }
+
   @media (max-width: 767px) {
     .faq-grid { grid-template-columns: 1fr; }
     #faq,
     #insights { padding: 4rem 1.25rem; }
+    .seo-links { padding: 1rem 1.25rem 2rem; }
+    .seo-links-grid { grid-template-columns: 1fr; }
   }
 </style>
