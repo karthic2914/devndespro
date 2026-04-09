@@ -88,6 +88,22 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       });
     };
 
+    const scrollToSectionHash = (hash, behavior = 'smooth') => {
+      const target = hash ? document.querySelector(hash) : null;
+      if (!target) return false;
+
+      target.querySelectorAll('.rv,.rl,.rr').forEach((el) => el.classList.add('on'));
+
+      const anchorSelector = hash ? sectionScrollAnchors[hash] : null;
+      const scrollTarget = anchorSelector ? document.querySelector(anchorSelector) || target : target;
+      const navHeight = nav ? nav.offsetHeight : 90;
+      const top = scrollTarget.getBoundingClientRect().top + window.scrollY - navHeight - 8;
+
+      window.scrollTo({ top, behavior });
+      setActiveLink(hash);
+      return true;
+    };
+
     const closeMobileMenu = () => {
       if (!nav) return;
       nav.classList.remove('open');
@@ -160,17 +176,7 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       if (!target) return;
 
       e.preventDefault();
-
-      target.querySelectorAll('.rv,.rl,.rr').forEach((el) => el.classList.add('on'));
-
-      const anchorSelector = hash ? sectionScrollAnchors[hash] : null;
-      const scrollTarget = anchorSelector ? document.querySelector(anchorSelector) || target : target;
-
-      const navHeight = nav ? nav.offsetHeight : 90;
-      const top = scrollTarget.getBoundingClientRect().top + window.scrollY - navHeight - 8;
-      window.scrollTo({ top, behavior: 'smooth' });
-
-      setActiveLink(hash);
+      scrollToSectionHash(hash, 'smooth');
       closeMobileMenu();
     };
 
@@ -183,6 +189,20 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
     };
     window.addEventListener('scroll', onScroll);
     onScroll();
+
+    const initialHash = window.location.hash;
+    const tryScrollToInitialHash = () => {
+      if (!initialHash) return;
+      scrollToSectionHash(initialHash, 'auto');
+    };
+
+    const initialHashTimer = window.setTimeout(tryScrollToInitialHash, 60);
+    const postLoaderHashTimer = window.setTimeout(tryScrollToInitialHash, 2350);
+
+    const onHashChange = () => {
+      scrollToSectionHash(window.location.hash, 'auto');
+    };
+    window.addEventListener('hashchange', onHashChange);
 
     const onResize = () => {
       if (window.innerWidth > 767) closeMobileMenu();
@@ -475,11 +495,14 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
     if (contactForm) contactForm.addEventListener('submit', onFormSubmit);
 
     return () => {
+      clearTimeout(initialHashTimer);
+      clearTimeout(postLoaderHashTimer);
       clearTimeout(loaderTimer);
       cancelAnimationFrame(rafId);
       document.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onResize);
+      window.removeEventListener('hashchange', onHashChange);
       if (navToggle) navToggle.removeEventListener('click', onToggleClick);
       sectionNavLinks.forEach((link) => link.removeEventListener('click', onNavLinkClick));
 
