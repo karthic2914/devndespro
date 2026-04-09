@@ -1,0 +1,148 @@
+/* Shared styling for static SEO service pages */
+body {
+  background: var(--bg, #2C2C36);
+  color: var(--white, #F4F4EE);
+}
+
+.seo-brand {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(244, 244, 238, 0.18);
+}
+
+.seo-brand-logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.seo-brand-logo img {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
+.seo-brand-links {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.seo-brand-links a {
+  color: var(--orange2, #F08A62);
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.seo-brand-links a:hover {
+  color: var(--orange, #E66A39);
+}
+
+.seo-page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.8rem 1rem 2.2rem;
+}
+
+.seo-page h1,
+.seo-page h2 {
+  color: var(--white, #F4F4EE) !important;
+}
+
+.seo-page p {
+  color: var(--dim2, #C8C8D0) !important;
+}
+
+.seo-page strong {
+  color: var(--white, #F4F4EE);
+}
+
+.seo-nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 4.3rem 0 1rem !important;
+  margin-bottom: 1.4rem !important;
+  border-bottom: 1px solid rgba(244, 244, 238, 0.18) !important;
+}
+
+.seo-nav::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 138px;
+  height: 56px;
+  background: url('/images/DDDP_logo_mark.webp') no-repeat left center;
+  background-size: contain;
+}
+
+.seo-nav a {
+  color: var(--orange2, #F08A62) !important;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.seo-nav a:hover {
+  color: var(--orange, #E66A39) !important;
+}
+
+.seo-links {
+  margin-top: 1.6rem;
+  background: rgba(60, 60, 72, 0.75) !important;
+  border: 1px solid rgba(240, 138, 98, 0.28);
+}
+
+.seo-links a,
+.links a {
+  color: var(--orange2, #F08A62) !important;
+  text-decoration: none;
+}
+
+.seo-links a:hover,
+.links a:hover {
+  color: var(--orange, #E66A39) !important;
+}
+
+@media (max-width: 767px) {
+  .seo-brand {
+    padding-top: 1rem;
+  }
+
+  .seo-brand-logo img {
+    height: 44px;
+  }
+
+  .seo-brand-links {
+    gap: 0.7rem;
+  }
+
+  .seo-brand-links a {
+    font-size: 0.74rem;
+  }
+
+  .seo-page {
+    padding-top: 1.2rem;
+  }
+
+  .seo-nav {
+    padding-top: 3.6rem !important;
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+
+  .seo-nav::before {
+    width: 120px;
+    height: 46px;
+  }
+}
