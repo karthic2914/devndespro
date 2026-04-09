@@ -221,7 +221,7 @@ function App() {
         contactLabels: ['Email', 'Location', 'WhatsApp', 'Status', 'Response'],
         seoLinksTitle: 'Local Service Pages',
         seoLinksNote: 'Explore dedicated pages for each service area and location focus.',
-        footerCopy: '© 2026 devndespro · Stavanger, Norway · Chennai, India · Europe · USA · APAC'
+        footerCopy: '© 2026 devndespro · HQ: Stavanger, Norway · Delivery Hub: Chennai, India · Serving Europe, USA & APAC'
       },
       no: {
         servicesLabel: 'Hva Vi Leverer',
@@ -307,7 +307,7 @@ function App() {
         contactLabels: ['E-post', 'Lokasjon', 'WhatsApp', 'Status', 'Respons'],
         seoLinksTitle: 'Lokale tjenestesider',
         seoLinksNote: 'Utforsk dedikerte sider for hvert tjenesteområde og lokasjonsfokus.',
-        footerCopy: '© 2026 devndespro · Stavanger, Norge · Chennai, India · Europa · USA · APAC'
+        footerCopy: '© 2026 devndespro · Hovedkontor: Stavanger, Norge · Leveransehub: Chennai, India · Betjener Europa, USA og APAC'
       }
     };
 
