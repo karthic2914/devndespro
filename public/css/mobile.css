@@ -345,6 +345,11 @@
   .f-row{grid-template-columns:1fr}
   .c-row{grid-template-columns:86px 1fr}
 
+  /* ── CTA STRIPS ── */
+  .cta-strip{flex-direction:column;padding:40px 20px;text-align:center}
+  .cta-strip-text p{max-width:100%}
+  .cta-strip-actions{justify-content:center}
+
   /* ── FOOTER ── */
   footer{flex-direction:column;gap:14px;text-align:center;padding:24px 18px}
   .f-nav{justify-content:center;flex-wrap:wrap;gap:14px}

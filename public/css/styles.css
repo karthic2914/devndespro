@@ -1106,6 +1106,63 @@ nav.s .logo-img{height:52px}
   margin-top:-6px;
 }
 
+/* ── CTA STRIPS ── */
+.cta-strip{
+  background:var(--orange);
+  padding:52px 64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:2rem;
+}
+.cta-strip-text h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,3vw,2.4rem);
+  color:#fff;
+  margin:0 0 .4rem;
+  line-height:1.2;
+}
+.cta-strip-text p{
+  font-size:.9rem;
+  color:rgba(255,255,255,.82);
+  margin:0;
+  max-width:560px;
+}
+.cta-strip-actions{
+  display:flex;
+  gap:1rem;
+  flex-shrink:0;
+  flex-wrap:wrap;
+}
+.btn-cta-white{
+  font-size:.72rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--orange);
+  background:#fff;
+  padding:15px 36px;
+  text-decoration:none;
+  border:1px solid #fff;
+  transition:all .3s;
+  font-weight:600;
+  white-space:nowrap;
+}
+.btn-cta-white:hover{background:transparent;color:#fff}
+.btn-cta-outline{
+  font-size:.72rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#fff;
+  background:transparent;
+  padding:15px 30px;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.6);
+  transition:all .3s;
+  font-weight:500;
+  white-space:nowrap;
+}
+.btn-cta-outline:hover{background:#fff;color:var(--orange)}
+
 /* ── FOOTER ── */
 footer{
   background:#000;
