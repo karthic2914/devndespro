@@ -113,6 +113,20 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
 
     if (navToggle) navToggle.addEventListener('click', onToggleClick);
 
+    // Mobile dropdown toggle
+    const navDropdowns = document.querySelectorAll('.nav-dropdown');
+    navDropdowns.forEach((dropdown) => {
+      const link = dropdown.querySelector('a');
+      if (link) {
+        link.addEventListener('click', (e) => {
+          if (window.innerWidth <= 767) {
+            e.preventDefault();
+            dropdown.classList.toggle('open');
+          }
+        });
+      }
+    });
+
     const sectionScrollAnchors = {
       '#services': '#services .svc-top',
       '#work': '#work .work-head',

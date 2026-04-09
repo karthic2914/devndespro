@@ -198,6 +198,44 @@ nav.s .logo-img{height:52px}
 .nav-menu a:hover::after{width:100%}
 .nav-menu a.active{color:var(--orange);opacity:1}
 .nav-menu a.active::after{width:100%}
+
+/* Dropdown Menu */
+.nav-dropdown{position:relative}
+.nav-submenu{
+  display:none;
+  position:absolute;
+  top:100%;
+  left:0;
+  background:var(--bg2);
+  border:1px solid var(--line);
+  border-radius:4px;
+  list-style:none;
+  padding:12px 0;
+  margin-top:8px;
+  min-width:220px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  z-index:1000;
+}
+.nav-dropdown:hover .nav-submenu{display:flex;flex-direction:column}
+.nav-submenu li{padding:0}
+.nav-submenu li a{
+  display:block;
+  padding:10px 18px;
+  font-size:.65rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--white);
+  opacity:0.8;
+  text-decoration:none;
+  transition:all .3s;
+  position:relative;
+}
+.nav-submenu li a::after{content:none}
+.nav-submenu li a:hover{
+  background:rgba(230,106,57,0.15);
+  color:var(--orange);
+  opacity:1;
+}
 .nav-cta{
   font-size:.7rem;
   letter-spacing:.2em;
