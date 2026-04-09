@@ -211,12 +211,13 @@ nav.s .logo-img{height:52px}
   border-radius:4px;
   list-style:none;
   padding:12px 0;
-  margin-top:8px;
+  margin-top:0;
   min-width:220px;
   box-shadow:0 10px 30px rgba(0,0,0,0.3);
   z-index:1000;
 }
-.nav-dropdown:hover .nav-submenu{display:flex;flex-direction:column}
+.nav-dropdown:hover .nav-submenu,
+.nav-dropdown:focus-within .nav-submenu{display:flex;flex-direction:column}
 .nav-submenu li{padding:0}
 .nav-submenu li a{
   display:block;
