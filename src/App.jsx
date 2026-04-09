@@ -58,7 +58,16 @@ function App() {
         'form.tag.package': 'Full Package',
         'form.project': 'About Your Project',
         'form.project.placeholder': "What are you trying to achieve? What's your timeline?",
-        'form.submit': 'Send Message'
+        'form.submit': 'Send Message',
+        'form.remove': 'Remove',
+        'form.needService': 'Please add at least one service before sending.',
+        'form.sending': 'Sending your message...',
+        'form.tryAgain': 'Try Again',
+        'form.sendLabel': 'Send Message',
+        'form.error': 'Could not send right now. Please try again in a moment.',
+        'success.title': 'Message Sent!',
+        'success.body': "Thanks <strong>{name}</strong>, we'll get back to you within 24 hours.",
+        'success.note': 'Check your inbox - a confirmation email is on its way.'
       },
       no: {
         'utility.wa': 'Chat på WhatsApp',
@@ -114,8 +123,198 @@ function App() {
         'form.tag.package': 'Komplett Pakke',
         'form.project': 'Om Prosjektet Ditt',
         'form.project.placeholder': 'Hva vil du oppnå? Hva er tidslinjen?',
-        'form.submit': 'Send Melding'
+        'form.submit': 'Send Melding',
+        'form.remove': 'Fjern',
+        'form.needService': 'Legg til minst én tjeneste før du sender.',
+        'form.sending': 'Sender meldingen din...',
+        'form.tryAgain': 'Prøv Igjen',
+        'form.sendLabel': 'Send Melding',
+        'form.error': 'Kunne ikke sende nå. Prøv igjen om litt.',
+        'success.title': 'Melding sendt!',
+        'success.body': 'Takk <strong>{name}</strong>, vi svarer deg innen 24 timer.',
+        'success.note': 'Sjekk innboksen din - en bekreftelse er på vei.'
       }
+    };
+
+    const sectionTranslations = {
+      en: {
+        servicesLabel: 'What We Do',
+        servicesHeading: 'Full-stack delivery<br>for <em>real growth</em>',
+        servicesNote: 'A full-stack and DevOps-first delivery model for teams that need speed and quality. From UX and architecture to cloud infrastructure and growth optimization, everything is handled end-to-end.',
+        serviceNames: [
+          'Product UX/UI & Design Systems',
+          'Full-Stack Product Engineering',
+          'DevOps, Cloud & Platform Reliability',
+          'SEO, Analytics & Growth Execution'
+        ],
+        serviceChips: [
+          'User Research', 'Interaction Flows', 'Figma Prototyping', 'Design Systems',
+          'Next.js / React', 'Node.js APIs', 'TypeScript', 'Database Design',
+          'Azure / Cloud', 'CI/CD Pipelines', 'Monitoring', 'Security Hardening',
+          'Technical SEO', 'Local SEO', 'Analytics', 'Conversion Optimization'
+        ],
+        workLabel: 'Selected Work',
+        workHeading: 'Projects that<br><em>moved the needle</em>',
+        workHint: 'Drag to explore <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>',
+        workCats: ['Education · WordPress · Chennai, India', 'SaaS · RFP Platform · Norway', 'SaaS · RFP Platform · Global'],
+        workDescs: [
+          'Full website design and development for a leading MSME-certified software training institute in Chennai. Built for enquiry conversion and course discovery - serving 18,000+ students annually.',
+          'AI-powered RFP and proposal management platform for Energy & IT sectors. Full UI/UX design and frontend - helping teams win contracts faster with built-in compliance tooling.',
+          'Norwegian-localised Tenderlyst application with multilingual frontend, language switcher, demo booking flow, and full proposal management dashboard for Energy & IT sectors.'
+        ],
+        workCtaText: "Like what you see? Let's build something just as impactful for you.",
+        workCtaBtn: 'Start a Similar Project',
+        processLabel: 'How We Work',
+        processHeading: 'Our process.<br><em>Your clarity.</em>',
+        processNames: ['Discover & Define', 'Design & Prototype', 'Build & Test', 'Launch & Grow'],
+        processDescs: [
+          'We listen first. Deep understanding of your users, goals, and constraints before anything is designed or built. No assumptions.',
+          'Every screen in Figma first. You interact with a real prototype and shape the product before development begins - no surprises at launch.',
+          'Clean, documented code. Tested across every device. Performance-optimised from day one - built to last years, not months.',
+          'We monitor, optimise, and iterate post-launch - turning your product into a compounding business asset that improves over time.'
+        ],
+        faqLabel: 'Common Questions',
+        faqHeading: 'What clients<br><em>always ask</em>',
+        faqQ: [
+          'Do you work with clients outside Stavanger?',
+          'What does a typical project cost?',
+          'How long does a website or web app take?',
+          'Can you do UI/UX design without development?',
+          'What makes devndespro different from other freelancers?',
+          'Are you available for freelance projects in Norway?'
+        ],
+        faqA: [
+          'Yes. We are based in Stavanger, Norway, and work with clients across Europe, the USA, India, and APAC. Most engagements are delivered remotely with structured updates and regular video calls.',
+          'Project cost depends on scope, complexity, timeline, and required integrations. After reviewing your brief, we provide a clear estimate and phased delivery plan within 24 hours.',
+          'A standard business website is typically delivered in 3-5 weeks. Larger web applications with backend APIs, integrations, and DevOps setup usually take 8-16 weeks, with milestone timelines shared before kickoff.',
+          'Yes. We offer standalone UI/UX services including UX discovery, Figma prototypes, design systems, and audits. You can use these deliverables with your in-house or external engineering team.',
+          'I combine UI/UX design, full-stack development, DevOps, and growth support in one workflow. That means direct communication, faster decisions, and consistent execution from strategy to launch.',
+          'Yes. We take freelance and long-term delivery projects for Norwegian and international clients, and we are currently accepting new work.'
+        ],
+        skillsPanel: 'Execution Stack',
+        skillsPanelTitles: ['UX Strategy', 'UI Systems', 'Full-Stack', 'DevOps Platform', 'Backend APIs', 'Growth Ops'],
+        skillsPanelSubs: [
+          'Research, IA, user flows',
+          'Design systems, prototyping',
+          'Frontend + backend delivery',
+          'CI/CD, cloud, observability',
+          'Node, data modeling, integrations',
+          'SEO, analytics, iteration loops'
+        ],
+        skillsFoot: ['Full-stack first', 'DevOps-native', 'Built to scale'],
+        badgeLabel: 'Years of craft',
+        skillsLabel: 'Skills',
+        skillsHeading: 'Core capabilities.<br><em>Execution depth.</em>',
+        skillsBody: 'I lead delivery as a <strong>full-stack and DevOps-focused builder</strong> who can take products from concept to production. <span class="brand-cal">devndes<span>pro</span></span> combines design precision with engineering depth, cloud reliability, and growth thinking in one streamlined workflow.<br><br>From UX discovery and interface systems to backend architecture, API integrations, CI/CD pipelines, and post-launch optimization, each skill area is applied end-to-end.<br><br>The percentages below reflect practical delivery confidence built over nearly two decades across enterprise and growth-stage teams.',
+        skillNames: ['Full-Stack Development', 'Cloud, Azure & DevOps', 'Backend APIs & Integrations', 'UX / UI Design & Figma', 'SEO & Digital Growth'],
+        insightsLabel: 'Why It Works',
+        insightsHeading: 'Built for ranking.<br><em>Built for revenue.</em>',
+        insightsIntro: 'The best websites are clear, fast, and useful. We focus on messaging, structure, and implementation quality so visitors understand your offer quickly and search systems can index your pages confidently.',
+        insightsQ: ['Strategy Comes Before Visuals', 'Engineering Quality Supports SEO', 'Content Depth Creates Better Conversion', 'Long-Term Partnerships Need Durable Systems'],
+        insightsA: [
+          'We start by mapping user intent, business goals, and your ideal conversion path. This creates cleaner page structure, sharper messaging, and calls to action that feel natural instead of forced.',
+          'Fast rendering, semantic headings, stable layouts, and clean metadata come from good engineering. We build SEO into delivery from day one so performance and visibility improve together.',
+          'A little more context helps serious buyers decide faster. We add the right depth with service details, delivery expectations, and practical next steps that turn interest into qualified enquiries.',
+          'We design for growth, not quick fixes. Scalable layouts, maintainable code, and structured content make it easier to launch campaigns, add services, and evolve your website without rebuilding from scratch.'
+        ],
+        contactTagline: '"Every project starts with a conversation. Whether you\'re local to Stavanger or building for global markets, we\'ll map the fastest path to results."',
+        contactLabels: ['Email', 'Location', 'WhatsApp', 'Status', 'Response'],
+        seoLinksTitle: 'Local Service Pages',
+        seoLinksNote: 'Explore dedicated pages for each service area and location focus.',
+        footerCopy: '© 2026 devndespro · Stavanger, Norway · Chennai, India · Europe · USA · APAC'
+      },
+      no: {
+        servicesLabel: 'Hva Vi Leverer',
+        servicesHeading: 'Fullstack levering<br>for <em>reell vekst</em>',
+        servicesNote: 'En fullstack- og DevOps-fokusert leveransemodell for team som trenger fart og kvalitet. Fra UX og arkitektur til skyinfrastruktur og vekstoptimalisering - alt leveres ende-til-ende.',
+        serviceNames: [
+          'Produkt UX/UI og designsystemer',
+          'Fullstack produktutvikling',
+          'DevOps, sky og plattformstabilitet',
+          'SEO, analyse og vekstgjennomforing'
+        ],
+        serviceChips: [
+          'Brukerinnsikt', 'Interaksjonsflyt', 'Figma-prototyping', 'Designsystemer',
+          'Next.js / React', 'Node.js API-er', 'TypeScript', 'Databasedesign',
+          'Azure / Sky', 'CI/CD-pipelines', 'Overvaking', 'Sikkerhetsherding',
+          'Teknisk SEO', 'Lokal SEO', 'Analyse', 'Konverteringsoptimalisering'
+        ],
+        workLabel: 'Utvalgte Prosjekter',
+        workHeading: 'Prosjekter som<br><em>ga tydelig effekt</em>',
+        workHint: 'Dra for å utforske <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>',
+        workCats: ['Utdanning · WordPress · Chennai, India', 'SaaS · RFP-plattform · Norge', 'SaaS · RFP-plattform · Globalt'],
+        workDescs: [
+          'Komplett nettsteddesign og utvikling for et ledende MSME-sertifisert programvareinstitutt i Chennai. Bygget for flere henvendelser og enklere kursoppdagelse - over 18 000 studenter i året.',
+          'AI-drevet RFP- og tilbudsplattform for energi- og IT-sektoren. Full UI/UX-design og frontend - hjelper team å vinne kontrakter raskere med innebygd etterlevelse.',
+          'Norsklokalisert Tenderlyst-applikasjon med flerspråklig frontend, språkbryter, demo-booking og komplett dashbord for tilbudshandtering i energi- og IT-sektoren.'
+        ],
+        workCtaText: 'Liker du det du ser? La oss bygge noe like slagkraftig for deg.',
+        workCtaBtn: 'Start et lignende prosjekt',
+        processLabel: 'Slik Jobber Vi',
+        processHeading: 'Vår prosess.<br><em>Din tydelighet.</em>',
+        processNames: ['Utforske og definere', 'Designe og prototype', 'Bygge og teste', 'Lansere og vokse'],
+        processDescs: [
+          'Vi lytter først. Dyp forståelse av brukere, mål og begrensninger før noe designes eller bygges. Ingen antakelser.',
+          'Alle skjermbilder lages i Figma først. Du tester en realistisk prototype og former produktet før utvikling starter - ingen overraskelser ved lansering.',
+          'Ren og dokumentert kode. Testet på alle enheter. Ytelsesoptimalisert fra dag én - bygget for år, ikke måneder.',
+          'Vi overvaker, optimaliserer og itererer etter lansering - slik at produktet ditt blir en verdiskapende ressurs som forbedres over tid.'
+        ],
+        faqLabel: 'Vanlige Spørsmål',
+        faqHeading: 'Dette spør<br><em>kunder alltid om</em>',
+        faqQ: [
+          'Jobber dere med kunder utenfor Stavanger?',
+          'Hva koster et typisk prosjekt?',
+          'Hvor lang tid tar et nettsted eller en webapp?',
+          'Kan dere levere UI/UX uten utvikling?',
+          'Hva skiller devndespro fra andre freelancere?',
+          'Er dere tilgjengelige for freelanceprosjekter i Norge?'
+        ],
+        faqA: [
+          'Ja. Vi er basert i Stavanger og jobber med kunder i hele Europa, USA, India og APAC. De fleste leveranser skjer remote med faste oppdateringer og videomoter.',
+          'Prosjektpris avhenger av omfang, kompleksitet, tidslinje og integrasjoner. Etter gjennomgang av behov får du et tydelig estimat og faseplan innen 24 timer.',
+          'Et standard bedriftsnettsted leveres vanligvis på 3-5 uker. Storre webapplikasjoner med backend-API-er, integrasjoner og DevOps tar normalt 8-16 uker.',
+          'Ja. Vi tilbyr egne UI/UX-leveranser inkludert UX discovery, Figma-prototyper, designsystemer og revisjoner som teamet ditt kan bygge videre på.',
+          'Jeg kombinerer UI/UX-design, fullstack utvikling, DevOps og vekststotte i én arbeidsflyt. Det gir raskere beslutninger og jevn kvalitet fra strategi til lansering.',
+          'Ja. Vi tar både freelance- og langsiktige leveranseprosjekter for norske og internasjonale kunder, og har kapasitet for nye oppdrag.'
+        ],
+        skillsPanel: 'Gjennomføringsstack',
+        skillsPanelTitles: ['UX-strategi', 'UI-systemer', 'Fullstack', 'DevOps-plattform', 'Backend API-er', 'Vekstdrift'],
+        skillsPanelSubs: [
+          'Research, IA, brukerflyt',
+          'Designsystemer, prototyper',
+          'Frontend + backend levering',
+          'CI/CD, sky, observabilitet',
+          'Node, datamodellering, integrasjoner',
+          'SEO, analyse, iterasjon'
+        ],
+        skillsFoot: ['Fullstack først', 'DevOps-native', 'Bygget for skalering'],
+        badgeLabel: 'År med erfaring',
+        skillsLabel: 'Kompetanse',
+        skillsHeading: 'Kjernekapasitet.<br><em>Dyp gjennomføring.</em>',
+        skillsBody: 'Jeg leder leveranser som en <strong>fullstack- og DevOps-fokusert bygger</strong> som tar produkter fra idé til produksjon. <span class="brand-cal">devndes<span>pro</span></span> kombinerer designpresisjon med teknisk dybde, stabil skyplattform og vekstfokus i én effektiv arbeidsflyt.<br><br>Fra UX discovery og grensesnittsystemer til backend-arkitektur, API-integrasjoner, CI/CD-pipelines og optimalisering etter lansering - hvert kompetanseområde brukes ende-til-ende.<br><br>Prosentene under gjenspeiler praktisk leveringsstyrke bygget opp gjennom nesten to tiår i enterprise- og vekstteam.',
+        skillNames: ['Fullstack utvikling', 'Sky, Azure og DevOps', 'Backend API-er og integrasjoner', 'UX / UI Design og Figma', 'SEO og digital vekst'],
+        insightsLabel: 'Hvorfor Det Fungerer',
+        insightsHeading: 'Bygget for rangering.<br><em>Bygget for inntekter.</em>',
+        insightsIntro: 'De beste nettsidene er tydelige, raske og nyttige. Vi fokuserer på budskap, struktur og implementeringskvalitet slik at besøkende forstår tilbudet raskt og søkesystemer indekserer sidene riktig.',
+        insightsQ: ['Strategi kommer før visuell stil', 'Teknisk kvalitet styrker SEO', 'Godt innhold gir bedre konvertering', 'Langsiktige samarbeid krever robuste systemer'],
+        insightsA: [
+          'Vi starter med brukerintensjon, forretningsmål og ønsket konverteringsvei. Det gir renere sidestruktur, skarpere budskap og CTA-er som føles naturlige.',
+          'Rask rendering, semantiske overskrifter, stabile layouter og ren metadata kommer fra god engineering. Vi bygger SEO inn fra dag én.',
+          'Litt mer kontekst gjør det enklere for seriøse kjøpere å ta beslutning. Vi legger inn riktig dybde med tjenestedetaljer og tydelige neste steg.',
+          'Vi designer for vekst, ikke raske fiks. Skalerbar layout, vedlikeholdbar kode og strukturert innhold gjør videre vekst enklere.'
+        ],
+        contactTagline: '"Alle prosjekter starter med en samtale. Enten du er lokal i Stavanger eller bygger for globale markeder, finner vi raskeste vei til resultater."',
+        contactLabels: ['E-post', 'Lokasjon', 'WhatsApp', 'Status', 'Respons'],
+        seoLinksTitle: 'Lokale tjenestesider',
+        seoLinksNote: 'Utforsk dedikerte sider for hvert tjenesteområde og lokasjonsfokus.',
+        footerCopy: '© 2026 devndespro · Stavanger, Norge · Chennai, India · Europa · USA · APAC'
+      }
+    };
+
+    let currentLang = 'no';
+    const t = (key, fallback = '') => {
+      const dict = translations[currentLang] || translations.no;
+      return dict[key] || fallback || key;
     };
 
     const loader = document.getElementById('loader');
@@ -249,6 +448,72 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
     const applyLanguage = (lang) => {
       const activeLang = lang === 'no' ? 'no' : 'en';
       const dict = translations[activeLang] || translations.en;
+      currentLang = activeLang;
+
+      const setText = (selector, value) => {
+        const el = document.querySelector(selector);
+        if (el && typeof value === 'string') el.textContent = value;
+      };
+      const setHtml = (selector, value) => {
+        const el = document.querySelector(selector);
+        if (el && typeof value === 'string') el.innerHTML = value;
+      };
+      const setTextList = (selector, values) => {
+        if (!Array.isArray(values)) return;
+        const nodes = document.querySelectorAll(selector);
+        nodes.forEach((node, index) => {
+          if (values[index] !== undefined) node.textContent = values[index];
+        });
+      };
+
+      const section = sectionTranslations[activeLang] || sectionTranslations.no;
+
+      setText('#services .s-label', section.servicesLabel);
+      setHtml('#services .s-h', section.servicesHeading);
+      setText('#services .svc-note', section.servicesNote);
+      setTextList('#services .svc-name', section.serviceNames);
+      setTextList('#services .svc-chip', section.serviceChips);
+
+      setText('#work .s-label', section.workLabel);
+      setHtml('#work .s-h', section.workHeading);
+      setHtml('#work .work-scroll-hint', section.workHint);
+      setTextList('#work .wcard-cat', section.workCats);
+      setTextList('#work .wcard-desc', section.workDescs);
+      setText('#work .work-cta-text', section.workCtaText);
+      setText('#work .work-cta .btn-main', section.workCtaBtn);
+
+      setText('#process .s-label', section.processLabel);
+      setHtml('#process .s-h', section.processHeading);
+      setTextList('#process .p-name', section.processNames);
+      setTextList('#process .p-desc', section.processDescs);
+
+      setText('#faq .s-label', section.faqLabel);
+      setHtml('#faq .s-h', section.faqHeading);
+      setTextList('#faq .faq-q', section.faqQ);
+      setTextList('#faq .faq-a', section.faqA);
+
+      setText('#skills-section .sp-label', section.skillsPanel);
+      setTextList('#skills-section .sp-chip span', section.skillsPanelTitles);
+      setTextList('#skills-section .sp-chip small', section.skillsPanelSubs);
+      setTextList('#skills-section .sp-foot span', section.skillsFoot);
+      setText('#skills-section .about-badge .ab-l', section.badgeLabel);
+      setText('#skills-section .about-r .s-label', section.skillsLabel);
+      setHtml('#skills-section .about-r .s-h', section.skillsHeading);
+      setHtml('#skills-section .about-body', section.skillsBody);
+      setTextList('#skills-section .sk .sk-n', section.skillNames);
+
+      setText('#insights .s-label', section.insightsLabel);
+      setHtml('#insights .s-h', section.insightsHeading);
+      setText('#insights .faq-intro', section.insightsIntro);
+      setTextList('#insights .faq-q', section.insightsQ);
+      setTextList('#insights .faq-a', section.insightsA);
+
+      setText('#contact .c-tagline', section.contactTagline);
+      setTextList('#contact .c-lbl', section.contactLabels);
+
+      setText('#seo-links .seo-links-title', section.seoLinksTitle);
+      setText('#seo-links .seo-links-note', section.seoLinksNote);
+      setText('footer .f-copy', section.footerCopy);
 
       document.documentElement.setAttribute('lang', activeLang);
 
@@ -522,7 +787,7 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
         const removeBtn = document.createElement('button');
         removeBtn.type = 'button';
         removeBtn.className = 'service-pill-remove';
-        removeBtn.setAttribute('aria-label', `Remove ${service}`);
+        removeBtn.setAttribute('aria-label', `${t('form.remove', 'Remove')} ${service}`);
         removeBtn.dataset.value = service;
         removeBtn.textContent = 'x';
 
@@ -541,7 +806,7 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       syncServiceInput();
       renderSelectedServices();
 
-      if (formStatus && formStatus.textContent === 'Please add at least one service before sending.') {
+      if (formStatus && formStatus.textContent.trim()) {
         formStatus.textContent = '';
       }
     };
@@ -591,13 +856,13 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       if (payload.website) return;
 
       if (!payload.service) {
-        if (formStatus) formStatus.textContent = 'Please add at least one service before sending.';
+        if (formStatus) formStatus.textContent = t('form.needService', 'Please add at least one service before sending.');
         return;
       }
 
       submitBtn.disabled = true;
-      submitBtn.innerHTML = 'Sending <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>';
-      if (formStatus) formStatus.textContent = 'Sending your message...';
+      submitBtn.innerHTML = `${t('form.sending', 'Sending')} <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>`;
+      if (formStatus) formStatus.textContent = t('form.sending', 'Sending your message...');
 
       try {
         const response = await fetch(contactForm.action, {
@@ -640,11 +905,12 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
           padding: 3rem 2rem;
           color: #fff;
         `;
+        const successBody = t('success.body', "Thanks <strong>{name}</strong>, we'll get back to you within 24 hours.").replace('{name}', firstName);
         successMsg.innerHTML = `
           <i class="fa-solid fa-circle-check" style="font-size:3.5rem;color:#3DD68C;margin-bottom:1.2rem;display:block;"></i>
-          <h3 style="font-size:1.8rem;margin-bottom:0.8rem;font-family:inherit;">Message Sent!</h3>
-          <p style="opacity:0.7;margin-bottom:1.5rem;">Thanks <strong>${firstName}</strong>, we'll get back to you within 24 hours.</p>
-          <p style="opacity:0.5;font-size:0.85rem;">Check your inbox — a confirmation email is on its way.</p>
+          <h3 style="font-size:1.8rem;margin-bottom:0.8rem;font-family:inherit;">${t('success.title', 'Message Sent!')}</h3>
+          <p style="opacity:0.7;margin-bottom:1.5rem;">${successBody}</p>
+          <p style="opacity:0.5;font-size:0.85rem;">${t('success.note', 'Check your inbox - a confirmation email is on its way.')}</p>
         `;
         contactForm.parentNode.appendChild(successMsg);
 
@@ -662,13 +928,13 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
 
       } catch (error) {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Try Again <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>';
+        submitBtn.innerHTML = `${t('form.tryAgain', 'Try Again')} <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>`;
         if (formStatus) {
           formStatus.textContent =
-            error?.message || 'Could not send right now. Please try again in a moment.';
+            error?.message || t('form.error', 'Could not send right now. Please try again in a moment.');
         }
         setTimeout(() => {
-          submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>';
+          submitBtn.innerHTML = `${t('form.sendLabel', 'Send Message')} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>`;
           submitBtn.style.background = '';
           submitBtn.style.borderColor = '';
           submitBtn.style.color = '';
