@@ -5,11 +5,29 @@ function App() {
   useEffect(() => {
     const translations = {
       en: {
+        'utility.wa': 'Chat on WhatsApp',
+        'utility.top': 'Back to top',
+        'utility.top.short': 'TOP',
         'nav.services': 'Services',
         'nav.work': 'Work',
         'nav.skills': 'Skills',
         'nav.contact': 'Contact',
         'nav.quote': 'Get Free Quote',
+        'hero.kicker': 'Full-Stack + DevOps',
+        'hero.line1': 'We Design.',
+        'hero.line2': 'We Build.',
+        'hero.line3': 'We Grow.',
+        'hero.stat1': 'Years of craft',
+        'hero.stat2': 'Google rankings',
+        'hero.stat3': 'Client retention',
+        'hero.desc': 'A premium <strong>React & Next.js web development</strong> and <strong>UI/UX design agency</strong> based in <strong>Stavanger, Norway</strong> serving startups and businesses across <strong>Europe, the USA, India, and APAC</strong>. From Figma to production.',
+        'hero.svc1': 'UI/UX Design & Figma Prototyping',
+        'hero.svc2': 'React & Next.js Development',
+        'hero.svc3': 'DevOps & Azure Cloud Engineering',
+        'hero.svc4': 'SEO & Digital Growth',
+        'hero.primary': 'Start a Project',
+        'hero.secondary': 'View Our Work',
+        'hero.explore': 'Explore',
         'cta.mid.title': 'Ready to start your project?',
         'cta.mid.text': 'Get a free consultation and a clear estimate within 24 hours - no commitment needed.',
         'cta.mid.primary': 'Book a Free Call',
@@ -43,11 +61,29 @@ function App() {
         'form.submit': 'Send Message'
       },
       no: {
+        'utility.wa': 'Chat på WhatsApp',
+        'utility.top': 'Til toppen',
+        'utility.top.short': 'TOPP',
         'nav.services': 'Tjenester',
         'nav.work': 'Arbeid',
         'nav.skills': 'Kompetanse',
         'nav.contact': 'Kontakt',
         'nav.quote': 'Få Gratis Tilbud',
+        'hero.kicker': 'Fullstack + DevOps',
+        'hero.line1': 'Vi Designer.',
+        'hero.line2': 'Vi Bygger.',
+        'hero.line3': 'Vi Skalerer.',
+        'hero.stat1': 'År med erfaring',
+        'hero.stat2': 'Google-rangeringer',
+        'hero.stat3': 'Kunder som blir',
+        'hero.desc': 'Et premium <strong>React & Next.js webutviklings-</strong> og <strong>UI/UX-designbyrå</strong> i <strong>Stavanger, Norge</strong> som hjelper startups og selskaper i <strong>Europa, USA, India og APAC</strong>. Fra Figma til produksjon.',
+        'hero.svc1': 'UI/UX-design og Figma-prototyper',
+        'hero.svc2': 'React- og Next.js-utvikling',
+        'hero.svc3': 'DevOps og Azure skyinfrastruktur',
+        'hero.svc4': 'SEO og digital vekst',
+        'hero.primary': 'Start et prosjekt',
+        'hero.secondary': 'Se arbeidet vårt',
+        'hero.explore': 'Utforsk',
         'cta.mid.title': 'Klar til å starte prosjektet ditt?',
         'cta.mid.text': 'Få gratis konsultasjon og et tydelig estimat innen 24 timer - helt uten forpliktelser.',
         'cta.mid.primary': 'Book et Gratis Møte',
@@ -262,16 +298,17 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
     langButtons.forEach((btn) => btn.addEventListener('click', onLangClick));
 
     const urlLang = new URLSearchParams(window.location.search).get('lang');
-    let preferredLang = 'en';
+    let preferredLang = 'no';
     if (urlLang === 'no') {
       preferredLang = 'no';
+    } else if (urlLang === 'en') {
+      preferredLang = 'en';
     } else {
       try {
         const storedLang = localStorage.getItem('siteLang');
         if (storedLang === 'no' || storedLang === 'en') preferredLang = storedLang;
-        else if (navigator.language.toLowerCase().startsWith('no')) preferredLang = 'no';
       } catch {
-        if (navigator.language.toLowerCase().startsWith('no')) preferredLang = 'no';
+        // Keep Norwegian as default when storage is unavailable.
       }
     }
     setLanguage(preferredLang, false);
