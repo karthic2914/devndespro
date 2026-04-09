@@ -147,9 +147,10 @@
   <!-- ═══════════════════════════════════════════════
        STYLES
   ═══════════════════════════════════════════════ -->
-<link rel="stylesheet" href="/css/styles.css">
-<link rel="stylesheet" href="/css/tablet.css" media="(max-width:1024px)">
-<link rel="stylesheet" href="/css/mobile.css" media="(max-width:767px)">
+<link rel="preload" as="style" href="/css/styles.css" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" as="style" href="/css/tablet.css" media="(max-width:1024px)" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" as="style" href="/css/mobile.css" media="(max-width:767px)" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/styles.css"><link rel="stylesheet" href="/css/tablet.css" media="(max-width:1024px)"><link rel="stylesheet" href="/css/mobile.css" media="(max-width:767px)"></noscript>
 <style>
   .seo-fallback {
     max-width: 1024px;
@@ -228,6 +229,9 @@
       <h2>Engagement Process and Project Expectations</h2>
       <p>Most projects begin with a short discovery call followed by a scoped proposal. We define required pages, product flows, integration needs, success metrics, and timeline constraints. Once scope is approved, we map milestones and communication cadence so every stakeholder understands delivery expectations. During implementation, we provide iterative previews and practical progress updates to reduce uncertainty. You see direction early, give feedback quickly, and avoid large surprises near release.</p>
       <p>At launch, we include baseline quality checks covering responsiveness, accessibility, performance, tracking, and technical SEO essentials. We then support post-launch iteration with analytics-informed improvements, conversion tuning, and backlog prioritization. This makes the website or application a living business asset rather than a one-time handoff. Whether your goal is lead generation, operational efficiency, or product adoption, Devndespro focuses on decisions that create durable value and compounding growth.</p>
+
+      <h2>Technologies, Resources, and Our Design Toolkit</h2>
+      <p>Our stack and design process are built on proven, open-source, and industry-leading tools. We use <a href="https://react.dev" target="_blank" rel="noopener">React</a> and <a href="https://nextjs.org" target="_blank" rel="noopener">Next.js</a> for scalable web applications, <a href="https://www.typescriptlang.org" target="_blank" rel="noopener">TypeScript</a> for type safety, and <a href="https://nodejs.org" target="_blank" rel="noopener">Node.js</a> for backend development. For design and prototyping, we rely on <a href="https://www.figma.com" target="_blank" rel="noopener">Figma</a> and component systems. Cloud and DevOps work leverages <a href="https://azure.microsoft.com" target="_blank" rel="noopener">Azure</a> and containerized deployment pipelines. We also follow accessibility standards from <a href="https://www.w3.org/WAI" target="_blank" rel="noopener">WCAG guidelines</a> and performance best practices from the <a href="https://web.dev" target="_blank" rel="noopener">web.dev</a> community.</p>
 
       <h2>Explore Our Service Pages</h2>
       <p>Use the pages below to explore the main service and location topics covered by Devndespro.</p>
