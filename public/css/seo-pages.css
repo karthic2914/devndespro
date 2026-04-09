@@ -2,16 +2,25 @@
 body {
   background: var(--bg, #2C2C36);
   color: var(--white, #F4F4EE);
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .seo-brand {
   max-width: 980px;
   margin: 0 auto;
-  padding: 1.5rem 1rem 0.5rem;
+  padding: 0.9rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 120;
+  background: linear-gradient(180deg, rgba(44, 44, 54, 0.96), rgba(44, 44, 54, 0.88));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(244, 244, 238, 0.18);
 }
 
@@ -50,7 +59,7 @@ body {
 .seo-page {
   max-width: 980px;
   margin: 0 auto;
-  padding: 1.8rem 1rem 2.2rem;
+  padding: 1.4rem 1rem 2.2rem;
 }
 
 .seo-page h1,
@@ -73,7 +82,7 @@ body {
   align-items: center;
   gap: 1rem;
   padding: 4.3rem 0 1rem !important;
-  margin-bottom: 1.4rem !important;
+  margin-bottom: 1rem !important;
   border-bottom: 1px solid rgba(244, 244, 238, 0.18) !important;
 }
 
