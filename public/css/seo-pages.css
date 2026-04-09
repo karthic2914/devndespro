@@ -21,6 +21,7 @@ body {
 }
 
 .seo-brand-logo img {
+  content: url('/images/DDDP_logo_mark.png');
   height: 52px;
   width: auto;
   display: block;
@@ -83,7 +84,7 @@ body {
   left: 0;
   width: 138px;
   height: 56px;
-  background: url('/images/DDDP_logo_mark.webp') no-repeat left center;
+  background: url('/images/DDDP_logo_mark.png') no-repeat left center;
   background-size: contain;
 }
 
@@ -105,13 +106,19 @@ body {
 
 .seo-links a,
 .links a {
-  color: var(--orange2, #F08A62) !important;
+  color: var(--white, #F4F4EE) !important;
+  background: rgba(230, 106, 57, 0.9) !important;
+  border: 1px solid rgba(240, 138, 98, 0.7) !important;
+  border-radius: 6px;
+  padding: 0.42rem 0.8rem;
+  display: inline-block;
   text-decoration: none;
 }
 
 .seo-links a:hover,
 .links a:hover {
-  color: var(--orange, #E66A39) !important;
+  color: var(--white, #F4F4EE) !important;
+  background: var(--orange, #E66A39) !important;
 }
 
 @media (max-width: 767px) {
