@@ -169,6 +169,31 @@ nav.s .logo-img{height:52px}
   align-items:center;
   gap:44px;
 }
+.lang-switch{
+  display:flex;
+  align-items:center;
+  border:1px solid rgba(244,244,238,0.24);
+  border-radius:999px;
+  overflow:hidden;
+}
+.lang-btn{
+  border:none;
+  background:transparent;
+  color:var(--white);
+  opacity:.72;
+  padding:7px 11px;
+  font-size:.62rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:all .25s;
+}
+.lang-btn:hover{opacity:1;color:var(--orange)}
+.lang-btn.active{
+  background:var(--orange);
+  color:#fff;
+  opacity:1;
+}
 .nav-menu{
   display:flex;
   gap:36px;

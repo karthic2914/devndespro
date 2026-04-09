@@ -3,6 +3,85 @@ import template from './template.html?raw';
 
 function App() {
   useEffect(() => {
+    const translations = {
+      en: {
+        'nav.services': 'Services',
+        'nav.work': 'Work',
+        'nav.skills': 'Skills',
+        'nav.contact': 'Contact',
+        'nav.quote': 'Get Free Quote',
+        'cta.mid.title': 'Ready to start your project?',
+        'cta.mid.text': 'Get a free consultation and a clear estimate within 24 hours - no commitment needed.',
+        'cta.mid.primary': 'Book a Free Call',
+        'cta.mid.secondary': 'Get a Quote',
+        'cta.bottom.title': "Let's build something that converts.",
+        'cta.bottom.text': 'From design to deployment - one team, full ownership, measurable results.',
+        'cta.bottom.primary': 'Start a Project',
+        'cta.bottom.secondary': 'WhatsApp Us',
+        'contact.label': 'Get In Touch',
+        'contact.title': "Let's build<br>something <em>remarkable</em>",
+        'contact.whatsapp': 'Message directly',
+        'contact.status': 'Accepting new projects',
+        'contact.response': 'Within 24 hours',
+        'form.note': 'Share your scope, timeline, and goals. The message will be sent directly to our inbox.',
+        'form.name': 'Your Name',
+        'form.name.placeholder': 'Ola Nordmann',
+        'form.email': 'Email Address',
+        'form.email.placeholder': 'ola@bedrift.no',
+        'form.company': 'Company',
+        'form.company.placeholder': 'Your company (optional)',
+        'form.service': 'Service Needed',
+        'form.service.placeholder': 'Type a service and press Enter',
+        'form.tag.ux': 'UX/UI Design & Figma',
+        'form.tag.fullstack': 'Full-Stack Engineering',
+        'form.tag.devops': 'DevOps & Cloud',
+        'form.tag.seo': 'SEO & Growth',
+        'form.tag.backend': 'Backend APIs',
+        'form.tag.package': 'Full Package',
+        'form.project': 'About Your Project',
+        'form.project.placeholder': "What are you trying to achieve? What's your timeline?",
+        'form.submit': 'Send Message'
+      },
+      no: {
+        'nav.services': 'Tjenester',
+        'nav.work': 'Arbeid',
+        'nav.skills': 'Kompetanse',
+        'nav.contact': 'Kontakt',
+        'nav.quote': 'Få Gratis Tilbud',
+        'cta.mid.title': 'Klar til å starte prosjektet ditt?',
+        'cta.mid.text': 'Få gratis konsultasjon og et tydelig estimat innen 24 timer - helt uten forpliktelser.',
+        'cta.mid.primary': 'Book et Gratis Møte',
+        'cta.mid.secondary': 'Få et Tilbud',
+        'cta.bottom.title': 'La oss bygge noe som konverterer.',
+        'cta.bottom.text': 'Fra design til lansering - ett team, fullt eierskap, målbare resultater.',
+        'cta.bottom.primary': 'Start et Prosjekt',
+        'cta.bottom.secondary': 'Kontakt på WhatsApp',
+        'contact.label': 'Ta Kontakt',
+        'contact.title': 'La oss bygge<br>noe <em>enestående</em>',
+        'contact.whatsapp': 'Send melding direkte',
+        'contact.status': 'Tar imot nye prosjekter',
+        'contact.response': 'Innen 24 timer',
+        'form.note': 'Del omfang, tidslinje og mål. Meldingen sendes direkte til innboksen vår.',
+        'form.name': 'Navnet ditt',
+        'form.name.placeholder': 'Ola Nordmann',
+        'form.email': 'E-postadresse',
+        'form.email.placeholder': 'ola@bedrift.no',
+        'form.company': 'Bedrift',
+        'form.company.placeholder': 'Bedriften din (valgfritt)',
+        'form.service': 'Ønsket Tjeneste',
+        'form.service.placeholder': 'Skriv en tjeneste og trykk Enter',
+        'form.tag.ux': 'UX/UI Design og Figma',
+        'form.tag.fullstack': 'Fullstack Utvikling',
+        'form.tag.devops': 'DevOps og Sky',
+        'form.tag.seo': 'SEO og Vekst',
+        'form.tag.backend': 'Backend API-er',
+        'form.tag.package': 'Komplett Pakke',
+        'form.project': 'Om Prosjektet Ditt',
+        'form.project.placeholder': 'Hva vil du oppnå? Hva er tidslinjen?',
+        'form.submit': 'Send Melding'
+      }
+    };
+
     const loader = document.getElementById('loader');
 
     function hideLoader() {
@@ -128,6 +207,74 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
     };
 
     if (navToggle) navToggle.addEventListener('click', onToggleClick);
+
+    const langButtons = Array.from(document.querySelectorAll('.lang-btn'));
+
+    const applyLanguage = (lang) => {
+      const activeLang = lang === 'no' ? 'no' : 'en';
+      const dict = translations[activeLang] || translations.en;
+
+      document.documentElement.setAttribute('lang', activeLang);
+
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (key && dict[key]) el.textContent = dict[key];
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+        const key = el.getAttribute('data-i18n-html');
+        if (key && dict[key]) el.innerHTML = dict[key];
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (key && dict[key]) el.setAttribute('placeholder', dict[key]);
+      });
+
+      langButtons.forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.lang === activeLang);
+      });
+    };
+
+    const setLanguage = (lang, updateUrl = true) => {
+      const activeLang = lang === 'no' ? 'no' : 'en';
+      applyLanguage(activeLang);
+
+      try {
+        localStorage.setItem('siteLang', activeLang);
+      } catch {
+        // Ignore storage restrictions.
+      }
+
+      if (updateUrl) {
+        const url = new URL(window.location.href);
+        if (activeLang === 'en') url.searchParams.delete('lang');
+        else url.searchParams.set('lang', 'no');
+        window.history.replaceState({}, '', url.toString());
+      }
+    };
+
+    const onLangClick = (e) => {
+      const lang = e.currentTarget.dataset.lang;
+      setLanguage(lang, true);
+    };
+
+    langButtons.forEach((btn) => btn.addEventListener('click', onLangClick));
+
+    const urlLang = new URLSearchParams(window.location.search).get('lang');
+    let preferredLang = 'en';
+    if (urlLang === 'no') {
+      preferredLang = 'no';
+    } else {
+      try {
+        const storedLang = localStorage.getItem('siteLang');
+        if (storedLang === 'no' || storedLang === 'en') preferredLang = storedLang;
+        else if (navigator.language.toLowerCase().startsWith('no')) preferredLang = 'no';
+      } catch {
+        if (navigator.language.toLowerCase().startsWith('no')) preferredLang = 'no';
+      }
+    }
+    setLanguage(preferredLang, false);
 
     // Mobile dropdown toggle
     const navDropdowns = document.querySelectorAll('.nav-dropdown');
@@ -504,6 +651,7 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       window.removeEventListener('resize', onResize);
       window.removeEventListener('hashchange', onHashChange);
       if (navToggle) navToggle.removeEventListener('click', onToggleClick);
+      langButtons.forEach((btn) => btn.removeEventListener('click', onLangClick));
       sectionNavLinks.forEach((link) => link.removeEventListener('click', onNavLinkClick));
 
       hoverTargets.forEach((el) => {

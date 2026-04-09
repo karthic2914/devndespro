@@ -74,6 +74,8 @@
   nav.open .nav-menu{display:flex}
   .nav-menu a{font-size:1rem;letter-spacing:.2em;opacity:1}
   .nav-cta{display:inline-flex;font-size:.8rem;padding:12px 28px}
+  .lang-switch{order:-1;margin-bottom:6px}
+  .lang-btn{font-size:.72rem;padding:8px 13px}
   
   /* Mobile Dropdown */
   .nav-dropdown{position:static;width:100%}

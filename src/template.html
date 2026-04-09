@@ -27,9 +27,13 @@
     <i class="fa-solid fa-bars" aria-hidden="true"></i>
   </button>
   <div class="nav-r">
+    <div class="lang-switch" aria-label="Language switcher">
+      <button type="button" class="lang-btn active" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="no">NO</button>
+    </div>
     <ul class="nav-menu">
       <li class="nav-dropdown">
-        <a href="#services">Services</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
         <ul class="nav-submenu">
           <li><a href="/seo/mobile-app-development.html">Mobile App Development</a></li>
           <li><a href="/seo/responsive-web-design.html">Responsive Web Design</a></li>
@@ -41,11 +45,11 @@
           <li><a href="/seo/web-design-norway.html">Web Design Norway</a></li>
         </ul>
       </li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#skills-section">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#work" data-i18n="nav.work">Work</a></li>
+      <li><a href="#skills-section" data-i18n="nav.skills">Skills</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Get Free Quote</a>
+    <a href="#contact" class="nav-cta" data-i18n="nav.quote">Get Free Quote</a>
   </div>
 </nav>
 
@@ -305,12 +309,12 @@
 <!-- MID-PAGE CTA -->
 <section class="cta-strip rv">
   <div class="cta-strip-text">
-    <h2>Ready to start your project?</h2>
-    <p>Get a free consultation and a clear estimate within 24 hours — no commitment needed.</p>
+    <h2 data-i18n="cta.mid.title">Ready to start your project?</h2>
+    <p data-i18n="cta.mid.text">Get a free consultation and a clear estimate within 24 hours — no commitment needed.</p>
   </div>
   <div class="cta-strip-actions">
-    <a href="#contact" class="btn-cta-white">Book a Free Call</a>
-    <a href="#contact" class="btn-cta-outline">Get a Quote</a>
+    <a href="#contact" class="btn-cta-white" data-i18n="cta.mid.primary">Book a Free Call</a>
+    <a href="#contact" class="btn-cta-outline" data-i18n="cta.mid.secondary">Get a Quote</a>
   </div>
 </section>
 
@@ -351,12 +355,12 @@
 <!-- BOTTOM CTA -->
 <section class="cta-strip rv">
   <div class="cta-strip-text">
-    <h2>Let's build something that converts.</h2>
-    <p>From design to deployment — one team, full ownership, measurable results.</p>
+    <h2 data-i18n="cta.bottom.title">Let's build something that converts.</h2>
+    <p data-i18n="cta.bottom.text">From design to deployment — one team, full ownership, measurable results.</p>
   </div>
   <div class="cta-strip-actions">
-    <a href="#contact" class="btn-cta-white">Start a Project</a>
-    <a href="https://wa.me/4740975201" class="btn-cta-outline" target="_blank" rel="noopener">WhatsApp Us</a>
+    <a href="#contact" class="btn-cta-white" data-i18n="cta.bottom.primary">Start a Project</a>
+    <a href="https://wa.me/4740975201" class="btn-cta-outline" target="_blank" rel="noopener" data-i18n="cta.bottom.secondary">WhatsApp Us</a>
   </div>
 </section>
 
@@ -465,59 +469,59 @@
 <section id="contact">
   <div class="c-wrap">
     <div class="c-l rl">
-      <div class="s-label">Get In Touch</div>
-      <h2 class="s-h">Let's build<br>something <em>remarkable</em></h2>
+      <div class="s-label" data-i18n="contact.label">Get In Touch</div>
+      <h2 class="s-h" data-i18n-html="contact.title">Let's build<br>something <em>remarkable</em></h2>
       <p class="c-tagline">"Every project starts with a conversation. Whether you're local to Stavanger or building for global markets, we'll map the fastest path to results."</p>
       <div class="c-rows">
         <div class="c-row"><span class="c-lbl">Email</span><a href="mailto:hello@devndespro.com" class="c-val">hello@devndespro.com</a></div>
         <div class="c-row"><span class="c-lbl">Location</span><span class="c-val">Stavanger, Norway</span></div>
-        <div class="c-row"><span class="c-lbl">WhatsApp</span><a href="https://wa.me/4740975201" class="c-val">Message directly <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        <div class="c-row"><span class="c-lbl">Status</span><span class="c-val c-avail"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Accepting new projects</span></div>
-        <div class="c-row"><span class="c-lbl">Response</span><span class="c-val">Within 24 hours</span></div>
+        <div class="c-row"><span class="c-lbl">WhatsApp</span><a href="https://wa.me/4740975201" class="c-val"><span data-i18n="contact.whatsapp">Message directly</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+        <div class="c-row"><span class="c-lbl">Status</span><span class="c-val c-avail"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="contact.status">Accepting new projects</span></span></div>
+        <div class="c-row"><span class="c-lbl">Response</span><span class="c-val" data-i18n="contact.response">Within 24 hours</span></div>
       </div>
     </div>
     <div class="c-r rr">
       <form class="c-form" action="https://devndespro-production.up.railway.app/api/contact" method="POST">
         <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none">
-        <p class="f-note">Share your scope, timeline, and goals. The message will be sent directly to our inbox.</p>
+        <p class="f-note" data-i18n="form.note">Share your scope, timeline, and goals. The message will be sent directly to our inbox.</p>
         <div class="f-row">
           <div class="f-f">
-            <label class="f-l">Your Name <span class="f-req" aria-hidden="true">*</span></label>
-            <input type="text" name="name" placeholder="Ola Nordmann" required>
+            <label class="f-l"><span data-i18n="form.name">Your Name</span> <span class="f-req" aria-hidden="true">*</span></label>
+            <input type="text" name="name" placeholder="Ola Nordmann" data-i18n-placeholder="form.name.placeholder" required>
           </div>
           <div class="f-f">
-            <label class="f-l">Email Address <span class="f-req" aria-hidden="true">*</span></label>
-            <input type="email" name="email" placeholder="ola@bedrift.no" required>
+            <label class="f-l"><span data-i18n="form.email">Email Address</span> <span class="f-req" aria-hidden="true">*</span></label>
+            <input type="email" name="email" placeholder="ola@bedrift.no" data-i18n-placeholder="form.email.placeholder" required>
           </div>
         </div>
         <div class="f-row">
           <div class="f-f">
-            <label class="f-l">Company</label>
-            <input type="text" name="company" placeholder="Your company (optional)">
+            <label class="f-l" data-i18n="form.company">Company</label>
+            <input type="text" name="company" placeholder="Your company (optional)" data-i18n-placeholder="form.company.placeholder">
           </div>
           <div class="f-f">
-            <label class="f-l">Service Needed <span class="f-req" id="req-service" aria-hidden="true">*</span></label>
+            <label class="f-l"><span data-i18n="form.service">Service Needed</span> <span class="f-req" id="req-service" aria-hidden="true">*</span></label>
             <input type="hidden" name="service" id="service-input" value="">
             <div class="service-picker">
-              <input type="text" id="service-entry" class="service-entry" placeholder="Type a service and press Enter">
+              <input type="text" id="service-entry" class="service-entry" placeholder="Type a service and press Enter" data-i18n-placeholder="form.service.placeholder">
               <div class="service-suggestions" role="group" aria-label="Quick service tags">
-                <button type="button" class="service-suggest" data-value="UX/UI Design & Figma">UX/UI Design & Figma</button>
-                <button type="button" class="service-suggest" data-value="Full-Stack Product Engineering">Full-Stack Engineering</button>
-                <button type="button" class="service-suggest" data-value="DevOps, Cloud & Platform Reliability">DevOps & Cloud</button>
-                <button type="button" class="service-suggest" data-value="SEO & Digital Growth">SEO & Growth</button>
-                <button type="button" class="service-suggest" data-value="Backend APIs & Integrations">Backend APIs</button>
-                <button type="button" class="service-suggest" data-value="Full Digital Package">Full Package</button>
+                <button type="button" class="service-suggest" data-value="UX/UI Design & Figma" data-i18n="form.tag.ux">UX/UI Design & Figma</button>
+                <button type="button" class="service-suggest" data-value="Full-Stack Product Engineering" data-i18n="form.tag.fullstack">Full-Stack Engineering</button>
+                <button type="button" class="service-suggest" data-value="DevOps, Cloud & Platform Reliability" data-i18n="form.tag.devops">DevOps & Cloud</button>
+                <button type="button" class="service-suggest" data-value="SEO & Digital Growth" data-i18n="form.tag.seo">SEO & Growth</button>
+                <button type="button" class="service-suggest" data-value="Backend APIs & Integrations" data-i18n="form.tag.backend">Backend APIs</button>
+                <button type="button" class="service-suggest" data-value="Full Digital Package" data-i18n="form.tag.package">Full Package</button>
               </div>
               <div class="service-selected" id="service-selected" aria-live="polite"></div>
             </div>
           </div>
         </div>
         <div class="f-f">
-          <label class="f-l">About Your Project <span class="f-req" aria-hidden="true">*</span></label>
-          <textarea name="message" placeholder="What are you trying to achieve? What's your timeline?" required></textarea>
+          <label class="f-l"><span data-i18n="form.project">About Your Project</span> <span class="f-req" aria-hidden="true">*</span></label>
+          <textarea name="message" placeholder="What are you trying to achieve? What's your timeline?" data-i18n-placeholder="form.project.placeholder" required></textarea>
         </div>
         <p class="f-status" id="form-status" aria-live="polite"></p>
-        <button type="submit" class="f-btn" id="fsb">Send Message <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+        <button type="submit" class="f-btn" id="fsb"><span data-i18n="form.submit">Send Message</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
       </form>
     </div>
   </div>
@@ -541,9 +545,9 @@
   <a href="#" class="f-logo"><img src="/images/DDDP_logo_mark.webp" alt="devndespro logo" class="f-logo-img" width="1280" height="655" loading="lazy" decoding="async"></a>
   <p class="f-copy">© 2026 devndespro · Stavanger, Norway · Chennai, India · Europe · USA · APAC</p>
   <ul class="f-nav">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#skills-section">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#work" data-i18n="nav.work">Work</a></li>
+    <li><a href="#skills-section" data-i18n="nav.skills">Skills</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
   </ul>
 </footer>
 
