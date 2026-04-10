@@ -11,6 +11,7 @@ function App() {
         'nav.services': 'Services',
         'nav.work': 'Work',
         'nav.skills': 'Skills',
+        'nav.blog': 'Blog',
         'nav.contact': 'Contact',
         'nav.quote': 'Get Free Quote',
         'hero.kicker': 'Full-Stack + DevOps',
@@ -76,6 +77,7 @@ function App() {
         'nav.services': 'Tjenester',
         'nav.work': 'Arbeid',
         'nav.skills': 'Kompetanse',
+        'nav.blog': 'Blogg',
         'nav.contact': 'Kontakt',
         'nav.quote': 'Få Gratis Tilbud',
         'hero.kicker': 'Fullstack + DevOps',
@@ -217,6 +219,21 @@ function App() {
           'A little more context helps serious buyers decide faster. We add the right depth with service details, delivery expectations, and practical next steps that turn interest into qualified enquiries.',
           'We design for growth, not quick fixes. Scalable layouts, maintainable code, and structured content make it easier to launch campaigns, add services, and evolve your website without rebuilding from scratch.'
         ],
+        blogLabel: 'Insights Blog',
+        blogHeading: 'Read what<br><em>actually drives growth</em>',
+        blogIntro: 'Practical notes from real delivery work on UX, frontend architecture, and conversion-first web strategy for modern brands.',
+        blogMeta: ['UX/UI · Strategy', 'Performance · Frontend', 'SEO · Content'],
+        blogTitles: [
+          'UI, UX, and product clarity: where teams lose conversions',
+          'Core Web Vitals for founders: what matters and what does not',
+          'How to structure service pages that rank and convert'
+        ],
+        blogDescs: [
+          'A field guide to reducing friction in digital journeys and turning visual polish into measurable conversion lift.',
+          'A no-noise breakdown of speed, layout stability, and interaction quality that affects rankings and user trust.',
+          'The structure we use for local and global service pages so search engines and buyers understand value fast.'
+        ],
+        blogCta: 'Read Article',
         contactTagline: '"Every project starts with a conversation. Whether you\'re local to Stavanger or building for global markets, we\'ll map the fastest path to results."',
         contactLabels: ['Email', 'Location', 'WhatsApp', 'Status', 'Response'],
         seoLinksTitle: 'Local Service Pages',
@@ -303,6 +320,21 @@ function App() {
           'Litt mer kontekst gjør det enklere for seriøse kjøpere å ta beslutning. Vi legger inn riktig dybde med tjenestedetaljer og tydelige neste steg.',
           'Vi designer for vekst, ikke raske fiks. Skalerbar layout, vedlikeholdbar kode og strukturert innhold gjør videre vekst enklere.'
         ],
+        blogLabel: 'Innsiktsblogg',
+        blogHeading: 'Les hva som<br><em>faktisk skaper vekst</em>',
+        blogIntro: 'Praktiske notater fra ekte leveranser om UX, frontend-arkitektur og konverteringsfokusert webstrategi.',
+        blogMeta: ['UX/UI · Strategi', 'Ytelse · Frontend', 'SEO · Innhold'],
+        blogTitles: [
+          'UI, UX og produktklarhet: hvor team mister konverteringer',
+          'Core Web Vitals for ledere: hva som betyr noe i praksis',
+          'Hvordan strukturere tjenestesider som rangerer og konverterer'
+        ],
+        blogDescs: [
+          'En praktisk guide til å redusere friksjon i brukerreisen og gjøre design til målbar konverteringsvekst.',
+          'En tydelig gjennomgang av hastighet, layout-stabilitet og interaksjonskvalitet som påvirker rangering og tillit.',
+          'Strukturen vi bruker for lokale og globale tjenestesider slik at både søkemotorer og kjøpere forstår verdien raskt.'
+        ],
+        blogCta: 'Les artikkel',
         contactTagline: '"Alle prosjekter starter med en samtale. Enten du er lokal i Stavanger eller bygger for globale markeder, finner vi raskeste vei til resultater."',
         contactLabels: ['E-post', 'Lokasjon', 'WhatsApp', 'Status', 'Respons'],
         seoLinksTitle: 'Lokale tjenestesider',
@@ -508,6 +540,14 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       setTextList('#insights .faq-q', section.insightsQ);
       setTextList('#insights .faq-a', section.insightsA);
 
+      setText('#blog .blog-label', section.blogLabel);
+      setHtml('#blog .blog-heading', section.blogHeading);
+      setText('#blog .blog-intro', section.blogIntro);
+      setTextList('#blog .blog-meta', section.blogMeta);
+      setTextList('#blog .blog-title', section.blogTitles);
+      setTextList('#blog .blog-desc', section.blogDescs);
+      setTextList('#blog .blog-link-label', [section.blogCta, section.blogCta, section.blogCta]);
+
       setText('#contact .c-tagline', section.contactTagline);
       setTextList('#contact .c-lbl', section.contactLabels);
 
@@ -597,6 +637,7 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       '#work': '#work .work-head',
       '#process': '#process > .rv',
       '#skills-section': '#skills-section .about-r',
+      '#blog': '#blog .rv',
       '#contact': '#contact .c-l'
     };
 

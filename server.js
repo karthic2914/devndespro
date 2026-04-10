@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { Pool } from 'pg';
@@ -174,6 +175,20 @@ app.post('/api/contact', async (req, res) => {
 });
 
 const distPath = path.join(__dirname, 'dist');
+
+app.get('/blog', (_req, res) => {
+  res.redirect(301, '/#blog');
+});
+
+app.get('/blog/:slug', (req, res, next) => {
+  const slug = String(req.params.slug || '').replace(/[^a-z0-9-]/gi, '');
+  const blogFile = path.join(distPath, 'blog', `${slug}.html`);
+  if (slug && fs.existsSync(blogFile)) {
+    return res.sendFile(blogFile);
+  }
+  return next();
+});
+
 app.use(express.static(distPath));
 
 app.use((_req, res) => {
