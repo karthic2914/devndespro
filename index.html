@@ -50,6 +50,9 @@
   <meta name="geo.placename" content="Stavanger, Norway">
   <meta name="geo.position" content="58.9700;5.7331">
   <meta name="ICBM" content="58.9700, 5.7331">
+  <script>
+    document.documentElement.classList.add('js');
+  </script>
 
   <!-- Google Analytics GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8V84P9DDYH"></script>
@@ -244,14 +247,34 @@
     text-decoration: none;
     color: #f4f4ee;
   }
+  .js .seo-fallback-static {
+    display: none;
+  }
 </style>
 </head>
 <body>
   <div id="root"></div>
+  <main class="seo-fallback seo-fallback-static" aria-label="SEO fallback content">
+    <h1>Devndespro</h1>
+    <p>Full-stack web development and UI/UX design agency in Stavanger, Norway and Chennai, India.</p>
+    <h2>Popular Service Pages</h2>
+    <ul class="seo-link-grid">
+      <li><a href="/seo/web-design-stavanger.html">Web Design Stavanger</a></li>
+      <li><a href="/seo/web-design-norway.html">Web Design Norway</a></li>
+      <li><a href="/seo/ux-ui-designer-norway.html">UX UI Designer Norway</a></li>
+      <li><a href="/seo/freelance-web-developer-norway.html">Freelance Web Developer Norway</a></li>
+      <li><a href="/seo/graphic-design-norway.html">Graphic Design Norway</a></li>
+      <li><a href="/seo/mobile-app-development.html">Mobile App Development</a></li>
+      <li><a href="/seo/responsive-web-design.html">Responsive Web Design</a></li>
+      <li><a href="/seo/website-cost.html">Website Cost</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </main>
   <noscript>
     <main class="seo-fallback">
       <h1>Devndespro</h1>
       <p>JavaScript is required to view the full site experience. Please enable JavaScript.</p>
+      <p><a href="/seo/web-design-stavanger.html">Web Design Stavanger</a> · <a href="/seo/web-design-norway.html">Web Design Norway</a> · <a href="/#contact">Contact</a></p>
     </main>
   </noscript>
   <script type="module" src="/src/main.jsx"></script>
