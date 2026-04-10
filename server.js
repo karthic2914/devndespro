@@ -177,14 +177,22 @@ app.post('/api/contact', async (req, res) => {
 const distPath = path.join(__dirname, 'dist');
 
 app.get('/blog', (_req, res) => {
-  res.redirect(301, '/#blog');
+  const blogIndexFile = path.join(distPath, 'blog', 'index.html');
+  if (fs.existsSync(blogIndexFile)) {
+    return res.sendFile(blogIndexFile);
+  }
+  return res.redirect(301, '/#blog');
 });
 
 app.get('/blog/:slug', (req, res, next) => {
   const slug = String(req.params.slug || '').replace(/[^a-z0-9-]/gi, '');
-  const blogFile = path.join(distPath, 'blog', `${slug}.html`);
-  if (slug && fs.existsSync(blogFile)) {
-    return res.sendFile(blogFile);
+  const blogDirFile = path.join(distPath, 'blog', slug, 'index.html');
+  const blogFlatFile = path.join(distPath, 'blog', `${slug}.html`);
+  if (slug && fs.existsSync(blogDirFile)) {
+    return res.sendFile(blogDirFile);
+  }
+  if (slug && fs.existsSync(blogFlatFile)) {
+    return res.sendFile(blogFlatFile);
   }
   return next();
 });
