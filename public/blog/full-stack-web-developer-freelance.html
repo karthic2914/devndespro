@@ -16,7 +16,9 @@
   <meta name="twitter:title" content="Full Stack Web Developer Freelance Guide | Devndespro Blog">
   <meta name="twitter:description" content="A practical roadmap for launching and scaling a freelance full stack development career in 2026.">
   <meta name="twitter:image" content="https://www.devndespro.com/images/work-tenderlyst-web.png">
-  <link rel="stylesheet" href="/css/seo-pages.css">
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body style="background:#2c2c36;color:#f4f4ee;margin:0;font-family:Jost,Arial,sans-serif;line-height:1.75;">
   <main style="max-width:900px;margin:0 auto;padding:1.4rem 1rem 3rem;">
@@ -189,7 +191,7 @@
     
     <!-- --- LIKE BUTTON ----------------------------------------------------- -->
     <div id="blog-like-button" style="display:flex;align-items:center;gap:0.8rem;margin:1.2rem 0;">
-      <button id="like-btn" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:0.4rem;padding:0.6rem 1rem;border:1px solid rgba(244,244,238,.18);border-radius:8px;color:#f4f4ee;font-family:inherit;font-size:0.95rem;font-weight:600;transition:all 0.2s;"><span id="heart-icon" style="font-size:1.3rem;">??</span><span id="like-count">0</span> likes</button>
+      <button id="like-btn" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:0.4rem;padding:0.6rem 1rem;border:1px solid rgba(244,244,238,.18);border-radius:8px;color:#f4f4ee;font-family:inherit;font-size:0.95rem;font-weight:600;transition:all 0.2s;"><i id="heart-icon" class="fa-solid fa-heart" style="font-size:1.1rem;color:#9ea1ad;"></i><span id="like-count">0</span> likes</button>
     </div>
     <script>
       (function(){
@@ -201,11 +203,11 @@
         function updateUI(newCount, liked) {
           count.textContent = newCount;
           if (liked || hasLiked) {
-            heart.textContent = "??";
+            heart.style.color = "#f08a62";
             btn.style.borderColor = "rgba(240, 138, 98, 0.6)";
             btn.style.color = "#f08a62";
           } else {
-            heart.textContent = "??";
+            heart.style.color = "#9ea1ad";
             btn.style.borderColor = "rgba(244,244,238,.18)";
             btn.style.color = "#f4f4ee";
           }
@@ -335,6 +337,11 @@
     <!-- ----------------------------------------------------------------- --></main>
 </body>
 </html>
+
+
+
+
+
 
 
 
