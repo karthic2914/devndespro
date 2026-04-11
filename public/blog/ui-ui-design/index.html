@@ -356,7 +356,7 @@
             btn.style.color = "#f4f4ee";
           }
         }
-        fetch("/api/likes/" + slug).then(function(r) { return r.json(); }).then(function(d) { updateUI(d.count || 0, hasLiked); }).catch(function() { updateUI(0, hasLiked); });
+        fetch("https://devndespro-production.up.railway.app/api/likes/" + slug).then(function(r) { return r.json(); }).then(function(d) { updateUI(d.count || 0, hasLiked); }).catch(function() { updateUI(0, hasLiked); });
         btn.addEventListener("click", function(e) {
           e.preventDefault();
           if (hasLiked) {
@@ -365,7 +365,7 @@
           }
           btn.disabled = true;
           btn.style.opacity = "0.6";
-          fetch("/api/likes/"+slug, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({slug: slug})})
+          fetch("https://devndespro-production.up.railway.app/api/likes/"+slug, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({slug: slug})})
           .then(function(r) { return r.json(); })
           .then(function(d) {
             if (d.ok) {
@@ -433,7 +433,7 @@
           });
         }
 
-        fetch('/api/comments/'+slug)
+        fetch('https://devndespro-production.up.railway.app/api/comments/'+slug)
           .then(function(r){ return r.json(); })
           .then(function(d){ renderComments(d.comments || []); })
           .catch(function(){ loading.textContent = 'Could not load comments.'; });
@@ -450,7 +450,7 @@
           btn.textContent = 'Sending…';
           msg.style.color = '#b0b0a8';
           msg.textContent = '';
-          fetch('/api/comments/'+slug, {
+          fetch('https://devndespro-production.up.railway.app/api/comments/'+slug, {
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({ slug:slug, name:name, email:email, body:body, website:hp })
@@ -481,6 +481,8 @@
     <!-- ----------------------------------------------------------------- --></main>
 </body>
 </html>
+
+
 
 
 
