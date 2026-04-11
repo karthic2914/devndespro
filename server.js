@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import { Pool } from 'pg';
 
@@ -287,7 +288,6 @@ app.post('/api/likes', async (req, res) => {
                req.headers['x-forwarded-for']?.split(',')[0] || 
                req.socket.remoteAddress || 'unknown';
     
-    const crypto = require('crypto');
     const ipHash = crypto.createHash('sha256').update(ip + String(process.env.SECRET || 'default')).digest('hex');
     
     // Try to insert (will fail silently if already liked by this IP)
@@ -314,6 +314,7 @@ app.post('/api/likes', async (req, res) => {
 
 // ─────────────────────────────────────────────────────────────────────────────
 
+const distPath = path.join(__dirname, 'dist');
 
 app.get('/blog', (_req, res) => {
   const blogIndexFile = path.join(distPath, 'blog', 'index.html');
