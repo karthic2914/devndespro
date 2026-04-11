@@ -223,7 +223,7 @@ app.get('/api/comments/:slug', async (req, res) => {
   }
 });
 
-app.post('/api/comments', async (req, res) => {
+async function createComment(req, res, slugInput = '') {
   const {
     slug    = '',
     name    = '',
@@ -234,7 +234,7 @@ app.post('/api/comments', async (req, res) => {
 
   if (website) return res.status(200).json({ ok: true });
 
-  const slugClean = String(slug).trim();
+  const slugClean = String(slugInput || slug).trim();
   const nameClean  = String(name).trim().slice(0, 120);
   const emailClean = String(email).trim().slice(0, 200);
   const bodyClean  = String(body).trim().slice(0, 2000);
@@ -255,7 +255,10 @@ app.post('/api/comments', async (req, res) => {
   } catch (err) {
     return res.status(500).json({ ok: false, error: 'Database error' });
   }
-});
+}
+
+app.post('/api/comments', async (req, res) => createComment(req, res));
+app.post('/api/comments/:slug', async (req, res) => createComment(req, res, req.params.slug));
 
 // ═════════════════════════════════════════════════════════════════════════════
 
@@ -274,22 +277,22 @@ app.get('/api/likes/:slug', async (req, res) => {
   }
 });
 
-app.post('/api/likes', async (req, res) => {
+async function createLike(req, res, slugInput = '') {
   const { slug = '' } = req.body || {};
-  const slugClean = String(slug).trim();
-  
+  const slugClean = String(slugInput || slug).trim();
+
   if (!SLUG_RE.test(slugClean)) return res.status(400).json({ ok: false, error: 'Invalid slug' });
-  
+
   if (!dbPool) return res.json({ ok: true, liked: true, count: 0 });
-  
+
   try {
     // Get client IP (from CF, nginx, or direct)
-    const ip = req.headers['cf-connecting-ip'] || 
-               req.headers['x-forwarded-for']?.split(',')[0] || 
+    const ip = req.headers['cf-connecting-ip'] ||
+               req.headers['x-forwarded-for']?.split(',')[0] ||
                req.socket.remoteAddress || 'unknown';
-    
+
     const ipHash = crypto.createHash('sha256').update(ip + String(process.env.SECRET || 'default')).digest('hex');
-    
+
     // Try to insert (will fail silently if already liked by this IP)
     try {
       await dbPool.query(
@@ -299,7 +302,7 @@ app.post('/api/likes', async (req, res) => {
     } catch (e) {
       // Likely unique constraint violation (already liked); return current count
     }
-    
+
     // Return current like count
     const result = await dbPool.query(
       `SELECT COUNT(*) as count FROM blog_likes WHERE slug = $1`,
@@ -310,7 +313,10 @@ app.post('/api/likes', async (req, res) => {
   } catch (err) {
     return res.status(500).json({ ok: false, error: 'Database error', count: 0 });
   }
-});
+}
+
+app.post('/api/likes', async (req, res) => createLike(req, res));
+app.post('/api/likes/:slug', async (req, res) => createLike(req, res, req.params.slug));
 
 // ─────────────────────────────────────────────────────────────────────────────
 
