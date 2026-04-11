@@ -330,9 +330,107 @@
       <a href="/blog/core-web-vitals-guide">Core Web Vitals Guide</a>
       <a href="/blog/service-page-seo-structure">Service Page SEO Structure</a>
     </div>
-  </main>
+  
+    <!-- --- COMMENTS ----------------------------------------------------- -->
+    <section id="blog-comments-widget" style="margin-top:2.6rem;border-top:1px solid rgba(244,244,238,.16);padding-top:1.6rem;">
+      <h2 style="margin:0 0 1.2rem;color:#fff;">Comments</h2>
+
+      <div id="comments-list" style="margin-bottom:2rem;display:flex;flex-direction:column;gap:1.2rem;">
+        <p id="comments-loading" style="color:#b0b0a8;font-size:.9rem;">Loading comments…</p>
+      </div>
+
+      <h3 style="margin:0 0 .9rem;color:#f4f4ee;font-size:1rem;">Leave a comment</h3>
+      <form id="comment-form" style="display:flex;flex-direction:column;gap:.7rem;max-width:540px;">
+        <input type="text" id="cf-name" placeholder="Your name *" required maxlength="120"
+          style="background:rgba(255,255,255,.05);border:1px solid rgba(244,244,238,.18);border-radius:8px;padding:.7rem .9rem;color:#f4f4ee;font-size:.95rem;font-family:inherit;outline:none;">
+        <input type="email" id="cf-email" placeholder="Email (not shown publicly) *" required maxlength="200"
+          style="background:rgba(255,255,255,.05);border:1px solid rgba(244,244,238,.18);border-radius:8px;padding:.7rem .9rem;color:#f4f4ee;font-size:.95rem;font-family:inherit;outline:none;">
+        <textarea id="cf-body" placeholder="Your comment *" required maxlength="2000" rows="4"
+          style="background:rgba(255,255,255,.05);border:1px solid rgba(244,244,238,.18);border-radius:8px;padding:.7rem .9rem;color:#f4f4ee;font-size:.95rem;font-family:inherit;outline:none;resize:vertical;"></textarea>
+        <!-- honeypot -->
+        <input type="text" name="website" id="cf-hp" style="display:none;" tabindex="-1" autocomplete="off">
+        <div id="cf-msg" style="font-size:.88rem;min-height:1.2rem;"></div>
+        <button type="submit" id="cf-submit"
+          style="align-self:flex-start;background:#f08a62;border:none;border-radius:8px;padding:.72rem 1.4rem;color:#fff;font-size:.95rem;font-family:inherit;cursor:pointer;font-weight:600;">
+          Post Comment
+        </button>
+      </form>
+
+      <script>
+      (function(){
+        var slug = window.location.pathname.replace(/^\/blog\//,'').replace(/\/+$/,'').replace(/[^a-z0-9-]/gi,'') || 'general';
+        var list = document.getElementById('comments-list');
+        var loading = document.getElementById('comments-loading');
+
+        function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+        function fmtDate(s){ try{ return new Date(s).toLocaleDateString('en-GB',{year:'numeric',month:'short',day:'numeric'}); }catch(e){ return ''; } }
+
+        function renderComments(comments){
+          if(!comments.length){
+            loading.textContent = 'No comments yet. Be the first!';
+            return;
+          }
+          loading.remove();
+          comments.forEach(function(c){
+            var div = document.createElement('div');
+            div.style.cssText = 'background:rgba(255,255,255,.04);border:1px solid rgba(244,244,238,.12);border-radius:10px;padding:.9rem 1rem;';
+            div.innerHTML = '<div style="display:flex;gap:.6rem;align-items:baseline;margin-bottom:.4rem;">'
+              + '<strong style="color:#f4f4ee;font-size:.95rem;">'+esc(c.name)+'</strong>'
+              + '<span style="color:#888;font-size:.78rem;">'+fmtDate(c.created_at)+'</span>'
+              + '</div><p style="margin:0;color:#ccccc4;font-size:.93rem;line-height:1.65;white-space:pre-wrap;">'+esc(c.body)+'</p>';
+            list.appendChild(div);
+          });
+        }
+
+        fetch('/api/comments/'+slug)
+          .then(function(r){ return r.json(); })
+          .then(function(d){ renderComments(d.comments || []); })
+          .catch(function(){ loading.textContent = 'Could not load comments.'; });
+
+        document.getElementById('comment-form').addEventListener('submit', function(e){
+          e.preventDefault();
+          var btn = document.getElementById('cf-submit');
+          var msg = document.getElementById('cf-msg');
+          var hp  = document.getElementById('cf-hp').value;
+          var name  = document.getElementById('cf-name').value.trim();
+          var email = document.getElementById('cf-email').value.trim();
+          var body  = document.getElementById('cf-body').value.trim();
+          btn.disabled = true;
+          btn.textContent = 'Sending…';
+          msg.style.color = '#b0b0a8';
+          msg.textContent = '';
+          fetch('/api/comments', {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({ slug:slug, name:name, email:email, body:body, website:hp })
+          })
+          .then(function(r){ return r.json(); })
+          .then(function(d){
+            if(d.ok){
+              msg.style.color = '#7ec99a';
+              msg.textContent = 'Thank you! Your comment is awaiting moderation.';
+              document.getElementById('comment-form').reset();
+            } else {
+              msg.style.color = '#e07070';
+              msg.textContent = d.error || 'Something went wrong. Please try again.';
+            }
+            btn.disabled = false;
+            btn.textContent = 'Post Comment';
+          })
+          .catch(function(){
+            msg.style.color = '#e07070';
+            msg.textContent = 'Network error. Please try again.';
+            btn.disabled = false;
+            btn.textContent = 'Post Comment';
+          });
+        });
+      })();
+      </script>
+    </section>
+    <!-- ----------------------------------------------------------------- --></main>
 </body>
 </html>
+
 
 
 

@@ -49,6 +49,20 @@ async function ensureLeadTable() {
       created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     );
   `);
+  await dbPool.query(`
+    CREATE TABLE IF NOT EXISTS blog_comments (
+      id BIGSERIAL PRIMARY KEY,
+      slug TEXT NOT NULL,
+      name TEXT NOT NULL,
+      email TEXT NOT NULL,
+      body TEXT NOT NULL,
+      approved BOOLEAN NOT NULL DEFAULT FALSE,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+  `);
+  await dbPool.query(`
+    CREATE INDEX IF NOT EXISTS idx_blog_comments_slug ON blog_comments(slug) WHERE approved = TRUE;
+  `);
 }
 
 const safe = (value) =>
@@ -173,6 +187,64 @@ app.post('/api/contact', async (req, res) => {
     return res.status(500).json({ ok: false, error: error.message || 'Unexpected server error' });
   }
 });
+
+// ─── Blog Comments API ───────────────────────────────────────────────────────
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const SLUG_RE  = /^[a-z0-9-]+$/;
+
+app.get('/api/comments/:slug', async (req, res) => {
+  const slug = String(req.params.slug || '');
+  if (!SLUG_RE.test(slug)) return res.status(400).json({ ok: false, error: 'Invalid slug' });
+  if (!dbPool) return res.json({ ok: true, comments: [] });
+  try {
+    const result = await dbPool.query(
+      `SELECT id, name, body, created_at FROM blog_comments
+       WHERE slug = $1 AND approved = TRUE
+       ORDER BY created_at ASC`,
+      [slug]
+    );
+    return res.json({ ok: true, comments: result.rows });
+  } catch (err) {
+    return res.status(500).json({ ok: false, error: 'Database error' });
+  }
+});
+
+app.post('/api/comments', async (req, res) => {
+  const {
+    slug    = '',
+    name    = '',
+    email   = '',
+    body    = '',
+    website = ''          // honeypot
+  } = req.body || {};
+
+  if (website) return res.status(200).json({ ok: true });
+
+  const slugClean = String(slug).trim();
+  const nameClean  = String(name).trim().slice(0, 120);
+  const emailClean = String(email).trim().slice(0, 200);
+  const bodyClean  = String(body).trim().slice(0, 2000);
+
+  if (!SLUG_RE.test(slugClean))       return res.status(400).json({ ok: false, error: 'Invalid slug' });
+  if (nameClean.length < 2)           return res.status(400).json({ ok: false, error: 'Name too short' });
+  if (!EMAIL_RE.test(emailClean))     return res.status(400).json({ ok: false, error: 'Invalid email' });
+  if (bodyClean.length < 10)          return res.status(400).json({ ok: false, error: 'Comment too short' });
+
+  if (!dbPool) return res.json({ ok: true, pending: true });
+
+  try {
+    await dbPool.query(
+      `INSERT INTO blog_comments(slug, name, email, body) VALUES ($1, $2, $3, $4)`,
+      [slugClean, nameClean, emailClean, bodyClean]
+    );
+    return res.json({ ok: true, pending: true });
+  } catch (err) {
+    return res.status(500).json({ ok: false, error: 'Database error' });
+  }
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 const distPath = path.join(__dirname, 'dist');
 
