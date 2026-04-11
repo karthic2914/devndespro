@@ -73,7 +73,7 @@
           }
           btn.disabled = true;
           btn.style.opacity = "0.6";
-          fetch("/api/likes", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({slug: slug})})
+          fetch("/api/likes/"+slug, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({slug: slug})})
           .then(function(r) { return r.json(); })
           .then(function(d) {
             if (d.ok) {
@@ -158,7 +158,7 @@
           btn.textContent = 'Sending…';
           msg.style.color = '#b0b0a8';
           msg.textContent = '';
-          fetch('/api/comments', {
+          fetch('/api/comments/'+slug, {
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({ slug:slug, name:name, email:email, body:body, website:hp })
@@ -189,6 +189,9 @@
     <!-- ----------------------------------------------------------------- --></main>
 </body>
 </html>
+
+
+
 
 
 
