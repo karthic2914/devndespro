@@ -186,7 +186,58 @@
     </section>
   
     <!-- --- COMMENTS ----------------------------------------------------- -->
-    <section id="blog-comments-widget" style="margin-top:2.6rem;border-top:1px solid rgba(244,244,238,.16);padding-top:1.6rem;">
+    
+    <!-- --- LIKE BUTTON ----------------------------------------------------- -->
+    <div id="blog-like-button" style="display:flex;align-items:center;gap:0.8rem;margin:1.2rem 0;">
+      <button id="like-btn" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:0.4rem;padding:0.6rem 1rem;border:1px solid rgba(244,244,238,.18);border-radius:8px;color:#f4f4ee;font-family:inherit;font-size:0.95rem;font-weight:600;transition:all 0.2s;"><span id="heart-icon" style="font-size:1.3rem;">??</span><span id="like-count">0</span> likes</button>
+    </div>
+    <script>
+      (function(){
+        var slug = window.location.pathname.replace(/^\/blog\//,"").replace(/\/+$/,"").replace(/[^a-z0-9-]/gi,"") || "general";
+        var btn = document.getElementById("like-btn");
+        var heart = document.getElementById("heart-icon");
+        var count = document.getElementById("like-count");
+        var hasLiked = localStorage.getItem("liked_" + slug) === "true";
+        function updateUI(newCount, liked) {
+          count.textContent = newCount;
+          if (liked || hasLiked) {
+            heart.textContent = "??";
+            btn.style.borderColor = "rgba(240, 138, 98, 0.6)";
+            btn.style.color = "#f08a62";
+          } else {
+            heart.textContent = "??";
+            btn.style.borderColor = "rgba(244,244,238,.18)";
+            btn.style.color = "#f4f4ee";
+          }
+        }
+        fetch("/api/likes/" + slug).then(function(r) { return r.json(); }).then(function(d) { updateUI(d.count || 0, hasLiked); }).catch(function() { updateUI(0, hasLiked); });
+        btn.addEventListener("click", function(e) {
+          e.preventDefault();
+          if (hasLiked) {
+            alert("You already liked this article!");
+            return;
+          }
+          btn.disabled = true;
+          btn.style.opacity = "0.6";
+          fetch("/api/likes", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({slug: slug})})
+          .then(function(r) { return r.json(); })
+          .then(function(d) {
+            if (d.ok) {
+              hasLiked = true;
+              localStorage.setItem("liked_" + slug, "true");
+              updateUI(d.count || 0, true);
+            }
+            btn.disabled = false;
+            btn.style.opacity = "1";
+          })
+          .catch(function() {
+            btn.disabled = false;
+            btn.style.opacity = "1";
+          });
+        });
+      })();
+    </script>
+    <!-- ----------------------------------------------------------------- --><section id="blog-comments-widget" style="margin-top:2.6rem;border-top:1px solid rgba(244,244,238,.16);padding-top:1.6rem;">
       <h2 style="margin:0 0 1.2rem;color:#fff;">Comments</h2>
 
       <div id="comments-list" style="margin-bottom:2rem;display:flex;flex-direction:column;gap:1.2rem;">
@@ -284,4 +335,5 @@
     <!-- ----------------------------------------------------------------- --></main>
 </body>
 </html>
+
 

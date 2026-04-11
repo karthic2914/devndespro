@@ -63,6 +63,18 @@ async function ensureLeadTable() {
   await dbPool.query(`
     CREATE INDEX IF NOT EXISTS idx_blog_comments_slug ON blog_comments(slug) WHERE approved = TRUE;
   `);
+  await dbPool.query(`
+    CREATE TABLE IF NOT EXISTS blog_likes (
+      id BIGSERIAL PRIMARY KEY,
+      slug TEXT NOT NULL,
+      ip_hash TEXT NOT NULL,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      UNIQUE(slug, ip_hash)
+    );
+  `);
+  await dbPool.query(`
+    CREATE INDEX IF NOT EXISTS idx_blog_likes_slug ON blog_likes(slug);
+  `);
 }
 
 const safe = (value) =>
@@ -244,9 +256,64 @@ app.post('/api/comments', async (req, res) => {
   }
 });
 
+// ═════════════════════════════════════════════════════════════════════════════
+
+app.get('/api/likes/:slug', async (req, res) => {
+  const slug = String(req.params.slug || '');
+  if (!SLUG_RE.test(slug)) return res.status(400).json({ ok: false, error: 'Invalid slug' });
+  if (!dbPool) return res.json({ ok: true, count: 0 });
+  try {
+    const result = await dbPool.query(
+      `SELECT COUNT(*) as count FROM blog_likes WHERE slug = $1`,
+      [slug]
+    );
+    return res.json({ ok: true, count: parseInt(result.rows[0].count, 10) });
+  } catch (err) {
+    return res.status(500).json({ ok: false, error: 'Database error' });
+  }
+});
+
+app.post('/api/likes', async (req, res) => {
+  const { slug = '' } = req.body || {};
+  const slugClean = String(slug).trim();
+  
+  if (!SLUG_RE.test(slugClean)) return res.status(400).json({ ok: false, error: 'Invalid slug' });
+  
+  if (!dbPool) return res.json({ ok: true, liked: true, count: 0 });
+  
+  try {
+    // Get client IP (from CF, nginx, or direct)
+    const ip = req.headers['cf-connecting-ip'] || 
+               req.headers['x-forwarded-for']?.split(',')[0] || 
+               req.socket.remoteAddress || 'unknown';
+    
+    const crypto = require('crypto');
+    const ipHash = crypto.createHash('sha256').update(ip + String(process.env.SECRET || 'default')).digest('hex');
+    
+    // Try to insert (will fail silently if already liked by this IP)
+    try {
+      await dbPool.query(
+        `INSERT INTO blog_likes(slug, ip_hash) VALUES ($1, $2)`,
+        [slugClean, ipHash]
+      );
+    } catch (e) {
+      // Likely unique constraint violation (already liked); return current count
+    }
+    
+    // Return current like count
+    const result = await dbPool.query(
+      `SELECT COUNT(*) as count FROM blog_likes WHERE slug = $1`,
+      [slugClean]
+    );
+    const count = parseInt(result.rows[0].count, 10);
+    return res.json({ ok: true, liked: true, count });
+  } catch (err) {
+    return res.status(500).json({ ok: false, error: 'Database error', count: 0 });
+  }
+});
+
 // ─────────────────────────────────────────────────────────────────────────────
 
-const distPath = path.join(__dirname, 'dist');
 
 app.get('/blog', (_req, res) => {
   const blogIndexFile = path.join(distPath, 'blog', 'index.html');
