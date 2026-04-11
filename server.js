@@ -209,7 +209,9 @@ const SLUG_RE  = /^[a-z0-9-]+$/;
 app.get('/api/comments/:slug', async (req, res) => {
   const slug = String(req.params.slug || '');
   if (!SLUG_RE.test(slug)) return res.status(400).json({ ok: false, error: 'Invalid slug' });
-  if (!dbPool) return res.json({ ok: true, comments: [] });
+  if (!dbPool) {
+    return res.status(503).json({ ok: false, error: 'Database not configured' });
+  }
   try {
     const result = await dbPool.query(
       `SELECT id, name, body, created_at FROM blog_comments
@@ -244,7 +246,9 @@ async function createComment(req, res, slugInput = '') {
   if (!EMAIL_RE.test(emailClean))     return res.status(400).json({ ok: false, error: 'Invalid email' });
   if (bodyClean.length < 10)          return res.status(400).json({ ok: false, error: 'Comment too short' });
 
-  if (!dbPool) return res.json({ ok: true, pending: true });
+  if (!dbPool) {
+    return res.status(503).json({ ok: false, error: 'Database not configured' });
+  }
 
   try {
     await dbPool.query(
@@ -265,7 +269,9 @@ app.post('/api/comments/:slug', async (req, res) => createComment(req, res, req.
 app.get('/api/likes/:slug', async (req, res) => {
   const slug = String(req.params.slug || '');
   if (!SLUG_RE.test(slug)) return res.status(400).json({ ok: false, error: 'Invalid slug' });
-  if (!dbPool) return res.json({ ok: true, count: 0 });
+  if (!dbPool) {
+    return res.status(503).json({ ok: false, error: 'Database not configured' });
+  }
   try {
     const result = await dbPool.query(
       `SELECT COUNT(*) as count FROM blog_likes WHERE slug = $1`,
@@ -283,7 +289,9 @@ async function createLike(req, res, slugInput = '') {
 
   if (!SLUG_RE.test(slugClean)) return res.status(400).json({ ok: false, error: 'Invalid slug' });
 
-  if (!dbPool) return res.json({ ok: true, liked: true, count: 0 });
+  if (!dbPool) {
+    return res.status(503).json({ ok: false, error: 'Database not configured', count: 0 });
+  }
 
   try {
     // Get client IP (from CF, nginx, or direct)
