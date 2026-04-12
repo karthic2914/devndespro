@@ -983,16 +983,28 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       }
     };
 
-    // Load DesignRush reviews widget script once.
-    const designRushWidgetEl = document.querySelector('[data-designrush-widget]');
-    if (designRushWidgetEl && !document.querySelector('script[data-designrush-loader="1"]')) {
-      const designRushScript = document.createElement('script');
-      designRushScript.type = 'text/javascript';
-      designRushScript.src = 'https://www.designrush.com/topbest/js/widgets/agency-reviews.js';
-      designRushScript.async = true;
-      designRushScript.setAttribute('data-designrush-loader', '1');
-      document.body.appendChild(designRushScript);
-    }
+    // DesignRush script only runs on DOMContentLoaded; since this is SPA-rendered,
+    // fetch and inject the widget markup directly for reliable rendering.
+    const designRushWidgets = document.querySelectorAll('div[data-designrush-widget]');
+    designRushWidgets.forEach(async (widgetEl) => {
+      const agencyId = widgetEl.getAttribute('data-agency-id');
+      const style = widgetEl.getAttribute('data-style') || 'dark';
+      const loaded = widgetEl.getAttribute('data-loaded');
+      if (!agencyId || loaded) return;
+
+      try {
+        const url = new URL('https://www.designrush.com/api/widgets/agency-reviews');
+        url.searchParams.set('agency_id', agencyId);
+        url.searchParams.set('style', style);
+        const response = await fetch(url.toString());
+        if (response.ok) {
+          widgetEl.innerHTML = await response.text();
+          widgetEl.setAttribute('data-loaded', '1');
+        }
+      } catch {
+        // Keep noscript fallback visible if external widget fails.
+      }
+    });
 
     if (contactForm) contactForm.addEventListener('submit', onFormSubmit);
 
