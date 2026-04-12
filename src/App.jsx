@@ -983,6 +983,17 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       }
     };
 
+    // Load DesignRush reviews widget script once.
+    const designRushWidgetEl = document.querySelector('[data-designrush-widget]');
+    if (designRushWidgetEl && !document.querySelector('script[data-designrush-loader="1"]')) {
+      const designRushScript = document.createElement('script');
+      designRushScript.type = 'text/javascript';
+      designRushScript.src = 'https://www.designrush.com/topbest/js/widgets/agency-reviews.js';
+      designRushScript.async = true;
+      designRushScript.setAttribute('data-designrush-loader', '1');
+      document.body.appendChild(designRushScript);
+    }
+
     if (contactForm) contactForm.addEventListener('submit', onFormSubmit);
 
     return () => {
