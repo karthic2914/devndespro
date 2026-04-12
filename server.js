@@ -340,6 +340,9 @@ app.get('/blog', (_req, res) => {
 
 app.get('/blog/:slug', (req, res, next) => {
   const slug = String(req.params.slug || '').replace(/[^a-z0-9-]/gi, '');
+  if (slug === 'ui-ui-design' || slug === 'ui-ui-desigin') {
+    return res.redirect(301, '/blog/ui-ux-design');
+  }
   const blogDirFile = path.join(distPath, 'blog', slug, 'index.html');
   const blogFlatFile = path.join(distPath, 'blog', `${slug}.html`);
   if (slug && fs.existsSync(blogDirFile)) {
