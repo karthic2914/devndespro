@@ -1,4 +1,7 @@
-# Updated: 2026-04-15
+# Updated: 2026-04-16
 User-agent: *
 Allow: /
+Disallow: /*?fp=*
+Disallow: /*?poru=*
+
 Sitemap: https://www.devndespro.com/sitemap.xml
