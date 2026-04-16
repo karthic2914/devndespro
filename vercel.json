@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/:slug((?!404|index)[a-z0-9-]+).html",
+      "destination": "/seo/:slug.html",
+      "permanent": true
+    }
+  ]
+}

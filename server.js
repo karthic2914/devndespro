@@ -330,6 +330,20 @@ app.post('/api/likes/:slug', async (req, res) => createLike(req, res, req.params
 
 const distPath = path.join(__dirname, 'dist');
 
+app.get('/:slug.html', (req, res, next) => {
+  const slug = String(req.params.slug || '').replace(/[^a-z0-9-]/gi, '').toLowerCase();
+  if (!slug || slug === 'index' || slug === '404') {
+    return next();
+  }
+
+  const seoFile = path.join(distPath, 'seo', `${slug}.html`);
+  if (fs.existsSync(seoFile)) {
+    return res.redirect(301, `/seo/${slug}.html`);
+  }
+
+  return next();
+});
+
 app.get('/blog', (_req, res) => {
   const blogIndexFile = path.join(distPath, 'blog', 'index.html');
   if (fs.existsSync(blogIndexFile)) {
