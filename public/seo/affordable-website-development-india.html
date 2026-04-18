@@ -81,7 +81,7 @@
     .content li{margin:.35rem 0}
     .cta-button{display:inline-block;background:#E66A39;color:#F4F4EE;border:1px solid rgba(240,138,98,.7);border-radius:8px;padding:.6rem 1rem;text-decoration:none;font-weight:600}
     .cta-button:hover{opacity:.92}
-    .engagement{margin:1rem 0 2rem;padding:1rem 1rem 1.2rem;border:1px solid rgba(244,244,238,.14);border-radius:12px;background:rgba(255,255,255,.02)}
+    .engagement{margin:1.6rem 0 0;padding-top:1.2rem;border-top:1px solid rgba(244,244,238,.16)}
     .like-btn{background:none;border:1px solid rgba(244,244,238,.2);cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;padding:.55rem .95rem;border-radius:8px;color:#f4f4ee;font-family:inherit;font-size:.95rem;font-weight:600;transition:all .2s}
     .like-btn:hover{border-color:rgba(240,138,98,.6)}
     .comments-list{margin:.9rem 0 1.2rem;display:flex;flex-direction:column;gap:.9rem}
@@ -106,31 +106,6 @@
         <section class="hero">
             <h1>Affordable Website Development India</h1>
             <p class="lead">Professional website development at 50% of Western prices. No compromises on quality—just smarter cost structure.</p>
-        </section>
-
-        <section class="engagement" aria-label="Page engagement">
-            <div id="seo-like-button">
-                <button id="like-btn" class="like-btn" type="button">
-                    <i id="heart-icon" class="fa-solid fa-heart" style="font-size:1.02rem;color:#9ea1ad;"></i>
-                    <span id="like-count">0</span> likes
-                </button>
-            </div>
-
-            <div id="seo-comments-widget" style="margin-top:1.3rem;">
-                <h2 style="margin:.2rem 0 .8rem;color:#fff;">Comments</h2>
-                <div id="comments-list" class="comments-list">
-                    <p id="comments-loading" style="color:#b0b0a8;font-size:.9rem;">Loading comments...</p>
-                </div>
-                <h3 style="margin:0 0 .75rem;color:#f4f4ee;font-size:1rem;">Leave a comment</h3>
-                <form id="comment-form" class="comment-form">
-                    <input type="text" id="cf-name" placeholder="Your name *" required maxlength="120">
-                    <input type="email" id="cf-email" placeholder="Email (not shown publicly) *" required maxlength="200">
-                    <textarea id="cf-body" placeholder="Your comment *" required maxlength="2000" rows="4"></textarea>
-                    <input type="text" name="website" id="cf-hp" style="display:none;" tabindex="-1" autocomplete="off">
-                    <div id="cf-msg" style="font-size:.88rem;min-height:1.2rem;"></div>
-                    <button type="submit" id="cf-submit" class="comment-submit">Post Comment</button>
-                </form>
-            </div>
         </section>
 
         <section class="content">
@@ -203,6 +178,31 @@
             <h2>Start Your Development Project</h2>
             <p>Schedule a consultation to discuss your project requirements and budget. Let's find the right solution.</p>
             <p><a href="/contact" class="cta-button">Free Consultation</a></p>
+
+            <section class="engagement" aria-label="Page engagement">
+                <div id="seo-like-button">
+                    <button id="like-btn" class="like-btn" type="button">
+                        <i id="heart-icon" class="fa-solid fa-heart" style="font-size:1.02rem;color:#9ea1ad;"></i>
+                        <span id="like-count">0</span> likes
+                    </button>
+                </div>
+
+                <div id="seo-comments-widget" style="margin-top:1.5rem;">
+                    <h2 style="margin:.2rem 0 .8rem;color:#fff;">Comments</h2>
+                    <div id="comments-list" class="comments-list">
+                        <p id="comments-loading" style="color:#b0b0a8;font-size:.9rem;">Loading comments...</p>
+                    </div>
+                    <h3 style="margin:0 0 .75rem;color:#f4f4ee;font-size:1rem;">Leave a comment</h3>
+                    <form id="comment-form" class="comment-form">
+                        <input type="text" id="cf-name" placeholder="Your name *" required maxlength="120">
+                        <input type="email" id="cf-email" placeholder="Email (not shown publicly) *" required maxlength="200">
+                        <textarea id="cf-body" placeholder="Your comment *" required maxlength="2000" rows="4"></textarea>
+                        <input type="text" name="website" id="cf-hp" style="display:none;" tabindex="-1" autocomplete="off">
+                        <div id="cf-msg" style="font-size:.88rem;min-height:1.2rem;"></div>
+                        <button type="submit" id="cf-submit" class="comment-submit">Post Comment</button>
+                    </form>
+                </div>
+            </section>
         </section>
     </main>
     <script>
