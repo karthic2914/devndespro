@@ -56,24 +56,25 @@
     .seo-nav::before{content:"";position:absolute;top:0;left:0;width:138px;height:56px;background:url('/images/DDDP_logo_mark.webp') no-repeat left center;background-size:contain}
     .seo-links{margin-top:1.6rem;background:rgba(60,60,72,.75);border:1px solid rgba(240,138,98,.28);padding:1.2rem;border-radius:10px}
     .seo-links a,.links a{color:#F4F4EE;text-decoration:none;background:rgba(230,106,57,.9);border:1px solid rgba(240,138,98,.7);border-radius:6px;padding:.42rem .8rem;display:inline-block;margin:.35rem .6rem .35rem 0}
-    .engagement{margin:1.6rem 0 0;padding-top:1.2rem;border-top:1px solid rgba(244,244,238,.16)}
-  .like-btn{background:none;border:1px solid rgba(244,244,238,.2);cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;padding:.55rem .95rem;border-radius:8px;color:#f4f4ee;font-family:inherit;font-size:.95rem;font-weight:600;transition:all .2s}
-  .like-btn:hover{border-color:rgba(240,138,98,.6)}
-  .comments-list{margin:.9rem 0 1.2rem;display:flex;flex-direction:column;gap:.9rem}
-  .comment-card{background:rgba(255,255,255,.04);border:1px solid rgba(244,244,238,.12);border-radius:10px;padding:.85rem .95rem}
-  .comment-form{display:flex;flex-direction:column;gap:.65rem;max-width:540px}
-  .comment-form input,.comment-form textarea{background:rgba(255,255,255,.05);border:1px solid rgba(244,244,238,.18);border-radius:8px;padding:.68rem .85rem;color:#f4f4ee;font-size:.94rem;font-family:inherit;outline:none}
-  .comment-submit{align-self:flex-start;background:#f08a62;border:none;border-radius:8px;padding:.68rem 1.2rem;color:#fff;font-size:.94rem;font-family:inherit;cursor:pointer;font-weight:600}
+  .seo-footer{border-top:1px solid rgba(244,244,238,.16);margin-top:1.2rem}
+  .seo-footer-inner{max-width:980px;margin:0 auto;padding:1rem 1rem 1.4rem;display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}
+  .seo-footer-copy{margin:0;color:#b6b6be;font-size:.9rem}
+  .seo-footer-links{display:flex;gap:.9rem;flex-wrap:wrap}
+  .seo-footer-links a{color:#F08A62;text-decoration:none;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;font-weight:600}
   </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
+    <header class="seo-brand">
+        <a class="seo-brand-logo" href="/" aria-label="Devndespro Home">
+            <img src="/images/DDDP_logo_mark.webp" alt="Devndespro logo" width="1280" height="655" loading="eager" decoding="async">
+        </a>
+        <nav class="seo-brand-links" aria-label="SEO page links">
+            <a href="/">Back to Home</a>
+            <a href="/#contact">Contact Us</a>
+        </nav>
+    </header>
   <div class="seo-page">
-    <div class="seo-nav">
-      <a href="/">← Back to Home</a>
-      <a href="/#contact">Contact Us</a>
-    </div>
-  <h1>Website Cost Europe</h1>
+<h1>Website Cost Europe</h1>
   <p>Website cost in Europe can vary widely depending on project complexity, content quality, design depth, and technical requirements. Devndespro helps teams plan realistic budgets by defining scope clearly and connecting investment decisions to business outcomes. A structured plan avoids hidden costs and improves delivery speed.</p>
 
   <h2>What Shapes Website Pricing</h2>
@@ -95,5 +96,15 @@
       <a href="/seo/website-cost.html">Website Cost Norway</a>
     </div>
   </div>
+    <footer class="seo-footer" aria-label="Service page footer">
+        <div class="seo-footer-inner">
+            <p class="seo-footer-copy">Copyright 2026 Devndespro. All rights reserved.</p>
+            <nav class="seo-footer-links" aria-label="Footer links">
+                <a href="/">Home</a>
+                <a href="/#services">Services</a>
+                <a href="/#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
 </body>
 </html>
