@@ -74,6 +74,31 @@ body {
   color: var(--white, #F4F4EE);
 }
 
+.seo-page a {
+  color: var(--orange2, #F08A62);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+  text-decoration-thickness: 0.08em;
+}
+
+.seo-page a:visited {
+  color: #D67A56;
+}
+
+.seo-page a:hover,
+.seo-page a:focus-visible {
+  color: var(--orange, #E66A39);
+}
+
+.seo-page .cta-button,
+.seo-page .cta-button:visited,
+.seo-page .seo-links a,
+.seo-page .links a,
+.seo-page .seo-links a:visited,
+.seo-page .links a:visited {
+  color: var(--white, #F4F4EE) !important;
+}
+
 .seo-nav {
   position: relative;
   display: flex;
