@@ -8,9 +8,10 @@ body {
 }
 
 .seo-brand {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 0.9rem 1rem;
+  width: 100%;
+  max-width: none !important;
+  margin: 0;
+  padding: 0.9rem clamp(1rem, 3vw, 3rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -56,9 +57,17 @@ body {
 }
 
 .seo-page {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 1.4rem 1rem 2.2rem;
+  width: 100%;
+  max-width: none !important;
+  margin: 0;
+  padding: 1.4rem clamp(1rem, 3vw, 3rem) 2.2rem;
+}
+
+.seo-footer-inner {
+  width: 100%;
+  max-width: none !important;
+  margin: 0;
+  padding: 1rem clamp(1rem, 3vw, 3rem) 1.4rem;
 }
 
 .seo-page .hero {
@@ -300,6 +309,8 @@ body {
 @media (max-width: 767px) {
   .seo-brand {
     padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .seo-brand-logo img {
@@ -316,6 +327,8 @@ body {
 
   .seo-page {
     padding-top: 1.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .seo-page .content {
