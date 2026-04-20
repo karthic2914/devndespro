@@ -93,12 +93,34 @@
     width:100%;
     max-height:46vh;
     overflow-y:auto;
+    transform:none !important;
+    left:auto !important;
+    min-width:auto !important;
   }
   .nav-dropdown:hover .nav-submenu,
   .nav-dropdown.open .nav-submenu{display:flex !important}
-  .nav-submenu li a{
-    padding:10px 18px;
-    font-size:0.9rem;
+  .nav-mega{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    gap:8px;
+  }
+  .nav-mega-col{
+    border:1px solid rgba(244,244,238,.12);
+    border-radius:8px;
+    padding:8px 8px 6px;
+    background:rgba(255,255,255,.03);
+  }
+  .nav-mega-title{
+    font-size:.65rem;
+    letter-spacing:.18em;
+    margin-bottom:6px;
+  }
+  .nav-mega-col a{
+    padding:8px 10px;
+    font-size:.78rem;
+    letter-spacing:.1em;
+    border-radius:6px;
   }
 
   /* ── HERO ── */
