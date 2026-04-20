@@ -5,6 +5,11 @@ body {
   max-width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 .seo-brand {
@@ -12,6 +17,7 @@ body {
   max-width: none !important;
   margin: 0;
   padding: 0.9rem clamp(1rem, 3vw, 3rem);
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -57,17 +63,46 @@ body {
 }
 
 .seo-page {
-  width: 100%;
-  max-width: none !important;
-  margin: 0;
-  padding: 1.4rem clamp(1rem, 3vw, 3rem) 2.2rem;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.4rem 1rem 2.2rem;
+}
+
+.seo-footer {
+  border-top: 1px solid rgba(244, 244, 238, 0.16);
+  margin-top: 1.2rem;
 }
 
 .seo-footer-inner {
-  width: 100%;
-  max-width: none !important;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1rem 1rem 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.seo-footer-copy {
   margin: 0;
-  padding: 1rem clamp(1rem, 3vw, 3rem) 1.4rem;
+  color: #b6b6be;
+  font-size: 0.9rem;
+}
+
+.seo-footer-links {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.seo-footer-links a {
+  color: var(--orange2, #F08A62);
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .seo-page .hero {
