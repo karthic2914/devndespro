@@ -61,13 +61,61 @@ body {
   padding: 1.4rem 1rem 2.2rem;
 }
 
+.seo-page .hero {
+  padding: 0.55rem 0 1.05rem;
+  border-bottom: 1px solid rgba(244, 244, 238, 0.16);
+  margin-bottom: 1rem;
+}
+
+.seo-page .content {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(244, 244, 238, 0.1);
+  border-radius: 14px;
+  padding: 1.05rem 1.1rem;
+}
+
 .seo-page h1,
 .seo-page h2 {
   color: var(--white, #F4F4EE) !important;
 }
 
+.seo-page h1 {
+  font-size: clamp(1.9rem, 2.5vw, 2.7rem);
+  line-height: 1.2;
+  margin: 0 0 0.8rem;
+}
+
+.seo-page h2 {
+  margin: 1.55rem 0 0.7rem;
+  font-size: clamp(1.42rem, 1.9vw, 1.95rem);
+  line-height: 1.25;
+}
+
+.seo-page h3,
+.seo-page h4 {
+  color: var(--white, #F4F4EE);
+  margin: 1.15rem 0 0.55rem;
+}
+
 .seo-page p {
   color: var(--dim2, #C8C8D0) !important;
+  margin: 0 0 0.9rem;
+}
+
+.seo-page ul {
+  margin: 0.3rem 0 1rem;
+  padding-left: 1.35rem;
+}
+
+.seo-page li {
+  margin: 0.34rem 0;
+}
+
+.seo-page hr {
+  border: 0;
+  height: 1px;
+  background: rgba(244, 244, 238, 0.28);
+  margin: 1.45rem 0 1.25rem;
 }
 
 .seo-page strong {
@@ -97,6 +145,27 @@ body {
 .seo-page .seo-links a:visited,
 .seo-page .links a:visited {
   color: var(--white, #F4F4EE) !important;
+}
+
+.seo-page .cta-button,
+.seo-page .cta-button:visited {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(180deg, rgba(240, 138, 98, 0.98), rgba(230, 106, 57, 0.96)) !important;
+  border: 1px solid rgba(240, 138, 98, 0.75) !important;
+  border-radius: 10px;
+  padding: 0.56rem 0.95rem;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.seo-page .cta-button:hover,
+.seo-page .cta-button:focus-visible {
+  color: var(--white, #F4F4EE) !important;
+  transform: translateY(-1px);
+  filter: saturate(1.06);
 }
 
 .seo-nav {
@@ -154,6 +223,43 @@ body {
   background: var(--orange, #E66A39) !important;
 }
 
+/* Auto-style related link lists as buttons, even when pages do not use .links class */
+.seo-page h2 + ul li a,
+.seo-page h2 + p + ul li a,
+.seo-page h3 + ul li a,
+.seo-page h3 + p + ul li a {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(230, 106, 57, 0.88) !important;
+  color: var(--white, #F4F4EE) !important;
+  border: 1px solid rgba(240, 138, 98, 0.7) !important;
+  border-radius: 8px;
+  padding: 0.36rem 0.72rem;
+  text-decoration: none;
+  font-weight: 600;
+  text-underline-offset: 0;
+  text-decoration-thickness: 0;
+}
+
+.seo-page h2 + ul li a:visited,
+.seo-page h2 + p + ul li a:visited,
+.seo-page h3 + ul li a:visited,
+.seo-page h3 + p + ul li a:visited {
+  color: var(--white, #F4F4EE) !important;
+}
+
+.seo-page h2 + ul li a:hover,
+.seo-page h2 + p + ul li a:hover,
+.seo-page h3 + ul li a:hover,
+.seo-page h3 + p + ul li a:hover,
+.seo-page h2 + ul li a:focus-visible,
+.seo-page h2 + p + ul li a:focus-visible,
+.seo-page h3 + ul li a:focus-visible,
+.seo-page h3 + p + ul li a:focus-visible {
+  background: var(--orange, #E66A39) !important;
+  color: var(--white, #F4F4EE) !important;
+}
+
 @media (max-width: 767px) {
   .seo-brand {
     padding-top: 1rem;
@@ -173,6 +279,15 @@ body {
 
   .seo-page {
     padding-top: 1.2rem;
+  }
+
+  .seo-page .content {
+    padding: 0.95rem 0.85rem;
+    border-radius: 12px;
+  }
+
+  .seo-page h1 {
+    margin-bottom: 0.65rem;
   }
 
   .seo-nav {
