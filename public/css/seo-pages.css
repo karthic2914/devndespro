@@ -18,10 +18,10 @@ body {
   position: sticky;
   top: 0;
   z-index: 120;
-  background: linear-gradient(180deg, rgba(44, 44, 54, 0.96), rgba(44, 44, 54, 0.88));
+  background: #000000 !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(244, 244, 238, 0.18);
+  border-bottom: 1px solid rgba(244, 244, 238, 0.22);
 }
 
 .seo-brand-logo {
