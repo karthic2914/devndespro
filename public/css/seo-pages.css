@@ -224,6 +224,22 @@ body {
 }
 
 /* Auto-style related link lists as buttons, even when pages do not use .links class */
+.seo-page h2 + ul,
+.seo-page h2 + p + ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.75rem 0 1.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.65rem;
+}
+
+.seo-page h2 + ul li,
+.seo-page h2 + p + ul li {
+  margin: 0;
+  padding: 0;
+}
+
 .seo-page h2 + ul li a,
 .seo-page h2 + p + ul li a,
 .seo-page h3 + ul li a,
@@ -260,6 +276,27 @@ body {
   color: var(--white, #F4F4EE) !important;
 }
 
+/* Improve appearance of related reading links below section titles */
+.seo-page h2 + p a:not(.cta-button),
+.seo-page h2 + p a:not(.cta-button):visited {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22rem 0.48rem;
+  border-radius: 8px;
+  border: 1px solid rgba(240, 138, 98, 0.35);
+  background: rgba(240, 138, 98, 0.1);
+  text-decoration: none;
+  color: var(--orange2, #F08A62);
+  font-weight: 600;
+}
+
+.seo-page h2 + p a:not(.cta-button):hover,
+.seo-page h2 + p a:not(.cta-button):focus-visible {
+  color: var(--white, #F4F4EE);
+  background: rgba(230, 106, 57, 0.9);
+  border-color: rgba(240, 138, 98, 0.7);
+}
+
 @media (max-width: 767px) {
   .seo-brand {
     padding-top: 1rem;
@@ -284,6 +321,11 @@ body {
   .seo-page .content {
     padding: 0.95rem 0.85rem;
     border-radius: 12px;
+  }
+
+  .seo-page h2 + ul,
+  .seo-page h2 + p + ul {
+    gap: 0.48rem 0.5rem;
   }
 
   .seo-page h1 {
