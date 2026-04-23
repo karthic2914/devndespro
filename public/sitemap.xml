@@ -43,33 +43,6 @@
     <priority>0.9</priority>
   </url>
 
-  <url>
-    <loc>https://www.devndespro.com/seo/full-stack-development-norway.html</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.devndespro.com/seo/full-stack-development-usa.html</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.devndespro.com/seo/full-stack-development-india.html</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.devndespro.com/seo/web-application-development-norway.html</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
 
   <url>
     <loc>https://www.devndespro.com/seo/web-application-development-usa.html</loc>
@@ -197,47 +170,7 @@
     <priority>0.7</priority>
   </url>
 
-  <url>
-    <loc>https://www.devndespro.com/blog/full-stack-development-usa</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
 
-  <url>
-    <loc>https://www.devndespro.com/blog/full-stack-development-india</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.devndespro.com/blog/web-application-development-usa</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.devndespro.com/blog/web-application-development-india</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.devndespro.com/seo/web-design-usa.html</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.devndespro.com/seo/web-design-india.html</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
 
   <url>
     <loc>https://www.devndespro.com/seo/web-development-europe.html</loc>
@@ -246,12 +179,6 @@
     <priority>0.9</priority>
   </url>
 
-  <url>
-    <loc>https://www.devndespro.com/seo/web-development-usa.html</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
 
   <url>
     <loc>https://www.devndespro.com/seo/seo-services-norway.html</loc>
@@ -260,19 +187,6 @@
     <priority>0.9</priority>
   </url>
 
-  <url>
-    <loc>https://www.devndespro.com/seo/seo-services-usa.html</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.devndespro.com/seo/seo-services-india.html</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
   <url>
     <loc>https://www.devndespro.com/seo/devops-services-norway.html</loc>
@@ -303,13 +217,6 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- NEW: Intent-Based Pages - USA -->
-  <url>
-    <loc>https://www.devndespro.com/seo/web-design-agency-usa.html</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
 
   <url>
     <loc>https://www.devndespro.com/seo/affordable-web-design-company.html</loc>
@@ -325,34 +232,7 @@
     <priority>0.9</priority>
   </url>
 
-  <url>
-    <loc>https://www.devndespro.com/seo/hire-web-developer-usa.html</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
 
-  <!-- NEW: Intent-Based Pages - India -->
-  <url>
-    <loc>https://www.devndespro.com/seo/web-design-company-india.html</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.devndespro.com/seo/affordable-website-development-india.html</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.devndespro.com/seo/seo-agency-india.html</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
 
   <!-- NEW: Blog Articles - Intent-Based -->
   <url>
@@ -376,12 +256,6 @@
     <priority>0.7</priority>
   </url>
 
-  <url>
-    <loc>https://www.devndespro.com/blog/web-design-agency-usa</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
 
   <url>
     <loc>https://www.devndespro.com/blog/affordable-web-design-company</loc>
@@ -397,32 +271,8 @@
     <priority>0.7</priority>
   </url>
 
-  <url>
-    <loc>https://www.devndespro.com/blog/hire-web-developer-usa</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
 
-  <url>
-    <loc>https://www.devndespro.com/blog/web-design-company-india</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
 
-  <url>
-    <loc>https://www.devndespro.com/blog/affordable-website-development-india</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
 
-  <url>
-    <loc>https://www.devndespro.com/blog/seo-agency-india</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
 
 </urlset>
