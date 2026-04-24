@@ -26,6 +26,16 @@
       "permanent": true
     },
     {
+      "source": "/blog/:slug/index.html",
+      "destination": "/blog/:slug/",
+      "permanent": true
+    },
+    {
+      "source": "/seo/:slug/index.html",
+      "destination": "/seo/:slug/",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "www.devndespro.com" }],
       "destination": "https://devndespro.com/:1",
