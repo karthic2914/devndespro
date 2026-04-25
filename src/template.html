@@ -796,6 +796,13 @@
   }
 
   openBtn && openBtn.addEventListener('click', openModal);
+  let scrollTriggered = false;
+window.addEventListener('scroll', function () {
+  if (!scrollTriggered && window.scrollY > window.innerHeight * 0.6) {
+    scrollTriggered = true;
+    setTimeout(openModal, 600);
+  }
+}, { passive: true });
   closeBtn && closeBtn.addEventListener('click', closeModal);
   doneBtn && doneBtn.addEventListener('click', closeModal);
   overlay && overlay.addEventListener('click', function (e) {
