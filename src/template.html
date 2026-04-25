@@ -744,7 +744,7 @@
     const timeOnPage    = Date.now() - PAGE_LOAD_TIME;
 
     // Fire after 20% scroll AND user has been on page 5+ seconds
-    if (scrollPercent > 0.10 && timeOnPage > 2000) {
+    if (scrollPercent > 0.15 && timeOnPage > 2000) {
       scrollTriggered = true;
       window.removeEventListener('scroll', handleAuditScroll);
       triggerTimeout = setTimeout(openModal, 700);
