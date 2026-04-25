@@ -846,8 +846,8 @@ function App() {
     const auditProgress  = document.getElementById('audit-progress-bar');
     const auditScore     = document.getElementById('audit-score-preview');
 
-    const PAGE_LOAD_TIME = Date.now();
-    let auditScrollTriggered = false;
+    /* const PAGE_LOAD_TIME = Date.now(); */
+    /* let auditScrollTriggered = false; */
     let auditTriggerTimeout  = null;
 
     const openAuditModal = () => {
@@ -883,18 +883,18 @@ function App() {
       clearAuditFields();
     };
 
-    const handleAuditScroll = () => {
+ /*    const handleAuditScroll = () => {
       if (auditScrollTriggered) return;
       const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
       if (pageHeight <= 0) return;
       const scrollPercent = window.scrollY / pageHeight;
       const timeOnPage    = Date.now() - PAGE_LOAD_TIME;
-      if (scrollPercent > 0.15 && timeOnPage > 2000) {
+      if (scrollPercent > 0.10 && timeOnPage > 2000) {
         auditScrollTriggered = true;
         window.removeEventListener('scroll', handleAuditScroll);
         auditTriggerTimeout = setTimeout(openAuditModal, 700);
       }
-    };
+    }; */
 
     if (auditOpenBtn) {
       auditOpenBtn.addEventListener('click', () => {
@@ -904,8 +904,7 @@ function App() {
         openAuditModal();
       });
     }
-
-    window.addEventListener('scroll', handleAuditScroll, { passive: true });
+auditTriggerTimeout = setTimeout(openAuditModal, 8000);
 
     if (auditCloseBtn) auditCloseBtn.addEventListener('click', closeAuditModal);
     if (auditDoneBtn)  auditDoneBtn.addEventListener('click', closeAuditModal);
@@ -997,7 +996,7 @@ function App() {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('keydown', onAuditEscape);
       window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('scroll', handleAuditScroll);
+      /* window.removeEventListener('scroll', handleAuditScroll); */
       window.removeEventListener('resize', onResize);
       window.removeEventListener('hashchange', onHashChange);
       if (navToggle) navToggle.removeEventListener('click', onToggleClick);
