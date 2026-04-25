@@ -965,8 +965,28 @@ auditTriggerTimeout = setTimeout(openAuditModal, 8000);
         if (auditProgress) auditProgress.style.width = '100%';
         const data = await res.json();
         if (!res.ok || !data.ok) {
-          if (auditStepLoad) auditStepLoad.hidden = true;
-          if (auditStepForm) auditStepForm.hidden = false;
+const ctaText = score >= 80
+          ? 'Your site looks healthy! Want to stay ahead of competitors?'
+          : score >= 60
+          ? 'Some issues found. Want us to fix them for you?'
+          : 'Critical issues detected. Let us help you fix them fast.';
+
+        const ctaBtnText = score >= 80
+          ? 'Book a Free Growth Call'
+          : 'Get a Free Fix Plan';
+
+        const scoreEl = document.getElementById('audit-score-preview');
+        if (scoreEl) {
+          scoreEl.innerHTML += `
+            <div style="margin-top:20px;padding:16px;background:rgba(255,107,43,0.1);border:1px solid rgba(255,107,43,0.3);border-radius:10px;text-align:center;">
+              <p style="font-size:0.88rem;color:#ccc;margin-bottom:12px;">${ctaText}</p>
+              <a href="https://wa.me/4740975201" target="_blank" style="display:block;background:#FF6B2B;color:#fff;padding:0.7rem 1rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">${ctaBtnText} →</a>
+            </div>
+          `;
+        }
+
+        if (auditStepLoad) auditStepLoad.hidden = true;
+        if (auditStepDone) auditStepDone.hidden = false;
           if (auditError) { auditError.textContent = data.error || 'Something went wrong. Please try again.'; auditError.hidden = false; }
           return;
         }
