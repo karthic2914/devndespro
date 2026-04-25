@@ -34,12 +34,6 @@
       "source": "/seo/:slug/index.html",
       "destination": "/seo/:slug/",
       "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.devndespro.com" }],
-      "destination": "https://devndespro.com/$1",
-      "permanent": true
     }
   ],
   "cleanUrls": true
