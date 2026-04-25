@@ -761,6 +761,7 @@
 </script>
 
 <!-- FREE AUDIT MODAL SCRIPT -->
+<!-- FREE AUDIT MODAL SCRIPT -->
 <script>
 (function () {
   const overlay = document.getElementById('audit-modal');
@@ -775,37 +776,66 @@
   const progressBar = document.getElementById('audit-progress-bar');
   const scorePreview = document.getElementById('audit-score-preview');
 
+  if (!overlay) return;
+
+  let scrollTriggered = false;
+
   function openModal() {
+    if (!overlay || overlay.dataset.dismissed === 'true') return;
+
     overlay.hidden = false;
     document.body.style.overflow = 'hidden';
-    document.getElementById('audit-name').focus();
+
+    const nameInput = document.getElementById('audit-name');
+    if (nameInput) nameInput.focus();
   }
 
   function closeModal() {
+    overlay.dataset.dismissed = 'true';
     overlay.hidden = true;
     document.body.style.overflow = '';
-    // Reset
-    stepForm.hidden = false;
-    stepLoading.hidden = true;
-    stepDone.hidden = true;
-    errorEl.hidden = true;
-    document.getElementById('audit-name').value = '';
-    document.getElementById('audit-email').value = '';
-    document.getElementById('audit-url').value = '';
-    progressBar.style.width = '0%';
+
+    if (stepForm) stepForm.hidden = false;
+    if (stepLoading) stepLoading.hidden = true;
+    if (stepDone) stepDone.hidden = true;
+    if (errorEl) errorEl.hidden = true;
+
+    const name = document.getElementById('audit-name');
+    const email = document.getElementById('audit-email');
+    const url = document.getElementById('audit-url');
+
+    if (name) name.value = '';
+    if (email) email.value = '';
+    if (url) url.value = '';
+    if (progressBar) progressBar.style.width = '0%';
   }
 
-  openBtn && openBtn.addEventListener('click', openModal);
-  let scrollTriggered = false;
-window.addEventListener('scroll', function () {
-  if (!scrollTriggered && window.scrollY > window.innerHeight * 0.6) {
-    scrollTriggered = true;
-    setTimeout(openModal, 600);
+  function handleAuditScroll() {
+    if (scrollTriggered) return;
+
+    const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (pageHeight <= 0) return;
+
+    const scrollPercent = window.scrollY / pageHeight;
+
+    if (scrollPercent > 0.25) {
+      scrollTriggered = true;
+      setTimeout(openModal, 700);
+      window.removeEventListener('scroll', handleAuditScroll);
+    }
   }
-}, { passive: true });
+
+  openBtn && openBtn.addEventListener('click', function () {
+    overlay.dataset.dismissed = 'false';
+    openModal();
+  });
+
+  window.addEventListener('scroll', handleAuditScroll, { passive: true });
+
   closeBtn && closeBtn.addEventListener('click', closeModal);
   doneBtn && doneBtn.addEventListener('click', closeModal);
-  overlay && overlay.addEventListener('click', function (e) {
+
+  overlay.addEventListener('click', function (e) {
     if (e.target === overlay) closeModal();
   });
 
@@ -834,11 +864,9 @@ window.addEventListener('scroll', function () {
       return;
     }
 
-    // Show loading
     stepForm.hidden = true;
     stepLoading.hidden = false;
 
-    // Animate progress bar
     let pct = 0;
     const interval = setInterval(() => {
       pct = Math.min(pct + Math.random() * 8, 88);
@@ -900,9 +928,47 @@ window.addEventListener('scroll', function () {
   });
 })();
 </script>
+<!-- CUSTOM CURSOR SCRIPT -->
+<script>
+document.addEventListener('mousemove', function (e) {
+  const cur = document.getElementById('cur');
+  const curR = document.getElementById('cur-r');
+
+  if (cur) {
+    cur.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+  }
+
+  if (curR) {
+    curR.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+  }
+});
+</script>
 
 <style>
-  /* ── Free Audit Button ──────────────────────────────── */
+  #cur,
+#cur-r {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+}
+
+#cur {
+  width: 8px;
+  height: 8px;
+  background: #FF6B2B;
+  border-radius: 50%;
+}
+
+#cur-r {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255,107,43,0.6);
+  border-radius: 50%;
+  transition: transform 0.08s ease-out;
+}
   .btn-audit {
     display: inline-flex;
     align-items: center;
