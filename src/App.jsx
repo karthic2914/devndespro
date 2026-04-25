@@ -402,18 +402,18 @@ function App() {
       el.addEventListener('mouseenter', onHoverIn);
       el.addEventListener('mouseleave', onHoverOut);
     });
-    // ── WA button click tracking ──
-const waBtn = document.querySelector('.wa');
-const onWaClick = () => {
-  if (typeof gtag === 'function') {
-    gtag('event', 'generate_lead', {
-      event_category: 'WhatsApp',
-      event_label: 'WA Button Clicked',
-      value: 1
-    });
-  }
-};
-if (waBtn) waBtn.addEventListener('click', onWaClick);
+
+    const waBtn = document.querySelector('.wa');
+    const onWaClick = () => {
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          event_category: 'WhatsApp',
+          event_label: 'WA Button Clicked',
+          value: 1
+        });
+      }
+    };
+    if (waBtn) waBtn.addEventListener('click', onWaClick);
 
     const nav = document.getElementById('nav');
     const navToggle = document.querySelector('.nav-toggle');
@@ -468,7 +468,6 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       navToggle.innerHTML = isOpen
         ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>'
         : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
-      // Lock/unlock body scroll when menu opens/closes
       document.body.style.overflow = isOpen ? 'hidden' : '';
       document.body.style.overflowX = 'hidden';
     };
@@ -505,7 +504,6 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       setText('#services .svc-note', section.servicesNote);
       setTextList('#services .svc-name', section.serviceNames);
       setTextList('#services .svc-chip', section.serviceChips);
-
       setText('#work .s-label', section.workLabel);
       setHtml('#work .s-h', section.workHeading);
       setHtml('#work .work-scroll-hint', section.workHint);
@@ -513,17 +511,14 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       setTextList('#work .wcard-desc', section.workDescs);
       setText('#work .work-cta-text', section.workCtaText);
       setText('#work .work-cta .btn-main', section.workCtaBtn);
-
       setText('#process .s-label', section.processLabel);
       setHtml('#process .s-h', section.processHeading);
       setTextList('#process .p-name', section.processNames);
       setTextList('#process .p-desc', section.processDescs);
-
       setText('#faq .s-label', section.faqLabel);
       setHtml('#faq .s-h', section.faqHeading);
       setTextList('#faq .faq-q', section.faqQ);
       setTextList('#faq .faq-a', section.faqA);
-
       setText('#skills-section .sp-label', section.skillsPanel);
       setTextList('#skills-section .sp-chip span', section.skillsPanelTitles);
       setTextList('#skills-section .sp-chip small', section.skillsPanelSubs);
@@ -533,13 +528,11 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       setHtml('#skills-section .about-r .s-h', section.skillsHeading);
       setHtml('#skills-section .about-body', section.skillsBody);
       setTextList('#skills-section .sk .sk-n', section.skillNames);
-
       setText('#insights .s-label', section.insightsLabel);
       setHtml('#insights .s-h', section.insightsHeading);
       setText('#insights .faq-intro', section.insightsIntro);
       setTextList('#insights .faq-q', section.insightsQ);
       setTextList('#insights .faq-a', section.insightsA);
-
       setText('#blog .blog-label', section.blogLabel);
       setHtml('#blog .blog-heading', section.blogHeading);
       setText('#blog .blog-intro', section.blogIntro);
@@ -547,10 +540,8 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       setTextList('#blog .blog-title', section.blogTitles);
       setTextList('#blog .blog-desc', section.blogDescs);
       setTextList('#blog .blog-link-label', [section.blogCta, section.blogCta, section.blogCta]);
-
       setText('#contact .c-tagline', section.contactTagline);
       setTextList('#contact .c-lbl', section.contactLabels);
-
       setText('#seo-links .seo-links-title', section.seoLinksTitle);
       setText('#seo-links .seo-links-note', section.seoLinksNote);
       setText('footer .f-copy', section.footerCopy);
@@ -561,12 +552,10 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
         const key = el.getAttribute('data-i18n');
         if (key && dict[key]) el.textContent = dict[key];
       });
-
       document.querySelectorAll('[data-i18n-html]').forEach((el) => {
         const key = el.getAttribute('data-i18n-html');
         if (key && dict[key]) el.innerHTML = dict[key];
       });
-
       document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
         const key = el.getAttribute('data-i18n-placeholder');
         if (key && dict[key]) el.setAttribute('placeholder', dict[key]);
@@ -580,13 +569,7 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
     const setLanguage = (lang, updateUrl = true) => {
       const activeLang = lang === 'no' ? 'no' : 'en';
       applyLanguage(activeLang);
-
-      try {
-        localStorage.setItem('siteLang', activeLang);
-      } catch {
-        // Ignore storage restrictions.
-      }
-
+      try { localStorage.setItem('siteLang', activeLang); } catch { }
       if (updateUrl) {
         const url = new URL(window.location.href);
         if (activeLang === 'en') url.searchParams.delete('lang');
@@ -595,39 +578,27 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       }
     };
 
-    const onLangClick = (e) => {
-      const lang = e.currentTarget.dataset.lang;
-      setLanguage(lang, true);
-    };
-
+    const onLangClick = (e) => { setLanguage(e.currentTarget.dataset.lang, true); };
     langButtons.forEach((btn) => btn.addEventListener('click', onLangClick));
 
     const urlLang = new URLSearchParams(window.location.search).get('lang');
     let preferredLang = 'no';
-    if (urlLang === 'no') {
-      preferredLang = 'no';
-    } else if (urlLang === 'en') {
-      preferredLang = 'en';
-    } else {
+    if (urlLang === 'no') preferredLang = 'no';
+    else if (urlLang === 'en') preferredLang = 'en';
+    else {
       try {
         const storedLang = localStorage.getItem('siteLang');
         if (storedLang === 'no' || storedLang === 'en') preferredLang = storedLang;
-      } catch {
-        // Keep Norwegian as default when storage is unavailable.
-      }
+      } catch { }
     }
     setLanguage(preferredLang, false);
 
-    // Mobile dropdown toggle
     const navDropdowns = document.querySelectorAll('.nav-dropdown');
     navDropdowns.forEach((dropdown) => {
       const link = dropdown.querySelector('a');
       if (link) {
         link.addEventListener('click', (e) => {
-          if (window.innerWidth <= 767) {
-            e.preventDefault();
-            dropdown.classList.toggle('open');
-          }
+          if (window.innerWidth <= 767) { e.preventDefault(); dropdown.classList.toggle('open'); }
         });
       }
     });
@@ -643,20 +614,11 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
 
     const syncActiveLinkByScroll = () => {
       if (!sectionMap.length) return;
-
       const firstSectionTop = sectionMap[0].section.offsetTop - 180;
-      if (window.scrollY < firstSectionTop) {
-        setActiveLink(null);
-        return;
-      }
-
+      if (window.scrollY < firstSectionTop) { setActiveLink(null); return; }
       const marker = window.scrollY + 180;
       let currentHash = sectionMap[0].hash;
-
-      sectionMap.forEach(({ hash, section }) => {
-        if (section.offsetTop <= marker) currentHash = hash;
-      });
-
+      sectionMap.forEach(({ hash, section }) => { if (section.offsetTop <= marker) currentHash = hash; });
       setActiveLink(currentHash);
     };
 
@@ -664,7 +626,6 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       const hash = e.currentTarget.getAttribute('href');
       const target = hash ? document.querySelector(hash) : null;
       if (!target) return;
-
       e.preventDefault();
       scrollToSectionHash(hash, 'smooth');
       closeMobileMenu();
@@ -681,22 +642,14 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
     onScroll();
 
     const initialHash = window.location.hash;
-    const tryScrollToInitialHash = () => {
-      if (!initialHash) return;
-      scrollToSectionHash(initialHash, 'auto');
-    };
-
+    const tryScrollToInitialHash = () => { if (!initialHash) return; scrollToSectionHash(initialHash, 'auto'); };
     const initialHashTimer = window.setTimeout(tryScrollToInitialHash, 60);
     const postLoaderHashTimer = window.setTimeout(tryScrollToInitialHash, 2350);
 
-    const onHashChange = () => {
-      scrollToSectionHash(window.location.hash, 'auto');
-    };
+    const onHashChange = () => { scrollToSectionHash(window.location.hash, 'auto'); };
     window.addEventListener('hashchange', onHashChange);
 
-    const onResize = () => {
-      if (window.innerWidth > 767) closeMobileMenu();
-    };
+    const onResize = () => { if (window.innerWidth > 767) closeMobileMenu(); };
     window.addEventListener('resize', onResize);
 
     const hs = document.getElementById('hscroll');
@@ -704,29 +657,10 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
     let startX = 0;
     let scrollLeft = 0;
 
-    const onMouseDown = (e) => {
-      if (!hs) return;
-      isDown = true;
-      hs.classList.add('active');
-      startX = e.pageX - hs.offsetLeft;
-      scrollLeft = hs.scrollLeft;
-    };
-
-    const onMouseLeave = () => {
-      isDown = false;
-    };
-
-    const onMouseUp = () => {
-      isDown = false;
-    };
-
-    const onMouseMove = (e) => {
-      if (!hs || !isDown) return;
-      e.preventDefault();
-      const x = e.pageX - hs.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      hs.scrollLeft = scrollLeft - walk;
-    };
+    const onMouseDown = (e) => { if (!hs) return; isDown = true; hs.classList.add('active'); startX = e.pageX - hs.offsetLeft; scrollLeft = hs.scrollLeft; };
+    const onMouseLeave = () => { isDown = false; };
+    const onMouseUp = () => { isDown = false; };
+    const onMouseMove = (e) => { if (!hs || !isDown) return; e.preventDefault(); const x = e.pageX - hs.offsetLeft; const walk = (x - startX) * 1.5; hs.scrollLeft = scrollLeft - walk; };
 
     if (hs) {
       hs.addEventListener('mousedown', onMouseDown);
@@ -736,31 +670,15 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
     }
 
     const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry, i) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => entry.target.classList.add('on'), i * 75);
-          }
-        });
-      },
+      (entries) => { entries.forEach((entry, i) => { if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('on'), i * 75); }); },
       { threshold: 0.08 }
     );
-
     document.querySelectorAll('.rv,.rl,.rr').forEach((el) => revealObserver.observe(el));
 
     const skillsObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.sk-fill').forEach((bar) => {
-              bar.style.width = `${bar.dataset.w}%`;
-            });
-          }
-        });
-      },
+      (entries) => { entries.forEach((entry) => { if (entry.isIntersecting) entry.target.querySelectorAll('.sk-fill').forEach((bar) => { bar.style.width = `${bar.dataset.w}%`; }); }); },
       { threshold: 0.3 }
     );
-
     const skillsEl = document.querySelector('.skills');
     if (skillsEl) skillsObserver.observe(skillsEl);
 
@@ -773,65 +691,43 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
     const serviceSuggestButtons = Array.from(document.querySelectorAll('.service-suggest'));
     const selectedServices = new Set();
 
-    // ── Required field asterisk watchers ──────────────────────────────
-    const reqFieldSelectors = [
-      'input[name="name"]',
-      'input[name="email"]',
-      'textarea[name="message"]',
-    ];
-
+    const reqFieldSelectors = ['input[name="name"]', 'input[name="email"]', 'textarea[name="message"]'];
     reqFieldSelectors.forEach((selector) => {
       const input = document.querySelector(selector);
       if (!input) return;
       const star = input.closest('.f-f')?.querySelector('.f-req');
       if (!star) return;
-
       const check = () => star.classList.toggle('hidden', input.value.trim() !== '');
-
       input.addEventListener('input', check);
       input.addEventListener('change', check);
       input.addEventListener('blur', check);
-
-      // Poll to catch silent browser autofill
       [200, 500, 1000, 1500, 2000, 3000].forEach((d) => setTimeout(check, d));
     });
 
-    // Service asterisk — watch hidden input via MutationObserver
     const reqServiceStar = document.getElementById('req-service');
     if (serviceInput && reqServiceStar) {
-      const checkSvc = () =>
-        reqServiceStar.classList.toggle('hidden', serviceInput.value.trim() !== '');
-      new MutationObserver(checkSvc).observe(serviceInput, {
-        attributes: true,
-        attributeFilter: ['value'],
-      });
+      const checkSvc = () => reqServiceStar.classList.toggle('hidden', serviceInput.value.trim() !== '');
+      new MutationObserver(checkSvc).observe(serviceInput, { attributes: true, attributeFilter: ['value'] });
       serviceInput.addEventListener('input', checkSvc);
     }
-    // ─────────────────────────────────────────────────────────────────
 
-    const syncServiceInput = () => {
-      if (serviceInput) serviceInput.value = Array.from(selectedServices).join(', ');
-    };
+    const syncServiceInput = () => { if (serviceInput) serviceInput.value = Array.from(selectedServices).join(', '); };
 
     const renderSelectedServices = () => {
       if (!serviceSelected) return;
-
       serviceSelected.innerHTML = '';
       selectedServices.forEach((service) => {
         const pill = document.createElement('span');
         pill.className = 'service-pill';
-
         const label = document.createElement('span');
         label.className = 'service-pill-label';
         label.textContent = service;
-
         const removeBtn = document.createElement('button');
         removeBtn.type = 'button';
         removeBtn.className = 'service-pill-remove';
         removeBtn.setAttribute('aria-label', `${t('form.remove', 'Remove')} ${service}`);
         removeBtn.dataset.value = service;
         removeBtn.textContent = 'x';
-
         pill.appendChild(label);
         pill.appendChild(removeBtn);
         serviceSelected.appendChild(pill);
@@ -840,16 +736,11 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
 
     const addService = (rawValue) => {
       const value = String(rawValue || '').trim();
-      if (!value) return;
-      if (selectedServices.has(value)) return;
-
+      if (!value || selectedServices.has(value)) return;
       selectedServices.add(value);
       syncServiceInput();
       renderSelectedServices();
-
-      if (formStatus && formStatus.textContent.trim()) {
-        formStatus.textContent = '';
-      }
+      if (formStatus && formStatus.textContent.trim()) formStatus.textContent = '';
     };
 
     const removeService = (value) => {
@@ -859,23 +750,11 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       renderSelectedServices();
     };
 
-    const onServiceSuggestClick = (e) => {
-      addService(e.currentTarget.dataset.value);
-    };
-
+    const onServiceSuggestClick = (e) => { addService(e.currentTarget.dataset.value); };
     const onServiceEntryKeydown = (e) => {
-      if (e.key === 'Enter' || e.key === ',') {
-        e.preventDefault();
-        addService(serviceEntry?.value);
-        if (serviceEntry) serviceEntry.value = '';
-      }
-
-      if (e.key === 'Backspace' && serviceEntry && serviceEntry.value === '' && selectedServices.size > 0) {
-        const last = Array.from(selectedServices).pop();
-        if (last) removeService(last);
-      }
+      if (e.key === 'Enter' || e.key === ',') { e.preventDefault(); addService(serviceEntry?.value); if (serviceEntry) serviceEntry.value = ''; }
+      if (e.key === 'Backspace' && serviceEntry && serviceEntry.value === '' && selectedServices.size > 0) { const last = Array.from(selectedServices).pop(); if (last) removeService(last); }
     };
-
     const onServiceSelectedClick = (e) => {
       const target = e.target;
       if (!(target instanceof HTMLElement)) return;
@@ -890,90 +769,44 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
     const onFormSubmit = async (e) => {
       e.preventDefault();
       if (!contactForm || !submitBtn) return;
-
       const formData = new FormData(contactForm);
       const payload = Object.fromEntries(formData.entries());
-
       if (payload.website) return;
-
       if (!payload.service) {
         if (formStatus) formStatus.textContent = t('form.needService', 'Please add at least one service before sending.');
         return;
       }
-
       submitBtn.disabled = true;
       submitBtn.innerHTML = `${t('form.sending', 'Sending')} <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>`;
       if (formStatus) formStatus.textContent = t('form.sending', 'Sending your message...');
-
       try {
         const response = await fetch(contactForm.action, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify(payload)
         });
-
         if (!response.ok) {
           let errorMessage = '';
-          try {
-            const errorData = await response.json();
-            errorMessage = errorData?.error || '';
-          } catch {
-            // ignore
-          }
-
-          if (!errorMessage && response.status === 404 && contactForm.action === '/api/contact') {
-            errorMessage = 'Contact API is not available in local dev. Use deployed site or run with serverless support.';
-          }
-
-          if (!errorMessage) {
-            errorMessage = `Request failed (${response.status}).`;
-          }
-
+          try { const errorData = await response.json(); errorMessage = errorData?.error || ''; } catch { }
+          if (!errorMessage && response.status === 404 && contactForm.action === '/api/contact') errorMessage = 'Contact API is not available in local dev.';
+          if (!errorMessage) errorMessage = `Request failed (${response.status}).`;
           throw new Error(errorMessage);
         }
-
-        // Use first name only
         const firstName = payload.name.split(' ')[0];
-
-        // Hide form and show success message
         contactForm.style.display = 'none';
         const successMsg = document.createElement('div');
-        successMsg.style.cssText = `
-          text-align: center;
-          padding: 3rem 2rem;
-          color: #fff;
-        `;
+        successMsg.style.cssText = 'text-align:center;padding:3rem 2rem;color:#fff;';
         const successBody = t('success.body', "Thanks <strong>{name}</strong>, we'll get back to you within 24 hours.").replace('{name}', firstName);
-        successMsg.innerHTML = `
-          <i class="fa-solid fa-circle-check" style="font-size:3.5rem;color:#3DD68C;margin-bottom:1.2rem;display:block;"></i>
-          <h3 style="font-size:1.8rem;margin-bottom:0.8rem;font-family:inherit;">${t('success.title', 'Message Sent!')}</h3>
-          <p style="opacity:0.7;margin-bottom:1.5rem;">${successBody}</p>
-          <p style="opacity:0.5;font-size:0.85rem;">${t('success.note', 'Check your inbox - a confirmation email is on its way.')}</p>
-        `;
+        successMsg.innerHTML = `<i class="fa-solid fa-circle-check" style="font-size:3.5rem;color:#3DD68C;margin-bottom:1.2rem;display:block;"></i><h3 style="font-size:1.8rem;margin-bottom:0.8rem;font-family:inherit;">${t('success.title', 'Message Sent!')}</h3><p style="opacity:0.7;margin-bottom:1.5rem;">${successBody}</p><p style="opacity:0.5;font-size:0.85rem;">${t('success.note', 'Check your inbox - a confirmation email is on its way.')}</p>`;
         contactForm.parentNode.appendChild(successMsg);
-
         selectedServices.clear();
-        // GA4 lead tracking
-        if (typeof gtag === 'function') {
-          gtag('event', 'generate_lead', {
-            event_category: 'Contact Form',
-            event_label: 'Enquiry Submitted',
-            value: 1
-          });
-        }
+        if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'Contact Form', event_label: 'Enquiry Submitted', value: 1 });
         syncServiceInput();
         renderSelectedServices();
-
       } catch (error) {
         submitBtn.disabled = false;
         submitBtn.innerHTML = `${t('form.tryAgain', 'Try Again')} <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>`;
-        if (formStatus) {
-          formStatus.textContent =
-            error?.message || t('form.error', 'Could not send right now. Please try again in a moment.');
-        }
+        if (formStatus) formStatus.textContent = error?.message || t('form.error', 'Could not send right now. Please try again in a moment.');
         setTimeout(() => {
           submitBtn.innerHTML = `${t('form.sendLabel', 'Send Message')} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>`;
           submitBtn.style.background = '';
@@ -983,58 +816,208 @@ if (waBtn) waBtn.addEventListener('click', onWaClick);
       }
     };
 
-    // DesignRush script only runs on DOMContentLoaded; since this is SPA-rendered,
-    // fetch and inject the widget markup directly for reliable rendering.
     const designRushWidgets = document.querySelectorAll('div[data-designrush-widget]');
     designRushWidgets.forEach(async (widgetEl) => {
       const agencyId = widgetEl.getAttribute('data-agency-id');
       const style = widgetEl.getAttribute('data-style') || 'dark';
       const loaded = widgetEl.getAttribute('data-loaded');
       if (!agencyId || loaded) return;
-
       try {
         const url = new URL('https://www.designrush.com/api/widgets/agency-reviews');
         url.searchParams.set('agency_id', agencyId);
         url.searchParams.set('style', style);
         const response = await fetch(url.toString());
-        if (response.ok) {
-          widgetEl.innerHTML = await response.text();
-          widgetEl.setAttribute('data-loaded', '1');
-        }
-      } catch {
-        // Keep noscript fallback visible if external widget fails.
-      }
+        if (response.ok) { widgetEl.innerHTML = await response.text(); widgetEl.setAttribute('data-loaded', '1'); }
+      } catch { }
     });
 
     if (contactForm) contactForm.addEventListener('submit', onFormSubmit);
+
+    // ── FREE AUDIT MODAL ──────────────────────────────────────────────
+    const auditOverlay   = document.getElementById('audit-modal');
+    const auditOpenBtn   = document.getElementById('free-audit-btn');
+    const auditCloseBtn  = document.getElementById('audit-modal-close');
+    const auditDoneBtn   = document.getElementById('audit-done-close');
+    const auditSubmitBtn = document.getElementById('audit-submit');
+    const auditStepForm  = document.getElementById('audit-step-form');
+    const auditStepLoad  = document.getElementById('audit-step-loading');
+    const auditStepDone  = document.getElementById('audit-step-done');
+    const auditError     = document.getElementById('audit-error');
+    const auditProgress  = document.getElementById('audit-progress-bar');
+    const auditScore     = document.getElementById('audit-score-preview');
+
+    const PAGE_LOAD_TIME = Date.now();
+    let auditScrollTriggered = false;
+    let auditTriggerTimeout  = null;
+
+    const openAuditModal = () => {
+      if (!auditOverlay || auditOverlay.dataset.dismissed === 'true') return;
+      auditOverlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      const nameEl = document.getElementById('audit-name');
+      if (nameEl) setTimeout(() => nameEl.focus(), 100);
+    };
+
+    const resetAuditSteps = () => {
+      if (auditStepForm) auditStepForm.hidden = false;
+      if (auditStepLoad) auditStepLoad.hidden = true;
+      if (auditStepDone) auditStepDone.hidden = true;
+      if (auditError)    auditError.hidden     = true;
+      if (auditProgress) auditProgress.style.width = '0%';
+    };
+
+    const clearAuditFields = () => {
+      ['audit-name', 'audit-email', 'audit-url'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+    };
+
+    const closeAuditModal = () => {
+      if (!auditOverlay) return;
+      auditOverlay.dataset.dismissed = 'true';
+      auditOverlay.style.display = 'none';
+      document.body.style.overflow = '';
+      document.body.style.overflowX = 'hidden';
+      resetAuditSteps();
+      clearAuditFields();
+    };
+
+    const handleAuditScroll = () => {
+      if (auditScrollTriggered) return;
+      const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (pageHeight <= 0) return;
+      const scrollPercent = window.scrollY / pageHeight;
+      const timeOnPage    = Date.now() - PAGE_LOAD_TIME;
+      if (scrollPercent > 0.15 && timeOnPage > 2000) {
+        auditScrollTriggered = true;
+        window.removeEventListener('scroll', handleAuditScroll);
+        auditTriggerTimeout = setTimeout(openAuditModal, 700);
+      }
+    };
+
+    if (auditOpenBtn) {
+      auditOpenBtn.addEventListener('click', () => {
+        if (auditOverlay) auditOverlay.dataset.dismissed = 'false';
+        clearTimeout(auditTriggerTimeout);
+        resetAuditSteps();
+        openAuditModal();
+      });
+    }
+
+    window.addEventListener('scroll', handleAuditScroll, { passive: true });
+
+    if (auditCloseBtn) auditCloseBtn.addEventListener('click', closeAuditModal);
+    if (auditDoneBtn)  auditDoneBtn.addEventListener('click', closeAuditModal);
+
+    if (auditOverlay) {
+      auditOverlay.addEventListener('click', (e) => { if (e.target === auditOverlay) closeAuditModal(); });
+    }
+
+    const onAuditEscape = (e) => {
+      if (e.key === 'Escape' && auditOverlay && auditOverlay.style.display !== 'none') closeAuditModal();
+    };
+    document.addEventListener('keydown', onAuditEscape);
+
+    const onAuditSubmit = async () => {
+      if (!auditOverlay) return;
+      const name     = (document.getElementById('audit-name')?.value || '').trim();
+      const email    = (document.getElementById('audit-email')?.value || '').trim();
+      const url      = (document.getElementById('audit-url')?.value || '').trim();
+      const honeypot = document.getElementById('audit-honeypot')?.value || '';
+
+      if (auditError) auditError.hidden = true;
+
+      if (!name || !email || !url) {
+        if (auditError) { auditError.textContent = 'Please fill in all fields.'; auditError.hidden = false; }
+        return;
+      }
+      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!EMAIL_RE.test(email)) {
+        if (auditError) { auditError.textContent = 'Please enter a valid email address.'; auditError.hidden = false; }
+        return;
+      }
+
+      const urlToSend = /^https?:\/\//i.test(url) ? url : 'https://' + url;
+      if (auditStepForm) auditStepForm.hidden = true;
+      if (auditStepLoad) auditStepLoad.hidden = false;
+
+      let pct = 0;
+      const interval = setInterval(() => {
+        pct = Math.min(pct + Math.random() * 8, 88);
+        if (auditProgress) auditProgress.style.width = pct + '%';
+      }, 400);
+
+      try {
+        const res = await fetch('https://devndespro-production.up.railway.app/api/free-audit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, url: urlToSend, honeypot }),
+        });
+        clearInterval(interval);
+        if (auditProgress) auditProgress.style.width = '100%';
+        const data = await res.json();
+        if (!res.ok || !data.ok) {
+          if (auditStepLoad) auditStepLoad.hidden = true;
+          if (auditStepForm) auditStepForm.hidden = false;
+          if (auditError) { auditError.textContent = data.error || 'Something went wrong. Please try again.'; auditError.hidden = false; }
+          return;
+        }
+        const score    = data.score    || 0;
+        const critical = data.critical || 0;
+        const warnings = data.warnings || 0;
+        const color    = score >= 80 ? '#16A34A' : score >= 60 ? '#D97706' : '#DC2626';
+        if (auditScore) {
+          auditScore.innerHTML =
+            '<div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:16px 0;">' +
+              '<div style="text-align:center;"><div style="font-size:2.5rem;font-weight:800;color:' + color + ';">' + score + '</div><div style="font-size:12px;color:#9CA3AF;margin-top:4px;">Health Score</div></div>' +
+              '<div style="text-align:center;"><div style="font-size:2.5rem;font-weight:800;color:#DC2626;">' + critical + '</div><div style="font-size:12px;color:#9CA3AF;margin-top:4px;">Critical</div></div>' +
+              '<div style="text-align:center;"><div style="font-size:2.5rem;font-weight:800;color:#D97706;">' + warnings + '</div><div style="font-size:12px;color:#9CA3AF;margin-top:4px;">Warnings</div></div>' +
+            '</div>';
+        }
+        if (auditStepLoad) auditStepLoad.hidden = true;
+        if (auditStepDone) auditStepDone.hidden = false;
+      } catch {
+        clearInterval(interval);
+        if (auditStepLoad) auditStepLoad.hidden = true;
+        if (auditStepForm) auditStepForm.hidden = false;
+        if (auditError) { auditError.textContent = 'Network error. Please try again.'; auditError.hidden = false; }
+      }
+    };
+
+    if (auditSubmitBtn) auditSubmitBtn.addEventListener('click', onAuditSubmit);
+    // ── END FREE AUDIT MODAL ──────────────────────────────────────────
 
     return () => {
       clearTimeout(initialHashTimer);
       clearTimeout(postLoaderHashTimer);
       clearTimeout(loaderTimer);
+      clearTimeout(auditTriggerTimeout);
       cancelAnimationFrame(rafId);
       document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('keydown', onAuditEscape);
       window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('scroll', handleAuditScroll);
       window.removeEventListener('resize', onResize);
       window.removeEventListener('hashchange', onHashChange);
       if (navToggle) navToggle.removeEventListener('click', onToggleClick);
       langButtons.forEach((btn) => btn.removeEventListener('click', onLangClick));
       sectionNavLinks.forEach((link) => link.removeEventListener('click', onNavLinkClick));
-
       hoverTargets.forEach((el) => {
         el.removeEventListener('mouseenter', onHoverIn);
         el.removeEventListener('mouseleave', onHoverOut);
       });
-
       if (waBtn) waBtn.removeEventListener('click', onWaClick);
-
       if (hs) {
         hs.removeEventListener('mousedown', onMouseDown);
         hs.removeEventListener('mouseleave', onMouseLeave);
         hs.removeEventListener('mouseup', onMouseUp);
         hs.removeEventListener('mousemove', onMouseMove);
       }
-
+      if (auditOpenBtn) auditOpenBtn.removeEventListener('click', openAuditModal);
+      if (auditCloseBtn) auditCloseBtn.removeEventListener('click', closeAuditModal);
+      if (auditDoneBtn) auditDoneBtn.removeEventListener('click', closeAuditModal);
+      if (auditSubmitBtn) auditSubmitBtn.removeEventListener('click', onAuditSubmit);
       revealObserver.disconnect();
       skillsObserver.disconnect();
       if (contactForm) contactForm.removeEventListener('submit', onFormSubmit);
