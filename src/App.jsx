@@ -910,7 +910,15 @@ auditTriggerTimeout = setTimeout(openAuditModal, 8000);
     if (auditDoneBtn)  auditDoneBtn.addEventListener('click', closeAuditModal);
 
     if (auditOverlay) {
-      auditOverlay.addEventListener('click', (e) => { if (e.target === auditOverlay) closeAuditModal(); });
+      auditOverlay.addEventListener('click', (e) => {
+        if (e.target === auditOverlay) {
+          const name = (document.getElementById('audit-name')?.value || '').trim();
+          const email = (document.getElementById('audit-email')?.value || '').trim();
+          const url = (document.getElementById('audit-url')?.value || '').trim();
+          if (!name && !email && !url) return; // block close if empty
+          closeAuditModal();
+        }
+      });
     }
 
     const onAuditEscape = (e) => {
