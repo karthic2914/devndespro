@@ -127,10 +127,68 @@
     <div class="hero-actions">
       <a href="#contact" class="btn-main" data-i18n="hero.primary">Start a Project</a>
       <a href="#work" class="btn-ghost" data-i18n="hero.secondary">View Our Work</a>
+      <button type="button" class="btn-audit" id="free-audit-btn">
+        <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>
+        Free SEO Audit
+      </button>
     </div>
   </div>
   <div class="scroll-cue"><div class="sc-line"></div><i class="fa-solid fa-arrow-down sc-ico" aria-hidden="true"></i><span class="sc-txt" data-i18n="hero.explore">Explore</span></div>
 </section>
+
+<!-- FREE AUDIT MODAL -->
+<div id="audit-modal" class="audit-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="audit-modal-title" hidden>
+  <div class="audit-modal">
+    <button class="audit-modal-close" id="audit-modal-close" aria-label="Close">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <!-- Step 1: Form -->
+    <div id="audit-step-form">
+      <div class="audit-modal-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+      <h2 id="audit-modal-title" class="audit-modal-title">Get Your Free SEO Audit</h2>
+      <p class="audit-modal-sub">Enter your details and receive a full SEO health report in under a minute.</p>
+      <input type="text" name="honeypot" id="audit-honeypot" tabindex="-1" autocomplete="off" style="display:none">
+      <div class="audit-form">
+        <div class="audit-field">
+          <label class="audit-label">Your Name <span style="color:#FF6B2B">*</span></label>
+          <input type="text" id="audit-name" class="audit-input" placeholder="Ola Nordmann" required>
+        </div>
+        <div class="audit-field">
+          <label class="audit-label">Email Address <span style="color:#FF6B2B">*</span></label>
+          <input type="email" id="audit-email" class="audit-input" placeholder="ola@bedrift.no" required>
+        </div>
+        <div class="audit-field">
+          <label class="audit-label">Website URL <span style="color:#FF6B2B">*</span></label>
+          <input type="text" id="audit-url" class="audit-input" placeholder="https://yoursite.com" required>
+        </div>
+        <p id="audit-error" class="audit-error" hidden></p>
+        <button type="button" class="audit-submit" id="audit-submit">
+          <span id="audit-submit-label">Run Free Audit →</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2: Loading -->
+    <div id="audit-step-loading" hidden>
+      <div class="audit-modal-icon audit-spin"><i class="fa-solid fa-circle-notch"></i></div>
+      <h2 class="audit-modal-title">Analysing your site…</h2>
+      <p class="audit-modal-sub">Running technical checks, crawl analysis, and content scoring.<br>Results will be in your inbox within a minute.</p>
+      <div class="audit-progress">
+        <div class="audit-progress-bar" id="audit-progress-bar"></div>
+      </div>
+    </div>
+
+    <!-- Step 3: Success -->
+    <div id="audit-step-done" hidden>
+      <div class="audit-modal-icon" style="color:#16A34A"><i class="fa-solid fa-circle-check"></i></div>
+      <h2 class="audit-modal-title">Audit Complete!</h2>
+      <p class="audit-modal-sub">Your SEO report is on its way. Check your inbox — it should arrive within a minute.</p>
+      <div class="audit-score-preview" id="audit-score-preview"></div>
+      <button type="button" class="audit-submit" id="audit-done-close">Close</button>
+    </div>
+  </div>
+</div>
 
 <!-- TICKER -->
 <div class="ticker">
@@ -601,28 +659,23 @@
     <h2 class="seo-links-title">Service Pages by Region</h2>
     <p class="seo-links-note">Explore dedicated service pages by location and capability focus.</p>
     <ul class="seo-links-grid">
-      <!-- Norway Intent-Based -->
       <li><a href="/seo/web-design-company-norway.html">Web Design Company Norway</a></li>
       <li><a href="/seo/web-utvikler-norge.html">Web Utvikler Norge</a></li>
       <li><a href="/seo/website-builder-stavanger.html">Website Builder Stavanger</a></li>
       <li><a href="/seo/seo-services-norway.html">SEO Services Norway</a></li>
-      <!-- USA Intent-Based -->
       <li><a href="/seo/web-design-agency-usa.html">Web Design Agency USA</a></li>
       <li><a href="/seo/affordable-web-design-company.html">Affordable Web Design Company</a></li>
       <li><a href="/seo/website-design-small-business.html">Website Design Small Business</a></li>
       <li><a href="/seo/hire-web-developer-usa.html">Hire Web Developer USA</a></li>
-      <!-- India Intent-Based -->
       <li><a href="/seo/web-design-company-india.html">Web Design Company India</a></li>
       <li><a href="/seo/affordable-website-development-india.html">Affordable Website Development India</a></li>
       <li><a href="/seo/seo-agency-india.html">SEO Agency India</a></li>
-      <!-- Full Stack & Web App (All Regions) -->
       <li><a href="/seo/full-stack-development-norway.html">Full Stack Development Norway</a></li>
       <li><a href="/seo/web-application-development-norway.html">Web Application Development Norway</a></li>
       <li><a href="/seo/full-stack-development-usa.html">Full Stack Development USA</a></li>
       <li><a href="/seo/web-application-development-usa.html">Web Application Development USA</a></li>
       <li><a href="/seo/full-stack-development-india.html">Full Stack Development India</a></li>
       <li><a href="/seo/web-application-development-india.html">Web Application Development India</a></li>
-      <!-- Other Services -->
       <li><a href="/seo/web-development-europe.html">Web Development Europe</a></li>
       <li><a href="/seo/responsive-web-design.html">Responsive Web Design</a></li>
       <li><a href="/seo/devops-services-norway.html">DevOps Services Norway</a></li>
@@ -707,7 +760,304 @@
 }
 </script>
 
+<!-- FREE AUDIT MODAL SCRIPT -->
+<script>
+(function () {
+  const overlay = document.getElementById('audit-modal');
+  const openBtn = document.getElementById('free-audit-btn');
+  const closeBtn = document.getElementById('audit-modal-close');
+  const doneBtn = document.getElementById('audit-done-close');
+  const submitBtn = document.getElementById('audit-submit');
+  const stepForm = document.getElementById('audit-step-form');
+  const stepLoading = document.getElementById('audit-step-loading');
+  const stepDone = document.getElementById('audit-step-done');
+  const errorEl = document.getElementById('audit-error');
+  const progressBar = document.getElementById('audit-progress-bar');
+  const scorePreview = document.getElementById('audit-score-preview');
+
+  function openModal() {
+    overlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+    document.getElementById('audit-name').focus();
+  }
+
+  function closeModal() {
+    overlay.hidden = true;
+    document.body.style.overflow = '';
+    // Reset
+    stepForm.hidden = false;
+    stepLoading.hidden = true;
+    stepDone.hidden = true;
+    errorEl.hidden = true;
+    document.getElementById('audit-name').value = '';
+    document.getElementById('audit-email').value = '';
+    document.getElementById('audit-url').value = '';
+    progressBar.style.width = '0%';
+  }
+
+  openBtn && openBtn.addEventListener('click', openModal);
+  closeBtn && closeBtn.addEventListener('click', closeModal);
+  doneBtn && doneBtn.addEventListener('click', closeModal);
+  overlay && overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !overlay.hidden) closeModal();
+  });
+
+  submitBtn && submitBtn.addEventListener('click', async function () {
+    const name = document.getElementById('audit-name').value.trim();
+    const email = document.getElementById('audit-email').value.trim();
+    const url = document.getElementById('audit-url').value.trim();
+    const honeypot = document.getElementById('audit-honeypot').value;
+
+    errorEl.hidden = true;
+
+    if (!name || !email || !url) {
+      errorEl.textContent = 'Please fill in all fields.';
+      errorEl.hidden = false;
+      return;
+    }
+
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!EMAIL_RE.test(email)) {
+      errorEl.textContent = 'Please enter a valid email address.';
+      errorEl.hidden = false;
+      return;
+    }
+
+    // Show loading
+    stepForm.hidden = true;
+    stepLoading.hidden = false;
+
+    // Animate progress bar
+    let pct = 0;
+    const interval = setInterval(() => {
+      pct = Math.min(pct + Math.random() * 8, 88);
+      progressBar.style.width = pct + '%';
+    }, 400);
+
+    try {
+      const res = await fetch('https://devndespro-production.up.railway.app/api/free-audit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, url, honeypot }),
+      });
+
+      clearInterval(interval);
+      progressBar.style.width = '100%';
+
+      const data = await res.json();
+
+      if (!res.ok || !data.ok) {
+        stepLoading.hidden = true;
+        stepForm.hidden = false;
+        errorEl.textContent = data.error || 'Something went wrong. Please try again.';
+        errorEl.hidden = false;
+        return;
+      }
+
+      const score = data.score || 0;
+      const critical = data.critical || 0;
+      const warnings = data.warnings || 0;
+      const color = score >= 80 ? '#16A34A' : score >= 60 ? '#D97706' : '#DC2626';
+
+      scorePreview.innerHTML = `
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:16px 0;">
+          <div style="text-align:center;">
+            <div style="font-size:2.5rem;font-weight:800;color:${color};">${score}</div>
+            <div style="font-size:12px;color:#9CA3AF;">Health Score</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:2.5rem;font-weight:800;color:#DC2626;">${critical}</div>
+            <div style="font-size:12px;color:#9CA3AF;">Critical</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:2.5rem;font-weight:800;color:#D97706;">${warnings}</div>
+            <div style="font-size:12px;color:#9CA3AF;">Warnings</div>
+          </div>
+        </div>
+      `;
+
+      stepLoading.hidden = true;
+      stepDone.hidden = false;
+
+    } catch (err) {
+      clearInterval(interval);
+      stepLoading.hidden = true;
+      stepForm.hidden = false;
+      errorEl.textContent = 'Network error. Please try again.';
+      errorEl.hidden = false;
+    }
+  });
+})();
+</script>
+
 <style>
+  /* ── Free Audit Button ──────────────────────────────── */
+  .btn-audit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.4rem;
+    border: 1px solid rgba(255,107,43,0.5);
+    border-radius: 8px;
+    background: rgba(255,107,43,0.1);
+    color: #FF6B2B;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    font-family: inherit;
+  }
+  .btn-audit:hover {
+    background: rgba(255,107,43,0.2);
+    border-color: #FF6B2B;
+    color: #fff;
+  }
+
+  /* ── Audit Modal ────────────────────────────────────── */
+  .audit-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .audit-modal {
+    background: #1a1727;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+  }
+
+  .audit-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255,255,255,0.08);
+    border: none;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .audit-modal-close:hover { background: rgba(255,255,255,0.15); }
+
+  .audit-modal-icon {
+    font-size: 2.5rem;
+    color: #FF6B2B;
+    margin-bottom: 1rem;
+  }
+  .audit-spin { animation: spin 1s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .audit-modal-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.5rem;
+  }
+
+  .audit-modal-sub {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    margin: 0 0 1.5rem;
+  }
+
+  .audit-form { text-align: left; }
+
+  .audit-field { margin-bottom: 1rem; }
+
+  .audit-label {
+    display: block;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 0.35rem;
+    font-weight: 500;
+  }
+
+  .audit-input {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 0.65rem 0.9rem;
+    color: #fff;
+    font-size: 0.9rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .audit-input:focus { border-color: #FF6B2B; }
+  .audit-input::placeholder { color: rgba(255,255,255,0.3); }
+
+  .audit-error {
+    color: #F87171;
+    font-size: 0.84rem;
+    margin: 0.5rem 0;
+    text-align: center;
+  }
+
+  .audit-submit {
+    width: 100%;
+    background: #FF6B2B;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.85rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    font-family: inherit;
+    transition: background 0.2s;
+  }
+  .audit-submit:hover { background: #e55a1f; }
+
+  .audit-progress {
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    margin-top: 1.5rem;
+    overflow: hidden;
+  }
+  .audit-progress-bar {
+    height: 100%;
+    background: #FF6B2B;
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+
+  .audit-score-preview {
+    margin: 1rem 0;
+  }
+
+  @media (max-width: 480px) {
+    .audit-modal { padding: 2rem 1.25rem; }
+    .audit-modal-title { font-size: 1.2rem; }
+  }
+
   /* ── Work card image styles ─────────────────────────── */
   .wcard--img .wcard-bg {
     display: none !important;
@@ -797,7 +1147,6 @@
     .wcard--img .wcard-info { padding: 0.8rem !important; }
   }
 
-  /* ── Work CTA ───────────────────────────────────────── */
   .work-cta {
     display: flex;
     align-items: center;
@@ -826,7 +1175,6 @@
     .work-cta-text { max-width: 100%; }
   }
 
-  /* ── Required asterisk styles ───────────────────────── */
   .f-req {
     color: #FF6B2B;
     margin-left: 3px;
@@ -843,7 +1191,6 @@
     animation-duration: 0.001s;
   }
 
-  /* ── FAQ ─────────────────────────────────────────────── */
   #faq,
   #insights,
   #blog {
@@ -1031,4 +1378,3 @@
     .seo-links-grid { grid-template-columns: 1fr; }
   }
 </style>
-
