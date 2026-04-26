@@ -106,8 +106,8 @@
     <div class="hero-right">
       <div class="hero-stats-stack">
         <div class="hss"><div class="hss-n">19+</div><div class="hss-l" data-i18n="hero.stat1">Years of craft</div></div>
-        <div class="hss"><div class="hss-n">#1</div><div class="hss-l" data-i18n="hero.stat2">Google rankings</div></div>
-        <div class="hss"><div class="hss-n">100%</div><div class="hss-l" data-i18n="hero.stat3">Client retention</div></div>
+        <div class="hss"><div class="hss-n">#1</div><div class="hss-l" data-i18n="hero.stat2">Client Google rankings</div></div>
+        <div class="hss"><div class="hss-n">100%</div><div class="hss-l" data-i18n="hero.stat3">Client retention rate</div></div>
       </div>
     </div>
   </div>
@@ -134,6 +134,15 @@
     </div>
   </div>
   <div class="scroll-cue"><div class="sc-line"></div><i class="fa-solid fa-arrow-down sc-ico" aria-hidden="true"></i><span class="sc-txt" data-i18n="hero.explore">Explore</span></div>
+  <!-- TRUST STRIP -->
+<div class="hero-trust">
+  <span>Trusted by businesses in</span>
+  <strong>Norway</strong>
+  <strong>Europe</strong>
+  <strong>India</strong>
+  <strong>APAC</strong>
+  <a href="https://www.designrush.com/agency/profile/devndespro" target="_blank" rel="noopener" class="trust-badge">DesignRush Verified</a>
+</div>
 </section>
 
 <!-- FREE AUDIT MODAL -->
@@ -863,6 +872,46 @@ document.addEventListener('mousemove', function (e) {
 </script>
 
 <style>
+  /* ── Hero Trust Strip ───────────────────────────────── */
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem 0 0;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.45);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: 2rem;
+}
+
+.hero-trust strong {
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+}
+
+.trust-badge {
+  margin-left: auto;
+  padding: 0.35rem 0.9rem;
+  border: 1px solid rgba(255,107,43,0.4);
+  border-radius: 20px;
+  color: #FF6B2B;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.trust-badge:hover {
+  background: rgba(255,107,43,0.1);
+  border-color: #FF6B2B;
+}
+
+@media (max-width: 767px) {
+  .hero-trust { gap: 0.6rem; }
+  .trust-badge { margin-left: 0; }
+}
   /* ── Custom Cursor ──────────────────────────────────── */
   #cur, #cur-r {
     position: fixed;
