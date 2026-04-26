@@ -848,6 +848,14 @@ document.addEventListener('DOMContentLoaded', function () {
         stepLoading.hidden = true;
         stepDone.hidden    = false;
 
+        /* GA4 Lead Revenue Tracking */
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', {
+            currency: 'NOK',
+            value: 1000
+          });
+        }
+
       } catch (err) {
         clearInterval(interval);
         stepLoading.hidden = true;
@@ -862,12 +870,31 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <!-- CUSTOM CURSOR SCRIPT -->
+<!-- CUSTOM CURSOR SCRIPT -->
 <script>
 document.addEventListener('mousemove', function (e) {
   const cur  = document.getElementById('cur');
   const curR = document.getElementById('cur-r');
   if (cur)  cur.style.transform  = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
   if (curR) curR.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+});
+</script>
+
+<!-- GA4 CONTACT FORM LEAD TRACKING -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var contactForm = document.querySelector('.c-form');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function () {
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          currency: 'NOK',
+          value: 1500
+        });
+      }
+    });
+  }
 });
 </script>
 
