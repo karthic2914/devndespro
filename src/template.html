@@ -224,7 +224,50 @@
     <div class="ti">DevOps<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
   </div>
 </div>
-
+<!-- LIVE WEBSITE CHECKER -->
+<section id="site-checker">
+  <div class="checker-wrap rv">
+    <div class="checker-head">
+      <div class="s-label">Free Instant Check</div>
+      <h2 class="s-h">How healthy is<br><em>your website?</em></h2>
+      <p class="checker-sub">Enter your URL and get an instant SEO health score — no signup, no email, just results.</p>
+    </div>
+    <div class="checker-box">
+      <div class="checker-input-row">
+        <input type="text" id="checker-url" class="checker-input" placeholder="https://yoursite.com" autocomplete="off">
+        <button type="button" class="checker-btn" id="checker-btn">
+          <span id="checker-btn-label">Check Now</span>
+          <i class="fa-solid fa-arrow-right" id="checker-btn-icon"></i>
+        </button>
+      </div>
+      <p class="checker-hint">Free · Instant · No signup needed</p>
+      <div id="checker-result" class="checker-result" hidden>
+        <div class="checker-score-row">
+          <div class="checker-score-block">
+            <div class="checker-score-num" id="checker-score-num">--</div>
+            <div class="checker-score-lbl">Health Score</div>
+          </div>
+          <div class="checker-score-block">
+            <div class="checker-score-num checker-critical" id="checker-critical-num">--</div>
+            <div class="checker-score-lbl">Critical</div>
+          </div>
+          <div class="checker-score-block">
+            <div class="checker-score-num checker-warning" id="checker-warning-num">--</div>
+            <div class="checker-score-lbl">Warnings</div>
+          </div>
+        </div>
+        <div class="checker-issues" id="checker-issues"></div>
+        <div class="checker-upsell">
+          <p id="checker-upsell-text">Want the full detailed report with fixes?</p>
+          <button type="button" class="checker-upsell-btn" id="checker-upsell-btn">
+            Get Full Report — Free <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+      <div id="checker-error" class="checker-error" hidden></div>
+    </div>
+  </div>
+</section>
 <!-- SERVICES -->
 <section id="services">
   <div class="svc-top">
@@ -693,6 +736,98 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
+  // ── LIVE WEBSITE CHECKER ──────────────────────────────
+  var checkerBtn    = document.getElementById('checker-btn');
+  var checkerInput  = document.getElementById('checker-url');
+  var checkerResult = document.getElementById('checker-result');
+  var checkerError  = document.getElementById('checker-error');
+  var checkerUpsell = document.getElementById('checker-upsell-btn');
+
+  if (checkerBtn && checkerInput) {
+    checkerBtn.addEventListener('click', async function() {
+      var url = checkerInput.value.trim();
+      if (!url) { checkerInput.focus(); return; }
+      if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+
+      checkerBtn.disabled = true;
+      document.getElementById('checker-btn-label').textContent = 'Checking...';
+      document.getElementById('checker-btn-icon').className = 'fa-solid fa-circle-notch fa-spin';
+      checkerResult.hidden = true;
+      checkerError.hidden = true;
+
+      try {
+        var res = await fetch('https://devndespro-production.up.railway.app/api/free-audit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: 'Quick Check', email: 'quickcheck@devndespro.com', url: url, honeypot: '' })
+        });
+
+        var data = await res.json();
+
+        if (!res.ok || !data.ok) {
+          checkerError.textContent = data.error || 'Could not analyse this URL. Please check and try again.';
+          checkerError.hidden = false;
+        } else {
+          var score    = data.score    || 0;
+          var critical = data.critical || 0;
+          var warnings = data.warnings || 0;
+          var scoreColor = score >= 80 ? '#16A34A' : score >= 60 ? '#D97706' : '#DC2626';
+
+          document.getElementById('checker-score-num').textContent = score;
+          document.getElementById('checker-score-num').style.color = scoreColor;
+          document.getElementById('checker-critical-num').textContent = critical;
+          document.getElementById('checker-warning-num').textContent = warnings;
+
+          var issuesEl = document.getElementById('checker-issues');
+          issuesEl.innerHTML = '';
+          var issues = data.issues || [];
+          issues.slice(0, 3).forEach(function(issue) {
+            var div = document.createElement('div');
+            div.className = 'checker-issue' + (issue.type === 'critical' ? ' critical' : '');
+            div.innerHTML = '<i class="fa-solid fa-' + (issue.type === 'critical' ? 'circle-xmark' : 'triangle-exclamation') + '"></i><span>' + issue.message + '</span>';
+            issuesEl.appendChild(div);
+          });
+
+          if (issues.length === 0) {
+            issuesEl.innerHTML = '<div class="checker-issue" style="border-left-color:#16A34A"><i class="fa-solid fa-circle-check" style="color:#16A34A"></i><span>No major issues found. Your site looks clean!</span></div>';
+          }
+
+          var upsellText = score >= 80
+            ? 'Your site scores well. Want to see what could push it even higher?'
+            : score >= 60
+            ? 'Some issues found. Get the full report with step-by-step fixes.'
+            : 'Critical issues detected. Get the full report before they hurt your rankings.';
+          document.getElementById('checker-upsell-text').textContent = upsellText;
+
+          checkerResult.hidden = false;
+        }
+      } catch(err) {
+        checkerError.textContent = 'Network error. Please try again.';
+        checkerError.hidden = false;
+      } finally {
+        checkerBtn.disabled = false;
+        document.getElementById('checker-btn-label').textContent = 'Check Now';
+        document.getElementById('checker-btn-icon').className = 'fa-solid fa-arrow-right';
+      }
+    });
+
+    checkerInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkerBtn.click();
+    });
+  }
+
+  if (checkerUpsell) {
+    checkerUpsell.addEventListener('click', function() {
+      var url = checkerInput ? checkerInput.value.trim() : '';
+      var auditUrlEl = document.getElementById('audit-url');
+      if (auditUrlEl && url) auditUrlEl.value = url;
+      if (overlay) overlay.dataset.dismissed = 'false';
+      resetSteps();
+      openModal();
+    });
+  }
+  // ── END LIVE WEBSITE CHECKER ──────────────────────────
+
   var overlay      = document.getElementById('audit-modal');
   var openBtn      = document.getElementById('free-audit-btn');
   var closeBtn     = document.getElementById('audit-modal-close');
@@ -878,7 +1013,7 @@ document.addEventListener('mousemove', function (e) {
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-  padding: 1.2rem 2rem 1.5rem;
+  padding: 1.2rem 2rem 2.5rem;
   font-size: 0.82rem;
   color: rgba(255,255,255,0.45);
   border-top: 1px solid rgba(255,255,255,0.08);
@@ -913,6 +1048,203 @@ document.addEventListener('mousemove', function (e) {
 @media (max-width: 767px) {
   .hero-trust { gap: 0.6rem; }
   .trust-badge { margin-left: 0; }
+}
+/* ── Live Website Checker ───────────────────────────── */
+#site-checker {
+  padding: 5rem 2rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.checker-wrap {
+  text-align: center;
+}
+
+.checker-sub {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.55);
+  margin: 0.75rem 0 2.5rem;
+  line-height: 1.6;
+}
+
+.checker-box {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.checker-input-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.checker-input {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 0.85rem 1.1rem;
+  color: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  box-sizing: border-box;
+}
+
+.checker-input:focus {
+  border-color: #FF6B2B;
+  background: rgba(255,107,43,0.05);
+}
+
+.checker-input::placeholder { color: rgba(255,255,255,0.3); }
+
+.checker-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #FF6B2B;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.85rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.checker-btn:hover { background: #e55a1f; transform: translateY(-1px); }
+.checker-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.checker-hint {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.3);
+  margin: 0.75rem 0 0;
+  text-align: left;
+}
+
+.checker-result {
+  margin-top: 2rem;
+  animation: checkerFadeIn 0.4s ease;
+}
+
+@keyframes checkerFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.checker-score-row {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.checker-score-block {
+  text-align: center;
+  padding: 1rem 2rem;
+  background: rgba(255,255,255,0.04);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  min-width: 100px;
+}
+
+.checker-score-num {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #16A34A;
+  line-height: 1;
+}
+
+.checker-critical { color: #DC2626; }
+.checker-warning { color: #D97706; }
+
+.checker-score-lbl {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+  margin-top: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.checker-issues {
+  text-align: left;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checker-issue {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.65);
+  padding: 0.6rem 0.8rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  border-left: 3px solid #D97706;
+}
+
+.checker-issue.critical { border-left-color: #DC2626; }
+.checker-issue i { margin-top: 2px; flex-shrink: 0; }
+
+.checker-upsell {
+  background: linear-gradient(135deg, rgba(255,107,43,0.12), rgba(255,107,43,0.04));
+  border: 1px solid rgba(255,107,43,0.25);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+}
+
+.checker-upsell p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+  margin: 0 0 0.75rem;
+}
+
+.checker-upsell-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #FF6B2B;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.checker-upsell-btn:hover { background: #e55a1f; }
+
+.checker-error {
+  margin-top: 1rem;
+  color: #F87171;
+  font-size: 0.88rem;
+  background: rgba(248,113,113,0.08);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+@media (max-width: 767px) {
+  #site-checker { padding: 3rem 1.25rem; }
+  .checker-input-row { flex-direction: column; }
+  .checker-btn { width: 100%; justify-content: center; }
+  .checker-score-row { gap: 0.75rem; }
+  .checker-score-block { padding: 0.75rem 1rem; min-width: 80px; }
+  .checker-score-num { font-size: 2rem; }
 }
   /* ── Custom Cursor ──────────────────────────────────── */
   #cur, #cur-r {
