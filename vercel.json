@@ -34,6 +34,11 @@
       "source": "/seo/:slug/index.html",
       "destination": "/seo/:slug/",
       "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/#contact",
+      "permanent": true
     }
   ],
   "cleanUrls": true
