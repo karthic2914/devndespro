@@ -1161,23 +1161,23 @@ document.addEventListener('DOMContentLoaded', function () {
   .nav-submenu {
     display: none;
     position: fixed;
-    top: 72px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: min(920px, 94vw);
+    top: 68px;
+    left: calc(50vw - 460px);
+    width: 920px;
+    max-width: 94vw;
     background: #1a1a22;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.12);
     border-radius: 14px;
     padding: 0;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.6);
-    z-index: 9000;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.7);
+    z-index: 9999;
     list-style: none;
+    margin: 0;
     animation: megaFadeIn 0.18s ease;
   }
   @keyframes megaFadeIn {
-    from { opacity: 0; margin-top: -6px; }
-    to   { opacity: 1; margin-top: 0; }
+    from { opacity: 0; top: 62px; }
+    to   { opacity: 1; top: 68px; }
   }
   .nav-dropdown.open .nav-submenu { display: block; }
   .nav-mega {
