@@ -47,7 +47,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Norway City Pages — NEW -->
+  <!-- Norway City Pages -->
   <url>
     <loc>https://www.devndespro.com/seo/web-development-oslo.html</loc>
     <lastmod>2026-04-27</lastmod>
@@ -81,6 +81,36 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.devndespro.com/seo/web-design-norway.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.devndespro.com/seo/web-design-stavanger.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.devndespro.com/seo/web-designer-norway.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.devndespro.com/seo/web-developer-norway.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.devndespro.com/seo/web-design-development-norway.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.devndespro.com/seo/web-utvikler-norge.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -91,12 +121,6 @@
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.devndespro.com/seo/web-design-stavanger.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.devndespro.com/seo/seo-services-norway.html</loc>
@@ -141,19 +165,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.devndespro.com/seo/web-design-norway.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.devndespro.com/seo/web-designer-norway.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.devndespro.com/seo/web-design-development-norway.html</loc>
+    <loc>https://www.devndespro.com/seo/website-cost.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -179,6 +191,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.devndespro.com/seo/website-cost-europe.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.devndespro.com/seo/responsive-web-design.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -191,6 +209,18 @@
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.devndespro.com/seo/web-design-usa.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.devndespro.com/seo/web-development-usa.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.devndespro.com/seo/affordable-web-design-company.html</loc>
@@ -223,12 +253,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.devndespro.com/seo/web-design-usa.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://www.devndespro.com/seo/seo-services-usa.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -238,6 +262,12 @@
   <!-- India Pages -->
   <url>
     <loc>https://www.devndespro.com/seo/web-design-company-india.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.devndespro.com/seo/web-design-india.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -255,6 +285,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.devndespro.com/seo/seo-services-india.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.devndespro.com/seo/full-stack-development-india.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -266,22 +302,22 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url>
-    <loc>https://www.devndespro.com/seo/web-design-india.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.devndespro.com/seo/seo-services-india.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
 
   <!-- Engineering / Mobile -->
   <url>
     <loc>https://www.devndespro.com/seo/mobile-app-development.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.devndespro.com/seo/mobile-app-development-europe.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.devndespro.com/seo/responsive-web-design.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
