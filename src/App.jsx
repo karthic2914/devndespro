@@ -356,38 +356,23 @@ function App() {
       loader.classList.add('hide');
       document.body.style.overflow = '';
       document.body.style.overflowX = 'hidden';
-      setTimeout(() => {
-        loader.style.display = 'none';
-      }, 900);
+      setTimeout(() => { loader.style.display = 'none'; }, 900);
     }
 
     const loaderTimer = window.setTimeout(hideLoader, 2200);
 
     const cur = document.getElementById('cur');
     const curR = document.getElementById('cur-r');
-
-    let mx = 0;
-    let my = 0;
-    let rx = 0;
-    let ry = 0;
-    let rafId = 0;
+    let mx = 0, my = 0, rx = 0, ry = 0, rafId = 0;
 
     const handleMouseMove = (e) => {
-      mx = e.clientX;
-      my = e.clientY;
-      if (cur) {
-        cur.style.left = `${mx}px`;
-        cur.style.top = `${my}px`;
-      }
+      mx = e.clientX; my = e.clientY;
+      if (cur) { cur.style.left = `${mx}px`; cur.style.top = `${my}px`; }
     };
 
     function animateCursorRing() {
-      rx += (mx - rx) * 0.1;
-      ry += (my - ry) * 0.1;
-      if (curR) {
-        curR.style.left = `${rx}px`;
-        curR.style.top = `${ry}px`;
-      }
+      rx += (mx - rx) * 0.1; ry += (my - ry) * 0.1;
+      if (curR) { curR.style.left = `${rx}px`; curR.style.top = `${ry}px`; }
       rafId = requestAnimationFrame(animateCursorRing);
     }
 
@@ -397,7 +382,6 @@ function App() {
     const hoverTargets = document.querySelectorAll('a,button,.svc-item,.wcard,.t-card,.p-step,.hss');
     const onHoverIn = () => document.body.classList.add('hov');
     const onHoverOut = () => document.body.classList.remove('hov');
-
     hoverTargets.forEach((el) => {
       el.addEventListener('mouseenter', onHoverIn);
       el.addEventListener('mouseleave', onHoverOut);
@@ -406,11 +390,7 @@ function App() {
     const waBtn = document.querySelector('.wa');
     const onWaClick = () => {
       if (typeof gtag === 'function') {
-        gtag('event', 'generate_lead', {
-          event_category: 'WhatsApp',
-          event_label: 'WA Button Clicked',
-          value: 1
-        });
+        gtag('event', 'generate_lead', { event_category: 'WhatsApp', event_label: 'WA Button Clicked', value: 1 });
       }
     };
     if (waBtn) waBtn.addEventListener('click', onWaClick);
@@ -434,17 +414,23 @@ function App() {
       });
     };
 
+    const sectionScrollAnchors = {
+      '#services': '#services .svc-top',
+      '#work': '#work .work-head',
+      '#process': '#process > .rv',
+      '#skills-section': '#skills-section .about-r',
+      '#blog': '#blog .rv',
+      '#contact': '#contact .c-l'
+    };
+
     const scrollToSectionHash = (hash, behavior = 'smooth') => {
       const target = hash ? document.querySelector(hash) : null;
       if (!target) return false;
-
       target.querySelectorAll('.rv,.rl,.rr').forEach((el) => el.classList.add('on'));
-
       const anchorSelector = hash ? sectionScrollAnchors[hash] : null;
       const scrollTarget = anchorSelector ? document.querySelector(anchorSelector) || target : target;
       const navHeight = nav ? nav.offsetHeight : 90;
       const top = scrollTarget.getBoundingClientRect().top + window.scrollY - navHeight - 8;
-
       window.scrollTo({ top, behavior });
       setActiveLink(hash);
       return true;
@@ -481,20 +467,12 @@ function App() {
       const dict = translations[activeLang] || translations.en;
       currentLang = activeLang;
 
-      const setText = (selector, value) => {
-        const el = document.querySelector(selector);
-        if (el && typeof value === 'string') el.textContent = value;
-      };
-      const setHtml = (selector, value) => {
-        const el = document.querySelector(selector);
-        if (el && typeof value === 'string') el.innerHTML = value;
-      };
+      const setText = (selector, value) => { const el = document.querySelector(selector); if (el && typeof value === 'string') el.textContent = value; };
+      const setHtml = (selector, value) => { const el = document.querySelector(selector); if (el && typeof value === 'string') el.innerHTML = value; };
       const setTextList = (selector, values) => {
         if (!Array.isArray(values)) return;
         const nodes = document.querySelectorAll(selector);
-        nodes.forEach((node, index) => {
-          if (values[index] !== undefined) node.textContent = values[index];
-        });
+        nodes.forEach((node, index) => { if (values[index] !== undefined) node.textContent = values[index]; });
       };
 
       const section = sectionTranslations[activeLang] || sectionTranslations.no;
@@ -593,24 +571,54 @@ function App() {
     }
     setLanguage(preferredLang, false);
 
+    // ── NAV MEGA MENU — hover with delay buffer ───────────────────
     const navDropdowns = document.querySelectorAll('.nav-dropdown');
     navDropdowns.forEach((dropdown) => {
       const link = dropdown.querySelector('a');
+      const submenu = dropdown.querySelector('.nav-submenu');
+      let closeTimer = null;
+
+      const openMenu = () => {
+        clearTimeout(closeTimer);
+        navDropdowns.forEach((d) => { if (d !== dropdown) d.classList.remove('open'); });
+        dropdown.classList.add('open');
+      };
+
+      const closeMenu = () => {
+        closeTimer = setTimeout(() => {
+          dropdown.classList.remove('open');
+        }, 180);
+      };
+
+      const cancelClose = () => clearTimeout(closeTimer);
+
+      if (window.innerWidth > 767) {
+        dropdown.addEventListener('mouseenter', openMenu);
+        dropdown.addEventListener('mouseleave', closeMenu);
+        if (submenu) {
+          submenu.addEventListener('mouseenter', cancelClose);
+          submenu.addEventListener('mouseleave', closeMenu);
+        }
+      }
+
+      // Mobile: click toggle
       if (link) {
         link.addEventListener('click', (e) => {
-          if (window.innerWidth <= 767) { e.preventDefault(); dropdown.classList.toggle('open'); }
+          if (window.innerWidth <= 767) {
+            e.preventDefault();
+            dropdown.classList.toggle('open');
+          }
         });
       }
-    });
 
-    const sectionScrollAnchors = {
-      '#services': '#services .svc-top',
-      '#work': '#work .work-head',
-      '#process': '#process > .rv',
-      '#skills-section': '#skills-section .about-r',
-      '#blog': '#blog .rv',
-      '#contact': '#contact .c-l'
-    };
+      // Close on outside click
+      document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove('open');
+        }
+      });
+    });
+    // ── END NAV MEGA MENU ─────────────────────────────────────────
 
     const syncActiveLinkByScroll = () => {
       if (!sectionMap.length) return;
@@ -653,15 +661,11 @@ function App() {
     window.addEventListener('resize', onResize);
 
     const hs = document.getElementById('hscroll');
-    let isDown = false;
-    let startX = 0;
-    let scrollLeft = 0;
-
+    let isDown = false, startX = 0, scrollLeft = 0;
     const onMouseDown = (e) => { if (!hs) return; isDown = true; hs.classList.add('active'); startX = e.pageX - hs.offsetLeft; scrollLeft = hs.scrollLeft; };
     const onMouseLeave = () => { isDown = false; };
     const onMouseUp = () => { isDown = false; };
     const onMouseMove = (e) => { if (!hs || !isDown) return; e.preventDefault(); const x = e.pageX - hs.offsetLeft; const walk = (x - startX) * 1.5; hs.scrollLeft = scrollLeft - walk; };
-
     if (hs) {
       hs.addEventListener('mousedown', onMouseDown);
       hs.addEventListener('mouseleave', onMouseLeave);
@@ -846,9 +850,7 @@ function App() {
     const auditProgress  = document.getElementById('audit-progress-bar');
     const auditScore     = document.getElementById('audit-score-preview');
 
-    /* const PAGE_LOAD_TIME = Date.now(); */
-    /* let auditScrollTriggered = false; */
-    let auditTriggerTimeout  = null;
+    let auditTriggerTimeout = null;
 
     const openAuditModal = () => {
       if (!auditOverlay || auditOverlay.dataset.dismissed === 'true') return;
@@ -883,19 +885,6 @@ function App() {
       clearAuditFields();
     };
 
- /*    const handleAuditScroll = () => {
-      if (auditScrollTriggered) return;
-      const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (pageHeight <= 0) return;
-      const scrollPercent = window.scrollY / pageHeight;
-      const timeOnPage    = Date.now() - PAGE_LOAD_TIME;
-      if (scrollPercent > 0.10 && timeOnPage > 2000) {
-        auditScrollTriggered = true;
-        window.removeEventListener('scroll', handleAuditScroll);
-        auditTriggerTimeout = setTimeout(openAuditModal, 700);
-      }
-    }; */
-
     if (auditOpenBtn) {
       auditOpenBtn.addEventListener('click', () => {
         if (auditOverlay) auditOverlay.dataset.dismissed = 'false';
@@ -904,7 +893,8 @@ function App() {
         openAuditModal();
       });
     }
-auditTriggerTimeout = setTimeout(openAuditModal, 8000);
+
+    auditTriggerTimeout = setTimeout(openAuditModal, 8000);
 
     if (auditCloseBtn) auditCloseBtn.addEventListener('click', closeAuditModal);
     if (auditDoneBtn)  auditDoneBtn.addEventListener('click', closeAuditModal);
@@ -912,10 +902,10 @@ auditTriggerTimeout = setTimeout(openAuditModal, 8000);
     if (auditOverlay) {
       auditOverlay.addEventListener('click', (e) => {
         if (e.target === auditOverlay) {
-          const name = (document.getElementById('audit-name')?.value || '').trim();
+          const name  = (document.getElementById('audit-name')?.value || '').trim();
           const email = (document.getElementById('audit-email')?.value || '').trim();
-          const url = (document.getElementById('audit-url')?.value || '').trim();
-          if (!name && !email && !url) return; // block close if empty
+          const url   = (document.getElementById('audit-url')?.value || '').trim();
+          if (!name && !email && !url) return;
           closeAuditModal();
         }
       });
@@ -964,46 +954,54 @@ auditTriggerTimeout = setTimeout(openAuditModal, 8000);
         clearInterval(interval);
         if (auditProgress) auditProgress.style.width = '100%';
         const data = await res.json();
-        if (!res.ok || !data.ok) {
-const ctaText = score >= 80
+
+        const score    = data.score    || 0;
+        const critical = data.critical || 0;
+        const warnings = data.warnings || 0;
+        const color    = score >= 80 ? '#16A34A' : score >= 60 ? '#D97706' : '#DC2626';
+
+        const ctaText = score >= 80
           ? 'Your site looks healthy! Want to stay ahead of competitors?'
           : score >= 60
           ? 'Some issues found. Want us to fix them for you?'
           : 'Critical issues detected. Let us help you fix them fast.';
 
-        const ctaBtnText = score >= 80
-          ? 'Book a Free Growth Call'
-          : 'Get a Free Fix Plan';
+        const ctaBtnText = score >= 80 ? 'Book a Free Growth Call' : 'Get a Free Fix Plan';
 
-        const scoreEl = document.getElementById('audit-score-preview');
-        if (scoreEl) {
-          scoreEl.innerHTML += `
-            <div style="margin-top:20px;padding:16px;background:rgba(255,107,43,0.1);border:1px solid rgba(255,107,43,0.3);border-radius:10px;text-align:center;">
-              <p style="font-size:0.88rem;color:#ccc;margin-bottom:12px;">${ctaText}</p>
-              <a href="https://wa.me/4740975201" target="_blank" style="display:block;background:#FF6B2B;color:#fff;padding:0.7rem 1rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">${ctaBtnText} →</a>
-            </div>
-          `;
-        }
-
-        if (auditStepLoad) auditStepLoad.hidden = true;
-        if (auditStepDone) auditStepDone.hidden = false;
+        if (!res.ok || !data.ok) {
+          if (auditScore) {
+            auditScore.innerHTML +=
+              `<div style="margin-top:20px;padding:16px;background:rgba(255,107,43,0.1);border:1px solid rgba(255,107,43,0.3);border-radius:10px;text-align:center;">
+                <p style="font-size:0.88rem;color:#ccc;margin-bottom:12px;">${ctaText}</p>
+                <a href="https://wa.me/4740975201" target="_blank" style="display:block;background:#FF6B2B;color:#fff;padding:0.7rem 1rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">${ctaBtnText} →</a>
+              </div>`;
+          }
+          if (auditStepLoad) auditStepLoad.hidden = true;
+          if (auditStepDone) auditStepDone.hidden = false;
           if (auditError) { auditError.textContent = data.error || 'Something went wrong. Please try again.'; auditError.hidden = false; }
           return;
         }
-        const score    = data.score    || 0;
-        const critical = data.critical || 0;
-        const warnings = data.warnings || 0;
-        const color    = score >= 80 ? '#16A34A' : score >= 60 ? '#D97706' : '#DC2626';
+
         if (auditScore) {
           auditScore.innerHTML =
-            '<div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:16px 0;">' +
-              '<div style="text-align:center;"><div style="font-size:2.5rem;font-weight:800;color:' + color + ';">' + score + '</div><div style="font-size:12px;color:#9CA3AF;margin-top:4px;">Health Score</div></div>' +
-              '<div style="text-align:center;"><div style="font-size:2.5rem;font-weight:800;color:#DC2626;">' + critical + '</div><div style="font-size:12px;color:#9CA3AF;margin-top:4px;">Critical</div></div>' +
-              '<div style="text-align:center;"><div style="font-size:2.5rem;font-weight:800;color:#D97706;">' + warnings + '</div><div style="font-size:12px;color:#9CA3AF;margin-top:4px;">Warnings</div></div>' +
-            '</div>';
+            `<div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:16px 0;">
+              <div style="text-align:center;"><div style="font-size:2.5rem;font-weight:800;color:${color};">${score}</div><div style="font-size:12px;color:#9CA3AF;margin-top:4px;">Health Score</div></div>
+              <div style="text-align:center;"><div style="font-size:2.5rem;font-weight:800;color:#DC2626;">${critical}</div><div style="font-size:12px;color:#9CA3AF;margin-top:4px;">Critical</div></div>
+              <div style="text-align:center;"><div style="font-size:2.5rem;font-weight:800;color:#D97706;">${warnings}</div><div style="font-size:12px;color:#9CA3AF;margin-top:4px;">Warnings</div></div>
+            </div>
+            <div style="margin-top:20px;padding:16px;background:rgba(255,107,43,0.1);border:1px solid rgba(255,107,43,0.3);border-radius:10px;text-align:center;">
+              <p style="font-size:0.88rem;color:#ccc;margin-bottom:12px;">${ctaText}</p>
+              <a href="https://wa.me/4740975201" target="_blank" style="display:block;background:#FF6B2B;color:#fff;padding:0.7rem 1rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">${ctaBtnText} →</a>
+            </div>`;
         }
+
         if (auditStepLoad) auditStepLoad.hidden = true;
         if (auditStepDone) auditStepDone.hidden = false;
+
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', { currency: 'NOK', value: 1000 });
+        }
+
       } catch {
         clearInterval(interval);
         if (auditStepLoad) auditStepLoad.hidden = true;
@@ -1024,7 +1022,6 @@ const ctaText = score >= 80
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('keydown', onAuditEscape);
       window.removeEventListener('scroll', onScroll);
-      /* window.removeEventListener('scroll', handleAuditScroll); */
       window.removeEventListener('resize', onResize);
       window.removeEventListener('hashchange', onHashChange);
       if (navToggle) navToggle.removeEventListener('click', onToggleClick);
