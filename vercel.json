@@ -1,18 +1,9 @@
 ﻿{
+  "cleanUrls": true,
   "redirects": [
     {
       "source": "/index.html",
       "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/seo/:slug(.*).html",
-      "destination": "/seo/:slug",
-      "permanent": true
-    },
-    {
-      "source": "/blog/:slug(.*).html",
-      "destination": "/blog/:slug",
       "permanent": true
     },
     {
@@ -40,6 +31,5 @@
       "destination": "/#contact",
       "permanent": true
     }
-  ],
-  "cleanUrls": true
+  ]
 }
