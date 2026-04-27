@@ -17,31 +17,31 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.devndespro.com/blog/ui-ux-design</loc>
+    <loc>https://www.devndespro.com/blog/ui-ux-design.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.devndespro.com/blog/core-web-vitals-guide</loc>
+    <loc>https://www.devndespro.com/blog/core-web-vitals-guide.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.devndespro.com/blog/service-page-seo-structure</loc>
+    <loc>https://www.devndespro.com/blog/service-page-seo-structure.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.devndespro.com/blog/web-designer-norway</loc>
+    <loc>https://www.devndespro.com/blog/web-designer-norway.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.devndespro.com/blog/web-developer-norway</loc>
+    <loc>https://www.devndespro.com/blog/web-developer-norway.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -312,5 +312,6 @@
   </url>
 
 </urlset>
+
 
 
