@@ -6,23 +6,13 @@
       "permanent": true
     },
     {
-      "source": "/seo/:slug.html",
+      "source": "/seo/:slug(.*).html",
       "destination": "/seo/:slug",
       "permanent": true
     },
     {
-      "source": "/blog/:slug.html",
+      "source": "/blog/:slug(.*).html",
       "destination": "/blog/:slug",
-      "permanent": true
-    },
-    {
-      "source": "/blog/:slug/index.html",
-      "destination": "/blog/:slug/",
-      "permanent": true
-    },
-    {
-      "source": "/seo/:slug/index.html",
-      "destination": "/seo/:slug/",
       "permanent": true
     },
     {
