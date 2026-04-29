@@ -121,7 +121,28 @@
     .footer-links{display:flex;gap:1.2rem;flex-wrap:wrap}
     .footer-links a{color:var(--orange);text-decoration:none;font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
     @media(max-width:767px){.top-nav{padding:.8rem 1.2rem}.hero{padding:3.5rem 1.2rem 3rem}.stats-strip{grid-template-columns:repeat(2,1fr)}.section{padding:3.5rem 1.2rem}.why-grid,.process-grid{grid-template-columns:1fr}.stack-grid{grid-template-columns:repeat(2,1fr)}.cta-strip{padding:2rem 1.2rem}.footer-inner{flex-direction:column;text-align:center}.trust-bar{gap:1rem;padding:1rem 1.2rem}}
-  </style>
+  .lang-toggle{
+  display:inline-flex;
+  align-items:center;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;
+  overflow:hidden;
+  margin-right:1rem;
+  background:rgba(255,255,255,.04);
+}
+.lang-toggle a{
+  color:rgba(244,240,232,.7);
+  text-decoration:none;
+  padding:.32rem .75rem;
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+.lang-toggle a.active{
+  background:#FF6B2B;
+  color:#fff;
+}
+</style>
 <link rel="alternate" hreflang="no" href="https://devndespro.com/no/website-design-small-business.html" />
 </head>
 <body>
@@ -299,6 +320,7 @@
 </footer>
 </body>
 </html>
+
 
 
 
