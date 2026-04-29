@@ -973,7 +973,7 @@ function App() {
             auditScore.innerHTML +=
               `<div style="margin-top:20px;padding:16px;background:rgba(255,107,43,0.1);border:1px solid rgba(255,107,43,0.3);border-radius:10px;text-align:center;">
                 <p style="font-size:0.88rem;color:#ccc;margin-bottom:12px;">${ctaText}</p>
-                <a href="https://wa.me/4740975201" target="_blank" style="display:block;background:#FF6B2B;color:#fff;padding:0.7rem 1rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">${ctaBtnText} →</a>
+                <a href="https://api.whatsapp.com/send?phone=4740975201" target="_blank" style="display:block;background:#FF6B2B;color:#fff;padding:0.7rem 1rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">${ctaBtnText} →</a>
               </div>`;
           }
           if (auditStepLoad) auditStepLoad.hidden = true;
@@ -991,7 +991,7 @@ function App() {
             </div>
             <div style="margin-top:20px;padding:16px;background:rgba(255,107,43,0.1);border:1px solid rgba(255,107,43,0.3);border-radius:10px;text-align:center;">
               <p style="font-size:0.88rem;color:#ccc;margin-bottom:12px;">${ctaText}</p>
-              <a href="https://wa.me/4740975201" target="_blank" style="display:block;background:#FF6B2B;color:#fff;padding:0.7rem 1rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">${ctaBtnText} →</a>
+              <a href="https://api.whatsapp.com/send?phone=4740975201" target="_blank" style="display:block;background:#FF6B2B;color:#fff;padding:0.7rem 1rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">${ctaBtnText} →</a>
             </div>`;
         }
 
