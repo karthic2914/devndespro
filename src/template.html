@@ -400,6 +400,90 @@
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="rv">
+    <div class="s-label">Client Reviews</div>
+    <h2 class="s-h">Trusted by those<br><em>who worked with us</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card rv">
+      <div class="testi-stars">
+        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+      </div>
+      <p class="testi-quote">They are very professional. They understand the clients requirements. I am very happy with their service.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">RP</div>
+        <div>
+          <div class="testi-name">Rohit Pillai</div>
+          <div class="testi-src"><i class="fa-brands fa-google"></i> Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card rv">
+      <div class="testi-stars">
+        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+      </div>
+      <p class="testi-quote">I had a great experience with Devndespro. The approach was very professional, and they clearly understand both design and technical aspects. They focus not just on building websites, but also on performance and user experience, which really stands out. Would definitely recommend them for anyone looking for quality web development and SEO services.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">KC</div>
+        <div>
+          <div class="testi-name">Komahan Kundal Chithiraisenan</div>
+          <div class="testi-src"><i class="fa-brands fa-google"></i> Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card rv">
+      <div class="testi-stars">
+        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+      </div>
+      <p class="testi-quote">I had a very positive experience with this company. They provide excellent service and always make sure customers are satisfied. The staff are kind, respectful, and helpful. It is clear that they care about both their work and their customers. I would highly recommend this company to anyone looking for quality service.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">GJ</div>
+        <div>
+          <div class="testi-name">Gumparlapati Jayaprasad</div>
+          <div class="testi-src"><i class="fa-brands fa-google"></i> Google Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testi-grid testi-grid--2">
+    <div class="testi-card rv">
+      <div class="testi-stars">
+        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+      </div>
+      <p class="testi-quote">Professional, reliable and easy to work with. Devndespro delivers high quality web solutions with a good focus on performance and user experience. Their understanding of both design and development makes a difference from other agencies. I recommend their services for startups and growing businesses.</p>
+      <div class="testi-author">
+        <img src="/images/Testimonials/procurementpeople-logo.webp" alt="Procurement People" class="testi-logo">
+        <div>
+          <div class="testi-name">John Williams</div>
+          <div class="testi-src"><i class="fa-brands fa-google"></i> Google Review · Procurement People</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card rv">
+      <div class="testi-stars">
+        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+      </div>
+      <p class="testi-quote">I have approached devndespro for designing our mobile app in onearkive and they have delivered it with excellent quality.</p>
+      <div class="testi-author">
+        <img src="/images/Testimonials/onearkive-logo.png" alt="Onearkive" class="testi-logo">
+        <div>
+          <div class="testi-name">Pirabukannan</div>
+          <div class="testi-src"><i class="fa-brands fa-google"></i> Google Review · Onearkive</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testi-footer rv">
+    <i class="fa-brands fa-google"></i>
+    <span>Rated <strong>4.8 / 5</strong> on Google · Stavanger, Norway</span>
+    <a href="https://g.page/r/YOUR_GOOGLE_REVIEW_LINK" target="_blank" rel="noopener" class="testi-more">See all reviews <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</section>
+
 <!-- MID-PAGE CTA -->
 <section class="cta-strip rv">
   <div class="cta-strip-text">
@@ -1394,4 +1478,125 @@ document.addEventListener('DOMContentLoaded', function () {
     .nav-mega-col:last-child { border-bottom: none; }
     .nav-mega-col a { white-space: normal; font-size: 0.78rem; }
   }
+
+  /* ── Testimonials ───────────────────────────────────── */
+#testimonials {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.testi-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1.5rem;
+}
+.testi-card {
+  padding: 2rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.testi-card:hover {
+  border-color: rgba(255,107,43,0.35);
+  transform: translateY(-3px);
+}
+.testi-stars {
+  color: #FF6B2B;
+  font-size: 0.85rem;
+  display: flex;
+  gap: 3px;
+}
+.testi-quote {
+  font-size: 0.93rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.72);
+  margin: 0;
+  flex: 1;
+}
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.testi-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,107,43,0.15);
+  border: 1px solid rgba(255,107,43,0.3);
+  color: #FF6B2B;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+.testi-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #fff;
+  padding: 4px;
+  flex-shrink: 0;
+}
+.testi-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #fff;
+}
+.testi-src {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.testi-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+}
+.testi-footer .fa-google { color: #FF6B2B; font-size: 1.1rem; }
+.testi-footer strong { color: #fff; }
+.testi-more {
+  margin-left: auto;
+  color: #FF6B2B;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: gap 0.2s ease;
+}
+.testi-more:hover { gap: 0.7rem; }
+@media (max-width: 900px) {
+  .testi-grid,
+  .testi-grid--2 { grid-template-columns: 1fr; }
+  #testimonials { padding: 4rem 1.25rem; }
+  .testi-footer { flex-wrap: wrap; }
+  .testi-more { margin-left: 0; }
+}
 </style>
