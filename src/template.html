@@ -417,7 +417,7 @@
     </div>
   </div>
 
-  <div class="testi-nav"><button class="testi-prev" aria-label="Previous"><i class="fa-solid fa-arrow-left"></i></button><button class="testi-next" aria-label="Next"><i class="fa-solid fa-arrow-right"></i></button></div><div class="testi-scroll-wrap">
+  <div class="testi-nav"><button class="testi-prev"  aria-label="Previous"><i class="fa-solid fa-arrow-left"></i></button><button class="testi-next" aria-label="Next"><i class="fa-solid fa-arrow-right"></i></button></div><div class="testi-scroll-wrap">
     <div class="testi-scroll">
 
       <div class="testi-card-g">
@@ -1665,7 +1665,23 @@ document.addEventListener('DOMContentLoaded', function () {
     .testi-more { margin-left: 0; }
     .testi-rating-bar { width: auto; }
   }
-  .testi-nav { display: flex; gap: 0.5rem; margin-bottom: 1rem; padding-right: 2rem; justify-content: flex-end; }
+  .testi-nav { display: flex; gap: 0.5rem; margin-top: 2rem; padding-right: 2rem; justify-content: flex-start; }
   .testi-prev, .testi-next { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,107,43,0.4); background: rgba(255,107,43,0.1); color: #FF6B2B; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: background 0.2s, border-color 0.2s; }
   .testi-prev:hover, .testi-next:hover { background: #FF6B2B; color: #fff; border-color: #FF6B2B; }
 </style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var wrap = document.querySelector('.testi-scroll-wrap');
+  var prev = document.querySelector('.testi-prev');
+  var next = document.querySelector('.testi-next');
+  if (!wrap) return;
+  var cardW = 336;
+  if (next) next.addEventListener('click', function() { wrap.scrollBy({ left: cardW, behavior: 'smooth' }); });
+  if (prev) prev.addEventListener('click', function() { wrap.scrollBy({ left: -cardW, behavior: 'smooth' }); });
+  var isDown = false, startX, scrollLeft;
+  wrap.addEventListener('mousedown', function(e) { isDown = true; startX = e.pageX - wrap.offsetLeft; scrollLeft = wrap.scrollLeft; });
+  wrap.addEventListener('mouseleave', function() { isDown = false; });
+  wrap.addEventListener('mouseup', function() { isDown = false; });
+  wrap.addEventListener('mousemove', function(e) { if (!isDown) return; e.preventDefault(); var x = e.pageX - wrap.offsetLeft; wrap.scrollLeft = scrollLeft - (x - startX); });
+});
+</script>
