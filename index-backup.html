@@ -274,31 +274,7 @@
     .js .seo-fallback-static {
       display: none;
     }
-  .testi-scroll-wrap {
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  width: 100% !important;
-  scroll-behavior: smooth;
-}
-
-.testi-scroll {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  gap: 1rem;
-  width: max-content !important;
-}
-
-.testi-card-g {
-  flex: 0 0 320px !important;
-  width: 320px !important;
-  min-width: 320px !important;
-}
-
-.nav-menu a.active {
-  color: #FF6B2B !important;
-}
-</style>
+  </style>
 </head>
 <body>
   <div id="root"></div>
@@ -383,35 +359,6 @@
   </noscript>
   <!-- trigger deploy 2026-04-25 -->
   <script type="module" src="/src/main.jsx"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const wrap = document.getElementById('reviews-scroll');
-  const prev = document.querySelector('.testi-prev');
-  const next = document.querySelector('.testi-next');
-
-  if (wrap && next) {
-    next.addEventListener('click', function () {
-      wrap.scrollBy({ left: 360, behavior: 'smooth' });
-    });
-  }
-
-  if (wrap && prev) {
-    prev.addEventListener('click', function () {
-      wrap.scrollBy({ left: -360, behavior: 'smooth' });
-    });
-  }
-
-  document.querySelectorAll('.nav-menu a[href^="#"]').forEach(function (link) {
-    link.addEventListener('click', function () {
-      document.querySelectorAll('.nav-menu a').forEach(function (a) {
-        a.classList.remove('active');
-      });
-      this.classList.add('active');
-    });
-  });
-});
-</script>
 </body>
 </html>
-
 
