@@ -1630,4 +1630,39 @@ document.addEventListener('DOMContentLoaded', function () {
   flex-shrink: 0;
   border: 1.5px solid rgba(255,107,43,0.4);
 }
+  /* -- Testimonials New ------------------------------------- */
+  #testimonials { padding: 6rem 0 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+  #testimonials .rv { padding-right: 2rem; }
+  .testi-rating-bar { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; padding: 1.25rem 1.5rem; border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; background: rgba(255,255,255,0.02); width: fit-content; }
+  .testi-rating-score { font-size: 2.8rem; font-weight: 700; color: #fff; line-height: 1; }
+  .testi-rating-stars { color: #FF6B2B; font-size: 1rem; display: flex; gap: 3px; margin-bottom: 4px; }
+  .testi-rating-meta { font-size: 0.82rem; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 0.5rem; }
+  .testi-g-badge { display: inline-flex; align-items: center; gap: 0.3rem; color: #FF6B2B; font-weight: 600; }
+  .testi-scroll-wrap { overflow-x: auto; overflow-y: visible; margin-top: 2.5rem; padding-bottom: 1rem; scrollbar-width: none; -ms-overflow-style: none; cursor: grab; width: 100%; display: block; }
+  .testi-scroll-wrap:active { cursor: grabbing; }
+  .testi-scroll-wrap::-webkit-scrollbar { display: none; }
+  .testi-scroll { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; gap: 1rem; width: max-content; padding-right: 2rem; }
+  .testi-card-g { width: 320px; flex-shrink: 0; background: #2a2733; border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; transition: border-color 0.3s ease, transform 0.3s ease; }
+  .testi-card-g:hover { border-color: rgba(255,107,43,0.35); transform: translateY(-3px); }
+  .testi-card-g-top { display: flex; align-items: center; gap: 0.75rem; }
+  .testi-g-avatar { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,107,43,0.2); border: 1.5px solid rgba(255,107,43,0.4); color: #FF6B2B; font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; letter-spacing: 0.05em; }
+  .testi-g-avatar-img { width: 42px; height: 42px; border-radius: 50%; object-fit: contain; background: #1a1727; padding: 4px; flex-shrink: 0; border: 1.5px solid rgba(255,107,43,0.4); }
+  .testi-g-name { font-size: 0.9rem; font-weight: 600; color: #fff; line-height: 1.2; }
+  .testi-g-stars { color: #FF6B2B; font-size: 0.72rem; display: flex; gap: 2px; margin-top: 3px; }
+  .testi-g-logo { margin-left: auto; font-size: 1.1rem; color: rgba(255,255,255,0.2); flex-shrink: 0; }
+  .testi-g-quote { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.72); margin: 0; flex: 1; }
+  .testi-g-when { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: auto; }
+  .testi-footer { display: flex; align-items: center; gap: 0.75rem; margin-top: 2rem; margin-right: 2rem; padding: 1.25rem 1.5rem; border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; background: rgba(255,255,255,0.02); font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+  .testi-footer .fa-google { color: #FF6B2B; font-size: 1.1rem; }
+  .testi-footer strong { color: #fff; }
+  .testi-more { margin-left: auto; color: #FF6B2B; text-decoration: none; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; transition: gap 0.2s ease; }
+  .testi-more:hover { gap: 0.7rem; }
+  @media (max-width: 767px) {
+    #testimonials { padding: 4rem 0 4rem 1.25rem; }
+    #testimonials .rv { padding-right: 1.25rem; }
+    .testi-card-g { width: 280px; }
+    .testi-footer { margin-right: 1.25rem; flex-wrap: wrap; }
+    .testi-more { margin-left: 0; }
+    .testi-rating-bar { width: auto; }
+  }
 </style>
