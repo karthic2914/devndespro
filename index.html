@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -311,6 +311,36 @@
 .nav-menu a.active {
   color: #FF6B2B !important;
 }
+/* FINAL testimonial scroll force fix */
+#reviews-scroll {
+  overflow-x: scroll !important;
+  overflow-y: hidden !important;
+  width: 100% !important;
+  scroll-behavior: smooth !important;
+}
+
+#reviews-scroll .testi-scroll {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  width: max-content !important;
+}
+
+#reviews-scroll .testi-card-g {
+  flex: 0 0 320px !important;
+  min-width: 320px !important;
+  width: 320px !important;
+}
+
+.testi-prev,
+.testi-next {
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 9999 !important;
+}
+
+.nav-menu a.active {
+  color: #FF6B2B !important;
+}
 </style>
 </head>
 <body>
@@ -424,36 +454,48 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+
 <script id="review-scroll-nav-fix">
-document.addEventListener('DOMContentLoaded', function () {
-  const wrap = document.getElementById('reviews-scroll');
-  const prev = document.querySelector('.testi-prev');
-  const next = document.querySelector('.testi-next');
-
-  if (wrap && next) {
-    next.onclick = function () {
-      wrap.scrollBy({ left: 360, behavior: 'smooth' });
-    };
+(function () {
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
   }
 
-  if (wrap && prev) {
-    prev.onclick = function () {
-      wrap.scrollBy({ left: -360, behavior: 'smooth' });
-    };
-  }
+  ready(function () {
+    var wrap = document.getElementById('reviews-scroll');
 
-  document.querySelectorAll('.nav-menu a[href^="#"]').forEach(function (link) {
-    link.addEventListener('click', function () {
-      document.querySelectorAll('.nav-menu a').forEach(function (a) {
-        a.classList.remove('active');
-      });
-      this.classList.add('active');
-    });
+    document.addEventListener('click', function (e) {
+      var next = e.target.closest('.testi-next');
+      var prev = e.target.closest('.testi-prev');
+
+      if (!wrap) wrap = document.getElementById('reviews-scroll');
+      if (!wrap) return;
+
+      if (next) {
+        e.preventDefault();
+        wrap.scrollLeft += 360;
+      }
+
+      if (prev) {
+        e.preventDefault();
+        wrap.scrollLeft -= 360;
+      }
+
+      var navLink = e.target.closest('.nav-menu a[href^="#"]');
+      if (navLink) {
+        document.querySelectorAll('.nav-menu a').forEach(function (a) {
+          a.classList.remove('active');
+        });
+        navLink.classList.add('active');
+      }
+    }, true);
   });
-});
+})();
 </script>
 </body>
 </html>
+
 
 
 
