@@ -506,99 +506,46 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
+
+
 <script id="nav-active-final-fix">
 (function () {
-  function activate(id) {
-    document.querySelectorAll('.nav-menu a').forEach(function (a) {
-      a.classList.remove('active');
-    });
-
-    var link = document.querySelector('.nav-menu a[href="#' + id + '"]');
-    if (link) link.classList.add('active');
-  }
-
-  function updateNav() {
-    var navOffset = 140;
-
+  function forceReviewsWhenVisible() {
     var testimonials = document.getElementById('testimonials');
-    if (testimonials) {
-      var t = testimonials.getBoundingClientRect();
+    if (!testimonials) return;
 
-      if (t.top <= navOffset && t.bottom > navOffset) {
-        activate('testimonials');
-        return;
-      }
-    }
+    var r = testimonials.getBoundingClientRect();
 
-    var sections = ['services', 'work', 'skills-section', 'contact'];
+    if (r.top < 160 && r.bottom > 160) {
+      document.querySelectorAll('.nav-menu a').forEach(function (a) {
+        a.classList.remove('active');
+      });
 
-    for (var i = 0; i < sections.length; i++) {
-      var sec = document.getElementById(sections[i]);
-      if (!sec) continue;
-
-      var r = sec.getBoundingClientRect();
-
-      if (r.top <= navOffset && r.bottom > navOffset) {
-        activate(sections[i]);
-        return;
-      }
+      var reviewLink = document.querySelector('.nav-menu a[href="#testimonials"]');
+      if (reviewLink) reviewLink.classList.add('active');
     }
   }
-
-  document.addEventListener('click', function (e) {
-    var link = e.target.closest('.nav-menu a[href^="#"]');
-    if (!link) return;
-
-    var id = link.getAttribute('href').replace('#', '');
-    activate(id);
-
-    setTimeout(updateNav, 800);
-  }, true);
-
-  window.addEventListener('scroll', updateNav, { passive: true });
-  window.addEventListener('resize', updateNav);
-  document.addEventListener('DOMContentLoaded', updateNav);
-  setInterval(updateNav, 500);
-})();
-</script>
-<script id="nav-active-debug">
-(function () {
-  function logActiveNav(reason) {
-    var active = document.querySelector('.nav-menu a.active');
-    console.log('[NAV DEBUG]', reason, {
-      activeText: active ? active.textContent.trim() : 'NONE',
-      activeHref: active ? active.getAttribute('href') : 'NONE',
-      scrollY: window.scrollY,
-      testimonialsTop: document.getElementById('testimonials')?.getBoundingClientRect().top,
-      testimonialsBottom: document.getElementById('testimonials')?.getBoundingClientRect().bottom,
-      workTop: document.getElementById('work')?.getBoundingClientRect().top,
-      workBottom: document.getElementById('work')?.getBoundingClientRect().bottom
-    });
-  }
-
-  document.addEventListener('click', function (e) {
-    var link = e.target.closest('.nav-menu a');
-    if (link) {
-      setTimeout(function () {
-        logActiveNav('after nav click');
-      }, 100);
-    }
-  }, true);
 
   window.addEventListener('scroll', function () {
-    clearTimeout(window.__navDebugTimer);
-    window.__navDebugTimer = setTimeout(function () {
-      logActiveNav('after scroll');
-    }, 120);
+    requestAnimationFrame(forceReviewsWhenVisible);
+    setTimeout(forceReviewsWhenVisible, 50);
+    setTimeout(forceReviewsWhenVisible, 150);
   }, { passive: true });
 
-  setInterval(function () {
-    logActiveNav('interval check');
-  }, 2000);
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('.nav-menu a[href="#testimonials"]');
+    if (link) {
+      setTimeout(forceReviewsWhenVisible, 300);
+      setTimeout(forceReviewsWhenVisible, 700);
+    }
+  }, true);
+
+  document.addEventListener('DOMContentLoaded', forceReviewsWhenVisible);
 })();
 </script>
 </body>
 </html>
+
 
 
 
