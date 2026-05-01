@@ -561,8 +561,45 @@ document.addEventListener('DOMContentLoaded', function () {
   setInterval(updateNav, 500);
 })();
 </script>
+<script id="nav-active-debug">
+(function () {
+  function logActiveNav(reason) {
+    var active = document.querySelector('.nav-menu a.active');
+    console.log('[NAV DEBUG]', reason, {
+      activeText: active ? active.textContent.trim() : 'NONE',
+      activeHref: active ? active.getAttribute('href') : 'NONE',
+      scrollY: window.scrollY,
+      testimonialsTop: document.getElementById('testimonials')?.getBoundingClientRect().top,
+      testimonialsBottom: document.getElementById('testimonials')?.getBoundingClientRect().bottom,
+      workTop: document.getElementById('work')?.getBoundingClientRect().top,
+      workBottom: document.getElementById('work')?.getBoundingClientRect().bottom
+    });
+  }
+
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('.nav-menu a');
+    if (link) {
+      setTimeout(function () {
+        logActiveNav('after nav click');
+      }, 100);
+    }
+  }, true);
+
+  window.addEventListener('scroll', function () {
+    clearTimeout(window.__navDebugTimer);
+    window.__navDebugTimer = setTimeout(function () {
+      logActiveNav('after scroll');
+    }, 120);
+  }, { passive: true });
+
+  setInterval(function () {
+    logActiveNav('interval check');
+  }, 2000);
+})();
+</script>
 </body>
 </html>
+
 
 
 
