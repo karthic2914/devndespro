@@ -437,73 +437,9 @@
   </noscript>
   <!-- trigger deploy 2026-04-25 -->
   <script type="module" src="/src/main.jsx"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const wrap = document.getElementById('reviews-scroll');
-  const prev = document.querySelector('.testi-prev');
-  const next = document.querySelector('.testi-next');
 
-  if (wrap && next) {
-    next.addEventListener('click', function () {
-      wrap.scrollBy({ left: 360, behavior: 'smooth' });
-    });
-  }
 
-  if (wrap && prev) {
-    prev.addEventListener('click', function () {
-      wrap.scrollBy({ left: -360, behavior: 'smooth' });
-    });
-  }
 
-  document.querySelectorAll('.nav-menu a[href^="#"]').forEach(function (link) {
-    link.addEventListener('click', function () {
-      document.querySelectorAll('.nav-menu a').forEach(function (a) {
-        a.classList.remove('active');
-      });
-      this.classList.add('active');
-    });
-  });
-});
-</script>
-
-<script id="review-scroll-nav-fix">
-(function () {
-  function ready(fn) {
-    if (document.readyState !== 'loading') fn();
-    else document.addEventListener('DOMContentLoaded', fn);
-  }
-
-  ready(function () {
-    var wrap = document.getElementById('reviews-scroll');
-
-    document.addEventListener('click', function (e) {
-      var next = e.target.closest('.testi-next');
-      var prev = e.target.closest('.testi-prev');
-
-      if (!wrap) wrap = document.getElementById('reviews-scroll');
-      if (!wrap) return;
-
-      if (next) {
-        e.preventDefault();
-        wrap.scrollLeft += 360;
-      }
-
-      if (prev) {
-        e.preventDefault();
-        wrap.scrollLeft -= 360;
-      }
-
-      var navLink = e.target.closest('.nav-menu a[href^="#"]');
-      if (navLink) {
-        document.querySelectorAll('.nav-menu a').forEach(function (a) {
-          a.classList.remove('active');
-        });
-        navLink.classList.add('active');
-      }
-    }, true);
-  });
-})();
-</script>
 
 
 
@@ -545,6 +481,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 </body>
 </html>
+
 
 
 
