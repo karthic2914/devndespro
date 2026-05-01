@@ -8,3 +8,4 @@ dist/
 Thumbs.db
 public/images/blog_1_UX_Design.html
 public/images/blog_1_UX_Design_files/
+echo "*backup*.html" >> .gitignore
