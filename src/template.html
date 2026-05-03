@@ -368,67 +368,46 @@
   </div>
 </section>
 
-<!-- ========================================================
-     PACKAGES SECTION
-     Drop this entire block between </section>
-     and PROCESS in your main HTML file.
-     No external dependencies — uses your existing CSS vars,
-     Font Awesome (already loaded), and your site's dark theme.
-======================================================== --> 
+<!-- PACKAGES INIT -->
+<script>
+window.pkgSetCur = function(k) {
+  var D = window.PKG_DATA;
+  if (!D) return;
+  window._pkgCur = k || 'nok';
+  var r = D[window._pkgCur];
+  var c = document.getElementById('pkg-cards');
+  var a = document.getElementById('pkg-addons');
+  if (!c || !a) return;
+  function ck(){ return '<span class="pkg-check"><i class="fa-solid fa-check" aria-hidden="true"></i></span>'; }
+  c.innerHTML = r.plans.map(function(p){
+    return '<div class="pkg-card'+(p.hot?' pkg-hot':'')+'">'+
+      (p.badge?'<div class="pkg-badge">'+p.badge+'</div>':'')+
+      '<div class="pkg-tag">'+p.tag+'</div>'+
+      '<div class="pkg-name">'+p.name+'</div>'+
+      (p.price?'<span class="pkg-price">'+r.sym+p.price+'<sub>'+p.per+'</sub></span>':'<span class="pkg-price-custom">Custom</span>')+
+      '<div class="pkg-alt">'+p.alt+'</div>'+
+      '<div class="pkg-desc">'+p.desc+'</div>'+
+      '<div class="pkg-chips"><span class="pkg-chip-host"><i class="fa-solid fa-globe"></i> Domain setup included</span><span class="pkg-chip-seo"><i class="fa-solid fa-chart-line"></i> SEO Tool FREE</span></div>'+
+      '<div class="pkg-feats-label">What\'s included</div>'+
+      '<ul class="pkg-feats">'+p.feats.map(function(f){return '<li>'+ck()+'<span>'+f+'</span></li>';}).join('')+'</ul>'+
+      '<div class="pkg-guar"><i class="fa-solid fa-shield-halved"></i><p>'+p.guar+'</p></div>'+
+      (p.ping?'<a href="#contact" class="pkg-cta pkg-cta-outline">Let\'s talk <i class="fa-solid fa-arrow-right"></i></a>':'<a href="#contact" class="pkg-cta pkg-cta-solid">Start a Project <i class="fa-solid fa-arrow-right"></i></a>')+
+      '</div>';
+  }).join('');
+  a.innerHTML = r.addons.map(function(x){return '<div class="pkg-addon"><strong>'+x.n+'</strong><span>'+x.p+'</span></div>';}).join('');
+};
 
-<!-- PACKAGES -->
-<section id="packages">
-  <div class="pkg-wrap">
+window.PKG_DATA = {
+  nok:{sym:'kr',plans:[{tag:'Growth',name:'Visibility',price:'13,900',per:'/mo',alt:'~$1,280 USD · ~€1,190',desc:'For small businesses ready to get found on Google, look professional, and turn visitors into real enquiries.',feats:['Up to 6-page website (React / Next.js)','Mobile-first UI/UX design','Domain setup & DNS management','Hosting on Vercel — fast & reliable','On-page SEO + content structure','2 blog posts per month','Monthly SEO report','3 months post-launch support'],guar:'Page 1 Google ranking in your city within 6 months — or we keep working for free until we get there.',hot:true,badge:'Most Popular'},{tag:'Pro',name:'Authority',price:null,per:'',alt:"Tell me your goals — I'll tailor a quote",desc:'For businesses wanting a full design system, national SEO reach, backlink building, and a dedicated monthly growth partner.',feats:['Everything in Visibility','Up to 12 pages + full blog system','Advanced design system & UI/UX','Technical SEO · Core Web Vitals · Schema markup','4 blog posts per month','Backlink building — 3 per month','Dedicated monthly strategy call','Priority Slack support channel'],guar:'35% growth in non-branded organic traffic within 90 days — or we work free.',ping:true}],addons:[{n:'Extra blog posts',p:'kr 2,200 / post'},{n:'Backlink building',p:'kr 5,900 / mo'},{n:'Extra pages',p:'kr 3,500 / page'}]},
+  eur:{sym:'€',plans:[{tag:'Growth',name:'Visibility',price:'1,190',per:'/mo',alt:'~$1,280 USD · ~kr 13,900',desc:'For small businesses ready to get found on Google, look professional, and turn visitors into real enquiries.',feats:['Up to 6-page website (React / Next.js)','Mobile-first UI/UX design','Domain setup & DNS management','Hosting on Vercel — fast & reliable','On-page SEO + content structure','2 blog posts per month','Monthly SEO report','3 months post-launch support'],guar:'Page 1 Google ranking in your city within 6 months — or we keep working for free until we get there.',hot:true,badge:'Most Popular'},{tag:'Pro',name:'Authority',price:null,per:'',alt:"Tell me your goals — I'll tailor a quote",desc:'For businesses wanting a full design system, national SEO reach, backlink building, and a dedicated monthly growth partner.',feats:['Everything in Visibility','Up to 12 pages + full blog system','Advanced design system & UI/UX','Technical SEO · Core Web Vitals · Schema markup','4 blog posts per month','Backlink building — 3 per month','Dedicated monthly strategy call','Priority Slack support channel'],guar:'35% growth in non-branded organic traffic within 90 days — or we work free.',ping:true}],addons:[{n:'Extra blog posts',p:'€200 / post'},{n:'Backlink building',p:'€540 / mo'},{n:'Extra pages',p:'€320 / page'}]},
+  usd:{sym:'$',plans:[{tag:'Growth',name:'Visibility',price:'1,280',per:'/mo',alt:'~€1,190 · ~kr 13,900',desc:'For small businesses ready to get found on Google, look professional, and turn visitors into real enquiries.',feats:['Up to 6-page website (React / Next.js)','Mobile-first UI/UX design','Domain setup & DNS management','Hosting on Vercel — fast & reliable','On-page SEO + content structure','2 blog posts per month','Monthly SEO report','3 months post-launch support'],guar:'Page 1 Google ranking in your city within 6 months — or we keep working for free until we get there.',hot:true,badge:'Most Popular'},{tag:'Pro',name:'Authority',price:null,per:'',alt:"Tell me your goals — I'll tailor a quote",desc:'For businesses wanting a full design system, national SEO reach, backlink building, and a dedicated monthly growth partner.',feats:['Everything in Visibility','Up to 12 pages + full blog system','Advanced design system & UI/UX','Technical SEO · Core Web Vitals · Schema markup','4 blog posts per month','Backlink building — 3 per month','Dedicated monthly strategy call','Priority Slack support channel'],guar:'35% growth in non-branded organic traffic within 90 days — or we work free.',ping:true}],addons:[{n:'Extra blog posts',p:'$210 / post'},{n:'Backlink building',p:'$560 / mo'},{n:'Extra pages',p:'$330 / page'}]},
+  ind:{sym:'$',plans:[{tag:'Growth',name:'Visibility',price:'520',per:'/mo',alt:'~₹43,000 per month',desc:'Global-standard website and SEO for Indian SMBs — a fraction of local agency pricing, delivered at international quality.',feats:['Up to 6-page website (React / Next.js)','Mobile-first UI/UX design','Domain setup & DNS management','Hosting on Vercel — fast & reliable','On-page SEO + content structure','2 blog posts per month','Monthly SEO report','3 months post-launch support'],guar:'Page 1 Google ranking in your city within 6 months — or we keep working for free until we get there.',hot:true,badge:'Most Popular'},{tag:'Pro',name:'Authority',price:null,per:'',alt:"Tell me your goals — I'll tailor a quote",desc:'For Indian businesses scaling nationally or internationally with full SEO, backlinks, and a dedicated growth partnership.',feats:['Everything in Visibility','Up to 12 pages + full blog system','Advanced design system & UI/UX','Technical SEO · Core Web Vitals · Schema markup','4 blog posts per month','Backlink building — 3 per month','Dedicated monthly strategy call','Priority Slack support channel'],guar:'35% growth in non-branded organic traffic within 90 days — or we work free.',ping:true}],addons:[{n:'Extra blog posts',p:'$75 / post'},{n:'Backlink building',p:'$195 / mo'},{n:'Extra pages',p:'$120 / page'}]}
+};
 
-    <!-- Header -->
-    <div class="rv">
-      <div class="s-label">Packages</div>
-      <h2 class="s-h">Built for small businesses.<br><em>Ready to grow.</em></h2>
-      <p class="pkg-intro">Website · Hosting setup · Domain management · SEO tool — one monthly package. No hidden fees, no surprises.</p>
-    </div>
-
-    <!-- Currency Selector -->
-    <div class="pkg-cur-row rv">
-      <span class="pkg-cur-label">Show prices in:</span>
-      <div class="pkg-select-wrap">
-        <select id="pkg-currency" class="pkg-select" onchange="pkgSetCur(this.value)" aria-label="Select currency">
-          <option value="nok">NOK — Norwegian Krone</option>
-          <option value="eur">EUR — Euro</option>
-          <option value="usd">USD — US Dollar</option>
-          <option value="ind">USD — India pricing</option>
-        </select>
-        <i class="fa-solid fa-chevron-down pkg-select-icon" aria-hidden="true"></i>
-      </div>
-    </div>
-
-    <!-- SEO Tool Banner -->
-    <div class="pkg-banner rv">
-      <div class="pkg-banner-icon">
-        <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
-      </div>
-      <div class="pkg-banner-text">
-        <strong>SEO Pro Tool access included free with every package — $1,500/yr value</strong>
-        <span>seo.devndespro.com &nbsp;·&nbsp; Site audits &nbsp;·&nbsp; Keyword tracking &nbsp;·&nbsp; Google Search Console &nbsp;·&nbsp; AI content insights</span>
-      </div>
-      <div class="pkg-banner-tag">FREE</div>
-    </div>
-
-    <!-- Cards Grid -->
-    <div class="pkg-grid" id="pkg-cards">
-      <!-- injected by JS -->
-    </div>
-
-    <!-- Add-ons -->
-    <div class="pkg-addons rv">
-      <p class="pkg-addons-label">Optional add-ons</p>
-      <div class="pkg-addons-grid" id="pkg-addons">
-        <!-- injected by JS -->
-      </div>
-    </div>
-
-  </div>
-</section>
-<!-- END PACKAGES -->
+window._pkgCur = 'nok';
+window.pkgSetCur('nok');
+</script>
+<!-- END PACKAGES INIT -->
 
 
 <!-- ===================== PACKAGES STYLES ===================== -->
