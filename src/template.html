@@ -1190,14 +1190,16 @@
     pkgRender();
   };
 
-  // init on DOM ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', pkgRender);
-  } else {
-    pkgRender();
-  }
+  // init — force after paint
+  setTimeout(pkgRender, 0);
 
 }());
+// fallback
+window.addEventListener('load', function() {
+  if (!document.getElementById('pkg-cards').innerHTML.trim()) {
+   window.pkgSetCur('nok');
+  }
+});
 </script>
 <!-- END PACKAGES SCRIPT -->
 
