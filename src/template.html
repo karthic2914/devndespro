@@ -405,7 +405,8 @@ window.PKG_DATA = {
 };
 
 window._pkgCur = 'nok';
-window.pkgSetCur('nok');
+document.addEventListener('DOMContentLoaded', function() { window.pkgSetCur('nok'); });
+window.addEventListener('load', function() { var el = document.getElementById('pkg-cards'); if (el && !el.innerHTML.trim()) window.pkgSetCur('nok'); });
 </script>
 <!-- END PACKAGES INIT -->
 <!-- PACKAGES -->
@@ -414,16 +415,16 @@ window.pkgSetCur('nok');
     <div class="rv">
       <div class="s-label">Packages</div>
       <h2 class="s-h">Built for small businesses.<br><em>Ready to grow.</em></h2>
-      <p class="pkg-intro">Website Â· Hosting setup Â· Domain management Â· SEO tool â€” one monthly package. No hidden fees, no surprises.</p>
+      <p class="pkg-intro">Website · Hosting setup · Domain management · SEO tool — one monthly package. No hidden fees, no surprises.</p>
     </div>
     <div class="pkg-cur-row rv">
       <span class="pkg-cur-label">Show prices in:</span>
       <div class="pkg-select-wrap">
         <select id="pkg-currency" class="pkg-select" onchange="window.pkgSetCur(this.value)" aria-label="Select currency">
-          <option value="nok">NOK â€” Norwegian Krone</option>
-          <option value="eur">EUR â€” Euro</option>
-          <option value="usd">USD â€” US Dollar</option>
-          <option value="ind">USD â€” India pricing</option>
+          <option value="nok">NOK — Norwegian Krone</option>
+          <option value="eur">EUR — Euro</option>
+          <option value="usd">USD — US Dollar</option>
+          <option value="ind">USD — India pricing</option>
         </select>
         <i class="fa-solid fa-chevron-down pkg-select-icon" aria-hidden="true"></i>
       </div>
@@ -431,7 +432,7 @@ window.pkgSetCur('nok');
     <div class="pkg-banner rv">
       <div class="pkg-banner-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
       <div class="pkg-banner-text">
-        <strong>SEO Pro Tool access included free with every package â€” $1,500/yr value</strong>
+        <strong>SEO Pro Tool access included free with every package — $1,500/yr value</strong>
         <span>seo.devndespro.com &nbsp;&#183;&nbsp; Site audits &nbsp;&#183;&nbsp; Keyword tracking &nbsp;&#183;&nbsp; Google Search Console &nbsp;&#183;&nbsp; AI content insights</span>
       </div>
       <div class="pkg-banner-tag">FREE</div>
