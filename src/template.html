@@ -1,4 +1,4 @@
-<!-- LOADER -->
+﻿<!-- LOADER -->
 <div id="loader">
   <div class="loader-logo">devndes<span>pro</span></div>
   <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
@@ -408,6 +408,42 @@ window._pkgCur = 'nok';
 window.pkgSetCur('nok');
 </script>
 <!-- END PACKAGES INIT -->
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="pkg-wrap">
+    <div class="rv">
+      <div class="s-label">Packages</div>
+      <h2 class="s-h">Built for small businesses.<br><em>Ready to grow.</em></h2>
+      <p class="pkg-intro">Website Â· Hosting setup Â· Domain management Â· SEO tool â€” one monthly package. No hidden fees, no surprises.</p>
+    </div>
+    <div class="pkg-cur-row rv">
+      <span class="pkg-cur-label">Show prices in:</span>
+      <div class="pkg-select-wrap">
+        <select id="pkg-currency" class="pkg-select" onchange="window.pkgSetCur(this.value)" aria-label="Select currency">
+          <option value="nok">NOK â€” Norwegian Krone</option>
+          <option value="eur">EUR â€” Euro</option>
+          <option value="usd">USD â€” US Dollar</option>
+          <option value="ind">USD â€” India pricing</option>
+        </select>
+        <i class="fa-solid fa-chevron-down pkg-select-icon" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="pkg-banner rv">
+      <div class="pkg-banner-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
+      <div class="pkg-banner-text">
+        <strong>SEO Pro Tool access included free with every package â€” $1,500/yr value</strong>
+        <span>seo.devndespro.com &nbsp;&#183;&nbsp; Site audits &nbsp;&#183;&nbsp; Keyword tracking &nbsp;&#183;&nbsp; Google Search Console &nbsp;&#183;&nbsp; AI content insights</span>
+      </div>
+      <div class="pkg-banner-tag">FREE</div>
+    </div>
+    <div class="pkg-grid" id="pkg-cards"></div>
+    <div class="pkg-addons rv">
+      <p class="pkg-addons-label">Optional add-ons</p>
+      <div class="pkg-addons-grid" id="pkg-addons"></div>
+    </div>
+  </div>
+</section>
+
 
 
 <!-- ===================== PACKAGES STYLES ===================== -->
