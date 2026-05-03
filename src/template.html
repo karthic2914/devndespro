@@ -152,7 +152,6 @@
     <strong>APAC</strong>
     <a href="https://www.designrush.com/agency/profile/devndespro" target="_blank" rel="noopener" class="trust-badge">DesignRush Verified</a>
   </div>
-</section>
 
 <!-- FREE AUDIT MODAL -->
 <div id="audit-modal" class="audit-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="audit-modal-title" style="display:none;">
@@ -368,48 +367,9 @@
   </div>
 </section>
 
-<!-- PACKAGES INIT -->
-<script>
-window.pkgSetCur = function(k) {
-  var D = window.PKG_DATA;
-  if (!D) return;
-  window._pkgCur = k || 'nok';
-  var r = D[window._pkgCur];
-  var c = document.getElementById('pkg-cards');
-  var a = document.getElementById('pkg-addons');
-  if (!c || !a) return;
-  function ck(){ return '<span class="pkg-check"><i class="fa-solid fa-check" aria-hidden="true"></i></span>'; }
-  c.innerHTML = r.plans.map(function(p){
-    return '<div class="pkg-card'+(p.hot?' pkg-hot':'')+'">'+
-      (p.badge?'<div class="pkg-badge">'+p.badge+'</div>':'')+
-      '<div class="pkg-tag">'+p.tag+'</div>'+
-      '<div class="pkg-name">'+p.name+'</div>'+
-      (p.price?'<span class="pkg-price">'+r.sym+p.price+'<sub>'+p.per+'</sub></span>':'<span class="pkg-price-custom">Custom</span>')+
-      '<div class="pkg-alt">'+p.alt+'</div>'+
-      '<div class="pkg-desc">'+p.desc+'</div>'+
-      '<div class="pkg-chips"><span class="pkg-chip-host"><i class="fa-solid fa-globe"></i> Domain setup included</span><span class="pkg-chip-seo"><i class="fa-solid fa-chart-line"></i> SEO Tool FREE</span></div>'+
-      '<div class="pkg-feats-label">What\'s included</div>'+
-      '<ul class="pkg-feats">'+p.feats.map(function(f){return '<li>'+ck()+'<span>'+f+'</span></li>';}).join('')+'</ul>'+
-      '<div class="pkg-guar"><i class="fa-solid fa-shield-halved"></i><p>'+p.guar+'</p></div>'+
-      (p.ping?'<a href="#contact" class="pkg-cta pkg-cta-outline">Let\'s talk <i class="fa-solid fa-arrow-right"></i></a>':'<a href="#contact" class="pkg-cta pkg-cta-solid">Start a Project <i class="fa-solid fa-arrow-right"></i></a>')+
-      '</div>';
-  }).join('');
-  a.innerHTML = r.addons.map(function(x){return '<div class="pkg-addon"><strong>'+x.n+'</strong><span>'+x.p+'</span></div>';}).join('');
-};
 
-window.PKG_DATA = {
-  nok:{sym:'kr',plans:[{tag:'Growth',name:'Visibility',price:'13,900',per:'/mo',alt:'~$1,280 USD · ~€1,190',desc:'For small businesses ready to get found on Google, look professional, and turn visitors into real enquiries.',feats:['Up to 6-page website (React / Next.js)','Mobile-first UI/UX design','Domain setup & DNS management','Hosting on Vercel — fast & reliable','On-page SEO + content structure','2 blog posts per month','Monthly SEO report','3 months post-launch support'],guar:'Page 1 Google ranking in your city within 6 months — or we keep working for free until we get there.',hot:true,badge:'Most Popular'},{tag:'Pro',name:'Authority',price:null,per:'',alt:"Tell me your goals — I'll tailor a quote",desc:'For businesses wanting a full design system, national SEO reach, backlink building, and a dedicated monthly growth partner.',feats:['Everything in Visibility','Up to 12 pages + full blog system','Advanced design system & UI/UX','Technical SEO · Core Web Vitals · Schema markup','4 blog posts per month','Backlink building — 3 per month','Dedicated monthly strategy call','Priority Slack support channel'],guar:'35% growth in non-branded organic traffic within 90 days — or we work free.',ping:true}],addons:[{n:'Extra blog posts',p:'kr 2,200 / post'},{n:'Backlink building',p:'kr 5,900 / mo'},{n:'Extra pages',p:'kr 3,500 / page'}]},
-  eur:{sym:'€',plans:[{tag:'Growth',name:'Visibility',price:'1,190',per:'/mo',alt:'~$1,280 USD · ~kr 13,900',desc:'For small businesses ready to get found on Google, look professional, and turn visitors into real enquiries.',feats:['Up to 6-page website (React / Next.js)','Mobile-first UI/UX design','Domain setup & DNS management','Hosting on Vercel — fast & reliable','On-page SEO + content structure','2 blog posts per month','Monthly SEO report','3 months post-launch support'],guar:'Page 1 Google ranking in your city within 6 months — or we keep working for free until we get there.',hot:true,badge:'Most Popular'},{tag:'Pro',name:'Authority',price:null,per:'',alt:"Tell me your goals — I'll tailor a quote",desc:'For businesses wanting a full design system, national SEO reach, backlink building, and a dedicated monthly growth partner.',feats:['Everything in Visibility','Up to 12 pages + full blog system','Advanced design system & UI/UX','Technical SEO · Core Web Vitals · Schema markup','4 blog posts per month','Backlink building — 3 per month','Dedicated monthly strategy call','Priority Slack support channel'],guar:'35% growth in non-branded organic traffic within 90 days — or we work free.',ping:true}],addons:[{n:'Extra blog posts',p:'€200 / post'},{n:'Backlink building',p:'€540 / mo'},{n:'Extra pages',p:'€320 / page'}]},
-  usd:{sym:'$',plans:[{tag:'Growth',name:'Visibility',price:'1,280',per:'/mo',alt:'~€1,190 · ~kr 13,900',desc:'For small businesses ready to get found on Google, look professional, and turn visitors into real enquiries.',feats:['Up to 6-page website (React / Next.js)','Mobile-first UI/UX design','Domain setup & DNS management','Hosting on Vercel — fast & reliable','On-page SEO + content structure','2 blog posts per month','Monthly SEO report','3 months post-launch support'],guar:'Page 1 Google ranking in your city within 6 months — or we keep working for free until we get there.',hot:true,badge:'Most Popular'},{tag:'Pro',name:'Authority',price:null,per:'',alt:"Tell me your goals — I'll tailor a quote",desc:'For businesses wanting a full design system, national SEO reach, backlink building, and a dedicated monthly growth partner.',feats:['Everything in Visibility','Up to 12 pages + full blog system','Advanced design system & UI/UX','Technical SEO · Core Web Vitals · Schema markup','4 blog posts per month','Backlink building — 3 per month','Dedicated monthly strategy call','Priority Slack support channel'],guar:'35% growth in non-branded organic traffic within 90 days — or we work free.',ping:true}],addons:[{n:'Extra blog posts',p:'$210 / post'},{n:'Backlink building',p:'$560 / mo'},{n:'Extra pages',p:'$330 / page'}]},
-  ind:{sym:'$',plans:[{tag:'Growth',name:'Visibility',price:'520',per:'/mo',alt:'~₹43,000 per month',desc:'Global-standard website and SEO for Indian SMBs — a fraction of local agency pricing, delivered at international quality.',feats:['Up to 6-page website (React / Next.js)','Mobile-first UI/UX design','Domain setup & DNS management','Hosting on Vercel — fast & reliable','On-page SEO + content structure','2 blog posts per month','Monthly SEO report','3 months post-launch support'],guar:'Page 1 Google ranking in your city within 6 months — or we keep working for free until we get there.',hot:true,badge:'Most Popular'},{tag:'Pro',name:'Authority',price:null,per:'',alt:"Tell me your goals — I'll tailor a quote",desc:'For Indian businesses scaling nationally or internationally with full SEO, backlinks, and a dedicated growth partnership.',feats:['Everything in Visibility','Up to 12 pages + full blog system','Advanced design system & UI/UX','Technical SEO · Core Web Vitals · Schema markup','4 blog posts per month','Backlink building — 3 per month','Dedicated monthly strategy call','Priority Slack support channel'],guar:'35% growth in non-branded organic traffic within 90 days — or we work free.',ping:true}],addons:[{n:'Extra blog posts',p:'$75 / post'},{n:'Backlink building',p:'$195 / mo'},{n:'Extra pages',p:'$120 / page'}]}
-};
-
-window._pkgCur = 'nok';
-document.addEventListener('DOMContentLoaded', function() { window.pkgSetCur('nok'); });
-window.addEventListener('load', function() { var el = document.getElementById('pkg-cards'); if (el && !el.innerHTML.trim()) window.pkgSetCur('nok'); });
-</script>
-<!-- END PACKAGES INIT -->
 <!-- PACKAGES -->
+
 <section id="packages">
   <div class="pkg-wrap">
     <div class="rv">
@@ -444,6 +404,921 @@ window.addEventListener('load', function() { var el = document.getElementById('p
     </div>
   </div>
 </section>
+<!-- PACKAGES INIT -->
+<script>
+window.pkgSetCur = function(k) {
+  var D = window.PKG_DATA;
+  if (!D) return;
+  window._pkgCur = k || 'nok';
+  var r = D[window._pkgCur];
+  var c = document.getElementById('pkg-cards');
+  var a = document.getElementById('pkg-addons');
+  if (!c || !a || !r) return;
+  function ck(){ return '<span class="pkg-check"><i class="fa-solid fa-check" aria-hidden="true"></i></span>'; }
+  c.innerHTML = r.plans.map(function(p){
+    return '<div class="pkg-card'+(p.hot?' pkg-hot':'')+'">'+
+      (p.badge?'<div class="pkg-badge">'+p.badge+'</div>':'')+
+      '<div class="pkg-tag">'+p.tag+'</div>'+
+      '<div class="pkg-name">'+p.name+'</div>'+
+      (p.price?'<span class="pkg-price">'+r.sym+p.price+'<sub>'+p.per+'</sub></span>':'<span class="pkg-price-custom">Custom</span>')+
+      '<div class="pkg-alt">'+p.alt+'</div>'+
+      '<div class="pkg-desc">'+p.desc+'</div>'+
+      '<div class="pkg-chips"><span class="pkg-chip-host"><i class="fa-solid fa-globe"></i> Domain setup included</span><span class="pkg-chip-seo"><i class="fa-solid fa-chart-line"></i> SEO Tool FREE</span></div>'+
+      '<div class="pkg-feats-label">What\'s included</div>'+
+      '<ul class="pkg-feats">'+p.feats.map(function(f){return '<li>'+ck()+'<span>'+f+'</span></li>';}).join('')+'</ul>'+
+      '<div class="pkg-guar"><i class="fa-solid fa-shield-halved"></i><p>'+p.guar+'</p></div>'+
+      (p.ping?'<a href="#contact" class="pkg-cta pkg-cta-outline">Let\'s talk <i class="fa-solid fa-arrow-right"></i></a>':'<a href="#contact" class="pkg-cta pkg-cta-solid">Start a Project <i class="fa-solid fa-arrow-right"></i></a>')+
+      '</div>';
+  }).join('');
+  a.innerHTML = r.addons.map(function(x){
+    return '<div class="pkg-addon"><strong>'+x.n+'</strong><span>'+x.p+'</span></div>';
+  }).join('');
+};
+window.PKG_DATA = {
+  nok:{sym:'kr',plans:[{tag:'Growth',name:'Visibility',price:'13,900',per:'/mo',alt:'~$1,280 USD · ~€1,190',desc:'For small businesses ready to get found on Google, look professional, and turn visitors into real enquiries.',feats:['Up to 6-page website (React / Next.js)','Mobile-first UI/UX design','Domain setup & DNS management','Hosting on Vercel - fast & reliable','On-page SEO + content structure','2 blog posts per month','Monthly SEO report','3 months post-launch support'],guar:'Page 1 Google ranking in your city within 6 months - or we keep working for free until we get there.',hot:true,badge:'Most Popular'},{tag:'Pro',name:'Authority',price:null,per:'',alt:"Tell me your goals - I'll tailor a quote",desc:'For businesses wanting a full design system, national SEO reach, backlink building, and a dedicated monthly growth partner.',feats:['Everything in Visibility','Up to 12 pages + full blog system','Advanced design system & UI/UX','Technical SEO · Core Web Vitals · Schema markup','4 blog posts per month','Backlink building - 3 per month','Dedicated monthly strategy call','Priority Slack support channel'],guar:'35% growth in non-branded organic traffic within 90 days - or we work free.',ping:true}],addons:[{n:'Extra blog posts',p:'kr 2,200 / post'},{n:'Backlink building',p:'kr 5,900 / mo'},{n:'Extra pages',p:'kr 3,500 / page'}]},
+  eur:{sym:'€',plans:[{tag:'Growth',name:'Visibility',price:'1,190',per:'/mo',alt:'~$1,280 USD · ~kr 13,900',desc:'For small businesses ready to get found on Google, look professional, and turn visitors into real enquiries.',feats:['Up to 6-page website (React / Next.js)','Mobile-first UI/UX design','Domain setup & DNS management','Hosting on Vercel - fast & reliable','On-page SEO + content structure','2 blog posts per month','Monthly SEO report','3 months post-launch support'],guar:'Page 1 Google ranking in your city within 6 months - or we keep working for free until we get there.',hot:true,badge:'Most Popular'},{tag:'Pro',name:'Authority',price:null,per:'',alt:"Tell me your goals - I'll tailor a quote",desc:'For businesses wanting a full design system, national SEO reach, backlink building, and a dedicated monthly growth partner.',feats:['Everything in Visibility','Up to 12 pages + full blog system','Advanced design system & UI/UX','Technical SEO · Core Web Vitals · Schema markup','4 blog posts per month','Backlink building - 3 per month','Dedicated monthly strategy call','Priority Slack support channel'],guar:'35% growth in non-branded organic traffic within 90 days - or we work free.',ping:true}],addons:[{n:'Extra blog posts',p:'€200 / post'},{n:'Backlink building',p:'€540 / mo'},{n:'Extra pages',p:'€320 / page'}]},
+  usd:{sym:'$',plans:[{tag:'Growth',name:'Visibility',price:'1,280',per:'/mo',alt:'~€1,190 · ~kr 13,900',desc:'For small businesses ready to get found on Google, look professional, and turn visitors into real enquiries.',feats:['Up to 6-page website (React / Next.js)','Mobile-first UI/UX design','Domain setup & DNS management','Hosting on Vercel - fast & reliable','On-page SEO + content structure','2 blog posts per month','Monthly SEO report','3 months post-launch support'],guar:'Page 1 Google ranking in your city within 6 months - or we keep working for free until we get there.',hot:true,badge:'Most Popular'},{tag:'Pro',name:'Authority',price:null,per:'',alt:"Tell me your goals - I'll tailor a quote",desc:'For businesses wanting a full design system, national SEO reach, backlink building, and a dedicated monthly growth partner.',feats:['Everything in Visibility','Up to 12 pages + full blog system','Advanced design system & UI/UX','Technical SEO · Core Web Vitals · Schema markup','4 blog posts per month','Backlink building - 3 per month','Dedicated monthly strategy call','Priority Slack support channel'],guar:'35% growth in non-branded organic traffic within 90 days - or we work free.',ping:true}],addons:[{n:'Extra blog posts',p:'$210 / post'},{n:'Backlink building',p:'$560 / mo'},{n:'Extra pages',p:'$330 / page'}]},
+  ind:{sym:'$',plans:[{tag:'Growth',name:'Visibility',price:'520',per:'/mo',alt:'~₹43,000 per month',desc:'Global-standard website and SEO for Indian SMBs - a fraction of local agency pricing, delivered at international quality.',feats:['Up to 6-page website (React / Next.js)','Mobile-first UI/UX design','Domain setup & DNS management','Hosting on Vercel - fast & reliable','On-page SEO + content structure','2 blog posts per month','Monthly SEO report','3 months post-launch support'],guar:'Page 1 Google ranking in your city within 6 months - or we keep working for free until we get there.',hot:true,badge:'Most Popular'},{tag:'Pro',name:'Authority',price:null,per:'',alt:"Tell me your goals - I'll tailor a quote",desc:'For Indian businesses scaling nationally or internationally with full SEO, backlinks, and a dedicated growth partnership.',feats:['Everything in Visibility','Up to 12 pages + full blog system','Advanced design system & UI/UX','Technical SEO · Core Web Vitals · Schema markup','4 blog posts per month','Backlink building - 3 per month','Dedicated monthly strategy call','Priority Slack support channel'],guar:'35% growth in non-branded organic traffic within 90 days - or we work free.',ping:true}],addons:[{n:'Extra blog posts',p:'$75 / post'},{n:'Backlink building',p:'$195 / mo'},{n:'Extra pages',p:'$120 / page'}]}
+};
+window._pkgCur = 'nok';
+document.addEventListener('DOMContentLoaded', function() { window.pkgSetCur('nok'); });
+window.addEventListener('load', function() {
+  var el = document.getElementById('pkg-cards');
+  if (el && !el.innerHTML.trim()) window.pkgSetCur('nok');
+});
+</script>
+<!-- END PACKAGES INIT -->
+
+<!-- FREE AUDIT MODAL SCRIPT -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  var overlay      = document.getElementById('audit-modal');
+  var openBtn      = document.getElementById('free-audit-btn');
+  var closeBtn     = document.getElementById('audit-modal-close');
+  var doneBtn      = document.getElementById('audit-done-close');
+  var submitBtn    = document.getElementById('audit-submit');
+  var stepForm     = document.getElementById('audit-step-form');
+  var stepLoading  = document.getElementById('audit-step-loading');
+  var stepDone     = document.getElementById('audit-step-done');
+  var errorEl      = document.getElementById('audit-error');
+  var progressBar  = document.getElementById('audit-progress-bar');
+  var scorePreview = document.getElementById('audit-score-preview');
+
+  if (!overlay) return;
+
+  var PAGE_LOAD_TIME = Date.now();
+  var scrollTriggered = false;
+  var triggerTimeout  = null;
+
+  function openModal() {
+    if (!overlay || overlay.dataset.dismissed === 'true') return;
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    var nameInput = document.getElementById('audit-name');
+    if (nameInput) setTimeout(function() { nameInput.focus(); }, 100);
+  }
+
+  function closeModal() {
+    overlay.dataset.dismissed = 'true';
+    overlay.style.display = 'none';
+    document.body.style.overflow = '';
+    resetSteps();
+    clearFields();
+  }
+
+  function resetSteps() {
+    if (stepForm)    stepForm.hidden    = false;
+    if (stepLoading) stepLoading.hidden = true;
+    if (stepDone)    stepDone.hidden    = true;
+    if (errorEl)     errorEl.hidden     = true;
+    if (progressBar) progressBar.style.width = '0%';
+  }
+
+  function clearFields() {
+    ['audit-name', 'audit-email', 'audit-url'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+  }
+
+  function handleAuditScroll() {
+    if (scrollTriggered) return;
+    var pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (pageHeight <= 0) return;
+    var scrollPercent = window.scrollY / pageHeight;
+    var timeOnPage    = Date.now() - PAGE_LOAD_TIME;
+    if (scrollPercent > 0.15 && timeOnPage > 2000) {
+      scrollTriggered = true;
+      window.removeEventListener('scroll', handleAuditScroll);
+      triggerTimeout = setTimeout(openModal, 700);
+    }
+  }
+
+  if (openBtn) {
+    openBtn.addEventListener('click', function () {
+      overlay.dataset.dismissed = 'false';
+      clearTimeout(triggerTimeout);
+      resetSteps();
+      openModal();
+    });
+  }
+
+  window.addEventListener('scroll', handleAuditScroll, { passive: true });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (doneBtn)  doneBtn.addEventListener('click',  closeModal);
+
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.style.display !== 'none') closeModal();
+  });
+
+  if (submitBtn) {
+    submitBtn.addEventListener('click', async function () {
+      var name     = document.getElementById('audit-name').value.trim();
+      var email    = document.getElementById('audit-email').value.trim();
+      var url      = document.getElementById('audit-url').value.trim();
+      var honeypot = document.getElementById('audit-honeypot').value;
+
+      errorEl.hidden = true;
+
+      if (!name || !email || !url) {
+        errorEl.textContent = 'Please fill in all fields.';
+        errorEl.hidden = false;
+        return;
+      }
+
+      var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!EMAIL_RE.test(email)) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.hidden = false;
+        return;
+      }
+
+      var urlToSend = url;
+      if (!/^https?:\/\//i.test(urlToSend)) {
+        urlToSend = 'https://' + urlToSend;
+      }
+
+      stepForm.hidden    = true;
+      stepLoading.hidden = false;
+
+      var pct = 0;
+      var interval = setInterval(function() {
+        pct = Math.min(pct + Math.random() * 8, 88);
+        progressBar.style.width = pct + '%';
+      }, 400);
+
+      try {
+
+        var res = await fetch('https://devndespro-production.up.railway.app/api/free-audit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: name, email: email, url: urlToSend, honeypot: honeypot }),
+        });
+
+        clearInterval(interval);
+        progressBar.style.width = '100%';
+
+        var data = await res.json();
+
+        var score    = data.score    || 0;
+        var critical = data.critical || 0;
+        var warnings = data.warnings || 0;
+        var color    = score >= 80 ? '#16A34A' : score >= 60 ? '#D97706' : '#DC2626';
+
+        var ctaText = score >= 80
+          ? 'Your site looks healthy! Want to stay ahead of competitors?'
+          : score >= 60
+          ? 'Some issues found. Want us to fix them for you?'
+          : 'Critical issues detected. Let us help you fix them fast.';
+
+        var ctaBtnText = score >= 80
+          ? 'Book a Free Growth Call'
+          : 'Get a Free Fix Plan';
+
+        if (!res.ok || !data.ok) {
+          if (scorePreview) {
+            scorePreview.innerHTML +=
+              '<div style="margin-top:20px;padding:16px;background:rgba(255,107,43,0.1);border:1px solid rgba(255,107,43,0.3);border-radius:10px;text-align:center;">' +
+                '<p style="font-size:0.88rem;color:#ccc;margin-bottom:12px;">' + ctaText + '</p>' +
+                '<a href="https://api.whatsapp.com/send?phone=4740975201" target="_blank" style="display:block;background:#FF6B2B;color:#fff;padding:0.7rem 1rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">' + ctaBtnText + ' \u2192</a>' +
+              '</div>';
+          }
+          stepLoading.hidden = true;
+          stepDone.hidden    = false;
+          if (errorEl) {
+            errorEl.textContent = data.error || 'Something went wrong. Please try again.';
+            errorEl.hidden = false;
+          }
+          return;
+        }
+
+        scorePreview.innerHTML =
+          '<div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:16px 0;">' +
+            '<div style="text-align:center;"><div style="font-size:2.5rem;font-weight:800;color:' + color + ';">' + score + '</div><div style="font-size:12px;color:#9CA3AF;margin-top:4px;">Health Score</div></div>' +
+            '<div style="text-align:center;"><div style="font-size:2.5rem;font-weight:800;color:#DC2626;">' + critical + '</div><div style="font-size:12px;color:#9CA3AF;margin-top:4px;">Critical</div></div>' +
+            '<div style="text-align:center;"><div style="font-size:2.5rem;font-weight:800;color:#D97706;">' + warnings + '</div><div style="font-size:12px;color:#9CA3AF;margin-top:4px;">Warnings</div></div>' +
+          '</div>' +
+          '<div style="margin-top:20px;padding:16px;background:rgba(255,107,43,0.1);border:1px solid rgba(255,107,43,0.3);border-radius:10px;text-align:center;">' +
+            '<p style="font-size:0.88rem;color:#ccc;margin-bottom:12px;">' + ctaText + '</p>' +
+            '<a href="https://api.whatsapp.com/send?phone=4740975201" target="_blank" style="display:block;background:#FF6B2B;color:#fff;padding:0.7rem 1rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">' + ctaBtnText + ' \u2192</a>' +
+          '</div>';
+
+        stepLoading.hidden = true;
+        stepDone.hidden    = false;
+
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', { currency: 'NOK', value: 1000 });
+        }
+
+      } catch (err) {
+        clearInterval(interval);
+        stepLoading.hidden = true;
+        stepForm.hidden    = false;
+        errorEl.textContent = 'Network error. Please try again.';
+        errorEl.hidden = false;
+      }
+    });
+  }
+
+}); // end DOMContentLoaded
+</script>
+
+<!-- CUSTOM CURSOR SCRIPT -->
+<script>
+document.addEventListener('mousemove', function (e) {
+  const cur  = document.getElementById('cur');
+  const curR = document.getElementById('cur-r');
+  if (cur)  cur.style.transform  = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+  if (curR) curR.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+});
+</script>
+
+<!-- GA4 CONTACT FORM LEAD TRACKING -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var contactForm = document.querySelector('.c-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function () {
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', { currency: 'NOK', value: 1500 });
+      }
+    });
+  }
+});
+</script>
+
+<style>
+  /* ── Hero Trust Strip ───────────────────────────────── */
+  .hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1.2rem 2rem 2.5rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin-top: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .hero-trust strong { color: rgba(255,255,255,0.7); font-weight: 500; }
+  .trust-badge {
+    margin-left: auto;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid rgba(255,107,43,0.4);
+    border-radius: 20px;
+    color: #FF6B2B;
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .trust-badge:hover { background: rgba(255,107,43,0.1); border-color: #FF6B2B; }
+  @media (max-width: 767px) {
+    .hero-trust { gap: 0.6rem; }
+    .trust-badge { margin-left: 0; }
+  }
+
+  /* ── Custom Cursor ──────────────────────────────────── */
+  #cur, #cur-r {
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+  }
+  #cur { width: 8px; height: 8px; background: #FF6B2B; border-radius: 50%; }
+  #cur-r { width: 36px; height: 36px; border: 1px solid rgba(255,107,43,0.6); border-radius: 50%; transition: transform 0.08s ease-out; }
+
+  /* ── Audit Button ───────────────────────────────────── */
+  .btn-audit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.4rem;
+    border: 1px solid rgba(255,107,43,0.5);
+    border-radius: 8px;
+    background: rgba(255,107,43,0.1);
+    color: #FF6B2B;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    font-family: inherit;
+  }
+  .btn-audit:hover { background: rgba(255,107,43,0.2); border-color: #FF6B2B; color: #fff; }
+
+  /* ── Audit Modal Overlay ────────────────────────────── */
+  .audit-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.78);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: auditFadeIn 0.25s ease;
+  }
+  @keyframes auditFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* ── Audit Modal Card ───────────────────────────────── */
+  .audit-modal {
+    background: #1a1727;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+    animation: auditSlideUp 0.3s ease;
+  }
+  @keyframes auditSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .audit-modal-close {
+    position: absolute; top: 1rem; right: 1rem;
+    background: rgba(255,255,255,0.08); border: none; color: #fff;
+    width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+    font-size: 1rem; display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .audit-modal-close:hover { background: rgba(255,255,255,0.18); }
+  .audit-modal-icon { font-size: 2.5rem; color: #FF6B2B; margin-bottom: 1rem; }
+  .audit-spin { display: inline-block; animation: auditSpin 1s linear infinite; }
+  @keyframes auditSpin { to { transform: rotate(360deg); } }
+  .audit-modal-title { font-size: 1.4rem; font-weight: 700; color: #fff; margin: 0 0 0.5rem; line-height: 1.3; }
+  .audit-modal-sub { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.6; margin: 0 0 1.5rem; }
+  .audit-form { text-align: left; }
+  .audit-field { margin-bottom: 1rem; }
+  .audit-label { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-bottom: 0.35rem; font-weight: 500; }
+  .audit-input {
+    width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px; padding: 0.65rem 0.9rem; color: #fff; font-size: 0.9rem;
+    font-family: inherit; box-sizing: border-box; transition: border-color 0.2s, background 0.2s; outline: none;
+  }
+  .audit-input:focus { border-color: #FF6B2B; background: rgba(255,107,43,0.05); }
+  .audit-input::placeholder { color: rgba(255,255,255,0.3); }
+  .audit-error { color: #F87171; font-size: 0.84rem; margin: 0.5rem 0; text-align: center; background: rgba(248,113,113,0.1); border-radius: 6px; padding: 0.5rem; }
+  .audit-submit {
+    width: 100%; background: #FF6B2B; color: #fff; border: none; border-radius: 8px;
+    padding: 0.85rem; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 0.5rem;
+    font-family: inherit; transition: background 0.2s, transform 0.15s; letter-spacing: 0.02em;
+  }
+  .audit-submit:hover { background: #e55a1f; transform: translateY(-1px); }
+  .audit-submit:active { transform: translateY(0); }
+  .audit-progress { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; margin-top: 1.5rem; overflow: hidden; }
+  .audit-progress-bar { height: 100%; background: linear-gradient(90deg, #FF6B2B, #ffaa80); border-radius: 3px; width: 0%; transition: width 0.4s ease; }
+  .audit-score-preview { margin: 1rem 0; }
+  @media (max-width: 480px) { .audit-modal { padding: 2rem 1.25rem; } .audit-modal-title { font-size: 1.2rem; } }
+
+  /* ── Work Cards ─────────────────────────────────────── */
+  .wcard--img .wcard-bg { display: none !important; height: 0 !important; min-height: 0 !important; }
+  .wcard--img { display: flex; flex-direction: column; padding: 0 !important; justify-content: flex-start !important; }
+  .wcard-img-wrap { position: relative; width: 100%; height: 360px; overflow: hidden; border-radius: 8px 8px 0 0; flex-shrink: 0; }
+  .wcard--img .wcard-info { flex: 1; padding: 1.2rem !important; margin-top: 0 !important; }
+  .wcard-img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.5s ease; }
+  .wcard--img:hover .wcard-img { transform: scale(1.05); }
+  .wcard-img-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%); transition: opacity 0.3s ease; }
+  .wcard--img:hover .wcard-img-overlay { opacity: 0.7; }
+  .wcard-visit {
+    position: absolute; top: 14px; right: 14px; width: 36px; height: 36px;
+    background: rgba(255,107,43,0.9); color: #fff; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
+    text-decoration: none; opacity: 0; transform: translateY(-4px);
+    transition: opacity 0.3s ease, transform 0.3s ease; z-index: 2;
+  }
+  .wcard--img:hover .wcard-visit { opacity: 1; transform: translateY(0); }
+  @media (hover: none) { .wcard-visit { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 767px) {
+    .wcard-img-wrap { height: 130px; }
+    .wcard-visit { opacity: 1; transform: translateY(0); }
+    .wcard--img .wcard-info { padding: 0.8rem !important; }
+  }
+
+  /* ── Work CTA ───────────────────────────────────────── */
+  .work-cta {
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    margin-top: 3rem; padding: 2rem 2.5rem;
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; background: rgba(255,255,255,0.03);
+  }
+  .work-cta-text { font-size: 1.1rem; opacity: 0.8; max-width: 480px; margin: 0; }
+  @media (max-width: 767px) { .work-cta { flex-direction: column; text-align: center; padding: 1.5rem; } .work-cta-text { max-width: 100%; } }
+
+  /* ── Form ───────────────────────────────────────────── */
+  .f-req { color: #FF6B2B; margin-left: 3px; font-size: 0.95em; transition: opacity 0.3s ease; }
+  .f-req.hidden { opacity: 0; pointer-events: none; }
+  @keyframes onAutoFillStart { from {} to {} }
+  input:-webkit-autofill { animation-name: onAutoFillStart; animation-duration: 0.001s; }
+
+  /* ── FAQ / Insights / Blog ──────────────────────────── */
+  #faq, #insights, #blog { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+  .blog-intro { margin-top: 1rem; max-width: 840px; font-size: 0.96rem; line-height: 1.8; opacity: 0.82; }
+  .blog-grid { margin-top: 2.4rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .blog-card {
+    position: relative; border-radius: 14px; border: 1px solid rgba(255,255,255,0.1);
+    background: radial-gradient(circle at top right, rgba(230,106,57,0.18), rgba(230,106,57,0) 38%), rgba(255,255,255,0.02);
+    padding: 1.3rem; min-height: 250px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 0.65rem;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .blog-card:hover { transform: translateY(-2px); border-color: rgba(230,106,57,0.45); }
+  .blog-meta { margin: 0; font-size: 0.74rem; letter-spacing: 0.09em; text-transform: uppercase; color: #f0b7a0; }
+  .blog-title { margin: 0; font-size: 1.06rem; line-height: 1.4; color: #fff; }
+  .blog-desc { margin: 0; font-size: 0.9rem; line-height: 1.7; color: #d2d2c6; }
+  .blog-link {
+    display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #fff;
+    font-size: 0.86rem; border: 1px solid rgba(255,255,255,0.16); border-radius: 8px;
+    padding: 0.55rem 0.72rem; width: fit-content; transition: border-color 0.25s ease, background 0.25s ease;
+  }
+  .blog-link:hover { border-color: rgba(230,106,57,0.55); background: rgba(230,106,57,0.12); }
+  .faq-intro { margin-top: 1rem; max-width: 900px; font-size: 0.96rem; line-height: 1.8; opacity: 0.82; }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+  .faq-item { padding: 2rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; background: rgba(255,255,255,0.02); transition: border-color 0.3s ease; }
+  .faq-item:hover { border-color: rgba(230,106,57,0.3); }
+  .faq-q { font-size: 1rem; font-weight: 600; color: #fff; margin: 0 0 0.75rem 0; line-height: 1.4; }
+  .faq-a { font-size: 0.92rem; opacity: 0.7; line-height: 1.7; margin: 0; }
+
+  /* ── SEO Links ──────────────────────────────────────── */
+ /* ── SEO Links ──────────────────────────────────────── */
+.seo-links {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem 4.5rem;
+}
+
+.seo-links-wrap {
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 18px;
+  padding: 2rem;
+  background:
+    radial-gradient(circle at top right, rgba(255,107,43,0.12), transparent 35%),
+    rgba(255,255,255,0.025);
+}
+
+.seo-links-kicker {
+  display: inline-block;
+  color: #FF6B2B;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
+.seo-links-title {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  line-height: 1.15;
+  color: #fff;
+}
+
+.seo-links-note {
+  margin: 0.75rem 0 0;
+  max-width: 760px;
+  opacity: 0.72;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.seo-groups {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.seo-group {
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 14px;
+  padding: 1rem;
+  background: rgba(255,255,255,0.025);
+}
+
+.seo-group h3 {
+  margin: 0 0 0.8rem;
+  color: #FF6B2B;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.seo-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.seo-group li {
+  margin: 0;
+}
+
+.seo-group a {
+  display: block;
+  padding: 0.45rem 0;
+  color: rgba(255,255,255,0.72);
+  text-decoration: none;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  border-bottom: 1px solid rgba(255,255,255,0.055);
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.seo-group li:last-child a {
+  border-bottom: none;
+}
+
+.seo-group a:hover {
+  color: #fff;
+  padding-left: 5px;
+}
+
+@media (max-width: 1100px) {
+  .seo-groups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .seo-links {
+    padding: 3rem 1.25rem;
+  }
+
+  .seo-links-wrap {
+    padding: 1.25rem;
+  }
+
+  .seo-groups {
+    grid-template-columns: 1fr;
+  }
+}
+
+  /* ── Mobile ─────────────────────────────────────────── */
+  @media (max-width: 767px) {
+    .faq-grid { grid-template-columns: 1fr; }
+    #faq, #insights, #blog { padding: 4rem 1.25rem; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .seo-links { padding: 1rem 1.25rem 2rem; }
+    .seo-links-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── Nav Mega Menu ──────────────────────────────────── */
+  .nav-dropdown { position: relative; }
+  .nav-submenu {
+    display: none;
+    position: fixed;
+    top: 68px;
+    /* left: calc(50vw - 460px); */
+    width: 920px;
+    max-width: 94vw;
+    background: #1a1a22;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 0;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.7);
+    z-index: 9999;
+    list-style: none;
+    margin: 0;
+    animation: megaFadeIn 0.18s ease;
+  }
+  @keyframes megaFadeIn {
+    from { opacity: 0; top: 62px; }
+    to   { opacity: 1; top: 68px; }
+  }
+  .nav-dropdown.open .nav-submenu { display: block; }
+  .nav-mega {
+    display: grid;
+   /*  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 0; */
+    padding: 1.4rem 0.4rem;
+    list-style: none;
+    margin: 0;
+  }
+  .nav-mega-col {
+    /* padding: 0 1.2rem; */
+    border-right: 1px solid rgba(255,255,255,0.07);
+  }
+  .nav-mega-col:last-child { border-right: none; }
+  .nav-mega-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #FF6B2B;
+    margin: 0 0 0.8rem 0;
+    padding: 0;
+    white-space: nowrap;
+  }
+  .nav-mega-col a {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    padding: 0.28rem 0;
+    text-transform: uppercase;
+    transition: color 0.15s ease, padding-left 0.15s ease;
+    line-height: 1.35;
+    border-bottom: none;
+  }
+  .nav-mega-col a:hover {
+    color: #FF6B2B;
+    padding-left: 5px;
+  }
+
+  @media (max-width: 960px) {
+    .nav-submenu { width: 96vw; top: 64px; }
+    .nav-mega { grid-template-columns: 1fr 1fr; }
+    .nav-mega-col:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.07); }
+    .nav-mega-col:nth-child(even) { border-right: none; }
+    .nav-mega-col { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 1rem; }
+    .nav-mega-col a { white-space: normal; }
+  }
+  @media (max-width: 767px) {
+    .nav-submenu {
+      position: static;
+      transform: none;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: none;
+      border: 1px solid rgba(255,255,255,0.08);
+      animation: none;
+      display: none;
+    }
+    .nav-dropdown.open .nav-submenu { display: block; }
+    .nav-mega { grid-template-columns: 1fr; padding: 0.6rem; }
+    .nav-mega-col { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 0.7rem 0.4rem; }
+    .nav-mega-col:last-child { border-bottom: none; }
+    .nav-mega-col a { white-space: normal; font-size: 0.78rem; }
+  }
+
+  /* ── Testimonials ───────────────────────────────────── */
+#testimonials {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.testi-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1.5rem;
+}
+.testi-card {
+  padding: 2rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.testi-card:hover {
+  border-color: rgba(255,107,43,0.35);
+  transform: translateY(-3px);
+}
+.testi-stars {
+  color: #FF6B2B;
+  font-size: 0.85rem;
+  display: flex;
+  gap: 3px;
+}
+.testi-quote {
+  font-size: 0.93rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.72);
+  margin: 0;
+  flex: 1;
+}
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.testi-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,107,43,0.15);
+  border: 1px solid rgba(255,107,43,0.3);
+  color: #FF6B2B;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+.testi-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #fff;
+  padding: 4px;
+  flex-shrink: 0;
+}
+.testi-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #fff;
+}
+.testi-src {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.testi-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+}
+.testi-footer .fa-google { color: #FF6B2B; font-size: 1.1rem; }
+.testi-footer strong { color: #fff; }
+.testi-more {
+  margin-left: auto;
+  color: #FF6B2B;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: gap 0.2s ease;
+}
+.testi-more:hover { gap: 0.7rem; }
+@media (max-width: 900px) {
+  .testi-grid,
+  .testi-grid--2 { grid-template-columns: 1fr; }
+  #testimonials { padding: 4rem 1.25rem; }
+  .testi-footer { flex-wrap: wrap; }
+  .testi-more { margin-left: 0; }
+}
+.testi-g-avatar-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #1a1727;
+  padding: 4px;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(255,107,43,0.4);
+}
+  /* -- Testimonials New ------------------------------------- */
+  #testimonials { padding: 6rem 0 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+  #testimonials .rv { padding-right: 2rem; }
+  .testi-rating-bar { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; padding: 1.25rem 1.5rem; border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; background: rgba(255,255,255,0.02); width: fit-content; }
+  .testi-rating-score { font-size: 2.8rem; font-weight: 700; color: #fff; line-height: 1; }
+  .testi-rating-stars { color: #FF6B2B; font-size: 1rem; display: flex; gap: 3px; margin-bottom: 4px; }
+  .testi-rating-meta { font-size: 0.82rem; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 0.5rem; }
+  .testi-g-badge { display: inline-flex; align-items: center; gap: 0.3rem; color: #FF6B2B; font-weight: 600; }
+  .testi-scroll-wrap { overflow-x: auto; overflow-y: visible; margin-top: 2.5rem; padding-bottom: 1rem; scrollbar-width: none; -ms-overflow-style: none; cursor: grab; width: 100%; display: block; }
+  .testi-scroll-wrap:active { cursor: grabbing; }
+  .testi-scroll-wrap::-webkit-scrollbar { display: none; }
+  .testi-scroll { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; gap: 1rem; width: max-content; padding-right: 2rem; }
+  .testi-card-g { width: 320px; flex-shrink: 0; background: #2a2733; border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; transition: border-color 0.3s ease, transform 0.3s ease; }
+  .testi-card-g:hover { border-color: rgba(255,107,43,0.35); transform: translateY(-3px); }
+  .testi-card-g-top { display: flex; align-items: center; gap: 0.75rem; }
+  .testi-g-avatar { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,107,43,0.2); border: 1.5px solid rgba(255,107,43,0.4); color: #FF6B2B; font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; letter-spacing: 0.05em; }
+  .testi-g-avatar-img { width: 42px; height: 42px; border-radius: 50%; object-fit: contain; background: #1a1727; padding: 4px; flex-shrink: 0; border: 1.5px solid rgba(255,107,43,0.4); }
+  .testi-g-name { font-size: 0.9rem; font-weight: 600; color: #fff; line-height: 1.2; }
+  .testi-g-stars { color: #FF6B2B; font-size: 0.72rem; display: flex; gap: 2px; margin-top: 3px; }
+  .testi-g-logo { margin-left: auto; font-size: 1.1rem; color: rgba(255,255,255,0.2); flex-shrink: 0; }
+  .testi-g-quote { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.72); margin: 0; flex: 1; }
+  .testi-g-when { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: auto; }
+  .testi-footer { display: flex; align-items: center; gap: 0.75rem; margin-top: 2rem; margin-right: 2rem; padding: 1.25rem 1.5rem; border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; background: rgba(255,255,255,0.02); font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+  .testi-footer .fa-google { color: #FF6B2B; font-size: 1.1rem; }
+  .testi-footer strong { color: #fff; }
+  .testi-more { margin-left: auto; color: #FF6B2B; text-decoration: none; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; transition: gap 0.2s ease; }
+  .testi-more:hover { gap: 0.7rem; }
+  @media (max-width: 767px) {
+    #testimonials { padding: 4rem 0 4rem 1.25rem; }
+    #testimonials .rv { padding-right: 1.25rem; }
+    .testi-card-g { width: 280px; }
+    .testi-footer { margin-right: 1.25rem; flex-wrap: wrap; }
+    .testi-more { margin-left: 0; }
+    .testi-rating-bar { width: auto; }
+  }
+  .testi-nav { display: flex; gap: 0.5rem; margin-top: 2rem; padding-right: 2rem; justify-content: flex-start; }
+  .testi-prev, .testi-next { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,107,43,0.4); background: rgba(255,107,43,0.1); color: #FF6B2B; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: background 0.2s, border-color 0.2s; }
+  .testi-prev:hover, .testi-next:hover { background: #FF6B2B; color: #fff; border-color: #FF6B2B; }
+  .testi-scroll-wrap {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  width: 100% !important;
+  scroll-behavior: smooth;
+}
+
+.testi-scroll {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 1rem;
+  width: max-content !important;
+}
+
+.testi-card-g {
+  flex: 0 0 320px !important;
+  width: 320px !important;
+  min-width: 320px !important;
+}
+</style>
+
+<script>
+function initTestiScroll() {
+  var wrap = document.querySelector('.testi-scroll-wrap');
+  var prev = document.querySelector('.testi-prev');
+  var next = document.querySelector('.testi-next');
+
+  if (!wrap) return;
+
+  if (next) {
+    next.addEventListener('click', function () {
+      wrap.scrollBy({ left: 336, behavior: 'smooth' });
+    });
+  }
+
+  if (prev) {
+    prev.addEventListener('click', function () {
+      wrap.scrollBy({ left: -336, behavior: 'smooth' });
+    });
+  }
+
+  var isDown = false, startX, scrollLeft;
+
+  wrap.addEventListener('mousedown', function (e) {
+    isDown = true;
+    startX = e.pageX - wrap.offsetLeft;
+    scrollLeft = wrap.scrollLeft;
+  });
+
+  wrap.addEventListener('mouseleave', function () {
+    isDown = false;
+  });
+
+  wrap.addEventListener('mouseup', function () {
+    isDown = false;
+  });
+
+  wrap.addEventListener('mousemove', function (e) {
+    if (!isDown) return;
+    e.preventDefault();
+    var x = e.pageX - wrap.offsetLeft;
+    wrap.scrollLeft = scrollLeft - (x - startX);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initTestiScroll);
+</script>,plans:[{tag:'Growth',name:'Visibility',price:'1,280',per:'/mo',alt:'~€1,190 · ~kr 13,900',desc:'For small businesses ready to get found on Google, look professional, and turn visitors into real enquiries.',feats:['Up to 6-page website (React / Next.js)','Mobile-first UI/UX design','Domain setup & DNS management','Hosting on Vercel — fast & reliable','On-page SEO + content structure','2 blog posts per month','Monthly SEO report','3 months post-launch support'],guar:'Page 1 Google ranking in your city within 6 months — or we keep working for free until we get there.',hot:true,badge:'Most Popular'},{tag:'Pro',name:'Authority',price:null,per:'',alt:"Tell me your goals — I'll tailor a quote",desc:'For businesses wanting a full design system, national SEO reach, backlink building, and a dedicated monthly growth partner.',feats:['Everything in Visibility','Up to 12 pages + full blog system','Advanced design system & UI/UX','Technical SEO · Core Web Vitals · Schema markup','4 blog posts per month','Backlink building — 3 per month','Dedicated monthly strategy call','Priority Slack support channel'],guar:'35% growth in non-branded organic traffic within 90 days — or we work free.',ping:true}],addons:[{n:'Extra blog posts',p:'$210 / post'},{n:'Backlink building',p:'$560 / mo'},{n:'Extra pages',p:'$330 / page'}]},
+  ind:{sym:'
 
 
 
