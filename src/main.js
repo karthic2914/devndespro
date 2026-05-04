@@ -268,3 +268,87 @@ document.addEventListener('DOMContentLoaded', initTestiScroll);
 fetch('https://devndespro-production.up.railway.app/api/track-view', {
   method: 'POST'
 });
+
+// SCROLLSPY DEBUG
+window.addEventListener("scroll", function () {
+  console.clear();
+  console.log("---- SCROLL DEBUG ----");
+  console.log("scrollY:", Math.round(window.scrollY));
+
+  document.querySelectorAll(".nav-menu a[href^='#']").forEach(function (link) {
+    const id = link.getAttribute("href");
+    const section = document.querySelector(id);
+
+    if (!section) {
+      console.log(id, "SECTION NOT FOUND");
+      return;
+    }
+
+    const rect = section.getBoundingClientRect();
+
+    console.log({
+      link: id,
+      top: Math.round(rect.top),
+      bottom: Math.round(rect.bottom),
+      active: link.classList.contains("active")
+    });
+  });
+});
+
+// SIMPLE NAV ACTIVE: click + hover only
+window.addEventListener("DOMContentLoaded", function () {
+  const navLinks = document.querySelectorAll(".nav-menu a");
+
+  navLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+      navLinks.forEach(a => a.classList.remove("active"));
+      link.classList.add("active");
+      console.log("CLICK ACTIVE:", link.textContent.trim(), link.getAttribute("href"));
+    });
+
+    link.addEventListener("mouseenter", function () {
+      console.log("HOVER:", link.textContent.trim(), link.getAttribute("href"));
+    });
+  });
+});
+
+// PACKAGE CURRENCY FIX
+function initPackageCurrency() {
+  const select = document.getElementById("pkgCurrency");
+  const prices = document.querySelectorAll(".pkg-price");
+
+  if (!select || prices.length === 0) return;
+
+  const symbols = {
+    NOK: "kr",
+    USD: "$",
+    EUR: "€",
+    INR: "?"
+  };
+
+  function formatPrice(value) {
+    return Number(value).toLocaleString("en-US");
+  }
+
+  function updateCurrency(currency) {
+    prices.forEach(function (price) {
+      const value = price.dataset[currency.toLowerCase()];
+      const currencyEl = price.querySelector(".pkg-currency");
+      const amountEl = price.querySelector(".pkg-amount");
+
+      if (!value || !currencyEl || !amountEl) return;
+
+      currencyEl.textContent = symbols[currency] || currency;
+      amountEl.textContent = formatPrice(value);
+    });
+  }
+
+  select.addEventListener("change", function () {
+    updateCurrency(this.value);
+  });
+
+  updateCurrency(select.value || "NOK");
+}
+
+window.addEventListener("load", initPackageCurrency);
+setTimeout(initPackageCurrency, 500);
