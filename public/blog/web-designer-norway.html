@@ -39,12 +39,113 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
+<!-- SITE NAV (injected) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:'Jost',sans-serif;background:#2C2C36;color:#fff;overflow-x:hidden}
+#snav{position:fixed;top:0;left:0;right:0;z-index:9000;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:72px;background:rgba(44,44,54,0.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.07);transition:background .3s}
+#snav.scrolled{background:rgba(22,22,30,0.98)}
+.sn-logo{display:flex;align-items:center;text-decoration:none}
+.sn-logo img{height:40px;width:auto;display:block}
+.sn-right{display:flex;align-items:center;gap:1.5rem}
+.sn-lang{display:flex;gap:4px}
+.sn-lang a{background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);border-radius:6px;padding:4px 10px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:all .2s}
+.sn-lang a:hover,.sn-lang a.active{background:#FF6B2B;color:#fff;border-color:#FF6B2B}
+.sn-menu{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:.15rem}
+.sn-menu a{display:block;padding:.45rem .7rem;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;transition:color .2s;white-space:nowrap}
+.sn-menu a:hover{color:#FF6B2B}
+.sn-cta{background:#FF6B2B;color:#fff;border-radius:8px;padding:.6rem 1.1rem;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background .2s,transform .15s}
+.sn-cta:hover{background:#e55a1f;transform:translateY(-1px)}
+.sn-toggle{display:none;background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;width:38px;height:38px;border-radius:8px;align-items:center;justify-content:center;cursor:pointer;font-size:1rem}
+.sn-drop{position:relative}
+.sn-sub{display:none;position:fixed;top:72px;width:860px;max-width:94vw;background:#1a1a22;border:1px solid rgba(255,255,255,0.12);border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.7);z-index:9999;list-style:none;margin:0;padding:0}
+.sn-drop.open .sn-sub{display:block}
+.sn-mega{display:grid;grid-template-columns:repeat(4,1fr);padding:1.2rem .5rem;gap:0}
+.sn-col{padding:0 1rem;border-right:1px solid rgba(255,255,255,0.07)}
+.sn-col:last-child{border-right:none}
+.sn-col-title{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FF6B2B;margin:0 0 .7rem}
+.sn-col a{display:block;font-size:.7rem;font-weight:500;color:rgba(255,255,255,0.6);text-decoration:none;padding:.25rem 0;text-transform:uppercase;transition:color .15s,padding-left .15s;border-bottom:none}
+.sn-col a:hover{color:#FF6B2B;padding-left:4px}
+.blog-body{padding-top:80px}
+@media(max-width:767px){
+  .sn-toggle{display:flex}
+  .sn-right{position:fixed;top:72px;left:0;right:0;bottom:0;flex-direction:column;align-items:flex-start;justify-content:flex-start;background:#1a1a22;padding:2rem 1.5rem;gap:1.5rem;transform:translateX(-100%);transition:transform .3s;z-index:8999;overflow-y:auto}
+  #snav.open .sn-right{transform:translateX(0)}
+  .sn-menu{flex-direction:column;align-items:flex-start;width:100%;gap:0}
+  .sn-menu a{font-size:1rem;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,0.07);width:100%}
+  .sn-cta{width:100%;text-align:center;padding:1rem}
+  .sn-sub{display:none!important}
+}
+</style>
+<nav id="snav">
+  <a href="/" class="sn-logo">
+    <img src="/images/DDDP_logo_mark.webp" alt="devndespro" width="1280" height="655" decoding="async">
+  </a>
+  <button class="sn-toggle" type="button" aria-label="Toggle menu" onclick="var n=document.getElementById('snav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o);this.innerHTML=o?'<i class=\'fa-solid fa-xmark\'></i>':'<i class=\'fa-solid fa-bars\'></i>';document.body.style.overflow=o?'hidden':'';"><i class="fa-solid fa-bars"></i></button>
+  <div class="sn-right">
+    <div class="sn-lang">
+      <a href="/" class="active">EN</a>
+      <a href="/?lang=no">NO</a>
+    </div>
+    <ul class="sn-menu">
+      <li class="sn-drop">
+        <a href="/#services">Services</a>
+        <ul class="sn-sub"><li class="sn-mega">
+          <div class="sn-col"><p class="sn-col-title">Norway</p>
+            <a href="/seo/web-design-company-norway.html">Web Design Norway</a>
+            <a href="/seo/web-utvikler-norge.html">Web Utvikler Norge</a>
+            <a href="/seo/website-builder-stavanger.html">Web Design Stavanger</a>
+            <a href="/seo/web-development-oslo.html">Web Development Oslo</a>
+            <a href="/seo/web-development-bergen.html">Web Development Bergen</a>
+            <a href="/seo/seo-services-norway.html">SEO Services Norway</a>
+            <a href="/seo/freelance-web-developer-norway.html">Freelance Dev Norway</a>
+            <a href="/seo/ux-ui-designer-norway.html">UX UI Designer Norway</a>
+          </div>
+          <div class="sn-col"><p class="sn-col-title">Europe</p>
+            <a href="/seo/web-design-europe.html">Web Design Europe</a>
+            <a href="/seo/web-development-europe.html">Web Dev Europe</a>
+            <a href="/seo/mobile-app-development-europe.html">Mobile App Europe</a>
+            <a href="/seo/full-stack-development-norway.html">Full Stack EU</a>
+          </div>
+          <div class="sn-col"><p class="sn-col-title">Global</p>
+            <a href="/seo/web-design-agency-usa.html">Web Design USA</a>
+            <a href="/seo/hire-web-developer-usa.html">Hire Dev USA</a>
+            <a href="/seo/web-design-company-india.html">Web Design India</a>
+            <a href="/seo/seo-agency-india.html">SEO Agency India</a>
+          </div>
+          <div class="sn-col"><p class="sn-col-title">Engineering</p>
+            <a href="/seo/full-stack-development-norway.html">Full Stack Norway</a>
+            <a href="/seo/devops-services-norway.html">DevOps Norway</a>
+            <a href="/seo/web-application-development-norway.html">Web App Norway</a>
+            <a href="/seo/mobile-app-development.html">Mobile App Dev</a>
+          </div>
+        </li></ul>
+      </li>
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#skills-section">Skills</a></li>
+      <li><a href="/#testimonials">Reviews</a></li>
+      <li><a href="/#packages">Packages</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a href="/#contact" class="sn-cta">Get Free Quote</a>
+  </div>
+</nav>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('snav').classList.toggle('scrolled',window.scrollY>60);});
+document.querySelectorAll('.sn-drop').forEach(function(d){var t;d.addEventListener('mouseenter',function(){clearTimeout(t);document.querySelectorAll('.sn-drop').forEach(function(x){if(x!==d)x.classList.remove('open');});d.classList.add('open');});d.addEventListener('mouseleave',function(){t=setTimeout(function(){d.classList.remove('open');},180);});var s=d.querySelector('.sn-sub');if(s){s.addEventListener('mouseenter',function(){clearTimeout(t);});s.addEventListener('mouseleave',function(){t=setTimeout(function(){d.classList.remove('open');},180);});}document.addEventListener('click',function(e){if(!d.contains(e.target))d.classList.remove('open');});});
+</script>
+<!-- END SITE NAV (injected) -->
   <main class="wrap">
     <div class="top">
-      <a href="/">Back to Home</a>
-      <a href="/blog/">More Articles</a>
+      
+      
     </div>
-    <p class="meta">Web Design Â· Strategy</p>
+    <p class="meta">Web Design · Strategy</p>
     <h1>What Makes a Great Web Designer in Norway</h1>
     <figure class="hero-figure">
       <img src="/images/ui-ux-design-principles-2.png" alt="Web design workflow and design principles">
