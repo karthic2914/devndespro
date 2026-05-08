@@ -39,9 +39,216 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
+<!-- ===================== SITE NAV (injected) ===================== -->
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* â”€â”€ Reset only what the blog page needs â”€â”€ */
+  body { margin: 0; font-family: 'Jost', sans-serif; background: #2C2C36; color: #fff; overflow-x: hidden; }
+
+  /* â”€â”€ Nav core (copied from main site) â”€â”€ */
+  #nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 72px;
+    background: rgba(44,44,54,0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    transition: background 0.3s ease;
+  }
+  #nav.s { background: rgba(28,28,36,0.98); }
+  .logo { display: flex; align-items: center; text-decoration: none; }
+  .logo-img { height: 40px; width: auto; display: block; }
+  .nav-r { display: flex; align-items: center; gap: 1.5rem; }
+  .lang-switch { display: flex; gap: 4px; }
+  .lang-btn {
+    background: transparent; border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.5); border-radius: 6px;
+    padding: 4px 10px; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.1em; cursor: pointer; transition: all 0.2s;
+  }
+  .lang-btn.active, .lang-btn:hover { background: #FF6B2B; color: #fff; border-color: #FF6B2B; }
+  .nav-menu { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 0.25rem; }
+  .nav-menu li { position: relative; }
+  .nav-menu a {
+    display: block; padding: 0.45rem 0.75rem;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: rgba(255,255,255,0.7);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-menu a:hover, .nav-menu a.active { color: #FF6B2B; }
+  .nav-cta {
+    background: #FF6B2B; color: #fff; border-radius: 8px;
+    padding: 0.6rem 1.2rem; font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: #e55a1f; transform: translateY(-1px); color: #fff; }
+  .nav-toggle { display: none; }
+
+  /* â”€â”€ Nav mega dropdown â”€â”€ */
+  .nav-dropdown { position: relative; }
+  .nav-submenu {
+    display: none; position: fixed; top: 72px;
+    width: 920px; max-width: 94vw;
+    background: #1a1a22; border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px; padding: 0;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.7);
+    z-index: 9999; list-style: none; margin: 0;
+  }
+  .nav-dropdown.open .nav-submenu { display: block; }
+  .nav-mega {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 0; padding: 1.4rem 0.4rem; list-style: none; margin: 0;
+  }
+  .nav-mega-col {
+    padding: 0 1.2rem;
+    border-right: 1px solid rgba(255,255,255,0.07);
+  }
+  .nav-mega-col:last-child { border-right: none; }
+  .nav-mega-title {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: #FF6B2B; margin: 0 0 0.8rem;
+  }
+  .nav-mega-col a {
+    display: block; font-size: 0.72rem; font-weight: 500;
+    color: rgba(255,255,255,0.65); text-decoration: none;
+    padding: 0.28rem 0; text-transform: uppercase;
+    transition: color 0.15s, padding-left 0.15s; border-bottom: none;
+  }
+  .nav-mega-col a:hover { color: #FF6B2B; padding-left: 5px; }
+
+  /* â”€â”€ Blog page body offset (nav is fixed) â”€â”€ */
+  .blog-page-body { padding-top: 72px; }
+
+  /* â”€â”€ Mobile nav â”€â”€ */
+  .nav-toggle {
+    display: none; background: transparent; border: 1px solid rgba(255,255,255,0.2);
+    color: #fff; width: 38px; height: 38px; border-radius: 8px;
+    align-items: center; justify-content: center; cursor: pointer; font-size: 1rem;
+  }
+  @media (max-width: 767px) {
+    .nav-toggle { display: flex; }
+    .nav-r { position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+      flex-direction: column; align-items: flex-start; justify-content: flex-start;
+      background: #1a1a22; padding: 2rem 1.5rem; gap: 1.5rem;
+      transform: translateX(-100%); transition: transform 0.3s ease; z-index: 8999; overflow-y: auto;
+    }
+    #nav.open .nav-r { transform: translateX(0); }
+    .nav-menu { flex-direction: column; align-items: flex-start; width: 100%; gap: 0; }
+    .nav-menu a { font-size: 1rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); width: 100%; }
+    .nav-cta { width: 100%; text-align: center; padding: 1rem; font-size: 0.9rem; }
+    .nav-submenu { display: none !important; }
+  }
+</style>
+
+<nav id="nav">
+  <a href="/" class="logo">
+    <img src="/images/DDDP_logo_mark.webp" alt="devndespro logo" class="logo-img" width="1280" height="655" decoding="async" fetchpriority="high">
+  </a>
+  <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" onclick="
+    var nav = document.getElementById('nav');
+    var open = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', open);
+    this.innerHTML = open
+      ? '<i class=\'fa-solid fa-xmark\'></i>'
+      : '<i class=\'fa-solid fa-bars\'></i>';
+    document.body.style.overflow = open ? 'hidden' : '';
+  ">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+  </button>
+  <div class="nav-r">
+    <div class="lang-switch" aria-label="Language switcher">
+      <button type="button" class="lang-btn" data-lang="en" onclick="window.location.href='/'">EN</button>
+      <button type="button" class="lang-btn active" data-lang="no" onclick="window.location.href='/?lang=no'">NO</button>
+    </div>
+    <ul class="nav-menu">
+      <li class="nav-dropdown">
+        <a href="/#services">Services</a>
+        <ul class="nav-submenu">
+          <li class="nav-mega">
+            <div class="nav-mega-col">
+              <p class="nav-mega-title">Norway</p>
+              <a href="/seo/web-design-company-norway.html">Web Design Norway</a>
+              <a href="/seo/web-utvikler-norge.html">Web Utvikler Norge</a>
+              <a href="/seo/website-builder-stavanger.html">Web Design Stavanger</a>
+              <a href="/seo/web-development-oslo.html">Web Development Oslo</a>
+              <a href="/seo/web-development-bergen.html">Web Development Bergen</a>
+              <a href="/seo/seo-services-norway.html">SEO Services Norway</a>
+              <a href="/seo/freelance-web-developer-norway.html">Freelance Web Developer Norway</a>
+              <a href="/seo/ux-ui-designer-norway.html">UX UI Designer Norway</a>
+            </div>
+            <div class="nav-mega-col">
+              <p class="nav-mega-title">Europe</p>
+              <a href="/seo/web-design-europe.html">Web Design Europe</a>
+              <a href="/seo/web-development-europe.html">Web Development Europe</a>
+              <a href="/seo/full-stack-development-norway.html">Full Stack EU</a>
+              <a href="/seo/mobile-app-development-europe.html">Mobile App Europe</a>
+            </div>
+            <div class="nav-mega-col">
+              <p class="nav-mega-title">Global</p>
+              <a href="/seo/web-design-agency-usa.html">Web Design USA</a>
+              <a href="/seo/hire-web-developer-usa.html">Hire Web Dev USA</a>
+              <a href="/seo/web-design-company-india.html">Web Design India</a>
+              <a href="/seo/seo-agency-india.html">SEO Agency India</a>
+            </div>
+            <div class="nav-mega-col">
+              <p class="nav-mega-title">Engineering</p>
+              <a href="/seo/full-stack-development-norway.html">Full Stack Norway</a>
+              <a href="/seo/devops-services-norway.html">DevOps Norway</a>
+              <a href="/seo/web-application-development-norway.html">Web App Norway</a>
+              <a href="/seo/mobile-app-development.html">Mobile App Dev</a>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#skills-section">Skills</a></li>
+      <li><a href="/#testimonials">Reviews</a></li>
+      <li><a href="/#packages">Packages</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Get Free Quote</a>
+  </div>
+</nav>
+
+<script>
+  // Sticky nav shadow on scroll
+  window.addEventListener('scroll', function () {
+    document.getElementById('nav').classList.toggle('s', window.scrollY > 60);
+  });
+
+  // Mega menu hover (desktop)
+  document.querySelectorAll('.nav-dropdown').forEach(function (dd) {
+    var timer;
+    dd.addEventListener('mouseenter', function () {
+      clearTimeout(timer);
+      document.querySelectorAll('.nav-dropdown').forEach(function (d) { if (d !== dd) d.classList.remove('open'); });
+      dd.classList.add('open');
+    });
+    dd.addEventListener('mouseleave', function () {
+      timer = setTimeout(function () { dd.classList.remove('open'); }, 180);
+    });
+    var sub = dd.querySelector('.nav-submenu');
+    if (sub) {
+      sub.addEventListener('mouseenter', function () { clearTimeout(timer); });
+      sub.addEventListener('mouseleave', function () { timer = setTimeout(function () { dd.classList.remove('open'); }, 180); });
+    }
+    document.addEventListener('click', function (e) {
+      if (!dd.contains(e.target)) dd.classList.remove('open');
+    });
+  });
+</script>
+<!-- ============================================================ -->
   <main class="wrap">
     <div class="top">
-      <a href="/">Back to Home</a>
+      
       <a href="/blog/">More Articles</a>
     </div>
     <p class="meta">Web Development Â· Technology</p>
