@@ -158,7 +158,7 @@ function App() {
         workLabel: 'Selected Work',
         workHeading: 'Projects that<br><em>moved the needle</em>',
         workHint: 'Drag to explore <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>',
-        workCats: ['Education Â· WordPress Â· Chennai, India', 'SaaS Â· RFP Platform Â· Norway', 'SaaS Â· RFP Platform Â· Global'],
+        workCats: ['Education · WordPress · Chennai, India', 'SaaS · RFP Platform · Norway', 'SaaS · RFP Platform · Global'],
         workDescs: [
           'Full website design and development for a leading MSME-certified software training institute in Chennai. Built for enquiry conversion and course discovery - serving 18,000+ students annually.',
           'AI-powered RFP and proposal management platform for Energy & IT sectors. Full UI/UX design and frontend - helping teams win contracts faster with built-in compliance tooling.',
@@ -222,7 +222,7 @@ function App() {
         blogLabel: 'Insights Blog',
         blogHeading: 'Read what<br><em>actually drives growth</em>',
         blogIntro: 'Practical notes from real delivery work on UX, frontend architecture, and conversion-first web strategy for modern brands.',
-        blogMeta: ['UX/UI Â· Strategy', 'Performance Â· Frontend', 'SEO Â· Content'],
+        blogMeta: ['UX/UI · Strategy', 'Performance · Frontend', 'SEO · Content'],
         blogTitles: [
           'UI, UX, and product clarity: where teams lose conversions',
           'Core Web Vitals for founders: what matters and what does not',
@@ -238,7 +238,7 @@ function App() {
         contactLabels: ['Email', 'Location', 'WhatsApp', 'Status', 'Response'],
         seoLinksTitle: 'Local Service Pages',
         seoLinksNote: 'Explore dedicated pages for each service area and location focus.',
-        footerCopy: 'Â© 2026 devndespro Â· HQ: Stavanger, Norway Â· Delivery Hub: Chennai, India Â· Serving Europe, USA & APAC'
+        footerCopy: 'Â© 2026 devndespro · HQ: Stavanger, Norway · Delivery Hub: Chennai, India · Serving Europe, USA & APAC'
       },
       no: {
         servicesLabel: 'Hva Vi Leverer',
@@ -259,7 +259,7 @@ function App() {
         workLabel: 'Utvalgte Prosjekter',
         workHeading: 'Prosjekter som<br><em>ga tydelig effekt</em>',
         workHint: 'Dra for Ã¥ utforske <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>',
-        workCats: ['Utdanning Â· WordPress Â· Chennai, India', 'SaaS Â· RFP-plattform Â· Norge', 'SaaS Â· RFP-plattform Â· Globalt'],
+        workCats: ['Utdanning · WordPress · Chennai, India', 'SaaS · RFP-plattform · Norge', 'SaaS · RFP-plattform · Globalt'],
         workDescs: [
           'Komplett nettsteddesign og utvikling for et ledende MSME-sertifisert programvareinstitutt i Chennai. Bygget for flere henvendelser og enklere kursoppdagelse - over 18 000 studenter i Ã¥ret.',
           'AI-drevet RFP- og tilbudsplattform for energi- og IT-sektoren. Full UI/UX-design og frontend - hjelper team Ã¥ vinne kontrakter raskere med innebygd etterlevelse.',
@@ -323,7 +323,7 @@ function App() {
         blogLabel: 'Innsiktsblogg',
         blogHeading: 'Les hva som<br><em>faktisk skaper vekst</em>',
         blogIntro: 'Praktiske notater fra ekte leveranser om UX, frontend-arkitektur og konverteringsfokusert webstrategi.',
-        blogMeta: ['UX/UI Â· Strategi', 'Ytelse Â· Frontend', 'SEO Â· Innhold'],
+        blogMeta: ['UX/UI · Strategi', 'Ytelse · Frontend', 'SEO · Innhold'],
         blogTitles: [
           'UI, UX og produktklarhet: hvor team mister konverteringer',
           'Core Web Vitals for ledere: hva som betyr noe i praksis',
@@ -339,7 +339,7 @@ function App() {
         contactLabels: ['E-post', 'Lokasjon', 'WhatsApp', 'Status', 'Respons'],
         seoLinksTitle: 'Lokale tjenestesider',
         seoLinksNote: 'Utforsk dedikerte sider for hvert tjenesteomrÃ¥de og lokasjonsfokus.',
-        footerCopy: 'Â© 2026 devndespro Â· Hovedkontor: Stavanger, Norge Â· Leveransehub: Chennai, India Â· Betjener Europa, USA og APAC'
+        footerCopy: 'Â© 2026 devndespro · Hovedkontor: Stavanger, Norge · Leveransehub: Chennai, India · Betjener Europa, USA og APAC'
       }
     };
 
@@ -417,6 +417,8 @@ function App() {
     const sectionScrollAnchors = {
       '#services': '#services .svc-top',
       '#work': '#work .work-head',
+      '#packages': '#packages .pkg-wrap',
+      '#testimonials': '#testimonials .rv',
       '#process': '#process > .rv',
       '#skills-section': '#skills-section .about-r',
       '#blog': '#blog .rv',
@@ -523,6 +525,138 @@ function App() {
       setText('#seo-links .seo-links-title', section.seoLinksTitle);
       setText('#seo-links .seo-links-note', section.seoLinksNote);
       setText('footer .f-copy', section.footerCopy);
+      // ── Packages section translation ──────────────────────────
+      var isNo = activeLang === 'no';
+      var pkgSection = document.getElementById('packages');
+      if (pkgSection) {
+        // Section label + heading + intro
+        var pkgLabel = pkgSection.querySelector('.s-label');
+        var pkgHeading = pkgSection.querySelector('.s-h');
+        var pkgIntro = pkgSection.querySelector('.pkg-intro');
+        if (pkgLabel) pkgLabel.textContent = isNo ? 'Pakker' : 'Packages';
+        if (pkgHeading) pkgHeading.innerHTML = isNo ? 'Bygget for sm\u00e5 bedrifter.<br><em>Klar for vekst.</em>' : 'Built for small businesses.<br><em>Ready to grow.</em>';
+        if (pkgIntro) pkgIntro.textContent = isNo ? 'Nettsted \u00b7 Hosting \u00b7 Domene \u00b7 SEO-verkt\u00f8y \u2014 \u00e9n tydelig m\u00e5nedspakke. Ingen skjulte kostnader, ingen overraskelser. Pris tilpasset ditt marked \u2014 ta kontakt for tilbud.' : 'Website \u00b7 Hosting setup \u00b7 Domain management \u00b7 SEO tool \u2014 one clear monthly package. No hidden fees, no surprises. Pricing tailored to your market \u2014 enquire to get a quote.';
+
+        // Card tags
+        var tags = pkgSection.querySelectorAll('.pkg-tag-static');
+        var tagNo = ['Vekst', 'Pro'];
+        var tagEn = ['Growth', 'Pro'];
+        tags.forEach(function(el, i) { el.textContent = isNo ? tagNo[i] : tagEn[i]; });
+
+        // Card names
+        var names = pkgSection.querySelectorAll('.pkg-name-static');
+        var nameNo = ['Synlighet', 'Autoritet'];
+        var nameEn = ['Visibility', 'Authority'];
+        names.forEach(function(el, i) { el.textContent = isNo ? nameNo[i] : nameEn[i]; });
+
+        // Card descriptions
+        var descs = pkgSection.querySelectorAll('.pkg-desc-static');
+        var descNo = [
+          'For sm\u00e5 bedrifter som vil bli funnet p\u00e5 Google, se profesjonelle ut og gj\u00f8re bes\u00f8kende til reelle henvendelser.',
+          'For bedrifter som \u00f8nsker et fullstendig designsystem, nasjonal SEO-rekkevidde, lenkebygging og en dedikert m\u00e5nedlig vekstpartner.'
+        ];
+        var descEn = [
+          'For small businesses ready to get found on Google, look professional, and turn visitors into real enquiries.',
+          'For businesses wanting a full design system, national SEO reach, backlink building, and a dedicated monthly growth partner.'
+        ];
+        descs.forEach(function(el, i) { el.textContent = isNo ? descNo[i] : descEn[i]; });
+
+        // Badge
+        var badge = pkgSection.querySelector('.pkg-badge-static');
+        if (badge) badge.textContent = isNo ? 'Mest Popul\u00e6r' : 'Most Popular';
+
+        // Chips
+        var chipHost = pkgSection.querySelectorAll('.pkg-chip-host');
+        var chipSeo  = pkgSection.querySelectorAll('.pkg-chip-seo');
+        chipHost.forEach(function(el) { el.innerHTML = isNo ? '<i class="fa-solid fa-globe"></i> Domene inkludert' : '<i class="fa-solid fa-globe"></i> Domain setup included'; });
+        chipSeo.forEach(function(el)  { el.innerHTML = isNo ? '<i class="fa-solid fa-chart-line"></i> SEO-verkt\u00f8y GRATIS' : '<i class="fa-solid fa-chart-line"></i> SEO Tool FREE'; });
+
+        // "What's included" labels
+        var featsLabels = pkgSection.querySelectorAll('.pkg-feats-label');
+        featsLabels.forEach(function(el) { el.textContent = isNo ? 'Hva som er inkludert' : "What's included"; });
+
+        // Feature lists
+        var featsLists = pkgSection.querySelectorAll('.pkg-feats');
+        var featsNo = [
+          ['Nettsted opptil 6 sider (React / Next.js)', 'Mobilf\u00f8rst UI/UX-design', 'Domene og DNS-administrasjon', 'Hosting p\u00e5 Vercel \u2014 raskt og p\u00e5litelig', 'On-page SEO + innholdsstruktur', '2 blogginnlegg per m\u00e5ned', 'M\u00e5nedlig SEO-rapport', '3 m\u00e5neders st\u00f8tte etter lansering'],
+          ['Alt i Synlighet', 'Opptil 12 sider + fullt bloggsystem', 'Avansert designsystem og UI/UX', 'Teknisk SEO + Core Web Vitals + Schema', '4 blogginnlegg per m\u00e5ned', 'Lenkebygging \u2014 3 per m\u00e5ned', 'Dedikert m\u00e5nedlig strategim\u00f8te', 'Prioritert Slack-st\u00f8ttekanal']
+        ];
+        var featsEn = [
+          ['Up to 6-page website (React / Next.js)', 'Mobile-first UI/UX design', 'Domain setup & DNS management', 'Hosting on Vercel \u2014 fast & reliable', 'On-page SEO + content structure', '2 blog posts per month', 'Monthly SEO report', '3 months post-launch support'],
+          ['Everything in Visibility', 'Up to 12 pages + full blog system', 'Advanced design system & UI/UX', 'Technical SEO + Core Web Vitals + Schema', '4 blog posts per month', 'Backlink building \u2014 3 per month', 'Dedicated monthly strategy call', 'Priority Slack support channel']
+        ];
+        featsLists.forEach(function(ul, i) {
+          var items = ul.querySelectorAll('li span:last-child');
+          var list = isNo ? featsNo[i] : featsEn[i];
+          items.forEach(function(el, j) { if (list[j]) el.textContent = list[j]; });
+        });
+
+        // Guarantees
+        var guars = pkgSection.querySelectorAll('.pkg-guar p');
+        var guarNo = [
+          'Side 1 p\u00e5 Google i din by innen 6 m\u00e5neder \u2014 eller jobber vi gratis til vi kommer dit.',
+          '35% vekst i organisk trafikk innen 90 dager \u2014 eller jobber vi gratis.'
+        ];
+        var guarEn = [
+          'Page 1 Google ranking in your city within 6 months \u2014 or we keep working for free.',
+          '35% growth in non-branded organic traffic within 90 days \u2014 or we work free.'
+        ];
+        guars.forEach(function(el, i) { el.textContent = isNo ? guarNo[i] : guarEn[i]; });
+
+        // CTA buttons
+        var ctas = pkgSection.querySelectorAll('.pkg-cta');
+        var ctaNo = ['F\u00e5 et tilbud', 'La oss snakke'];
+        var ctaEn = ['Get a Quote', "Let's talk"];
+        ctas.forEach(function(el, i) {
+          var icon = el.querySelector('i');
+          el.textContent = isNo ? ctaNo[i] : ctaEn[i];
+          if (icon) el.appendChild(icon);
+        });
+
+        // Banner text
+        var bannerStrong = pkgSection.querySelector('.pkg-banner-text strong');
+        var bannerSpan   = pkgSection.querySelector('.pkg-banner-text span');
+        var bannerTag    = pkgSection.querySelector('.pkg-banner-tag');
+        if (bannerStrong) bannerStrong.textContent = isNo ? 'SEO Pro-verkt\u00f8y inkludert gratis i alle pakker \u2014 verdi  500/\u00e5r' : 'SEO Pro Tool access included free with every package \u2014 ,500/yr value';
+        if (bannerSpan)   bannerSpan.textContent   = isNo ? 'seo.devndespro.com \u00b7 Nettstedsrevisjoner \u00b7 N\u00f8kkelordsporing \u00b7 Google Search Console \u00b7 AI-innholdsanalyse' : 'seo.devndespro.com \u00b7 Site audits \u00b7 Keyword tracking \u00b7 Google Search Console \u00b7 AI content insights';
+        if (bannerTag)    bannerTag.textContent    = isNo ? 'GRATIS' : 'FREE';
+      }
+      // ── End packages translation ───────────────────────────────
+
+      // ── Testimonials translation ───────────────────────────────
+      var testiSection = document.getElementById('testimonials');
+      if (testiSection) {
+        var testiLabel = testiSection.querySelector('.s-label');
+        var testiHeading = testiSection.querySelector('.s-h');
+        var testiRatingMeta = testiSection.querySelector('.testi-rating-meta');
+        var testiFooterSpan = testiSection.querySelector('.testi-footer span');
+        var testiMore = testiSection.querySelector('.testi-more');
+
+        if (testiLabel) testiLabel.textContent = isNo ? 'Kundeanmeldelser' : 'Client Reviews';
+        if (testiHeading) testiHeading.innerHTML = isNo ? 'Stolt av de<br><em>som jobbet med oss</em>' : 'Trusted by those<br><em>who worked with us</em>';
+
+        if (testiRatingMeta) {
+          testiRatingMeta.innerHTML = isNo
+            ? 'Basert p\u00e5 <strong>5 anmeldelser</strong> \u00b7 <span class="testi-g-badge"><i class="fa-brands fa-google"></i> Google</span>'
+            : 'Based on <strong>5 reviews</strong> \u00b7 <span class="testi-g-badge"><i class="fa-brands fa-google"></i> Google</span>';
+        }
+
+        if (testiFooterSpan) {
+          testiFooterSpan.innerHTML = isNo
+            ? 'Vurdert <strong>4,8 / 5</strong> p\u00e5 Google \u00b7 Stavanger, Norge'
+            : 'Rated <strong>4.8 / 5</strong> on Google \u00b7 Stavanger, Norway';
+        }
+
+        if (testiMore) {
+          var testiMoreIcon = testiMore.querySelector('i');
+          testiMore.textContent = isNo ? 'Se alle anmeldelser ' : 'See all reviews ';
+          if (testiMoreIcon) testiMore.appendChild(testiMoreIcon);
+        }
+
+        // "X days ago" timestamps - keep as-is (real Google review dates)
+        // Review quotes stay in original language (real Google reviews)
+      }
+      // ── End testimonials translation ───────────────────────────
 
       document.documentElement.setAttribute('lang', activeLang);
 
@@ -622,11 +756,27 @@ function App() {
 
     const syncActiveLinkByScroll = () => {
       if (!sectionMap.length) return;
-      const firstSectionTop = sectionMap[0].section.offsetTop - 180;
-      if (window.scrollY < firstSectionTop) { setActiveLink(null); return; }
-      const marker = window.scrollY + 180;
-      let currentHash = sectionMap[0].hash;
-      sectionMap.forEach(({ hash, section }) => { if (section.offsetTop <= marker) currentHash = hash; });
+      const viewportMid = window.innerHeight * 0.15;
+      let currentHash = null;
+      // Use getBoundingClientRect for accurate real-time position
+      sectionMap.forEach(({ hash, section }) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= viewportMid && rect.bottom > 0) {
+          currentHash = hash;
+        }
+      });
+      // Fallback: if nothing matches midpoint, pick the one most in view
+      if (!currentHash) {
+        let best = null, bestScore = -Infinity;
+        sectionMap.forEach(({ hash, section }) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.bottom > 0 && rect.top < window.innerHeight) {
+            const visible = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+            if (visible > bestScore) { bestScore = visible; best = hash; }
+          }
+        });
+        currentHash = best;
+      }
       setActiveLink(currentHash);
     };
 
@@ -1094,258 +1244,4 @@ function App() {
 }
 
 export default App;
-
-// STRONG PACKAGE CURRENCY FIX - no React hook needed
-(function () {
-  const prices = {
-    NOK: { symbol: "kr", values: ["2,900", "4,900", "12,900"] },
-    USD: { symbol: "$",  values: ["450", "720", "1,350"] },
-    EUR: { symbol: "€",  values: ["420", "680", "1,280"] },
-    INR: { symbol: "₹",  values: ["15,000", "25,000", "45,000"] }
-  };
-
-  function updatePackagePrices(currency) {
-    const data = prices[currency] || prices.NOK;
-    const cards = document.querySelectorAll("#packages .pkg-price");
-
-    cards.forEach(function (el, index) {
-      if (!data.values[index]) return;
-      el.innerHTML =
-        '<span class="pkg-currency">' + data.symbol + '</span> ' +
-        '<span class="pkg-amount">' + data.values[index] + '</span>' +
-        '<span>/mo</span>';
-    });
-  }
-
-  function bindCurrency() {
-    const select = document.getElementById("pkgCurrency");
-    if (!select) return;
-
-    select.onchange = function () {
-      updatePackagePrices(this.value);
-    };
-
-    updatePackagePrices(select.value || "NOK");
-  }
-
-  document.addEventListener("change", function (e) {
-    if (e.target && e.target.id === "pkgCurrency") {
-      updatePackagePrices(e.target.value);
-    }
-  });
-
-  window.addEventListener("load", bindCurrency);
-  setTimeout(bindCurrency, 500);
-  setTimeout(bindCurrency, 1500);
-})();
-
-
-
-
-
-// STATIC PACKAGE CURRENCY FIX - NO API / NO CORS
-(function () {
-  const pricesNOK = [1800, 3900, 7900];
-
-  const rates = {
-    NOK: 1,
-    USD: 0.095,
-    EUR: 0.086,
-    INR: 8.0
-  };
-
-  const symbols = {
-    NOK: "kr",
-    USD: "$",
-    EUR: "€",
-    INR: "₹"
-  };
-
-  function formatPrice(value, currency) {
-    let rounded;
-
-    if (currency === "INR") {
-      rounded = Math.round(value / 100) * 100;
-    } else {
-      rounded = Math.round(value);
-    }
-
-    return rounded.toLocaleString("en-US");
-  }
-
-  function updatePrices(currency) {
-    const priceEls = document.querySelectorAll("#packages .pkg-price");
-
-    priceEls.forEach(function (el, index) {
-      const base = pricesNOK[index];
-      if (!base) return;
-
-      const converted = base * rates[currency];
-
-      el.innerHTML =
-        symbols[currency] + " " +
-        formatPrice(converted, currency) +
-        "<span>/mo</span>";
-    });
-  }
-
-  function initCurrencyFix() {
-    const select =
-      document.getElementById("pkgCurrency") ||
-      document.getElementById("pkg-currency") ||
-      document.querySelector("#packages select");
-
-    if (!select) return;
-
-    updatePrices(select.value || "NOK");
-
-    select.addEventListener("change", function () {
-      updatePrices(this.value);
-    });
-  }
-
-  window.addEventListener("load", initCurrencyFix);
-  setTimeout(initCurrencyFix, 500);
-})();
-
-
-// CLEAN PACKAGE PRICE FIX
-window.addEventListener("load", function () {
-  const basePrices = [1800, 3900, 7900];
-  const rates = { NOK: 1, USD: 0.108, EUR: 0.093, INR: 9 };
-  const symbols = { NOK: "kr", USD: "$", EUR: "€", INR: "₹" };
-
-  function roundPrice(value, currency) {
-    if (currency === "INR") return Math.round(value / 100) * 100;
-    if (currency === "NOK") return Math.round(value / 100) * 100;
-    return Math.round(value / 10) * 10;
-  }
-
-  function updatePrices(currency) {
-    document.querySelectorAll("#packages .pkg-price").forEach(function (el, i) {
-      const amount = roundPrice(basePrices[i] * rates[currency], currency);
-      el.innerHTML = symbols[currency] + " " + amount.toLocaleString("en-US") + "<span>/mo</span>";
-    });
-  }
-
-  const select =
-    document.getElementById("pkgCurrency") ||
-    document.getElementById("pkg-currency") ||
-    document.querySelector("#packages select");
-
-  if (select) {
-    updatePrices(select.value || "NOK");
-    select.addEventListener("change", function () {
-      updatePrices(this.value);
-    });
-  }
-});
-
-
-// FINAL PACKAGE + NAV FIX
-(function () {
-  const basePricesNOK = [1800, 3900, 7900];
-
-  const rates = {
-    NOK: 1,
-    USD: 0.108,
-    EUR: 0.093,
-    INR: 9.0
-  };
-
-  const symbols = {
-    NOK: "kr",
-    USD: "$",
-    EUR: "€",
-    INR: "₹"
-  };
-
-  function roundPrice(value, currency) {
-    if (currency === "NOK") return Math.round(value / 100) * 100;
-    if (currency === "INR") return Math.round(value / 100) * 100;
-    return Math.round(value);
-  }
-
-  function updatePackagePrices(currency) {
-    const priceEls = document.querySelectorAll("#packages .pkg-price");
-
-    priceEls.forEach(function (el, index) {
-      const nok = basePricesNOK[index];
-      if (!nok) return;
-
-      const amount = roundPrice(nok * (rates[currency] || 1), currency);
-      el.innerHTML =
-        '<span class="pkg-currency">' + (symbols[currency] || currency) + '</span> ' +
-        '<span class="pkg-amount">' + amount.toLocaleString("en-US") + '</span>' +
-        '<span>/mo</span>';
-    });
-  }
-
-  function removePackageTabs() {
-    document.querySelectorAll("#packages .pkg-tabs").forEach(function (el) {
-      el.remove();
-    });
-  }
-
-  function bindCurrency() {
-    const select = document.getElementById("pkgCurrency");
-    if (!select) return;
-
-    updatePackagePrices(select.value || "NOK");
-
-    select.onchange = function () {
-      updatePackagePrices(this.value);
-    };
-  }
-
-  function fixActiveNav() {
-    const links = document.querySelectorAll('.nav-menu a[href^="#"]');
-
-    function setActive(current) {
-      links.forEach(function (link) {
-        link.classList.toggle("active", link.getAttribute("href") === current);
-      });
-    }
-
-    function detectActive() {
-
-      let current = "";
-      const checkLine = 160;
-
-      links.forEach(function (link) {
-        const id = link.getAttribute("href");
-        const section = document.querySelector(id);
-        if (!section) return;
-
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= checkLine && rect.bottom >= checkLine) {
-          current = id;
-        }
-      });
-
-      if (current) setActive(current);
-    }
-
-    links.forEach(function (link) {
-      link.addEventListener("click", function () {
-        setActive(link.getAttribute("href"));
-        setTimeout(detectActive, 700);
-      });
-    });
-
-    window.addEventListener("scroll", detectActive, { passive: true });
-    window.addEventListener("hashchange", detectActive);
-    detectActive();
-  }
-
-  function initFinalFix() {
-    removePackageTabs();
-    bindCurrency();
-    fixActiveNav();
-  }
-
-  window.addEventListener("load", initFinalFix);
-  setTimeout(initFinalFix, 300);
-  setTimeout(initFinalFix, 1000);
-})();
 
