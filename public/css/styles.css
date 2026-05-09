@@ -1260,6 +1260,7 @@ footer{
   box-shadow:0 4px 20px rgba(37,211,102,.32);
   transition:transform .3s;
   transform:translateY(-50%);
+  border-radius: 50% 0 0 50%;
 }
 .wa:hover{transform:translateY(-50%) translateX(-2px)}
 .wa svg{width:25px;height:25px;fill:#fff}
