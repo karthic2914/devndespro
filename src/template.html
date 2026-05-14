@@ -3612,3 +3612,77 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
+<style id="hero-typewriter-fix">
+.hero-typewriter{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  line-height:.92;
+}
+
+.hero-typewriter .tw-line{
+  display:block;
+  overflow:hidden;
+  white-space:nowrap;
+  width:0;
+  max-width:max-content;
+  font-family:inherit;
+  border-right:none !important;
+}
+
+.hero-typewriter .tw3{
+  color:#FF6B2B;
+}
+
+.hero-typewriter.start .tw1{
+  animation:tw1 9s steps(10,end) infinite;
+}
+.hero-typewriter.start .tw2{
+  animation:tw2 9s steps(9,end) infinite;
+}
+.hero-typewriter.start .tw3{
+  animation:tw3 9s steps(8,end) infinite;
+}
+
+.hero-typewriter::after{
+  content:"";
+  width:70px;
+  height:5px;
+  background:#FF6B2B;
+  margin-top:18px;
+  animation:cursorBlink .7s infinite;
+}
+
+@keyframes tw1{
+  0%{width:0}
+  18%,88%{width:100%}
+  100%{width:0}
+}
+@keyframes tw2{
+  0%,22%{width:0}
+  42%,88%{width:100%}
+  100%{width:0}
+}
+@keyframes tw3{
+  0%,46%{width:0}
+  66%,88%{width:100%}
+  100%{width:0}
+}
+
+@keyframes cursorBlink{
+  0%,45%{opacity:1}
+  46%,100%{opacity:0}
+}
+</style>
+
+<script id="hero-typewriter-start">
+window.addEventListener("load", function(){
+  const heroText = document.querySelector(".hero-typewriter");
+  if(heroText){
+    setTimeout(function(){
+      heroText.classList.add("start");
+    }, 500);
+  }
+});
+</script>
