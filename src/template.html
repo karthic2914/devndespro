@@ -43,8 +43,8 @@ body{margin:0;font-family:'Jost',sans-serif;background:#2C2C36;color:#fff;overfl
 .hero-typewriter{
   display:flex;
   flex-direction:column;
-  gap:.1em;
-  line-height:.9;
+  gap:.05em;
+  line-height:.92;
 }
 
 .hero-typewriter .line{
@@ -52,36 +52,39 @@ body{margin:0;font-family:'Jost',sans-serif;background:#2C2C36;color:#fff;overfl
   width:0;
   overflow:hidden;
   white-space:nowrap;
-  border-right:3px solid #ff7a3d;
-  animation:
-    typing 2s steps(20,end) forwards,
-    blink .8s infinite;
+  border-right:0;
   font-family:"Playfair Display",serif;
   font-weight:700;
-  font-size:clamp(4rem,9vw,10rem);
+  font-size:clamp(4rem,8vw,9rem);
   color:#f3eee7;
 }
 
+.hero-typewriter .accent{color:#ff6b2b}
+
 .hero-typewriter .line:nth-child(1){
-  animation-delay:.2s;
+  animation:typeLine1 9s steps(11,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(2){
-  animation-delay:2.5s;
+  animation:typeLine2 9s steps(9,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(3){
-  animation-delay:5s;
-  color:#ff7a3d;
+  animation:typeLine3 9s steps(8,end) infinite;
 }
 
-@keyframes typing{
-  from{width:0}
-  to{width:100%}
+@keyframes typeLine1{
+  0%{width:0}
+  18%,90%{width:100%}
+  100%{width:0}
 }
-
-@keyframes blink{
-  50%{border-color:transparent}
+@keyframes typeLine2{
+  0%,22%{width:0}
+  40%,90%{width:100%}
+  100%{width:0}
+}
+@keyframes typeLine3{
+  0%,44%{width:0}
+  62%,90%{width:100%}
+  100%{width:0}
 }
 
 @media (max-width:768px){
@@ -202,8 +205,8 @@ document.querySelectorAll('.sn-drop').forEach(function(d){var t;d.addEventListen
 .hero-typewriter{
   display:flex;
   flex-direction:column;
-  gap:.1em;
-  line-height:.9;
+  gap:.05em;
+  line-height:.92;
 }
 
 .hero-typewriter .line{
@@ -211,36 +214,39 @@ document.querySelectorAll('.sn-drop').forEach(function(d){var t;d.addEventListen
   width:0;
   overflow:hidden;
   white-space:nowrap;
-  border-right:3px solid #ff7a3d;
-  animation:
-    typing 2s steps(20,end) forwards,
-    blink .8s infinite;
+  border-right:0;
   font-family:"Playfair Display",serif;
   font-weight:700;
-  font-size:clamp(4rem,9vw,10rem);
+  font-size:clamp(4rem,8vw,9rem);
   color:#f3eee7;
 }
 
+.hero-typewriter .accent{color:#ff6b2b}
+
 .hero-typewriter .line:nth-child(1){
-  animation-delay:.2s;
+  animation:typeLine1 9s steps(11,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(2){
-  animation-delay:2.5s;
+  animation:typeLine2 9s steps(9,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(3){
-  animation-delay:5s;
-  color:#ff7a3d;
+  animation:typeLine3 9s steps(8,end) infinite;
 }
 
-@keyframes typing{
-  from{width:0}
-  to{width:100%}
+@keyframes typeLine1{
+  0%{width:0}
+  18%,90%{width:100%}
+  100%{width:0}
 }
-
-@keyframes blink{
-  50%{border-color:transparent}
+@keyframes typeLine2{
+  0%,22%{width:0}
+  40%,90%{width:100%}
+  100%{width:0}
+}
+@keyframes typeLine3{
+  0%,44%{width:0}
+  62%,90%{width:100%}
+  100%{width:0}
 }
 
 @media (max-width:768px){
@@ -349,8 +355,8 @@ document.querySelectorAll('.sn-drop').forEach(function(d){var t;d.addEventListen
 .hero-typewriter{
   display:flex;
   flex-direction:column;
-  gap:.1em;
-  line-height:.9;
+  gap:.05em;
+  line-height:.92;
 }
 
 .hero-typewriter .line{
@@ -358,36 +364,39 @@ document.querySelectorAll('.sn-drop').forEach(function(d){var t;d.addEventListen
   width:0;
   overflow:hidden;
   white-space:nowrap;
-  border-right:3px solid #ff7a3d;
-  animation:
-    typing 2s steps(20,end) forwards,
-    blink .8s infinite;
+  border-right:0;
   font-family:"Playfair Display",serif;
   font-weight:700;
-  font-size:clamp(4rem,9vw,10rem);
+  font-size:clamp(4rem,8vw,9rem);
   color:#f3eee7;
 }
 
+.hero-typewriter .accent{color:#ff6b2b}
+
 .hero-typewriter .line:nth-child(1){
-  animation-delay:.2s;
+  animation:typeLine1 9s steps(11,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(2){
-  animation-delay:2.5s;
+  animation:typeLine2 9s steps(9,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(3){
-  animation-delay:5s;
-  color:#ff7a3d;
+  animation:typeLine3 9s steps(8,end) infinite;
 }
 
-@keyframes typing{
-  from{width:0}
-  to{width:100%}
+@keyframes typeLine1{
+  0%{width:0}
+  18%,90%{width:100%}
+  100%{width:0}
 }
-
-@keyframes blink{
-  50%{border-color:transparent}
+@keyframes typeLine2{
+  0%,22%{width:0}
+  40%,90%{width:100%}
+  100%{width:0}
+}
+@keyframes typeLine3{
+  0%,44%{width:0}
+  62%,90%{width:100%}
+  100%{width:0}
 }
 
 @media (max-width:768px){
@@ -438,8 +447,8 @@ document.querySelectorAll('.sn-drop').forEach(function(d){var t;d.addEventListen
 .hero-typewriter{
   display:flex;
   flex-direction:column;
-  gap:.1em;
-  line-height:.9;
+  gap:.05em;
+  line-height:.92;
 }
 
 .hero-typewriter .line{
@@ -447,36 +456,39 @@ document.querySelectorAll('.sn-drop').forEach(function(d){var t;d.addEventListen
   width:0;
   overflow:hidden;
   white-space:nowrap;
-  border-right:3px solid #ff7a3d;
-  animation:
-    typing 2s steps(20,end) forwards,
-    blink .8s infinite;
+  border-right:0;
   font-family:"Playfair Display",serif;
   font-weight:700;
-  font-size:clamp(4rem,9vw,10rem);
+  font-size:clamp(4rem,8vw,9rem);
   color:#f3eee7;
 }
 
+.hero-typewriter .accent{color:#ff6b2b}
+
 .hero-typewriter .line:nth-child(1){
-  animation-delay:.2s;
+  animation:typeLine1 9s steps(11,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(2){
-  animation-delay:2.5s;
+  animation:typeLine2 9s steps(9,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(3){
-  animation-delay:5s;
-  color:#ff7a3d;
+  animation:typeLine3 9s steps(8,end) infinite;
 }
 
-@keyframes typing{
-  from{width:0}
-  to{width:100%}
+@keyframes typeLine1{
+  0%{width:0}
+  18%,90%{width:100%}
+  100%{width:0}
 }
-
-@keyframes blink{
-  50%{border-color:transparent}
+@keyframes typeLine2{
+  0%,22%{width:0}
+  40%,90%{width:100%}
+  100%{width:0}
+}
+@keyframes typeLine3{
+  0%,44%{width:0}
+  62%,90%{width:100%}
+  100%{width:0}
 }
 
 @media (max-width:768px){
@@ -1162,8 +1174,8 @@ resize(); loop();
 .hero-typewriter{
   display:flex;
   flex-direction:column;
-  gap:.1em;
-  line-height:.9;
+  gap:.05em;
+  line-height:.92;
 }
 
 .hero-typewriter .line{
@@ -1171,36 +1183,39 @@ resize(); loop();
   width:0;
   overflow:hidden;
   white-space:nowrap;
-  border-right:3px solid #ff7a3d;
-  animation:
-    typing 2s steps(20,end) forwards,
-    blink .8s infinite;
+  border-right:0;
   font-family:"Playfair Display",serif;
   font-weight:700;
-  font-size:clamp(4rem,9vw,10rem);
+  font-size:clamp(4rem,8vw,9rem);
   color:#f3eee7;
 }
 
+.hero-typewriter .accent{color:#ff6b2b}
+
 .hero-typewriter .line:nth-child(1){
-  animation-delay:.2s;
+  animation:typeLine1 9s steps(11,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(2){
-  animation-delay:2.5s;
+  animation:typeLine2 9s steps(9,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(3){
-  animation-delay:5s;
-  color:#ff7a3d;
+  animation:typeLine3 9s steps(8,end) infinite;
 }
 
-@keyframes typing{
-  from{width:0}
-  to{width:100%}
+@keyframes typeLine1{
+  0%{width:0}
+  18%,90%{width:100%}
+  100%{width:0}
 }
-
-@keyframes blink{
-  50%{border-color:transparent}
+@keyframes typeLine2{
+  0%,22%{width:0}
+  40%,90%{width:100%}
+  100%{width:0}
+}
+@keyframes typeLine3{
+  0%,44%{width:0}
+  62%,90%{width:100%}
+  100%{width:0}
 }
 
 @media (max-width:768px){
@@ -1572,8 +1587,8 @@ resize(); loop();
 .hero-typewriter{
   display:flex;
   flex-direction:column;
-  gap:.1em;
-  line-height:.9;
+  gap:.05em;
+  line-height:.92;
 }
 
 .hero-typewriter .line{
@@ -1581,36 +1596,39 @@ resize(); loop();
   width:0;
   overflow:hidden;
   white-space:nowrap;
-  border-right:3px solid #ff7a3d;
-  animation:
-    typing 2s steps(20,end) forwards,
-    blink .8s infinite;
+  border-right:0;
   font-family:"Playfair Display",serif;
   font-weight:700;
-  font-size:clamp(4rem,9vw,10rem);
+  font-size:clamp(4rem,8vw,9rem);
   color:#f3eee7;
 }
 
+.hero-typewriter .accent{color:#ff6b2b}
+
 .hero-typewriter .line:nth-child(1){
-  animation-delay:.2s;
+  animation:typeLine1 9s steps(11,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(2){
-  animation-delay:2.5s;
+  animation:typeLine2 9s steps(9,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(3){
-  animation-delay:5s;
-  color:#ff7a3d;
+  animation:typeLine3 9s steps(8,end) infinite;
 }
 
-@keyframes typing{
-  from{width:0}
-  to{width:100%}
+@keyframes typeLine1{
+  0%{width:0}
+  18%,90%{width:100%}
+  100%{width:0}
 }
-
-@keyframes blink{
-  50%{border-color:transparent}
+@keyframes typeLine2{
+  0%,22%{width:0}
+  40%,90%{width:100%}
+  100%{width:0}
+}
+@keyframes typeLine3{
+  0%,44%{width:0}
+  62%,90%{width:100%}
+  100%{width:0}
 }
 
 @media (max-width:768px){
@@ -1757,8 +1775,8 @@ resize(); loop();
 .hero-typewriter{
   display:flex;
   flex-direction:column;
-  gap:.1em;
-  line-height:.9;
+  gap:.05em;
+  line-height:.92;
 }
 
 .hero-typewriter .line{
@@ -1766,36 +1784,39 @@ resize(); loop();
   width:0;
   overflow:hidden;
   white-space:nowrap;
-  border-right:3px solid #ff7a3d;
-  animation:
-    typing 2s steps(20,end) forwards,
-    blink .8s infinite;
+  border-right:0;
   font-family:"Playfair Display",serif;
   font-weight:700;
-  font-size:clamp(4rem,9vw,10rem);
+  font-size:clamp(4rem,8vw,9rem);
   color:#f3eee7;
 }
 
+.hero-typewriter .accent{color:#ff6b2b}
+
 .hero-typewriter .line:nth-child(1){
-  animation-delay:.2s;
+  animation:typeLine1 9s steps(11,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(2){
-  animation-delay:2.5s;
+  animation:typeLine2 9s steps(9,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(3){
-  animation-delay:5s;
-  color:#ff7a3d;
+  animation:typeLine3 9s steps(8,end) infinite;
 }
 
-@keyframes typing{
-  from{width:0}
-  to{width:100%}
+@keyframes typeLine1{
+  0%{width:0}
+  18%,90%{width:100%}
+  100%{width:0}
 }
-
-@keyframes blink{
-  50%{border-color:transparent}
+@keyframes typeLine2{
+  0%,22%{width:0}
+  40%,90%{width:100%}
+  100%{width:0}
+}
+@keyframes typeLine3{
+  0%,44%{width:0}
+  62%,90%{width:100%}
+  100%{width:0}
 }
 
 @media (max-width:768px){
@@ -3132,8 +3153,8 @@ document.addEventListener('DOMContentLoaded', function () {
 .hero-typewriter{
   display:flex;
   flex-direction:column;
-  gap:.1em;
-  line-height:.9;
+  gap:.05em;
+  line-height:.92;
 }
 
 .hero-typewriter .line{
@@ -3141,36 +3162,39 @@ document.addEventListener('DOMContentLoaded', function () {
   width:0;
   overflow:hidden;
   white-space:nowrap;
-  border-right:3px solid #ff7a3d;
-  animation:
-    typing 2s steps(20,end) forwards,
-    blink .8s infinite;
+  border-right:0;
   font-family:"Playfair Display",serif;
   font-weight:700;
-  font-size:clamp(4rem,9vw,10rem);
+  font-size:clamp(4rem,8vw,9rem);
   color:#f3eee7;
 }
 
+.hero-typewriter .accent{color:#ff6b2b}
+
 .hero-typewriter .line:nth-child(1){
-  animation-delay:.2s;
+  animation:typeLine1 9s steps(11,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(2){
-  animation-delay:2.5s;
+  animation:typeLine2 9s steps(9,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(3){
-  animation-delay:5s;
-  color:#ff7a3d;
+  animation:typeLine3 9s steps(8,end) infinite;
 }
 
-@keyframes typing{
-  from{width:0}
-  to{width:100%}
+@keyframes typeLine1{
+  0%{width:0}
+  18%,90%{width:100%}
+  100%{width:0}
 }
-
-@keyframes blink{
-  50%{border-color:transparent}
+@keyframes typeLine2{
+  0%,22%{width:0}
+  40%,90%{width:100%}
+  100%{width:0}
+}
+@keyframes typeLine3{
+  0%,44%{width:0}
+  62%,90%{width:100%}
+  100%{width:0}
 }
 
 @media (max-width:768px){
@@ -3488,8 +3512,8 @@ document.addEventListener('DOMContentLoaded', function () {
 .hero-typewriter{
   display:flex;
   flex-direction:column;
-  gap:.1em;
-  line-height:.9;
+  gap:.05em;
+  line-height:.92;
 }
 
 .hero-typewriter .line{
@@ -3497,36 +3521,39 @@ document.addEventListener('DOMContentLoaded', function () {
   width:0;
   overflow:hidden;
   white-space:nowrap;
-  border-right:3px solid #ff7a3d;
-  animation:
-    typing 2s steps(20,end) forwards,
-    blink .8s infinite;
+  border-right:0;
   font-family:"Playfair Display",serif;
   font-weight:700;
-  font-size:clamp(4rem,9vw,10rem);
+  font-size:clamp(4rem,8vw,9rem);
   color:#f3eee7;
 }
 
+.hero-typewriter .accent{color:#ff6b2b}
+
 .hero-typewriter .line:nth-child(1){
-  animation-delay:.2s;
+  animation:typeLine1 9s steps(11,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(2){
-  animation-delay:2.5s;
+  animation:typeLine2 9s steps(9,end) infinite;
 }
-
 .hero-typewriter .line:nth-child(3){
-  animation-delay:5s;
-  color:#ff7a3d;
+  animation:typeLine3 9s steps(8,end) infinite;
 }
 
-@keyframes typing{
-  from{width:0}
-  to{width:100%}
+@keyframes typeLine1{
+  0%{width:0}
+  18%,90%{width:100%}
+  100%{width:0}
 }
-
-@keyframes blink{
-  50%{border-color:transparent}
+@keyframes typeLine2{
+  0%,22%{width:0}
+  40%,90%{width:100%}
+  100%{width:0}
+}
+@keyframes typeLine3{
+  0%,44%{width:0}
+  62%,90%{width:100%}
+  100%{width:0}
 }
 
 @media (max-width:768px){
@@ -3577,6 +3604,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 </script>
+
 
 
 
