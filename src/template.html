@@ -39,6 +39,57 @@ body{margin:0;font-family:'Jost',sans-serif;background:#2C2C36;color:#fff;overfl
   .sn-cta{width:100%;text-align:center;padding:1rem}
   .sn-sub{display:none!important}
 }
+
+.hero-typewriter{
+  display:flex;
+  flex-direction:column;
+  gap:.1em;
+  line-height:.9;
+}
+
+.hero-typewriter .line{
+  display:block;
+  width:0;
+  overflow:hidden;
+  white-space:nowrap;
+  border-right:3px solid #ff7a3d;
+  animation:
+    typing 2s steps(20,end) forwards,
+    blink .8s infinite;
+  font-family:"Playfair Display",serif;
+  font-weight:700;
+  font-size:clamp(4rem,9vw,10rem);
+  color:#f3eee7;
+}
+
+.hero-typewriter .line:nth-child(1){
+  animation-delay:.2s;
+}
+
+.hero-typewriter .line:nth-child(2){
+  animation-delay:2.5s;
+}
+
+.hero-typewriter .line:nth-child(3){
+  animation-delay:5s;
+  color:#ff7a3d;
+}
+
+@keyframes typing{
+  from{width:0}
+  to{width:100%}
+}
+
+@keyframes blink{
+  50%{border-color:transparent}
+}
+
+@media (max-width:768px){
+  .hero-typewriter .line{
+    font-size:clamp(3rem,14vw,5rem);
+  }
+}
+
 </style>
 <nav id="snav" style="display: none;">
   <a href="/" class="sn-logo">
@@ -147,6 +198,57 @@ document.querySelectorAll('.sn-drop').forEach(function(d){var t;d.addEventListen
   transition: opacity 0.2s;
 }
 .wa-channel:hover .wa-tip { opacity: 1; }
+
+.hero-typewriter{
+  display:flex;
+  flex-direction:column;
+  gap:.1em;
+  line-height:.9;
+}
+
+.hero-typewriter .line{
+  display:block;
+  width:0;
+  overflow:hidden;
+  white-space:nowrap;
+  border-right:3px solid #ff7a3d;
+  animation:
+    typing 2s steps(20,end) forwards,
+    blink .8s infinite;
+  font-family:"Playfair Display",serif;
+  font-weight:700;
+  font-size:clamp(4rem,9vw,10rem);
+  color:#f3eee7;
+}
+
+.hero-typewriter .line:nth-child(1){
+  animation-delay:.2s;
+}
+
+.hero-typewriter .line:nth-child(2){
+  animation-delay:2.5s;
+}
+
+.hero-typewriter .line:nth-child(3){
+  animation-delay:5s;
+  color:#ff7a3d;
+}
+
+@keyframes typing{
+  from{width:0}
+  to{width:100%}
+}
+
+@keyframes blink{
+  50%{border-color:transparent}
+}
+
+@media (max-width:768px){
+  .hero-typewriter .line{
+    font-size:clamp(3rem,14vw,5rem);
+  }
+}
+
 </style>
 <div id="cur"></div>
 <div id="cur-r"></div>
@@ -243,6 +345,57 @@ document.querySelectorAll('.sn-drop').forEach(function(d){var t;d.addEventListen
   width: 100% !important;
   opacity: 1 !important;
 }
+
+.hero-typewriter{
+  display:flex;
+  flex-direction:column;
+  gap:.1em;
+  line-height:.9;
+}
+
+.hero-typewriter .line{
+  display:block;
+  width:0;
+  overflow:hidden;
+  white-space:nowrap;
+  border-right:3px solid #ff7a3d;
+  animation:
+    typing 2s steps(20,end) forwards,
+    blink .8s infinite;
+  font-family:"Playfair Display",serif;
+  font-weight:700;
+  font-size:clamp(4rem,9vw,10rem);
+  color:#f3eee7;
+}
+
+.hero-typewriter .line:nth-child(1){
+  animation-delay:.2s;
+}
+
+.hero-typewriter .line:nth-child(2){
+  animation-delay:2.5s;
+}
+
+.hero-typewriter .line:nth-child(3){
+  animation-delay:5s;
+  color:#ff7a3d;
+}
+
+@keyframes typing{
+  from{width:0}
+  to{width:100%}
+}
+
+@keyframes blink{
+  50%{border-color:transparent}
+}
+
+@media (max-width:768px){
+  .hero-typewriter .line{
+    font-size:clamp(3rem,14vw,5rem);
+  }
+}
+
 </style>
 
 <!-- HERO -->
@@ -261,11 +414,11 @@ document.querySelectorAll('.sn-drop').forEach(function(d){var t;d.addEventListen
           <span>CI/CD</span>
         </span>
       </div>
-      <h1 class="hero-display">
-        <span class="hd-1" data-i18n="hero.line1">We Design.</span>
-        <span class="hd-2" data-i18n="hero.line2">We Build.</span>
-        <span class="hd-3" data-i18n="hero.line3">We Grow.</span>
-      </h1>
+      <h1 class="hero-typewriter">
+  <span class="line">We Design.</span>
+  <span class="line">We Build.</span>
+  <span class="line accent">We Grow.</span>
+</h1>
     </div>
     <div class="hero-right">
       
@@ -281,6 +434,57 @@ document.querySelectorAll('.sn-drop').forEach(function(d){var t;d.addEventListen
   transform:translateX(20px);
 }
 .mascot-wrap canvas{position:absolute;inset:0;width:100%;height:100%}
+
+.hero-typewriter{
+  display:flex;
+  flex-direction:column;
+  gap:.1em;
+  line-height:.9;
+}
+
+.hero-typewriter .line{
+  display:block;
+  width:0;
+  overflow:hidden;
+  white-space:nowrap;
+  border-right:3px solid #ff7a3d;
+  animation:
+    typing 2s steps(20,end) forwards,
+    blink .8s infinite;
+  font-family:"Playfair Display",serif;
+  font-weight:700;
+  font-size:clamp(4rem,9vw,10rem);
+  color:#f3eee7;
+}
+
+.hero-typewriter .line:nth-child(1){
+  animation-delay:.2s;
+}
+
+.hero-typewriter .line:nth-child(2){
+  animation-delay:2.5s;
+}
+
+.hero-typewriter .line:nth-child(3){
+  animation-delay:5s;
+  color:#ff7a3d;
+}
+
+@keyframes typing{
+  from{width:0}
+  to{width:100%}
+}
+
+@keyframes blink{
+  50%{border-color:transparent}
+}
+
+@media (max-width:768px){
+  .hero-typewriter .line{
+    font-size:clamp(3rem,14vw,5rem);
+  }
+}
+
 </style>
 <div class="mascot-wrap" id="sc"><canvas id="cv"></canvas></div>
 <script data-run="mascot">
@@ -954,6 +1158,57 @@ resize(); loop();
     height: 420px;
   }
 }
+
+.hero-typewriter{
+  display:flex;
+  flex-direction:column;
+  gap:.1em;
+  line-height:.9;
+}
+
+.hero-typewriter .line{
+  display:block;
+  width:0;
+  overflow:hidden;
+  white-space:nowrap;
+  border-right:3px solid #ff7a3d;
+  animation:
+    typing 2s steps(20,end) forwards,
+    blink .8s infinite;
+  font-family:"Playfair Display",serif;
+  font-weight:700;
+  font-size:clamp(4rem,9vw,10rem);
+  color:#f3eee7;
+}
+
+.hero-typewriter .line:nth-child(1){
+  animation-delay:.2s;
+}
+
+.hero-typewriter .line:nth-child(2){
+  animation-delay:2.5s;
+}
+
+.hero-typewriter .line:nth-child(3){
+  animation-delay:5s;
+  color:#ff7a3d;
+}
+
+@keyframes typing{
+  from{width:0}
+  to{width:100%}
+}
+
+@keyframes blink{
+  50%{border-color:transparent}
+}
+
+@media (max-width:768px){
+  .hero-typewriter .line{
+    font-size:clamp(3rem,14vw,5rem);
+  }
+}
+
 </style>
 <!-- FREE AUDIT MODAL -->
 <div id="audit-modal" class="audit-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="audit-modal-title" style="display:none;">
@@ -1313,6 +1568,57 @@ resize(); loop();
 .wcard2-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
 
 @media (hover: none) { .wcard2-hover { opacity: 1; } }
+
+.hero-typewriter{
+  display:flex;
+  flex-direction:column;
+  gap:.1em;
+  line-height:.9;
+}
+
+.hero-typewriter .line{
+  display:block;
+  width:0;
+  overflow:hidden;
+  white-space:nowrap;
+  border-right:3px solid #ff7a3d;
+  animation:
+    typing 2s steps(20,end) forwards,
+    blink .8s infinite;
+  font-family:"Playfair Display",serif;
+  font-weight:700;
+  font-size:clamp(4rem,9vw,10rem);
+  color:#f3eee7;
+}
+
+.hero-typewriter .line:nth-child(1){
+  animation-delay:.2s;
+}
+
+.hero-typewriter .line:nth-child(2){
+  animation-delay:2.5s;
+}
+
+.hero-typewriter .line:nth-child(3){
+  animation-delay:5s;
+  color:#ff7a3d;
+}
+
+@keyframes typing{
+  from{width:0}
+  to{width:100%}
+}
+
+@keyframes blink{
+  50%{border-color:transparent}
+}
+
+@media (max-width:768px){
+  .hero-typewriter .line{
+    font-size:clamp(3rem,14vw,5rem);
+  }
+}
+
 </style>
 
 <!-- PACKAGES -->
@@ -1447,6 +1753,57 @@ resize(); loop();
 .pkg-banner-text span { font-size:0.78rem; color:rgba(255,255,255,0.45); line-height:1.5; }
 .pkg-banner-tag { background:#FF6B2B; color:#fff; font-size:0.72rem; font-weight:700; letter-spacing:0.06em; padding:4px 12px; border-radius:6px; white-space:nowrap; flex-shrink:0; }
 @media (max-width:767px) { .pkg-card-static { padding:1.5rem; } .pkg-banner { flex-direction:column; align-items:flex-start; padding:1rem; } }
+
+.hero-typewriter{
+  display:flex;
+  flex-direction:column;
+  gap:.1em;
+  line-height:.9;
+}
+
+.hero-typewriter .line{
+  display:block;
+  width:0;
+  overflow:hidden;
+  white-space:nowrap;
+  border-right:3px solid #ff7a3d;
+  animation:
+    typing 2s steps(20,end) forwards,
+    blink .8s infinite;
+  font-family:"Playfair Display",serif;
+  font-weight:700;
+  font-size:clamp(4rem,9vw,10rem);
+  color:#f3eee7;
+}
+
+.hero-typewriter .line:nth-child(1){
+  animation-delay:.2s;
+}
+
+.hero-typewriter .line:nth-child(2){
+  animation-delay:2.5s;
+}
+
+.hero-typewriter .line:nth-child(3){
+  animation-delay:5s;
+  color:#ff7a3d;
+}
+
+@keyframes typing{
+  from{width:0}
+  to{width:100%}
+}
+
+@keyframes blink{
+  50%{border-color:transparent}
+}
+
+@media (max-width:768px){
+  .hero-typewriter .line{
+    font-size:clamp(3rem,14vw,5rem);
+  }
+}
+
 </style>
 
 
@@ -2771,6 +3128,57 @@ document.addEventListener('DOMContentLoaded', function () {
   width: 320px !important;
   min-width: 320px !important;
 }
+
+.hero-typewriter{
+  display:flex;
+  flex-direction:column;
+  gap:.1em;
+  line-height:.9;
+}
+
+.hero-typewriter .line{
+  display:block;
+  width:0;
+  overflow:hidden;
+  white-space:nowrap;
+  border-right:3px solid #ff7a3d;
+  animation:
+    typing 2s steps(20,end) forwards,
+    blink .8s infinite;
+  font-family:"Playfair Display",serif;
+  font-weight:700;
+  font-size:clamp(4rem,9vw,10rem);
+  color:#f3eee7;
+}
+
+.hero-typewriter .line:nth-child(1){
+  animation-delay:.2s;
+}
+
+.hero-typewriter .line:nth-child(2){
+  animation-delay:2.5s;
+}
+
+.hero-typewriter .line:nth-child(3){
+  animation-delay:5s;
+  color:#ff7a3d;
+}
+
+@keyframes typing{
+  from{width:0}
+  to{width:100%}
+}
+
+@keyframes blink{
+  50%{border-color:transparent}
+}
+
+@media (max-width:768px){
+  .hero-typewriter .line{
+    font-size:clamp(3rem,14vw,5rem);
+  }
+}
+
 </style>
 
 <script>
@@ -3076,6 +3484,57 @@ document.addEventListener('DOMContentLoaded', function () {
     border-bottom: 0;
   }
 }
+
+.hero-typewriter{
+  display:flex;
+  flex-direction:column;
+  gap:.1em;
+  line-height:.9;
+}
+
+.hero-typewriter .line{
+  display:block;
+  width:0;
+  overflow:hidden;
+  white-space:nowrap;
+  border-right:3px solid #ff7a3d;
+  animation:
+    typing 2s steps(20,end) forwards,
+    blink .8s infinite;
+  font-family:"Playfair Display",serif;
+  font-weight:700;
+  font-size:clamp(4rem,9vw,10rem);
+  color:#f3eee7;
+}
+
+.hero-typewriter .line:nth-child(1){
+  animation-delay:.2s;
+}
+
+.hero-typewriter .line:nth-child(2){
+  animation-delay:2.5s;
+}
+
+.hero-typewriter .line:nth-child(3){
+  animation-delay:5s;
+  color:#ff7a3d;
+}
+
+@keyframes typing{
+  from{width:0}
+  to{width:100%}
+}
+
+@keyframes blink{
+  50%{border-color:transparent}
+}
+
+@media (max-width:768px){
+  .hero-typewriter .line{
+    font-size:clamp(3rem,14vw,5rem);
+  }
+}
+
 </style>
 
 <script id="pkg-currency-script">
@@ -3118,6 +3577,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 </script>
+
 
 
 
