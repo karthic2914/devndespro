@@ -3,6 +3,13 @@ import template from './template.html?raw';
 
 function App() {
   useEffect(() => {
+     const scripts = document.querySelectorAll('script[data-run="mascot"]');
+
+  scripts.forEach((oldScript) => {
+    const newScript = document.createElement('script');
+    newScript.textContent = oldScript.textContent;
+    oldScript.replaceWith(newScript);
+  });
     const translations = {
       en: {
         'utility.wa': 'Chat on WhatsApp',
