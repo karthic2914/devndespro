@@ -318,8 +318,9 @@ function mkPts() {
 }
 
 function resize() {
-  W = cv.width = window.innerWidth;
-  H = cv.height = window.innerHeight;
+  const box = document.getElementById('sc').getBoundingClientRect();
+  W = cv.width = box.width;
+  H = cv.height = box.height;
   tmx = W / 2; tmy = H * .2; smx = tmx; smy = tmy;
   mkPts();
 }
@@ -863,7 +864,7 @@ function drawCursor() {
 function loop() {
   t += .011; smx += (tmx - smx) * .1; smy += (tmy - smy) * .1;
   X.clearRect(0, 0, W, H);
-  const cx = W / 2, cy = H / 2 - 10;
+  const cx = W / 2, cy = H / 2 - 20;
   drawBg(cx, cy); drawPts();
   const ca = phase >= 2 ? Math.min(1, (t - rt) * 1.1) : 0;
   if (phase >= 2 && rt === 0) rt = t;
@@ -3076,6 +3077,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 </script>
+
 
 
 
