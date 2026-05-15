@@ -159,7 +159,7 @@ document.querySelectorAll('.sn-drop').forEach(function(d){var t;d.addEventListen
 </nav>
 
 
-<style id="tw-css-disabled">.hd-1,.hd-2,.hd-3{display:block;overflow:hidden;white-space:nowrap;width:0}.hd-1{animation:twA 9s steps(10,end) infinite}.hd-2{animation:twB 9s steps(9,end) infinite}.hd-3{animation:twC 9s steps(8,end) infinite}@keyframes twA{0%{width:0}18%,88%{width:100%}100%{width:0}}@keyframes twB{0%,22%{width:0}42%,88%{width:100%}100%{width:0}}@keyframes twC{0%,46%{width:0}66%,88%{width:100%}100%{width:0}}</style>
+
 <!-- HERO -->
 <section id="hero">
   <div class="hero-noise"></div>
@@ -181,6 +181,12 @@ document.querySelectorAll('.sn-drop').forEach(function(d){var t;d.addEventListen
     <div class="hero-right">
       
 
+<style id="mascot-css">
+.mascot-wrap{background:transparent;width:620px;max-width:100%;height:560px;position:relative;overflow:visible;cursor:none;transform:translateX(20px)}
+.mascot-wrap canvas{position:absolute;inset:0;width:100%;height:100%}
+@media(max-width:1100px){.mascot-wrap{margin:2rem auto 0;transform:translateX(0);width:min(620px,100%)}}
+@media(max-width:767px){.mascot-wrap{height:420px}}
+</style>
 <div class="mascot-wrap" id="sc"><canvas id="cv"></canvas></div>
 <script data-run="mascot">
 const cv = document.getElementById('cv');
@@ -2000,26 +2006,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-<script id="hero-typewriter-start">
-window.addEventListener("load", function(){
-  const heroText = document.querySelector(".hero-typewriter");
-  if(heroText){
-    setTimeout(function(){
-      heroText.classList.add("start");
-    }, 500);
-  }
-});
-</script>
 
 
 
-<script id="hero-typewriter-restart-fix">
-window.addEventListener("load", function(){
-  const h = document.querySelector(".hero-typewriter");
-  if(h){
-    h.classList.remove("start");
-    void h.offsetWidth;
-    setTimeout(() => h.classList.add("start"), 400);
-  }
-});
-</script>
+
+
