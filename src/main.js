@@ -322,7 +322,7 @@ function initPackageCurrency() {
   const symbols = {
     NOK: "kr",
     USD: "$",
-    EUR: "€",
+    EUR: "ï¿½",
     INR: "?"
   };
 
@@ -352,3 +352,14 @@ function initPackageCurrency() {
 
 window.addEventListener("load", initPackageCurrency);
 setTimeout(initPackageCurrency, 500);
+
+// NAV SCROLL SHRINK
+window.addEventListener('scroll', function() {
+  var nav = document.querySelector('nav');
+  if (!nav) return;
+  if (window.scrollY > 10) {
+    nav.classList.add('s');
+  } else {
+    nav.classList.remove('s');
+  }
+});

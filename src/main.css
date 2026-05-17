@@ -1,4 +1,4 @@
-/* Extracted from template.html on 2026-05-04. All styles below were previously inline. */
+﻿/* Extracted from template.html on 2026-05-04. All styles below were previously inline. */
 
 /* ── Hero Trust Strip ───────────────────────────────── */
 .hero-trust {
@@ -214,3 +214,11 @@ input:-webkit-autofill { animation-name: onAutoFillStart; animation-duration: 0.
 
 /* ===================== PACKAGES STYLES ===================== */
 /* ...Packages styles... */
+/* ── Nav compact on scroll ── */
+#nav.s {
+  padding-top: 0.3rem !important;
+  padding-bottom: 0.3rem !important;
+  background: rgba(16,16,22,0.98) !important;
+}
+#nav.s .logo-img { height: 30px !important; }
+#nav.s .nav-cta { padding: 0.45rem 0.9rem !important; font-size: 0.72rem !important; }

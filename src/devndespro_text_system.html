@@ -1,0 +1,485 @@
+﻿<style>
+.axel-canvas{background:transparent;border-radius:22px;width:100%;height:100%;position:absolute;inset:0;overflow:visible;cursor:none}
+canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+
+.ftag{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(10,10,20,.92);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;
+  padding:9px 11px;
+  min-width:148px;max-width:172px;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 4px 20px rgba(0,0,0,.4);
+  transition:border-color .3s;
+}
+
+.ftag-icon{
+  width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;flex-shrink:0;
+}
+.ftag-body{display:flex;flex-direction:column;min-width:0}
+.ftag-val{font-size:1.1rem;font-weight:800;font-family:Georgia,serif;font-style:italic;color:#fff;line-height:1;white-space:nowrap}
+.ftag-val em{font-style:normal;font-size:.75rem;font-weight:700;vertical-align:super;line-height:0}
+.ftag-lbl{font-size:.62rem;font-weight:500;letter-spacing:.06em;text-transform:none;color:rgba(255,255,255,.45);margin-top:3px;white-space:nowrap}
+/* connector line between tag and character */
+.tag-col--left .ftag::after{
+  content:'';position:absolute;right:-18px;top:50%;
+  width:18px;height:1px;
+  background:linear-gradient(to right,rgba(255,255,255,.12),transparent);
+}
+.tag-col--right .ftag::before{
+  content:'';position:absolute;left:-18px;top:50%;
+  width:18px;height:1px;
+  background:linear-gradient(to left,rgba(255,255,255,.12),transparent);
+}
+.ftag{position:relative}
+@media(max-width:600px){.tag-col{display:none}}
+
+/* ── Axel stat tags ── */
+.axel-tags{position:absolute;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;z-index:20;pointer-events:none}
+.axel-tags--left{left:0;align-items:flex-start}
+.axel-tags--right{left:calc(50% + 130px);align-items:flex-start}
+.axel-tags--left{left:auto;right:calc(50% + 140px);align-items:flex-end}
+.atag{display:flex;align-items:center;gap:7px;background:rgba(10,10,20,.9);border:1px solid var(--c);border-radius:11px;padding:8px 10px;min-width:130px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.atag-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.atag-val{font-size:0.95rem;font-weight:800;font-family:Georgia,serif;font-style:italic;color:#fff;white-space:nowrap;line-height:1}
+.atag-val sup{font-size:.65rem;font-weight:700;vertical-align:super}
+.atag-lbl{font-size:.55rem;font-weight:500;color:rgba(255,255,255,.42);white-space:nowrap;margin-top:2px;display:block}
+.atag-icon+.atag-val{margin-left:0}
+/* flex column inside atag for val+lbl */
+.atag{flex-wrap:nowrap}
+.atag-icon{flex-shrink:0}
+.atag > span:not(.atag-icon){display:flex;flex-direction:column}
+@media(max-width:640px){.axel-tags{display:none}}
+</style>
+<div style="position:relative;width:100%;height:660px;min-width:500px">
+<div class="axel-canvas" id="sc"><canvas id="cv"></canvas></div>
+<!-- STAT TAGS — absolute over canvas -->
+<div class="axel-tags axel-tags--left">
+  <div class="atag" style="--c:rgba(255,107,43,.35)"><span class="atag-icon" style="background:rgba(255,107,43,.15);color:#FF6B2B">⚡</span><span class="atag-val">19<sup>+</sup></span><span class="atag-lbl">Years of Craft</span></div>
+  <div class="atag" style="--c:rgba(103,232,249,.3)"><span class="atag-icon" style="background:rgba(103,232,249,.12);color:#67e8f9">⬡</span><span class="atag-val" style="color:#67e8f9">React</span><span class="atag-lbl">Next.js Expert</span></div>
+  <div class="atag" style="--c:rgba(134,239,172,.3)"><span class="atag-icon" style="background:rgba(134,239,172,.12);color:#86efac">✦</span><span class="atag-val">100<sup>%</sup></span><span class="atag-lbl">Retention Rate</span></div>
+  <div class="atag" style="--c:rgba(192,132,252,.3)"><span class="atag-icon" style="background:rgba(192,132,252,.12);color:#c084fc">★</span><span class="atag-val" style="color:#c084fc">#1</span><span class="atag-lbl">Google Ranking</span></div>
+</div>
+<div class="axel-tags axel-tags--right">
+  <div class="atag" style="--c:rgba(253,230,138,.3)"><span class="atag-icon" style="background:rgba(253,230,138,.12);color:#fde68a">◆</span><span class="atag-val">50<sup>+</sup></span><span class="atag-lbl">Projects Done</span></div>
+  <div class="atag" style="--c:rgba(248,113,113,.3)"><span class="atag-icon" style="background:rgba(248,113,113,.12);color:#f87171">✦</span><span class="atag-val" style="color:#f87171">UI/UX</span><span class="atag-lbl">Figma → Code</span></div>
+  <div class="atag" style="--c:rgba(192,132,252,.3)"><span class="atag-icon" style="background:rgba(192,132,252,.12);color:#c084fc">⬡</span><span class="atag-val" style="color:#c084fc">DevOps</span><span class="atag-lbl">Cloud & CI/CD</span></div>
+  <div class="atag" style="--c:rgba(134,239,172,.3)"><span class="atag-icon" style="background:rgba(134,239,172,.12);color:#86efac">↑</span><span class="atag-val" style="color:#86efac">SEO</span><span class="atag-lbl">Stavanger #1</span></div>
+</div>
+<script data-run="mascot">
+(function(){
+const sc=document.getElementById('sc'),cv=document.getElementById('cv'),X=cv.getContext('2d');
+let W,H,t=0,tmx=0,tmy=0,smx=0,smy=0,bob=0;
+
+let pts=[];
+function mkPts(){
+  pts=[];
+  const n=Math.floor(W*H/1000);
+  for(let i=0;i<n;i++) pts.push({
+    ox:Math.random()*W,oy:Math.random()*H,
+    x:Math.random()*W,y:Math.random()*H,
+    r:Math.random()*1.5+.15,a:Math.random()*.35+.04,
+    sp:Math.random()*.18+.03,ph:Math.random()*Math.PI*2,
+    warm:Math.random()>.62
+  });
+}
+
+function resize(){
+  const r=sc.getBoundingClientRect();
+  W=cv.width=r.width;H=cv.height=r.height;
+  tmx=W/2;tmy=H*.2;smx=tmx;smy=tmy;mkPts();
+}
+// Track mouse globally across entire page
+document.addEventListener('mousemove',e=>{
+  const r=sc.getBoundingClientRect();
+  tmx=e.clientX-r.left;
+  tmy=e.clientY-r.top;
+});
+sc.addEventListener('mouseleave',()=>{}); // keep last position
+
+const π=Math.PI;
+function arc(x,y,r){X.beginPath();X.arc(x,y,r,0,π*2);}
+function rr(x,y,w,h,r){X.beginPath();X.roundRect(x,y,w,h,r);}
+
+// ── EYE ──
+function drawEye(ex,ey,sz){
+  X.save();X.shadowColor='rgba(0,0,0,.6)';X.shadowBlur=10;
+  arc(ex,ey,sz+3);X.fillStyle='#0a0a10';X.fill();X.restore();
+  arc(ex,ey,sz);
+  const sg=X.createRadialGradient(ex-sz*.28,ey-sz*.28,1,ex,ey,sz);
+  sg.addColorStop(0,'#fff');sg.addColorStop(1,'#ccc8e0');
+  X.fillStyle=sg;X.fill();
+  X.strokeStyle='rgba(0,0,0,.1)';X.lineWidth=.7;X.stroke();
+  const dx=smx-ex,dy=smy-ey,d=Math.sqrt(dx*dx+dy*dy)||1;
+  const ang=Math.atan2(dy,dx),off=Math.min(d*.2,sz*.42);
+  const px=ex+Math.cos(ang)*off,py=ey+Math.sin(ang)*off;
+  const ig=X.createRadialGradient(px-sz*.16,py-sz*.16,0,px,py,sz*.58);
+  ig.addColorStop(0,'#c87828');ig.addColorStop(.5,'#7a3812');ig.addColorStop(1,'#2e1204');
+  arc(px,py,sz*.58);X.fillStyle=ig;X.fill();
+  arc(px,py,sz*.3);X.fillStyle='#050202';X.fill();
+  arc(px-sz*.19,py-sz*.19,sz*.12);X.fillStyle='rgba(255,255,255,.92)';X.fill();
+  arc(px+sz*.1,py-sz*.07,sz*.065);X.fillStyle='rgba(255,255,255,.5)';X.fill();
+  arc(ex,ey,sz);X.strokeStyle='rgba(40,14,0,.2)';X.lineWidth=sz*.09;X.stroke();
+}
+
+// ── CHARACTER (compact, focus on upper body) ──
+function drawChar(cx,cy){
+  X.save();
+
+  // floor glow
+  const fg=X.createRadialGradient(cx,cy+210,5,cx,cy+210,100);
+  fg.addColorStop(0,'rgba(255,107,43,.12)');fg.addColorStop(1,'transparent');
+  X.fillStyle=fg;X.fillRect(cx-100,cy+150,200,80);
+
+  // SHOES
+  [-1,1].forEach((s,si)=>{
+    X.save();X.translate(cx+s*36,cy+268);X.rotate(s*.05);
+    // outsole
+    X.beginPath();X.moveTo(-28,4);X.bezierCurveTo(-30,10,-24,18,28,18);X.lineTo(32,10);X.lineTo(28,4);X.closePath();
+    X.fillStyle=si===0?'#d0d0e0':'#cc4400';X.fill();
+    // midsole
+    X.beginPath();X.moveTo(-28,12);X.lineTo(32,12);X.lineTo(32,20);X.lineTo(-26,20);X.closePath();
+    X.fillStyle=si===0?'#b8b8cc':'#aa3300';X.fill();
+    // upper
+    rr(-26,-16,54,22,10);
+    const ug=X.createLinearGradient(-26,-16,28,6);
+    ug.addColorStop(0,si===0?'#f8f8ff':'#FF8C55');ug.addColorStop(1,si===0?'#dcdcee':'#e85510');
+    X.fillStyle=ug;X.fill();
+    // toe
+    X.beginPath();X.ellipse(-10,-8,16,10,-.08,0,π*2);
+    X.fillStyle=si===0?'#fff':'rgba(255,255,255,.18)';X.fill();
+    // stripe
+    rr(-22,-1,40,5,2);X.fillStyle=si===0?'#FF6B2B':'rgba(255,255,255,.25)';X.fill();
+    // laces
+    for(let i=0;i<4;i++){arc(-14+i*9,-8,1.5);X.fillStyle=si===0?'rgba(0,0,0,.25)':'rgba(255,255,255,.3)';X.fill();}
+    X.restore();
+  });
+
+  // LEGS — wider gap + per-leg shading
+  [-1,1].forEach((s,si)=>{
+    X.save();X.translate(cx+s*36,cy+128);
+    X.rotate(Math.sin(t*1.08+(si?π:0))*.03);
+    // thigh — outer bright, inner dark (creates visible gap between legs)
+    X.beginPath();
+    X.moveTo(-18,0);X.lineTo(18,0);
+    X.bezierCurveTo(19,22,16,44,14,70);X.lineTo(-14,70);
+    X.bezierCurveTo(-16,44,-19,22,-18,0);X.closePath();
+    const tg=X.createLinearGradient(s>0?18:-18,0,s>0?-18:18,0);
+    tg.addColorStop(0,TH.leg);
+    tg.addColorStop(.55,TH.leg);
+    tg.addColorStop(1,'rgba(0,0,0,.6)');
+    X.fillStyle=tg;X.fill();
+    X.strokeStyle='rgba(0,0,0,.5)';X.lineWidth=2;X.stroke();
+    // knee cap
+    X.beginPath();X.ellipse(0,70,11,8,0,0,π*2);
+    const kg=X.createRadialGradient(-2,66,1,0,70,11);
+    kg.addColorStop(0,'rgba(255,255,255,.14)');kg.addColorStop(1,'rgba(0,0,0,.3)');
+    X.fillStyle=kg;X.fill();
+    X.strokeStyle=TH.acc+'55';X.lineWidth=1.5;X.stroke();
+    // shin
+    X.beginPath();
+    X.moveTo(-14,78);X.lineTo(14,78);
+    X.bezierCurveTo(16,104,17,126,17,144);X.lineTo(-17,144);
+    X.bezierCurveTo(-17,126,-16,104,-14,78);X.closePath();
+    const sg=X.createLinearGradient(s>0?17:-17,78,s>0?-17:17,78);
+    sg.addColorStop(0,TH.legB);
+    sg.addColorStop(.6,TH.legB);
+    sg.addColorStop(1,'rgba(0,0,0,.5)');
+    X.fillStyle=sg;X.fill();
+    X.strokeStyle='rgba(0,0,0,.45)';X.lineWidth=2;X.stroke();
+    // shin accent stripe
+    X.beginPath();X.moveTo(-12,108);X.lineTo(12,108);
+    X.strokeStyle=TH.acc+'50';X.lineWidth=2;X.stroke();
+    X.restore();
+  });
+
+  // ARMS — drawn before body so shoulder joint hides under body edge
+  drawArm(cx-52, cy+36, 0);
+  drawArm(cx+52, cy+36, Math.PI);
+
+  // BODY
+  X.save();X.translate(cx,cy);
+  X.beginPath();
+  X.moveTo(-66,126);
+  X.bezierCurveTo(-68,88,-60,52,-46,36);
+  X.bezierCurveTo(-34,22,-18,18,0,18);
+  X.bezierCurveTo(18,18,34,22,46,36);
+  X.bezierCurveTo(60,52,68,88,66,126);
+  X.closePath();
+  const jg=X.createLinearGradient(0,18,0,126);
+  jg.addColorStop(0,TH.bT);jg.addColorStop(1,TH.bB);
+  X.fillStyle=jg;X.fill();
+  // hem rib
+  rr(-60,120,120,12,4);X.fillStyle='#141422';X.fill();
+  for(let i=-56;i<58;i+=5){
+    X.beginPath();X.moveTo(i,120);X.lineTo(i,132);
+    X.strokeStyle='rgba(255,255,255,.03)';X.lineWidth=1;X.stroke();
+  }
+  // collar
+  X.beginPath();X.moveTo(-24,26);X.bezierCurveTo(-12,40,0,44,0,44);X.bezierCurveTo(0,44,12,40,24,26);
+  X.strokeStyle='rgba(255,255,255,.06)';X.lineWidth=1.5;X.stroke();
+  // strings
+  X.beginPath();X.moveTo(-7,36);X.quadraticCurveTo(-10,60,-12,70);
+  X.strokeStyle='rgba(255,255,255,.1)';X.lineWidth=1.5;X.lineCap='round';X.stroke();
+  X.beginPath();X.moveTo(7,36);X.quadraticCurveTo(10,60,12,70);X.stroke();
+  arc(-12,74,3);X.fillStyle='rgba(255,107,43,.5)';X.fill();
+  arc(12,74,3);X.fillStyle='rgba(255,107,43,.5)';X.fill();
+
+  // ── DD LOGO — drawn as proper lettering ──
+  X.save();
+  // patch
+  rr(-30,22,60,50,10);
+  X.fillStyle='rgba(255,107,43,.08)';X.fill();
+  X.strokeStyle='rgba(255,107,43,.18)';X.lineWidth=.8;X.stroke();
+  // glow behind text
+  X.shadowColor='rgba(255,107,43,.5)';X.shadowBlur=12;
+  // first D
+  X.font='italic 900 32px Georgia,serif';
+  X.fillStyle='#FF6B2B';X.textAlign='center';
+  X.fillText('DD',0,62);
+  X.shadowBlur=0;
+  // subtle highlight on top of D strokes
+  X.font='italic 900 32px Georgia,serif';
+  X.fillStyle='rgba(255,200,150,.15)';
+  X.fillText('DD',0,62);
+  // micro underline
+  X.beginPath();X.moveTo(-18,67);X.lineTo(18,67);
+  X.strokeStyle='rgba(255,107,43,.25)';X.lineWidth=1;X.stroke();
+  X.restore();
+
+  // belt
+  rr(-60,120,120,14,5);
+  const beltG=X.createLinearGradient(-60,120,60,134);
+  beltG.addColorStop(0,'#FF9040');beltG.addColorStop(.5,'#FF6B2B');beltG.addColorStop(1,'#cc4400');
+  X.fillStyle=beltG;X.fill();
+  rr(-28,116,56,22,7);X.fillStyle='#0c0c12';X.fill();
+  X.strokeStyle='rgba(255,107,43,.9)';X.lineWidth=1.8;X.stroke();
+  X.font='italic 800 11px Georgia,serif';X.textAlign='center';
+  X.shadowColor='rgba(255,107,43,.95)';X.shadowBlur=6;
+  X.fillStyle='#FF6B2B';X.fillText('Axel DD',0,129);X.shadowBlur=0;
+
+  X.restore();
+
+  // ARMS — drawn separately so no coordinate confusion
+  function drawArm(ax,ay,phase){
+    X.save();X.translate(ax,ay);
+    const wave = Math.sin(t*1.8 + phase)*0.18;  // gentle swing, arms hang at sides
+    X.rotate(wave);
+    // upper arm
+    X.beginPath();X.moveTo(-13,0);X.lineTo(13,0);
+    X.bezierCurveTo(14,18,12,36,10,52);X.lineTo(-10,52);
+    X.bezierCurveTo(-12,36,-14,18,-13,0);X.closePath();
+    X.fillStyle=TH.arm;X.fill();
+    // elbow
+    arc(0,52,8);X.fillStyle='#2c2c46';X.fill();
+    X.strokeStyle='rgba(255,107,43,.2)';X.lineWidth=1;X.stroke();
+    // forearm — straight vertical, ends at y=94, x=0 center
+    X.beginPath();X.moveTo(-9,52);X.lineTo(9,52);
+    X.lineTo(9,94);X.lineTo(-9,94);X.closePath();
+    X.fillStyle=TH.armB;X.fill();
+    // wrist ring — directly at forearm bottom y=94, centered x=0
+    X.save();X.translate(0,94);
+    rr(-11,0,22,8,3);
+    const wg=X.createLinearGradient(-11,0,11,0);
+    wg.addColorStop(0,'#2a2a3e');wg.addColorStop(.5,'#3a3a52');wg.addColorStop(1,'#1e1e2e');
+    X.fillStyle=wg;X.fill();
+    X.strokeStyle='rgba(255,107,43,.5)';X.lineWidth=1;X.stroke();
+    X.beginPath();X.moveTo(-9,4);X.lineTo(9,4);
+    X.strokeStyle=TH.acc;X.lineWidth=1.2;X.stroke();
+    // palm
+    rr(-12,8,24,20,4);
+    const pg=X.createLinearGradient(-12,8,12,8);
+    pg.addColorStop(0,'#32324a');pg.addColorStop(.5,'#3e3e58');pg.addColorStop(1,'#28283e');
+    X.fillStyle=pg;X.fill();
+    X.strokeStyle='rgba(255,255,255,.08)';X.lineWidth=1;X.stroke();
+    X.beginPath();X.moveTo(-8,13);X.lineTo(8,13);
+    X.strokeStyle='rgba(255,255,255,.05)';X.lineWidth=1;X.stroke();
+    X.beginPath();X.moveTo(-8,19);X.lineTo(8,19);
+    X.strokeStyle='rgba(255,255,255,.05)';X.lineWidth=1;X.stroke();
+    arc(0,23,2.5);X.fillStyle=TH.acc+'cc';X.fill();
+    // FIST — 4 folded finger knuckle rows
+    const fistG=X.createLinearGradient(-11,8,11,8);
+    fistG.addColorStop(0,'#32324a');fistG.addColorStop(1,'#28283e');
+    // main fist block
+    rr(-11,8,22,22,5);X.fillStyle=fistG;X.fill();
+    X.strokeStyle='rgba(255,255,255,.07)';X.lineWidth=1;X.stroke();
+    // knuckle ridge line across top of fist
+    X.beginPath();X.moveTo(-10,10);X.lineTo(10,10);
+    X.strokeStyle='rgba(255,107,43,.5)';X.lineWidth=1.5;X.stroke();
+    // 3 finger segment dividers (folded look)
+    [-4,0,4].forEach(x=>{
+      X.beginPath();X.moveTo(x,10);X.lineTo(x,30);
+      X.strokeStyle='rgba(255,107,43,.2)';X.lineWidth=.8;X.stroke();
+    });
+    // knuckle bumps across top
+    [-7,-2,3,8].forEach(x=>{
+      arc(x,10,2.5);
+      const kg=X.createRadialGradient(x-1,9,0,x,10,2.5);
+      kg.addColorStop(0,'#4a4a62');kg.addColorStop(1,'#2e2e46');
+      X.fillStyle=kg;X.fill();
+    });
+    // thumb side panel
+    X.save();X.translate(12,14);X.rotate(-0.2);
+    rr(-3,0,8,14,4);X.fillStyle='#2a2a3e';X.fill();
+    X.strokeStyle='rgba(255,107,43,.3)';X.lineWidth=.8;X.stroke();
+    X.beginPath();X.moveTo(-2,7);X.lineTo(6,7);
+    X.strokeStyle='rgba(255,107,43,.25)';X.lineWidth=1;X.stroke();
+    X.restore();
+    X.restore(); // wrist
+    X.restore(); // arm
+  }
+  // NECK
+  rr(cx-10,cy+16,20,16,6);X.fillStyle='#F0C090';X.fill();
+
+  // HEAD — warm even skin, light forehead, natural chin (not dark edge)
+  X.save();X.shadowColor='rgba(0,0,0,.4)';X.shadowBlur=20;
+  arc(cx,cy-56,56);
+  // base skin — radial from forehead highlight down, stays warm throughout
+  const hfg=X.createRadialGradient(cx-12,cy-80,4,cx,cy-52,62);
+  hfg.addColorStop(0,'#FEEBD4');   // bright forehead highlight
+  hfg.addColorStop(.4,'#FDDBB4');  // main face skin
+  hfg.addColorStop(.78,'#F5C49A'); // slight warmth toward jaw
+  hfg.addColorStop(1,'#EAB485');   // jaw edge — still warm, not dark
+  X.fillStyle=hfg;X.fill();X.restore();
+
+
+  // HAIR
+  X.save();
+  arc(cx,cy-62,52);X.fillStyle='#130e0a';X.fill();
+  X.beginPath();
+  X.moveTo(cx-50,cy-68);
+  X.bezierCurveTo(cx-54,cy-112,cx-26,cy-132,cx+4,cy-128);
+  X.bezierCurveTo(cx+30,cy-132,cx+52,cy-116,cx+50,cy-72);
+  X.bezierCurveTo(cx+36,cy-92,cx+10,cy-88,cx-8,cy-82);
+  X.bezierCurveTo(cx-24,cy-78,cx-44,cy-72,cx-50,cy-68);
+  X.fillStyle='#1c130e';X.fill();
+  X.beginPath();
+  X.moveTo(cx-14,cy-118);X.bezierCurveTo(cx,cy-132,cx+18,cy-130,cx+26,cy-116);
+  X.strokeStyle='rgba(90,42,14,.38)';X.lineWidth=3;X.lineCap='round';X.stroke();
+  [[cx-34,cy-76,cx-20,cy-112,cx-4,cy-118],
+   [cx-18,cy-74,cx-4,cy-108,cx+12,cy-114],
+   [cx-4,cy-72,cx+10,cy-104,cx+22,cy-110]
+  ].forEach(([x1,y1,x2,y2,x3,y3])=>{
+    X.beginPath();X.moveTo(x1,y1);X.quadraticCurveTo(x2,y2,x3,y3);
+    X.strokeStyle='rgba(64,30,10,.38)';X.lineWidth=1.5;X.lineCap='round';X.stroke();
+  });
+  arc(cx-46,cy-56,14);X.fillStyle='#18110c';X.fill();
+  arc(cx+46,cy-56,14);X.fillStyle='#18110c';X.fill();
+  X.restore();
+
+  // EARS
+  arc(cx-54,cy-52,10);X.fillStyle='#F5C49A';X.fill();
+  arc(cx-54,cy-52,6);X.fillStyle='rgba(210,130,80,.55)';X.fill();
+  arc(cx+54,cy-52,10);X.fillStyle='#F5C49A';X.fill();
+  arc(cx+54,cy-52,6);X.fillStyle='rgba(210,130,80,.55)';X.fill();
+
+  // HEADPHONES
+  X.beginPath();X.arc(cx,cy-68,62,π*1.1,π*1.9,false);
+  X.strokeStyle='#FF6B2B';X.lineWidth=5.5;X.lineCap='round';X.stroke();
+  X.beginPath();X.arc(cx,cy-68,62,π*1.16,π*1.5,false);
+  X.strokeStyle='rgba(255,190,130,.2)';X.lineWidth=2.5;X.stroke();
+  [-1,1].forEach(s=>{
+    const hx=cx+s*72,hy=cy-68;
+    X.save();X.shadowColor='rgba(0,0,0,.4)';X.shadowBlur=8;
+    rr(hx-11,hy-15,22,30,8);
+    const cg=X.createLinearGradient(hx-11,hy-15,hx+11,hy+15);
+    cg.addColorStop(0,'#2e2e48');cg.addColorStop(1,'#14141e');
+    X.fillStyle=cg;X.fill();X.restore();
+    X.strokeStyle='rgba(255,107,43,.65)';X.lineWidth=1.5;X.stroke();
+    rr(hx-7,hy-10,14,20,4);X.fillStyle='rgba(255,107,43,.1)';X.fill();
+    arc(hx,hy+8,4);
+    X.fillStyle=s<0?`rgba(255,107,43,${.4+Math.sin(t*2.2)*.38})`:`rgba(167,139,250,${.4+Math.cos(t*2.2)*.38})`;
+    X.fill();
+    X.save();X.globalAlpha=.14;arc(hx,hy+8,9);
+    X.fillStyle=s<0?'#FF6B2B':'#a78bfa';X.fill();X.restore();
+  });
+
+  // EYEBROWS
+  X.save();X.lineCap='round';
+  X.beginPath();X.moveTo(cx-35,cy-76);X.bezierCurveTo(cx-25,cy-84,cx-13,cy-82,cx-6,cy-76);
+  X.strokeStyle='#1a0e06';X.lineWidth=5;X.stroke();
+  X.beginPath();X.moveTo(cx+6,cy-76);X.bezierCurveTo(cx+13,cy-82,cx+25,cy-84,cx+35,cy-76);
+  X.strokeStyle='#1a0e06';X.lineWidth=5;X.stroke();X.restore();
+
+  // EYES
+  drawEye(cx-21,cy-58,15);
+  drawEye(cx+21,cy-58,15);
+
+  // NOSE
+  X.beginPath();
+  X.moveTo(cx,cy-40);X.quadraticCurveTo(cx-7,cy-28,cx-4,cy-24);
+  X.quadraticCurveTo(cx,cy-22,cx+4,cy-24);X.quadraticCurveTo(cx+7,cy-28,cx,cy-40);
+  X.fillStyle='rgba(190,110,60,.22)';X.fill();
+  X.strokeStyle='rgba(160,85,35,.35)';X.lineWidth=1.5;X.stroke();
+  // nostril dots
+  arc(cx-4,cy-24,2);X.fillStyle='rgba(150,75,30,.28)';X.fill();
+  arc(cx+4,cy-24,2);X.fillStyle='rgba(150,75,30,.28)';X.fill();
+
+  // MOUTH — natural lip with smile
+  // upper lip line
+  X.beginPath();X.arc(cx,cy-10,18,.08,π-.08);
+  X.strokeStyle='rgba(180,90,55,.55)';X.lineWidth=2.5;X.lineCap='round';X.stroke();
+  // teeth / inner smile — warm white
+  X.beginPath();X.arc(cx,cy-10,14,.18,π-.18);
+  X.strokeStyle='rgba(255,245,235,.6)';X.lineWidth=3.5;X.stroke();
+  // lip shine
+  X.beginPath();X.arc(cx-6,cy-12,5,.2,.9);
+  X.strokeStyle='rgba(255,200,160,.3)';X.lineWidth=1.5;X.stroke();
+
+  // BLUSH
+  arc(cx-40,cy-40,14);X.fillStyle='rgba(240,120,80,.13)';X.fill();
+  arc(cx+40,cy-40,14);X.fillStyle='rgba(240,120,80,.13)';X.fill();
+
+  X.restore();
+}
+
+function drawPts(){
+  pts.forEach(p=>{
+    const nx=p.ox+Math.sin(t*p.sp+p.ph)*28,ny=p.oy+Math.cos(t*p.sp*.8+p.ph)*20;
+    p.x+=(nx-p.x)*.01;p.y+=(ny-p.y)*.01;
+    const dx=tmx-p.x,dy=tmy-p.y,d=Math.sqrt(dx*dx+dy*dy)||1;
+    if(d<90){p.x-=dx/d;p.y-=dy/d;}
+    const cd=Math.sqrt((p.x-W/2)**2+(p.y-H/2)**2),b=Math.max(0,1-cd/(W*.42));
+    X.beginPath();X.arc(p.x,p.y,p.r,0,π*2);
+    X.fillStyle=p.warm?`rgba(255,107,43,${p.a+b*.3})`:`rgba(255,255,255,${(p.a+b*.22)*.5})`;
+    X.fill();
+  });
+}
+function getTimeTheme(){const h=new Date().getHours();if(h>=5&&h<8)return{cA:.82,bT:'#3d2810',bB:'#1a0e06',arm:'#2a1a0a',armB:'#180e04',leg:'#1e1408',legB:'#120c04',acc:'#FF8C42',bg1:'rgba(255,140,60,.08)',lbl:'🌅 Dawn'};if(h>=8&&h<12)return{cA:1,bT:'#1a2a4a',bB:'#0d1a2e',arm:'#152240',armB:'#0a1428',leg:'#12203c',legB:'#081428',acc:'#4A90D9',bg1:'rgba(80,140,255,.07)',lbl:'☀️ Morning'};if(h>=12&&h<17)return{cA:1,bT:'#282840',bB:'#161624',arm:'#222236',armB:'#131320',leg:'#1e1e30',legB:'#12121e',acc:'#FF6B2B',bg1:'rgba(255,107,43,.06)',lbl:'🌤 Afternoon'};if(h>=17&&h<21)return{cA:.9,bT:'#2a1a40',bB:'#160d24',arm:'#221634',armB:'#120a1e',leg:'#1e1030',legB:'#100820',acc:'#a78bfa',bg1:'rgba(167,139,250,.08)',lbl:'🌆 Evening'};return{cA:.72,bT:'#0e0e18',bB:'#06060e',arm:'#0c0c14',armB:'#060610',leg:'#0a0a12',legB:'#04040a',acc:'#6366f1',bg1:'rgba(99,102,241,.06)',lbl:'🌙 Night'};}
+const TH=getTimeTheme();
+function drawBg(cx,cy){
+  const g=X.createRadialGradient(cx,cy,10,cx,cy,W*.55);
+  g.addColorStop(0,TH.bg1);g.addColorStop(.5,'rgba(90,60,180,.02)');g.addColorStop(1,'transparent');
+  X.fillStyle=g;X.fillRect(0,0,W,H);
+  const mg=X.createRadialGradient(tmx,tmy,2,tmx,tmy,120);
+  mg.addColorStop(0,TH.bg1);mg.addColorStop(1,'transparent');
+  X.fillStyle=mg;X.fillRect(0,0,W,H);
+}
+
+function drawCursor(){
+  arc(smx,smy,4.5);X.fillStyle='#FF6B2B';X.fill();
+  arc(smx,smy,12);X.strokeStyle='rgba(255,107,43,.28)';X.lineWidth=1;X.stroke();
+}
+
+function loop(){
+  t+=.011;
+  // eyes smoothly track mouse
+  smx+=(tmx-smx)*.08;smy+=(tmy-smy)*.08;
+  bob=Math.sin(t)*9;
+  X.clearRect(0,0,W,H);
+  const cx=W/2+5,cy=H/2-80+bob;
+  drawBg(cx,cy-44);
+  drawPts();
+  drawChar(cx,cy);
+  drawCursor();
+  requestAnimationFrame(loop);
+}
+
+resize();loop();
+window.addEventListener('resize',resize);
+})();
+</script>

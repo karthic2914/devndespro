@@ -86,12 +86,12 @@ function App() {
         'nav.skills': 'Kompetanse',
         'nav.blog': 'Blogg',
         'nav.contact': 'Kontakt',
-        'nav.quote': 'FÃ¥ Gratis Tilbud',
+        'nav.quote': 'Få gratis tilbud',
         'hero.kicker': 'Fullstack + DevOps',
         'hero.line1': 'Vi Designer.',
         'hero.line2': 'Vi Bygger.',
         'hero.line3': 'Vi Skalerer.',
-        'hero.stat1': 'Ã…r med erfaring',
+        'hero.stat1': 'År med erfaring',
         'hero.stat2': 'Google-rangeringer',
         'hero.stat3': 'Kunder som blir',
         'hero.desc': 'Et premium <strong>React & Next.js webutviklings-</strong> og <strong>UI/UX-designbyrÃ¥</strong> i <strong>Stavanger, Norge</strong> som hjelper startups og selskaper i <strong>Europa, USA, India og APAC</strong>. Fra Figma til produksjon.',
@@ -472,6 +472,7 @@ function App() {
     const langButtons = Array.from(document.querySelectorAll('.lang-btn'));
 
     const applyLanguage = (lang) => {
+      
       const activeLang = lang === 'no' ? 'no' : 'en';
       const dict = translations[activeLang] || translations.en;
       currentLang = activeLang;
@@ -542,7 +543,7 @@ function App() {
         var pkgIntro = pkgSection.querySelector('.pkg-intro');
         if (pkgLabel) pkgLabel.textContent = isNo ? 'Pakker' : 'Packages';
         if (pkgHeading) pkgHeading.innerHTML = isNo ? 'Bygget for sm\u00e5 bedrifter.<br><em>Klar for vekst.</em>' : 'Built for small businesses.<br><em>Ready to grow.</em>';
-        if (pkgIntro) pkgIntro.textContent = isNo ? 'Nettsted \u00b7 Hosting \u00b7 Domene \u00b7 SEO-verkt\u00f8y \u2014 \u00e9n tydelig m\u00e5nedspakke. Ingen skjulte kostnader, ingen overraskelser. Pris tilpasset ditt marked \u2014 ta kontakt for tilbud.' : 'Website \u00b7 Hosting setup \u00b7 Domain management \u00b7 SEO tool \u2014 one clear monthly package. No hidden fees, no surprises. Pricing tailored to your market \u2014 enquire to get a quote.';
+        if (pkgIntro) pkgIntro.textContent = isNo ? 'Nettsted \u00b7 Hosting \u00b7 Domene \u00b7 SEO-verkt\u00f8y. \u00e9n tydelig m\u00e5nedspakke. Ingen skjulte kostnader, ingen overraskelser. Pris tilpasset ditt marked . Ta kontakt for tilbud.' : 'Website \u00b7 Hosting setup \u00b7 Domain management \u00b7 SEO tool. One clear monthly package. No hidden fees, no surprises.';
 
         // Card tags
         var tags = pkgSection.querySelectorAll('.pkg-tag-static');
@@ -683,6 +684,11 @@ function App() {
       langButtons.forEach((btn) => {
         btn.classList.toggle('active', btn.dataset.lang === activeLang);
       });
+      // Store current translated text for typewriter to read
+      document.querySelectorAll('.hd-1,.hd-2,.hd-3').forEach(el => {
+        el.dataset.currentText = el.textContent.trim();
+      });
+
     };
 
     const setLanguage = (lang, updateUrl = true) => {
@@ -711,6 +717,34 @@ function App() {
       } catch { }
     }
     setLanguage(preferredLang, false);
+
+    // Looping typewriter — reads live text each loop so language switch works
+    setTimeout(() => { if(window.innerWidth <= 1024) return;
+      const lines = document.querySelectorAll('.hd-1,.hd-2,.hd-3');
+      if (!lines.length) return;
+      function typeLine(el, txt, cb) {
+        let i = 0; el.style.visibility = 'visible'; el.textContent = '_';
+        function tick() {
+          if (i < txt.length) { el.textContent = txt.slice(0,i+1)+'_'; i++; setTimeout(tick, 65); }
+          else { el.textContent = txt; if (cb) setTimeout(cb, 350); }
+        } tick();
+      }
+      function runLoop() {
+        const texts = Array.from(lines).map(el => el.dataset.currentText || el.textContent.trim());
+        lines.forEach(el => { el.style.visibility = 'visible'; });
+        typeLine(lines[0], texts[0], () =>
+          typeLine(lines[1], texts[1], () =>
+            typeLine(lines[2], texts[2], () => {
+              setTimeout(() => {
+                lines.forEach(el => { el.style.visibility = 'visible'; });
+                setTimeout(runLoop, 500);
+              }, 3000);
+            })
+          )
+        );
+      }
+      runLoop();
+    }, 2500);
 
     // â”€â”€ NAV MEGA MENU â€” hover with delay buffer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const navDropdowns = document.querySelectorAll('.nav-dropdown');
@@ -1251,4 +1285,5 @@ function App() {
 }
 
 export default App;
+
 

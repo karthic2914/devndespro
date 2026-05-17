@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Axel DD Robot Animation</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  width:100%;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:transparent;
+}
+
+/* MAIN WRAPPER */
+.robot-scene{
+  position:relative;
+  width:500px;
+  height:700px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* ROBOT IMAGE */
+.robot{
+  width:100%;
+  max-width:420px;
+  user-select:none;
+  pointer-events:none;
+  transition:transform 0.12s ease-out;
+  transform-origin:center center;
+  filter:
+    drop-shadow(0 0 20px rgba(255,107,43,.25))
+    drop-shadow(0 0 40px rgba(255,107,43,.15));
+  animation:floatRobot 4s ease-in-out infinite;
+}
+
+/* FLOATING ANIMATION */
+@keyframes floatRobot{
+  0%{
+    transform:translateY(0px);
+  }
+  50%{
+    transform:translateY(-10px);
+  }
+  100%{
+    transform:translateY(0px);
+  }
+}
+
+/* EYES */
+.eye{
+  position:absolute;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:#1a0b05;
+  z-index:10;
+  transition:transform .05s linear;
+  box-shadow:
+    0 0 8px rgba(0,0,0,.2);
+}
+
+/* LEFT EYE */
+.left-eye{
+  top:210px;
+  left:214px;
+}
+
+/* RIGHT EYE */
+.right-eye{
+  top:210px;
+  right:214px;
+}
+
+/* GLOW PARTICLES */
+.particle{
+  position:absolute;
+  border-radius:50%;
+  background:#ff6b2b;
+  opacity:.5;
+  animation:particles 6s linear infinite;
+}
+
+.p1{
+  width:6px;
+  height:6px;
+  top:100px;
+  left:80px;
+}
+
+.p2{
+  width:8px;
+  height:8px;
+  bottom:150px;
+  right:90px;
+  animation-delay:1s;
+}
+
+.p3{
+  width:5px;
+  height:5px;
+  top:180px;
+  right:50px;
+  animation-delay:2s;
+}
+
+.p4{
+  width:7px;
+  height:7px;
+  bottom:100px;
+  left:40px;
+  animation-delay:3s;
+}
+
+@keyframes particles{
+  0%{
+    transform:translateY(0px);
+    opacity:.1;
+  }
+
+  50%{
+    opacity:.6;
+  }
+
+  100%{
+    transform:translateY(-30px);
+    opacity:0;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="robot-scene" id="scene">
+
+  <!-- ROBOT IMAGE -->
+  <!-- CHANGE THIS PATH -->
+  <img src="robot.png" class="robot" id="robot"/>
+
+  <!-- MOVING EYES -->
+  <div class="eye left-eye" id="leftEye"></div>
+  <div class="eye right-eye" id="rightEye"></div>
+
+  <!-- PARTICLES -->
+  <div class="particle p1"></div>
+  <div class="particle p2"></div>
+  <div class="particle p3"></div>
+  <div class="particle p4"></div>
+
+</div>
+
+<script>
+
+const robot = document.getElementById("robot");
+const scene = document.getElementById("scene");
+
+const leftEye = document.getElementById("leftEye");
+const rightEye = document.getElementById("rightEye");
+
+document.addEventListener("mousemove",(e)=>{
+
+  const rect = scene.getBoundingClientRect();
+
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  const mouseX = e.clientX - centerX;
+  const mouseY = e.clientY - centerY;
+
+  const rotateX = mouseY / 40;
+  const rotateY = mouseX / 35;
+
+  /* ROBOT BODY MOVEMENT */
+  robot.style.transform = `
+    perspective(1000px)
+    rotateX(${-rotateX}deg)
+    rotateY(${rotateY}deg)
+    translateY(${mouseY/80}px)
+  `;
+
+  /* EYE MOVEMENT */
+  const eyeMoveX = mouseX / 45;
+  const eyeMoveY = mouseY / 55;
+
+  leftEye.style.transform = `
+    translate(${eyeMoveX}px, ${eyeMoveY}px)
+  `;
+
+  rightEye.style.transform = `
+    translate(${eyeMoveX}px, ${eyeMoveY}px)
+  `;
+
+});
+
+</script>
+
+</body>
+</html>
