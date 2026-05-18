@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Use AI APIs to Build Smarter Apps (Without a PhD)</title>
+    <meta name="description" content="Learn how AI APIs work and how to use them to build smarter apps today — no machine learning degree required. Practical guide for developers.">
+    <meta name="keywords" content="AI API, Claude API, OpenAI, build with AI, developer guide, AI for developers">
+    <link rel="canonical" href="https://www.devndespro.com/blog/how-to-use-ai-apis-to-build-smarter-apps.html">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="How to Use AI APIs to Build Smarter Apps (Without a PhD)">
+    <meta property="og:type" content="article">
+    <link rel="stylesheet" href="/css/seo-pages.css">
+    <style>
+      body { background:#2c2c36; color:#f4f4ee; margin:0; font-family:Jost, Arial, sans-serif; line-height:1.75; }
+      .wrap { max-width:860px; margin:0 auto; padding:1.4rem 1rem 3rem; }
+      .article-nav { display:flex; justify-content:space-between; gap:1rem; border-bottom:1px solid rgba(244,244,238,.16); padding-bottom:1rem; margin-bottom:1.2rem; }
+      a { color:#f08a62; text-decoration:none; }
+      h1, h2, h3, h4 { color:#fff; line-height:1.3; }
+      p, li { color:#dddcd3; }
+      ul, ol { padding-left:1.1rem; }
+      .meta { color:#d4c6be; font-size:.84rem; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.55rem; }
+      .article-cta { margin-top:1.3rem; padding:1rem 1.1rem; border:1px solid rgba(244,244,238,.16); border-radius:12px; background:rgba(255,255,255,.02); }
+      .article-cta p { margin:0; }
+      pre { background:rgba(255,255,255,.05); border:1px solid rgba(244,244,238,.14); border-radius:10px; padding:1rem 1.2rem; overflow-x:auto; font-size:.88rem; line-height:1.65; }
+      code { font-family:'Courier New', monospace; color:#f08a62; font-size:.9em; }
+      pre code { color:#dddcd3; font-size:.87rem; }
+      table { width:100%; border-collapse:collapse; margin:1rem 0; }
+      th { background:rgba(255,255,255,.07); color:#fff; font-size:.82rem; letter-spacing:.07em; text-transform:uppercase; padding:.65rem .9rem; text-align:left; border-bottom:1px solid rgba(244,244,238,.18); }
+      td { padding:.6rem .9rem; border-bottom:1px solid rgba(244,244,238,.09); color:#dddcd3; font-size:.93rem; }
+      td strong { color:#f4f4ee; }
+      .ascii-block { background:rgba(255,255,255,.05); border:1px solid rgba(244,244,238,.14); border-radius:10px; padding:1rem 1.2rem; font-family:'Courier New', monospace; font-size:.85rem; color:#b8b8b0; white-space:pre; overflow-x:auto; }
+      @media (max-width: 700px) {
+        .wrap { padding:1rem .9rem 2rem; }
+        pre { font-size:.8rem; }
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body style="padding-top:72px">
+
+<!-- ===================== SITE NAV ===================== -->
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  body { margin: 0; font-family: 'Jost', sans-serif; background: #2C2C36; color: #fff; overflow-x: hidden; }
+  #nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 72px;
+    background: rgba(44,44,54,0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    transition: background 0.3s ease;
+  }
+  #nav.s { background: rgba(28,28,36,0.98); }
+  .logo { display: flex; align-items: center; text-decoration: none; }
+  .logo-img { height: 40px; width: auto; display: block; }
+  .nav-r { display: flex; align-items: center; gap: 1.5rem; }
+  .lang-switch { display: flex; gap: 4px; }
+  .lang-btn {
+    background: transparent; border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.5); border-radius: 6px;
+    padding: 4px 10px; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.1em; cursor: pointer; transition: all 0.2s;
+  }
+  .lang-btn.active, .lang-btn:hover { background: #FF6B2B; color: #fff; border-color: #FF6B2B; }
+  .nav-menu { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 0.25rem; }
+  .nav-menu li { position: relative; }
+  .nav-menu a {
+    display: block; padding: 0.45rem 0.75rem;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: rgba(255,255,255,0.7);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-menu a:hover, .nav-menu a.active { color: #FF6B2B; }
+  .nav-cta {
+    background: #FF6B2B; color: #fff; border-radius: 8px;
+    padding: 0.6rem 1.2rem; font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: #e55a1f; transform: translateY(-1px); color: #fff; }
+  .nav-toggle { display: none; }
+  .nav-dropdown { position: relative; }
+  .nav-submenu {
+    display: none; position: fixed; top: 72px;
+    width: 920px; max-width: 94vw;
+    background: #1a1a22; border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px; padding: 0;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.7);
+    z-index: 9999; list-style: none; margin: 0;
+  }
+  .nav-dropdown.open .nav-submenu { display: block; }
+  .nav-mega {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 0; padding: 1.4rem 0.4rem; list-style: none; margin: 0;
+  }
+  .nav-mega-col { padding: 0 1.2rem; border-right: 1px solid rgba(255,255,255,0.07); }
+  .nav-mega-col:last-child { border-right: none; }
+  .nav-mega-title {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: #FF6B2B; margin: 0 0 0.8rem;
+  }
+  .nav-mega-col a {
+    display: block; font-size: 0.72rem; font-weight: 500;
+    color: rgba(255,255,255,0.65); text-decoration: none;
+    padding: 0.28rem 0; text-transform: uppercase;
+    transition: color 0.15s, padding-left 0.15s; border-bottom: none;
+  }
+  .nav-mega-col a:hover { color: #FF6B2B; padding-left: 5px; }
+  .nav-toggle {
+    display: none; background: transparent; border: 1px solid rgba(255,255,255,0.2);
+    color: #fff; width: 38px; height: 38px; border-radius: 8px;
+    align-items: center; justify-content: center; cursor: pointer; font-size: 1rem;
+  }
+  @media (max-width: 767px) {
+    .nav-toggle { display: flex; }
+    .nav-r { position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+      flex-direction: column; align-items: flex-start; justify-content: flex-start;
+      background: #1a1a22; padding: 2rem 1.5rem; gap: 1.5rem;
+      transform: translateX(-100%); transition: transform 0.3s ease; z-index: 8999; overflow-y: auto;
+    }
+    #nav.open .nav-r { transform: translateX(0); }
+    .nav-menu { flex-direction: column; align-items: flex-start; width: 100%; gap: 0; }
+    .nav-menu a { font-size: 1rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); width: 100%; }
+    .nav-cta { width: 100%; text-align: center; padding: 1rem; font-size: 0.9rem; }
+    .nav-submenu { display: none !important; }
+  }
+</style>
+
+<nav id="nav">
+  <a href="https://devndespro.com/" class="logo">
+    <img src="/images/DDDP_logo_mark.webp" alt="devndespro logo" class="logo-img" width="1280" height="655" decoding="async" fetchpriority="high">
+  </a>
+  <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" onclick="
+    var nav = document.getElementById('nav');
+    var open = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', open);
+    this.innerHTML = open
+      ? '<i class=\'fa-solid fa-xmark\'></i>'
+      : '<i class=\'fa-solid fa-bars\'></i>';
+    document.body.style.overflow = open ? 'hidden' : '';
+  ">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+  </button>
+  <div class="nav-r">
+    <div class="lang-switch" aria-label="Language switcher">
+      <button type="button" class="lang-btn" data-lang="en" onclick="window.location.href='/'">EN</button>
+      <button type="button" class="lang-btn active" data-lang="no" onclick="window.location.href='/?lang=no'">NO</button>
+    </div>
+    <ul class="nav-menu">
+      <li class="nav-dropdown">
+        <a href="https://devndespro.com/#services">Services</a>
+        <ul class="nav-submenu">
+          <li class="nav-mega">
+            <div class="nav-mega-col">
+              <p class="nav-mega-title">Norway</p>
+              <a href="/seo/web-design-company-norway.html">Web Design Norway</a>
+              <a href="/seo/web-utvikler-norge.html">Web Utvikler Norge</a>
+              <a href="/seo/website-builder-stavanger.html">Web Design Stavanger</a>
+              <a href="/seo/web-development-oslo.html">Web Development Oslo</a>
+              <a href="/seo/web-development-bergen.html">Web Development Bergen</a>
+              <a href="/seo/seo-services-norway.html">SEO Services Norway</a>
+              <a href="/seo/freelance-web-developer-norway.html">Freelance Web Developer Norway</a>
+              <a href="/seo/ux-ui-designer-norway.html">UX UI Designer Norway</a>
+            </div>
+            <div class="nav-mega-col">
+              <p class="nav-mega-title">Europe</p>
+              <a href="/seo/web-design-europe.html">Web Design Europe</a>
+              <a href="/seo/web-development-europe.html">Web Development Europe</a>
+              <a href="/seo/full-stack-development-norway.html">Full Stack EU</a>
+              <a href="/seo/mobile-app-development-europe.html">Mobile App Europe</a>
+            </div>
+            <div class="nav-mega-col">
+              <p class="nav-mega-title">Global</p>
+              <a href="/seo/web-design-agency-usa.html">Web Design USA</a>
+              <a href="/seo/hire-web-developer-usa.html">Hire Web Dev USA</a>
+              <a href="/seo/web-design-company-india.html">Web Design India</a>
+              <a href="/seo/seo-agency-india.html">SEO Agency India</a>
+            </div>
+            <div class="nav-mega-col">
+              <p class="nav-mega-title">Engineering</p>
+              <a href="/seo/full-stack-development-norway.html">Full Stack Norway</a>
+              <a href="/seo/devops-services-norway.html">DevOps Norway</a>
+              <a href="/seo/web-application-development-norway.html">Web App Norway</a>
+              <a href="/seo/mobile-app-development.html">Mobile App Dev</a>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li><a href="https://devndespro.com/#work">Work</a></li>
+      <li><a href="https://devndespro.com/#skills-section">Skills</a></li>
+      <li><a href="https://devndespro.com/#testimonials">Reviews</a></li>
+      <li><a href="https://devndespro.com/#packages">Packages</a></li>
+      <li><a href="/blog/" style="color:#FF6B2B;text-decoration:none;border-bottom:2px solid #FF6B2B;padding-bottom:2px">Blog</a></li>
+      <li><a href="https://devndespro.com/#contact">Contact</a></li>
+    </ul>
+    <a href="https://devndespro.com/#contact" class="nav-cta">Get Free Quote</a>
+  </div>
+</nav>
+
+<script>
+  window.addEventListener('scroll', function () {
+    document.getElementById('nav').classList.toggle('s', window.scrollY > 60);
+  });
+  document.querySelectorAll('.nav-dropdown').forEach(function (dd) {
+    var timer;
+    dd.addEventListener('mouseenter', function () {
+      clearTimeout(timer);
+      document.querySelectorAll('.nav-dropdown').forEach(function (d) { if (d !== dd) d.classList.remove('open'); });
+      dd.classList.add('open');
+    });
+    dd.addEventListener('mouseleave', function () {
+      timer = setTimeout(function () { dd.classList.remove('open'); }, 180);
+    });
+    var sub = dd.querySelector('.nav-submenu');
+    if (sub) {
+      sub.addEventListener('mouseenter', function () { clearTimeout(timer); });
+      sub.addEventListener('mouseleave', function () { timer = setTimeout(function () { dd.classList.remove('open'); }, 180); });
+    }
+    document.addEventListener('click', function (e) {
+      if (!dd.contains(e.target)) dd.classList.remove('open');
+    });
+  });
+</script>
+<!-- ============================================================ -->
+
+    <main class="wrap">
+        <article>
+            <nav class="article-nav">
+                <a href="/blog/">More Articles</a>
+            </nav>
+            <p class="meta">Developer Guide · AI &amp; APIs</p>
+            <h1>How to Use AI APIs to Build Smarter Apps (Without a PhD)</h1>
+
+            <h2>Introduction</h2>
+            <p>A few years ago, adding "intelligence" to your app meant hiring a data scientist, training models, and managing complex infrastructure. Today? You can make your app smarter in an afternoon — with just an API call.</p>
+            <p>AI APIs have changed the game for developers. You don't need a PhD in machine learning. You just need to know how to send a request and handle a response — skills you already have.</p>
+            <p>This guide walks you through what AI APIs are, how they work, and how you can start building smarter apps today.</p>
+
+            <h2>What Is an AI API?</h2>
+            <p>An AI API is a web service that exposes a trained AI model — so your app can use it without you building or hosting the model yourself.</p>
+            <p>You send it some input (text, image, audio), it processes it using the AI model, and returns a smart response.</p>
+            <p>Think of it like calling a weather API — except instead of getting temperature data back, you get things like:</p>
+            <ul>
+                <li>A summary of a long document</li>
+                <li>A generated reply to a user's message</li>
+                <li>A classification of whether content is spam or not</li>
+                <li>Code suggestions based on a comment</li>
+            </ul>
+
+            <h3>Popular AI APIs</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>API</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Anthropic Claude API</strong></td><td>Text generation, reasoning, summarization</td></tr>
+                    <tr><td><strong>OpenAI API</strong></td><td>GPT models for chat, embeddings, image generation</td></tr>
+                    <tr><td><strong>Google Gemini API</strong></td><td>Multimodal (text + image) tasks</td></tr>
+                    <tr><td><strong>Hugging Face Inference API</strong></td><td>Open-source models for NLP, vision, audio</td></tr>
+                </tbody>
+            </table>
+
+            <h2>How Does It Work?</h2>
+            <p>Most AI APIs follow the same basic pattern:</p>
+            <div class="ascii-block">Your App  →  HTTP Request (with your input)  →  AI API
+                                                    ↓
+Your App  ←  HTTP Response (with AI output)  ←  AI Model</div>
+
+            <p>Here's a minimal example using the Anthropic Claude API in JavaScript:</p>
+<pre><code>const response = await fetch("https://api.anthropic.com/v1/messages", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "x-api-key": process.env.ANTHROPIC_API_KEY,
+    "anthropic-version": "2023-06-01"
+  },
+  body: JSON.stringify({
+    model: "claude-sonnet-4-20250514",
+    max_tokens: 1024,
+    messages: [
+      {
+        role: "user",
+        content: "Summarize this in 3 bullet points: " + userText
+      }
+    ]
+  })
+});
+
+const data = await response.json();
+console.log(data.content[0].text);</code></pre>
+            <p>That's it. You just added AI summarization to your app.</p>
+
+            <h2>Real-World Use Cases for Developers</h2>
+            <p>Here are practical ways to use AI APIs in apps you're already building:</p>
+
+            <h3>1. Auto-Summarize Long Content</h3>
+            <p>Got a blog, news feed, or documentation? Let users hit a "Summarize" button and get the key points instantly.</p>
+
+            <h3>2. Smart Search</h3>
+            <p>Instead of keyword matching, use AI embeddings to find semantically similar results — users find what they <em>mean</em>, not just what they type.</p>
+
+            <h3>3. Chatbots and Support Assistants</h3>
+            <p>Replace static FAQs with a conversational assistant that understands context and gives human-like answers.</p>
+
+            <h3>4. Content Generation</h3>
+            <p>Let users draft emails, product descriptions, or social posts with one click — then edit from there.</p>
+
+            <h3>5. Code Review and Suggestions</h3>
+            <p>Feed code snippets to the API and get back suggestions, bug explanations, or refactored versions.</p>
+
+            <h3>6. Sentiment Analysis</h3>
+            <p>Automatically classify user reviews, support tickets, or comments as positive, negative, or neutral.</p>
+
+            <h2>Key Concepts to Understand</h2>
+            <p>Before you dive in, a few terms that will come up often:</p>
+            <ul>
+                <li><strong>Prompt</strong> — The input you send to the model. The better your prompt, the better the output. This is called <em>prompt engineering</em>.</li>
+                <li><strong>Token</strong> — AI models process text in chunks called tokens. Roughly 1 token ≈ 0.75 words. APIs charge by tokens used.</li>
+                <li><strong>Temperature</strong> — Controls randomness in responses. <code>0</code> = precise and deterministic. <code>1</code> = creative and varied.</li>
+                <li><strong>System Prompt</strong> — A hidden instruction you give the model before the user's message. Use it to set the persona, tone, or rules.</li>
+            </ul>
+<pre><code>messages: [
+  {
+    role: "system",
+    content: "You are a helpful assistant for a web development studio. Always reply concisely."
+  },
+  {
+    role: "user",
+    content: userMessage
+  }
+]</code></pre>
+
+            <h2>Tips for Building with AI APIs</h2>
+            <ul>
+                <li><strong>Start simple.</strong> Pick one small feature — summarization, classification, or generation — and get it working end-to-end before adding complexity.</li>
+                <li><strong>Never expose your API key on the frontend.</strong> Always route AI API calls through your backend (Node.js, Express, etc.). Your key = your billing.</li>
+                <li><strong>Handle errors gracefully.</strong> AI APIs can time out or return unexpected results. Always wrap calls in <code>try/catch</code> and show a fallback UI.</li>
+                <li><strong>Cache where possible.</strong> If the same input generates the same output, cache the result. It saves cost and speeds up your app.</li>
+                <li><strong>Log your prompts and responses.</strong> During development, log everything. You'll spot patterns in bad outputs quickly.</li>
+            </ul>
+
+            <h2>A Simple Project to Start With</h2>
+            <p>Build a <strong>"Plain English Explainer"</strong> tool:</p>
+            <ol>
+                <li>User pastes any technical text (API docs, legal jargon, error messages)</li>
+                <li>Your app sends it to an AI API with the prompt: <em>"Explain this in simple terms a beginner would understand"</em></li>
+                <li>Display the response below the input</li>
+            </ol>
+            <p>This takes under an hour to build and teaches you the full request-response cycle. From there, every other use case is a variation.</p>
+
+            <h2>Conclusion</h2>
+            <p>AI APIs remove the hardest parts of building intelligent apps — training, hosting, and maintaining models. As a developer, your job is just to ask the right question and build around the answer.</p>
+            <p>The barrier to entry has never been lower. Pick an API, get a key, and start experimenting. The best way to learn what's possible is to build something small and see where it takes you.</p>
+
+            <div class="article-cta">
+                <p>Ready to build smarter? <a href="https://devndespro.com/#contact">Work with devndespro</a> to integrate AI into your next web project.</p>
+            </div>
+
+            <section style="margin-top:1.8rem;border-top:1px solid rgba(244,244,238,.16);padding-top:1rem;">
+                <h2 style="margin-top:0;">Related Articles</h2>
+                <p>
+                    <a href="/blog/service-page-seo-structure.html" style="color:#f08a62;text-decoration:none;">Service Page SEO Structure</a> |
+                    <a href="/blog/affordable-web-design-company/" style="color:#f08a62;text-decoration:none;">Affordable Web Design on a Budget</a> |
+                    <a href="/blog/" style="color:#f08a62;text-decoration:none;">All Articles</a>
+                </p>
+            </section>
+
+            <section id="work-with-us-cta" style="margin-top:1.2rem;padding:1rem 1.1rem;border:1px solid rgba(244,244,238,.16);border-radius:12px;background:rgba(255,255,255,.02);">
+                <h3 style="margin:.1rem 0 .5rem;color:#f4f4ee;font-size:1.02rem;">Need help building with AI or modern web tech?</h3>
+                <p style="margin:.3rem 0 .75rem;color:#c9c9c1;">Explore our services and start a fast, scalable, intelligent web build with devndespro.</p>
+                <p style="margin:0;line-height:1.9;">
+                    <a href="/seo/web-development-norway.html" style="color:#f08a62;text-decoration:none;">Web Development Norway</a> |
+                    <a href="/seo/full-stack-development-norway.html" style="color:#f08a62;text-decoration:none;">Full Stack Norway</a> |
+                    <a href="https://devndespro.com/#contact" style="color:#f4f4ee;text-decoration:none;border-bottom:1px solid rgba(244,244,238,.45);">Start a Project</a>
+                </p>
+            </section>
+
+            <div id="blog-like-button" style="display:flex;align-items:center;gap:0.8rem;margin:1.2rem 0;">
+                <button id="like-btn" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:0.4rem;padding:0.6rem 1rem;border:1px solid rgba(244,244,238,.18);border-radius:8px;color:#f4f4ee;font-family:inherit;font-size:0.95rem;font-weight:600;transition:all 0.2s;"><i id="heart-icon" class="fa-solid fa-heart" style="font-size:1.1rem;color:#9ea1ad;"></i><span id="like-count">0</span> likes</button>
+            </div>
+            <script>
+            (function(){
+                var slug = window.location.pathname.replace(/^\/blog\//,"").replace(/\/+$/,"").replace(/[^a-z0-9-]/gi,"") || "general";
+                var btn = document.getElementById("like-btn");
+                var heart = document.getElementById("heart-icon");
+                var count = document.getElementById("like-count");
+                var hasLiked = localStorage.getItem("liked_" + slug) === "true";
+                function updateUI(newCount, liked) {
+                    count.textContent = newCount;
+                    if (liked || hasLiked) {
+                        heart.style.color = "#f08a62";
+                        btn.style.borderColor = "rgba(240, 138, 98, 0.6)";
+                        btn.style.color = "#f08a62";
+                    } else {
+                        heart.style.color = "#9ea1ad";
+                        btn.style.borderColor = "rgba(244,244,238,.18)";
+                        btn.style.color = "#f4f4ee";
+                    }
+                }
+                fetch("https://devndespro-production.up.railway.app/api/likes/" + slug).then(function(r) { return r.json(); }).then(function(d) { updateUI(d.count || 0, hasLiked); }).catch(function() { updateUI(0, hasLiked); });
+                btn.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    if (hasLiked) { alert("You already liked this article!"); return; }
+                    btn.disabled = true; btn.style.opacity = "0.6";
+                    fetch("https://devndespro-production.up.railway.app/api/likes/" + slug, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ slug: slug }) })
+                    .then(function(r) { return r.json(); })
+                    .then(function(d) { if (d.ok) { hasLiked = true; localStorage.setItem("liked_" + slug, "true"); updateUI(d.count || 0, true); } btn.disabled = false; btn.style.opacity = "1"; })
+                    .catch(function() { btn.disabled = false; btn.style.opacity = "1"; });
+                });
+            })();
+            </script>
+
+            <section id="blog-comments-widget" style="margin-top:2.6rem;border-top:1px solid rgba(244,244,238,.16);padding-top:1.6rem;">
+                <h2 style="margin:0 0 1.2rem;color:#fff;">Comments</h2>
+                <div id="comments-list" style="margin-bottom:2rem;display:flex;flex-direction:column;gap:1.2rem;">
+                    <p id="comments-loading" style="color:#b0b0a8;font-size:.9rem;">Loading comments...</p>
+                </div>
+                <h3 style="margin:0 0 .9rem;color:#f4f4ee;font-size:1rem;">Leave a comment</h3>
+                <form id="comment-form" style="display:flex;flex-direction:column;gap:.7rem;max-width:540px;">
+                    <input type="text" id="cf-name" placeholder="Your name *" required maxlength="120" style="background:rgba(255,255,255,.05);border:1px solid rgba(244,244,238,.18);border-radius:8px;padding:.7rem .9rem;color:#f4f4ee;font-size:.95rem;font-family:inherit;outline:none;">
+                    <input type="email" id="cf-email" placeholder="Email (not shown publicly) *" required maxlength="200" style="background:rgba(255,255,255,.05);border:1px solid rgba(244,244,238,.18);border-radius:8px;padding:.7rem .9rem;color:#f4f4ee;font-size:.95rem;font-family:inherit;outline:none;">
+                    <textarea id="cf-body" placeholder="Your comment *" required maxlength="2000" rows="4" style="background:rgba(255,255,255,.05);border:1px solid rgba(244,244,238,.18);border-radius:8px;padding:.7rem .9rem;color:#f4f4ee;font-size:.95rem;font-family:inherit;outline:none;resize:vertical;"></textarea>
+                    <input type="text" name="website" id="cf-hp" style="display:none;" tabindex="-1" autocomplete="off">
+                    <div id="cf-msg" style="font-size:.88rem;min-height:1.2rem;"></div>
+                    <button type="submit" id="cf-submit" style="align-self:flex-start;background:#f08a62;border:none;border-radius:8px;padding:.72rem 1.4rem;color:#fff;font-size:.95rem;font-family:inherit;cursor:pointer;font-weight:600;">Post Comment</button>
+                </form>
+                <script>
+                (function(){
+                    var slug = window.location.pathname.replace(/^\/blog\//,'').replace(/\/+$/,'').replace(/[^a-z0-9-]/gi,'') || 'general';
+                    var list = document.getElementById('comments-list');
+                    var loading = document.getElementById('comments-loading');
+                    function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+                    function fmtDate(s){ try{ return new Date(s).toLocaleDateString('en-GB',{year:'numeric',month:'short',day:'numeric'}); }catch(e){ return ''; } }
+                    function renderComments(comments){ if(!comments.length){ loading.textContent = 'No comments yet. Be the first!'; return; } loading.remove(); comments.forEach(function(c){ var div = document.createElement('div'); div.style.cssText = 'background:rgba(255,255,255,.04);border:1px solid rgba(244,244,238,.12);border-radius:10px;padding:.9rem 1rem;'; div.innerHTML = '<div style="display:flex;gap:.6rem;align-items:baseline;margin-bottom:.4rem;">' + '<strong style="color:#f4f4ee;font-size:.95rem;">'+esc(c.name)+'</strong>' + '<span style="color:#888;font-size:.78rem;">'+fmtDate(c.created_at)+'</span>' + '</div><p style="margin:0;color:#ccccc4;font-size:.93rem;line-height:1.65;white-space:pre-wrap;">'+esc(c.body)+'</p>'; list.appendChild(div); }); }
+                    fetch('https://devndespro-production.up.railway.app/api/comments/'+slug).then(function(r){ return r.json(); }).then(function(d){ renderComments(d.comments || []); }).catch(function(){ loading.textContent = 'Could not load comments.'; });
+                    document.getElementById('comment-form').addEventListener('submit', function(e){ e.preventDefault(); var btn = document.getElementById('cf-submit'); var msg = document.getElementById('cf-msg'); var hp = document.getElementById('cf-hp').value; var name = document.getElementById('cf-name').value.trim(); var email = document.getElementById('cf-email').value.trim(); var body = document.getElementById('cf-body').value.trim(); btn.disabled = true; btn.textContent = 'Sending...'; msg.style.color = '#b0b0a8'; msg.textContent = ''; fetch('https://devndespro-production.up.railway.app/api/comments/'+slug, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ slug:slug, name:name, email:email, body:body, website:hp }) }).then(function(r){ return r.json(); }).then(function(d){ if(d.ok){ msg.style.color = '#7ec99a'; msg.textContent = 'Thank you! Your comment is awaiting moderation.'; document.getElementById('comment-form').reset(); } else { msg.style.color = '#e07070'; msg.textContent = d.error || 'Something went wrong. Please try again.'; } btn.disabled = false; btn.textContent = 'Post Comment'; }).catch(function(){ msg.style.color = '#e07070'; msg.textContent = 'Network error. Please try again.'; btn.disabled = false; btn.textContent = 'Post Comment'; }); });
+                })();
+                </script>
+            </section>
+
+        </article>
+    </main>
+</body>
+</html>
