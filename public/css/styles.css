@@ -1228,7 +1228,7 @@ footer{
   align-items:center;
   gap:24px;
 }
-}
+
 .f-logo{display:inline-flex;align-items:center;text-decoration:none}
 .f-logo-img{height:58px;width:auto;display:block}
 .f-copy{font-size:.62rem;letter-spacing:.1em;color:var(--dim)}

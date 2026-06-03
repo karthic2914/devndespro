@@ -78,7 +78,7 @@ function App() {
         'success.note': 'Check your inbox - a confirmation email is on its way.'
       },
       no: {
-        'utility.wa': 'Chat på WhatsApp',
+        'utility.wa': 'Chat pï¿½ WhatsApp',
         'utility.top': 'Til toppen',
         'utility.top.short': 'TOPP',
         'nav.services': 'Tjenester',
@@ -86,12 +86,12 @@ function App() {
         'nav.skills': 'Kompetanse',
         'nav.blog': 'Blogg',
         'nav.contact': 'Kontakt',
-        'nav.quote': 'Få gratis tilbud',
+        'nav.quote': 'Fï¿½ gratis tilbud',
         'hero.kicker': 'Fullstack + DevOps',
         'hero.line1': 'Vi Designer.',
         'hero.line2': 'Vi Bygger.',
         'hero.line3': 'Vi Skalerer.',
-        'hero.stat1': 'År med erfaring',
+        'hero.stat1': 'ï¿½r med erfaring',
         'hero.stat2': 'Google-rangeringer',
         'hero.stat3': 'Kunder som blir',
         'hero.desc': 'Et premium <strong>React & Next.js webutviklings-</strong> og <strong>UI/UX-designbyrÃ¥</strong> i <strong>Stavanger, Norge</strong> som hjelper startups og selskaper i <strong>Europa, USA, India og APAC</strong>. Fra Figma til produksjon.',
@@ -165,7 +165,7 @@ function App() {
         workLabel: 'Selected Work',
         workHeading: 'Projects that<br><em>moved the needle</em>',
         workHint: 'Drag to explore <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>',
-        workCats: ['Education · WordPress · Chennai, India', 'SaaS · RFP Platform · Norway', 'SaaS · RFP Platform · Global'],
+        workCats: ['Education ï¿½ WordPress ï¿½ Chennai, India', 'SaaS ï¿½ RFP Platform ï¿½ Norway', 'SaaS ï¿½ RFP Platform ï¿½ Global'],
         workDescs: [
           'Full website design and development for a leading MSME-certified software training institute in Chennai. Built for enquiry conversion and course discovery - serving 18,000+ students annually.',
           'AI-powered RFP and proposal management platform for Energy & IT sectors. Full UI/UX design and frontend - helping teams win contracts faster with built-in compliance tooling.',
@@ -229,7 +229,7 @@ function App() {
         blogLabel: 'Insights Blog',
         blogHeading: 'Read what<br><em>actually drives growth</em>',
         blogIntro: 'Practical notes from real delivery work on UX, frontend architecture, and conversion-first web strategy for modern brands.',
-        blogMeta: ['UX/UI · Strategy', 'Performance · Frontend', 'SEO · Content'],
+        blogMeta: ['UX/UI ï¿½ Strategy', 'Performance ï¿½ Frontend', 'SEO ï¿½ Content'],
         blogTitles: [
           'UI, UX, and product clarity: where teams lose conversions',
           'Core Web Vitals for founders: what matters and what does not',
@@ -245,7 +245,7 @@ function App() {
         contactLabels: ['Email', 'Location', 'WhatsApp', 'Status', 'Response'],
         seoLinksTitle: 'Local Service Pages',
         seoLinksNote: 'Explore dedicated pages for each service area and location focus.',
-        footerCopy: '© 2026 devndespro · HQ: Stavanger, Norway · Delivery Hub: Chennai, India · Serving Europe, USA & APAC'
+        footerCopy: "Â© 2026 devndespro Â· HQ: Stavanger, Norway Â· Delivery Hub: Chennai, India Â· Serving Europe, USA & APAC",
       },
       no: {
         servicesLabel: 'Hva Vi Leverer',
@@ -266,7 +266,7 @@ function App() {
         workLabel: 'Utvalgte Prosjekter',
         workHeading: 'Prosjekter som<br><em>ga tydelig effekt</em>',
         workHint: 'Dra for Ã¥ utforske <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>',
-        workCats: ['Utdanning · WordPress · Chennai, India', 'SaaS · RFP-plattform · Norge', 'SaaS · RFP-plattform · Globalt'],
+        workCats: ['Utdanning ï¿½ WordPress ï¿½ Chennai, India', 'SaaS ï¿½ RFP-plattform ï¿½ Norge', 'SaaS ï¿½ RFP-plattform ï¿½ Globalt'],
         workDescs: [
           'Komplett nettsteddesign og utvikling for et ledende MSME-sertifisert programvareinstitutt i Chennai. Bygget for flere henvendelser og enklere kursoppdagelse - over 18 000 studenter i Ã¥ret.',
           'AI-drevet RFP- og tilbudsplattform for energi- og IT-sektoren. Full UI/UX-design og frontend - hjelper team Ã¥ vinne kontrakter raskere med innebygd etterlevelse.',
@@ -330,7 +330,7 @@ function App() {
         blogLabel: 'Innsiktsblogg',
         blogHeading: 'Les hva som<br><em>faktisk skaper vekst</em>',
         blogIntro: 'Praktiske notater fra ekte leveranser om UX, frontend-arkitektur og konverteringsfokusert webstrategi.',
-        blogMeta: ['UX/UI · Strategi', 'Ytelse · Frontend', 'SEO · Innhold'],
+        blogMeta: ['UX/UI ï¿½ Strategi', 'Ytelse ï¿½ Frontend', 'SEO ï¿½ Innhold'],
         blogTitles: [
           'UI, UX og produktklarhet: hvor team mister konverteringer',
           'Core Web Vitals for ledere: hva som betyr noe i praksis',
@@ -346,7 +346,7 @@ function App() {
         contactLabels: ['E-post', 'Lokasjon', 'WhatsApp', 'Status', 'Respons'],
         seoLinksTitle: 'Lokale tjenestesider',
         seoLinksNote: 'Utforsk dedikerte sider for hvert tjenesteomrÃ¥de og lokasjonsfokus.',
-        footerCopy: '© 2026 devndespro · Hovedkontor: Stavanger, Norge · Leveransehub: Chennai, India · Betjener Europa, USA og APAC'
+        footerCopy: "Â© 2026 devndespro Â· Hovedkontor: Stavanger, Norge Â· Leveransehub: Chennai, India Â· Betjener Europa, USA og APAC",
       }
     };
 
@@ -718,7 +718,7 @@ function App() {
     }
     setLanguage(preferredLang, false);
 
-    // Looping typewriter — reads live text each loop so language switch works
+    // Looping typewriter ï¿½ reads live text each loop so language switch works
     setTimeout(() => { if(window.innerWidth <= 1024) return;
       const lines = document.querySelectorAll('.hd-1,.hd-2,.hd-3');
       if (!lines.length) return;
