@@ -1,4 +1,4 @@
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+﻿*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#2C2C36;
   --bg2:#34343F;
@@ -1353,3 +1353,5 @@ footer{
 
 .f-auth-link{font-size:11px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s;}
 .f-auth-link:hover{color:#FF6B2B;}
+.blog-meta { display:flex; align-items:center; gap:6px; }
+.blog-meta .blog-sep { color:#FF6B2B; font-size:0.55em; }

@@ -229,21 +229,21 @@ function App() {
         blogLabel: 'Insights Blog',
         blogHeading: 'Read what<br><em>actually drives growth</em>',
         blogIntro: 'Practical notes from real delivery work on UX, frontend architecture, and conversion-first web strategy for modern brands.',
-        blogMeta: ['UX/UI � Strategy', 'Performance � Frontend', 'SEO � Content'],
+        blogMeta: ['UX/UI · Strategy', 'Performance · Frontend', 'SEO · Content', 'Web Design · Norway', 'Web Development · Norway'],
         blogTitles: [
           'UI, UX, and product clarity: where teams lose conversions',
           'Core Web Vitals for founders: what matters and what does not',
-          'How to structure service pages that rank and convert'
+          'How to structure service pages that rank and convert',
+          'What makes a great web designer in Norway',
+          'Modern web development in Norway: best practices'
         ],
         blogDescs: [
           'A field guide to reducing friction in digital journeys and turning visual polish into measurable conversion lift.',
           'A no-noise breakdown of speed, layout stability, and interaction quality that affects rankings and user trust.',
-          'The structure we use for local and global service pages so search engines and buyers understand value fast.'
+          'The structure we use for local and global service pages so search engines and buyers understand value fast.',
+          'A practical breakdown of design quality, strategy, and what businesses should look for before hiring.',
+          'Performance, architecture, deployment, and SEO practices used to build durable, scalable products.'
         ],
-        blogCta: 'Read Article',
-        contactTagline: '"Every project starts with a conversation. Whether you\'re local to Stavanger or building for global markets, we\'ll map the fastest path to results."',
-        contactLabels: ['Email', 'Location', 'WhatsApp', 'Status', 'Response'],
-        seoLinksTitle: 'Local Service Pages',
         seoLinksNote: 'Explore dedicated pages for each service area and location focus.',
         footerCopy: "© 2026 devndespro · HQ: Stavanger, Norway · Delivery Hub: Chennai, India · Serving Europe, USA & APAC",
       },
@@ -330,21 +330,21 @@ function App() {
         blogLabel: 'Innsiktsblogg',
         blogHeading: 'Les hva som<br><em>faktisk skaper vekst</em>',
         blogIntro: 'Praktiske notater fra ekte leveranser om UX, frontend-arkitektur og konverteringsfokusert webstrategi.',
-        blogMeta: ['UX/UI � Strategi', 'Ytelse � Frontend', 'SEO � Innhold'],
+        blogMeta: ['UX/UI · Strategi', 'Ytelse · Frontend', 'SEO · Innhold', 'Webdesign · Norge', 'Webutvikling · Norge'],
         blogTitles: [
           'UI, UX og produktklarhet: hvor team mister konverteringer',
           'Core Web Vitals for ledere: hva som betyr noe i praksis',
-          'Hvordan strukturere tjenestesider som rangerer og konverterer'
+          'Hvordan strukturere tjenestesider som rangerer og konverterer',
+          'Hva gj\u00f8r en god webdesigner i Norge',
+          'Moderne webutvikling i Norge: beste praksis'
         ],
         blogDescs: [
-          'En praktisk guide til å redusere friksjon i brukerreisen og gjøre design til målbar konverteringsvekst.',
-          'En tydelig gjennomgang av hastighet, layout-stabilitet og interaksjonskvalitet som påvirker rangering og tillit.',
-          'Strukturen vi bruker for lokale og globale tjenestesider slik at både søkemotorer og kjøpere forstår verdien raskt.'
+          'En praktisk guide til \u00e5 redusere friksjon i brukerreisen og gj\u00f8re design til m\u00e5lbar konverteringsvekst.',
+          'En tydelig gjennomgang av hastighet, layout-stabilitet og interaksjonskvalitet som p\u00e5virker rangering og tillit.',
+          'Strukturen vi bruker for lokale og globale tjenestesider slik at b\u00e5de s\u00f8kemotorer og kj\u00f8pere forst\u00e5r verdien raskt.',
+          'En praktisk gjennomgang av designkvalitet, strategi og hva bedrifter b\u00f8r se etter f\u00f8r de ansetter.',
+          'Ytelse, arkitektur, distribusjon og SEO-praksis for \u00e5 bygge holdbare og skalerbare produkter.'
         ],
-        blogCta: 'Les artikkel',
-        contactTagline: '"Alle prosjekter starter med en samtale. Enten du er lokal i Stavanger eller bygger for globale markeder, finner vi raskeste vei til resultater."',
-        contactLabels: ['E-post', 'Lokasjon', 'WhatsApp', 'Status', 'Respons'],
-        seoLinksTitle: 'Lokale tjenestesider',
         seoLinksNote: 'Utforsk dedikerte sider for hvert tjenesteområde og lokasjonsfokus.',
         footerCopy: "© 2026 devndespro · Hovedkontor: Stavanger, Norge · Leveransehub: Chennai, India · Betjener Europa, USA og APAC",
       }
@@ -524,10 +524,10 @@ function App() {
       setText('#blog .blog-label', section.blogLabel);
       setHtml('#blog .blog-heading', section.blogHeading);
       setText('#blog .blog-intro', section.blogIntro);
-      setTextList('#blog .blog-meta', section.blogMeta);
+      const blogMetaEls = document.querySelectorAll('#blog .blog-meta'); blogMetaEls.forEach((el, i) => { if (section.blogMeta[i]) el.innerHTML = section.blogMeta[i].replace(' · ', ' <i class="fa-solid fa-diamond" style="font-size:0.5em;color:#FF6B2B;vertical-align:middle;"></i> '); });
       setTextList('#blog .blog-title', section.blogTitles);
       setTextList('#blog .blog-desc', section.blogDescs);
-      setTextList('#blog .blog-link-label', [section.blogCta, section.blogCta, section.blogCta]);
+      setTextList('#blog .blog-link-label', [section.blogCta, section.blogCta, section.blogCta, section.blogCta, section.blogCta]);
       setText('#contact .c-tagline', section.contactTagline);
       setTextList('#contact .c-lbl', section.contactLabels);
       setText('#seo-links .seo-links-title', section.seoLinksTitle);
