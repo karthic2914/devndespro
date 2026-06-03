@@ -1350,3 +1350,6 @@ footer{
 .rl.on{opacity:1;transform:translateX(0)}
 .rr{opacity:0;transform:translateX(28px);transition:opacity .9s ease,transform .9s ease}
 .rr.on{opacity:1;transform:translateX(0)}
+
+.f-auth-link{font-size:11px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s;}
+.f-auth-link:hover{color:#FF6B2B;}
