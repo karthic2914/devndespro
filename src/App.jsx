@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import template from './template.html?raw';
 
 function App() {
@@ -78,7 +78,7 @@ function App() {
         'success.note': 'Check your inbox - a confirmation email is on its way.'
       },
       no: {
-        'utility.wa': 'Chat p� WhatsApp',
+        'utility.wa': 'Chat påWhatsApp',
         'utility.top': 'Til toppen',
         'utility.top.short': 'TOPP',
         'nav.services': 'Tjenester',
@@ -86,12 +86,12 @@ function App() {
         'nav.skills': 'Kompetanse',
         'nav.blog': 'Blogg',
         'nav.contact': 'Kontakt',
-        'nav.quote': 'F� gratis tilbud',
+        'nav.quote': 'Gratis tilbud',
         'hero.kicker': 'Fullstack + DevOps',
         'hero.line1': 'Vi Designer.',
         'hero.line2': 'Vi Bygger.',
         'hero.line3': 'Vi Skalerer.',
-        'hero.stat1': '�r med erfaring',
+        'hero.stat1': 'År med erfaring',
         'hero.stat2': 'Google-rangeringer',
         'hero.stat3': 'Kunder som blir',
         'hero.desc': 'Et premium <strong>React & Next.js webutviklings-</strong> og <strong>UI/UX-designbyrå</strong> i <strong>Stavanger, Norge</strong> som hjelper startups og selskaper i <strong>Europa, USA, India og APAC</strong>. Fra Figma til produksjon.',
