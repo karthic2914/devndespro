@@ -78,7 +78,7 @@ function App() {
         'success.note': 'Check your inbox - a confirmation email is on its way.'
       },
       no: {
-        'utility.wa': 'Chat pÃ¥ WhatsApp',
+        'utility.wa': 'Chat på WhatsApp',
         'utility.top': 'Til toppen',
         'utility.top.short': 'TOPP',
         'nav.services': 'Tjenester',
