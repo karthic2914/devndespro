@@ -1,4 +1,4 @@
-﻿import { useEffect } from 'react';
+import { useEffect } from 'react';
 import template from './template.html?raw';
 
 function App() {
@@ -78,7 +78,7 @@ function App() {
         'success.note': 'Check your inbox - a confirmation email is on its way.'
       },
       no: {
-        'utility.wa': 'Chat på WhatsApp',
+        'utility.wa': 'Chat p� WhatsApp',
         'utility.top': 'Til toppen',
         'utility.top.short': 'TOPP',
         'nav.services': 'Tjenester',
@@ -86,43 +86,43 @@ function App() {
         'nav.skills': 'Kompetanse',
         'nav.blog': 'Blogg',
         'nav.contact': 'Kontakt',
-        'nav.quote': 'Få gratis tilbud',
+        'nav.quote': 'F� gratis tilbud',
         'hero.kicker': 'Fullstack + DevOps',
         'hero.line1': 'Vi Designer.',
         'hero.line2': 'Vi Bygger.',
         'hero.line3': 'Vi Skalerer.',
-        'hero.stat1': 'År med erfaring',
+        'hero.stat1': '�r med erfaring',
         'hero.stat2': 'Google-rangeringer',
         'hero.stat3': 'Kunder som blir',
-        'hero.desc': 'Et premium <strong>React & Next.js webutviklings-</strong> og <strong>UI/UX-designbyrÃ¥</strong> i <strong>Stavanger, Norge</strong> som hjelper startups og selskaper i <strong>Europa, USA, India og APAC</strong>. Fra Figma til produksjon.',
+        'hero.desc': 'Et premium <strong>React & Next.js webutviklings-</strong> og <strong>UI/UX-designbyrå</strong> i <strong>Stavanger, Norge</strong> som hjelper startups og selskaper i <strong>Europa, USA, India og APAC</strong>. Fra Figma til produksjon.',
         'hero.svc1': 'UI/UX-design og Figma-prototyper',
         'hero.svc2': 'React- og Next.js-utvikling',
         'hero.svc3': 'DevOps og Azure skyinfrastruktur',
         'hero.svc4': 'SEO og digital vekst',
         'hero.primary': 'Start et prosjekt',
-        'hero.secondary': 'Se arbeidet vÃ¥rt',
+        'hero.secondary': 'Se arbeidet vårt',
         'hero.explore': 'Utforsk',
-        'cta.mid.title': 'Klar til Ã¥ starte prosjektet ditt?',
-        'cta.mid.text': 'FÃ¥ gratis konsultasjon og et tydelig estimat innen 24 timer - helt uten forpliktelser.',
-        'cta.mid.primary': 'Book et Gratis MÃ¸te',
-        'cta.mid.secondary': 'FÃ¥ et Tilbud',
+        'cta.mid.title': 'Klar til å starte prosjektet ditt?',
+        'cta.mid.text': 'Få gratis konsultasjon og et tydelig estimat innen 24 timer - helt uten forpliktelser.',
+        'cta.mid.primary': 'Book et Gratis Møte',
+        'cta.mid.secondary': 'Få et Tilbud',
         'cta.bottom.title': 'La oss bygge noe som konverterer.',
-        'cta.bottom.text': 'Fra design til lansering - ett team, fullt eierskap, mÃ¥lbare resultater.',
+        'cta.bottom.text': 'Fra design til lansering - ett team, fullt eierskap, målbare resultater.',
         'cta.bottom.primary': 'Start et Prosjekt',
-        'cta.bottom.secondary': 'Kontakt pÃ¥ WhatsApp',
+        'cta.bottom.secondary': 'Kontakt på WhatsApp',
         'contact.label': 'Ta Kontakt',
-        'contact.title': 'La oss bygge<br>noe <em>enestÃ¥ende</em>',
+        'contact.title': 'La oss bygge<br>noe <em>enestående</em>',
         'contact.whatsapp': 'Send melding direkte',
         'contact.status': 'Tar imot nye prosjekter',
         'contact.response': 'Innen 24 timer',
-        'form.note': 'Del omfang, tidslinje og mÃ¥l. Meldingen sendes direkte til innboksen vÃ¥r.',
+        'form.note': 'Del omfang, tidslinje og mål. Meldingen sendes direkte til innboksen vår.',
         'form.name': 'Navnet ditt',
         'form.name.placeholder': 'Ola Nordmann',
         'form.email': 'E-postadresse',
         'form.email.placeholder': 'ola@bedrift.no',
         'form.company': 'Bedrift',
         'form.company.placeholder': 'Bedriften din (valgfritt)',
-        'form.service': 'Ã˜nsket Tjeneste',
+        'form.service': 'Ønsket Tjeneste',
         'form.service.placeholder': 'Skriv en tjeneste og trykk Enter',
         'form.tag.ux': 'UX/UI Design og Figma',
         'form.tag.fullstack': 'Fullstack Utvikling',
@@ -131,17 +131,17 @@ function App() {
         'form.tag.backend': 'Backend API-er',
         'form.tag.package': 'Komplett Pakke',
         'form.project': 'Om Prosjektet Ditt',
-        'form.project.placeholder': 'Hva vil du oppnÃ¥? Hva er tidslinjen?',
+        'form.project.placeholder': 'Hva vil du oppnå? Hva er tidslinjen?',
         'form.submit': 'Send Melding',
         'form.remove': 'Fjern',
-        'form.needService': 'Legg til minst Ã©n tjeneste fÃ¸r du sender.',
+        'form.needService': 'Legg til minst én tjeneste før du sender.',
         'form.sending': 'Sender meldingen din...',
-        'form.tryAgain': 'PrÃ¸v Igjen',
+        'form.tryAgain': 'Prøv Igjen',
         'form.sendLabel': 'Send Melding',
-        'form.error': 'Kunne ikke sende nÃ¥. PrÃ¸v igjen om litt.',
+        'form.error': 'Kunne ikke sende nå. Prøv igjen om litt.',
         'success.title': 'Melding sendt!',
         'success.body': 'Takk <strong>{name}</strong>, vi svarer deg innen 24 timer.',
-        'success.note': 'Sjekk innboksen din - en bekreftelse er pÃ¥ vei.'
+        'success.note': 'Sjekk innboksen din - en bekreftelse er på vei.'
       }
     };
 
@@ -165,7 +165,7 @@ function App() {
         workLabel: 'Selected Work',
         workHeading: 'Projects that<br><em>moved the needle</em>',
         workHint: 'Drag to explore <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>',
-        workCats: ['Education · WordPress · Chennai, India', 'SaaS · RFP Platform · Norway', 'SaaS · RFP Platform · Global'],
+        workCats: ['Education � WordPress � Chennai, India', 'SaaS � RFP Platform � Norway', 'SaaS � RFP Platform � Global'],
         workDescs: [
           'Full website design and development for a leading MSME-certified software training institute in Chennai. Built for enquiry conversion and course discovery - serving 18,000+ students annually.',
           'AI-powered RFP and proposal management platform for Energy & IT sectors. Full UI/UX design and frontend - helping teams win contracts faster with built-in compliance tooling.',
@@ -229,7 +229,7 @@ function App() {
         blogLabel: 'Insights Blog',
         blogHeading: 'Read what<br><em>actually drives growth</em>',
         blogIntro: 'Practical notes from real delivery work on UX, frontend architecture, and conversion-first web strategy for modern brands.',
-        blogMeta: ['UX/UI · Strategy', 'Performance · Frontend', 'SEO · Content'],
+        blogMeta: ['UX/UI � Strategy', 'Performance � Frontend', 'SEO � Content'],
         blogTitles: [
           'UI, UX, and product clarity: where teams lose conversions',
           'Core Web Vitals for founders: what matters and what does not',
@@ -245,7 +245,7 @@ function App() {
         contactLabels: ['Email', 'Location', 'WhatsApp', 'Status', 'Response'],
         seoLinksTitle: 'Local Service Pages',
         seoLinksNote: 'Explore dedicated pages for each service area and location focus.',
-        footerCopy: 'Â© 2026 devndespro · HQ: Stavanger, Norway · Delivery Hub: Chennai, India · Serving Europe, USA & APAC'
+        footerCopy: '� 2026 devndespro � HQ: Stavanger, Norway � Delivery Hub: Chennai, India � Serving Europe, USA & APAC'
       },
       no: {
         servicesLabel: 'Hva Vi Leverer',
@@ -265,26 +265,26 @@ function App() {
         ],
         workLabel: 'Utvalgte Prosjekter',
         workHeading: 'Prosjekter som<br><em>ga tydelig effekt</em>',
-        workHint: 'Dra for Ã¥ utforske <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>',
-        workCats: ['Utdanning · WordPress · Chennai, India', 'SaaS · RFP-plattform · Norge', 'SaaS · RFP-plattform · Globalt'],
+        workHint: 'Dra for å utforske <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>',
+        workCats: ['Utdanning � WordPress � Chennai, India', 'SaaS � RFP-plattform � Norge', 'SaaS � RFP-plattform � Globalt'],
         workDescs: [
-          'Komplett nettsteddesign og utvikling for et ledende MSME-sertifisert programvareinstitutt i Chennai. Bygget for flere henvendelser og enklere kursoppdagelse - over 18 000 studenter i Ã¥ret.',
-          'AI-drevet RFP- og tilbudsplattform for energi- og IT-sektoren. Full UI/UX-design og frontend - hjelper team Ã¥ vinne kontrakter raskere med innebygd etterlevelse.',
-          'Norsklokalisert Tenderlyst-applikasjon med flersprÃ¥klig frontend, sprÃ¥kbryter, demo-booking og komplett dashbord for tilbudshandtering i energi- og IT-sektoren.'
+          'Komplett nettsteddesign og utvikling for et ledende MSME-sertifisert programvareinstitutt i Chennai. Bygget for flere henvendelser og enklere kursoppdagelse - over 18 000 studenter i året.',
+          'AI-drevet RFP- og tilbudsplattform for energi- og IT-sektoren. Full UI/UX-design og frontend - hjelper team å vinne kontrakter raskere med innebygd etterlevelse.',
+          'Norsklokalisert Tenderlyst-applikasjon med flerspråklig frontend, språkbryter, demo-booking og komplett dashbord for tilbudshandtering i energi- og IT-sektoren.'
         ],
         workCtaText: 'Liker du det du ser? La oss bygge noe like slagkraftig for deg.',
         workCtaBtn: 'Start et lignende prosjekt',
         processLabel: 'Slik Jobber Vi',
-        processHeading: 'VÃ¥r prosess.<br><em>Din tydelighet.</em>',
+        processHeading: 'Vår prosess.<br><em>Din tydelighet.</em>',
         processNames: ['Utforske og definere', 'Designe og prototype', 'Bygge og teste', 'Lansere og vokse'],
         processDescs: [
-          'Vi lytter fÃ¸rst. Dyp forstÃ¥else av brukere, mÃ¥l og begrensninger fÃ¸r noe designes eller bygges. Ingen antakelser.',
-          'Alle skjermbilder lages i Figma fÃ¸rst. Du tester en realistisk prototype og former produktet fÃ¸r utvikling starter - ingen overraskelser ved lansering.',
-          'Ren og dokumentert kode. Testet pÃ¥ alle enheter. Ytelsesoptimalisert fra dag Ã©n - bygget for Ã¥r, ikke mÃ¥neder.',
+          'Vi lytter først. Dyp forståelse av brukere, mål og begrensninger før noe designes eller bygges. Ingen antakelser.',
+          'Alle skjermbilder lages i Figma først. Du tester en realistisk prototype og former produktet før utvikling starter - ingen overraskelser ved lansering.',
+          'Ren og dokumentert kode. Testet på alle enheter. Ytelsesoptimalisert fra dag én - bygget for år, ikke måneder.',
           'Vi overvaker, optimaliserer og itererer etter lansering - slik at produktet ditt blir en verdiskapende ressurs som forbedres over tid.'
         ],
-        faqLabel: 'Vanlige SpÃ¸rsmÃ¥l',
-        faqHeading: 'Dette spÃ¸r<br><em>kunder alltid om</em>',
+        faqLabel: 'Vanlige Spørsmål',
+        faqHeading: 'Dette spør<br><em>kunder alltid om</em>',
         faqQ: [
           'Jobber dere med kunder utenfor Stavanger?',
           'Hva koster et typisk prosjekt?',
@@ -295,13 +295,13 @@ function App() {
         ],
         faqA: [
           'Ja. Vi er basert i Stavanger og jobber med kunder i hele Europa, USA, India og APAC. De fleste leveranser skjer remote med faste oppdateringer og videomoter.',
-          'Prosjektpris avhenger av omfang, kompleksitet, tidslinje og integrasjoner. Etter gjennomgang av behov fÃ¥r du et tydelig estimat og faseplan innen 24 timer.',
-          'Et standard bedriftsnettsted leveres vanligvis pÃ¥ 3-5 uker. Storre webapplikasjoner med backend-API-er, integrasjoner og DevOps tar normalt 8-16 uker.',
-          'Ja. Vi tilbyr egne UI/UX-leveranser inkludert UX discovery, Figma-prototyper, designsystemer og revisjoner som teamet ditt kan bygge videre pÃ¥.',
-          'Jeg kombinerer UI/UX-design, fullstack utvikling, DevOps og vekststotte i Ã©n arbeidsflyt. Det gir raskere beslutninger og jevn kvalitet fra strategi til lansering.',
-          'Ja. Vi tar bÃ¥de freelance- og langsiktige leveranseprosjekter for norske og internasjonale kunder, og har kapasitet for nye oppdrag.'
+          'Prosjektpris avhenger av omfang, kompleksitet, tidslinje og integrasjoner. Etter gjennomgang av behov får du et tydelig estimat og faseplan innen 24 timer.',
+          'Et standard bedriftsnettsted leveres vanligvis på 3-5 uker. Storre webapplikasjoner med backend-API-er, integrasjoner og DevOps tar normalt 8-16 uker.',
+          'Ja. Vi tilbyr egne UI/UX-leveranser inkludert UX discovery, Figma-prototyper, designsystemer og revisjoner som teamet ditt kan bygge videre på.',
+          'Jeg kombinerer UI/UX-design, fullstack utvikling, DevOps og vekststotte i én arbeidsflyt. Det gir raskere beslutninger og jevn kvalitet fra strategi til lansering.',
+          'Ja. Vi tar både freelance- og langsiktige leveranseprosjekter for norske og internasjonale kunder, og har kapasitet for nye oppdrag.'
         ],
-        skillsPanel: 'GjennomfÃ¸ringsstack',
+        skillsPanel: 'Gjennomføringsstack',
         skillsPanelTitles: ['UX-strategi', 'UI-systemer', 'Fullstack', 'DevOps-plattform', 'Backend API-er', 'Vekstdrift'],
         skillsPanelSubs: [
           'Research, IA, brukerflyt',
@@ -311,42 +311,42 @@ function App() {
           'Node, datamodellering, integrasjoner',
           'SEO, analyse, iterasjon'
         ],
-        skillsFoot: ['Fullstack fÃ¸rst', 'DevOps-native', 'Bygget for skalering'],
-        badgeLabel: 'Ã…r med erfaring',
+        skillsFoot: ['Fullstack først', 'DevOps-native', 'Bygget for skalering'],
+        badgeLabel: 'År med erfaring',
         skillsLabel: 'Kompetanse',
-        skillsHeading: 'Kjernekapasitet.<br><em>Dyp gjennomfÃ¸ring.</em>',
-        skillsBody: 'Jeg leder leveranser som en <strong>fullstack- og DevOps-fokusert bygger</strong> som tar produkter fra idÃ© til produksjon. <span class="brand-cal">devndes<span>pro</span></span> kombinerer designpresisjon med teknisk dybde, stabil skyplattform og vekstfokus i Ã©n effektiv arbeidsflyt.<br><br>Fra UX discovery og grensesnittsystemer til backend-arkitektur, API-integrasjoner, CI/CD-pipelines og optimalisering etter lansering - hvert kompetanseomrÃ¥de brukes ende-til-ende.<br><br>Prosentene under gjenspeiler praktisk leveringsstyrke bygget opp gjennom nesten to tiÃ¥r i enterprise- og vekstteam.',
+        skillsHeading: 'Kjernekapasitet.<br><em>Dyp gjennomføring.</em>',
+        skillsBody: 'Jeg leder leveranser som en <strong>fullstack- og DevOps-fokusert bygger</strong> som tar produkter fra idé til produksjon. <span class="brand-cal">devndes<span>pro</span></span> kombinerer designpresisjon med teknisk dybde, stabil skyplattform og vekstfokus i én effektiv arbeidsflyt.<br><br>Fra UX discovery og grensesnittsystemer til backend-arkitektur, API-integrasjoner, CI/CD-pipelines og optimalisering etter lansering - hvert kompetanseområde brukes ende-til-ende.<br><br>Prosentene under gjenspeiler praktisk leveringsstyrke bygget opp gjennom nesten to tiår i enterprise- og vekstteam.',
         skillNames: ['Fullstack utvikling', 'Sky, Azure og DevOps', 'Backend API-er og integrasjoner', 'UX / UI Design og Figma', 'SEO og digital vekst'],
         insightsLabel: 'Hvorfor Det Fungerer',
         insightsHeading: 'Bygget for rangering.<br><em>Bygget for inntekter.</em>',
-        insightsIntro: 'De beste nettsidene er tydelige, raske og nyttige. Vi fokuserer pÃ¥ budskap, struktur og implementeringskvalitet slik at besÃ¸kende forstÃ¥r tilbudet raskt og sÃ¸kesystemer indekserer sidene riktig.',
-        insightsQ: ['Strategi kommer fÃ¸r visuell stil', 'Teknisk kvalitet styrker SEO', 'Godt innhold gir bedre konvertering', 'Langsiktige samarbeid krever robuste systemer'],
+        insightsIntro: 'De beste nettsidene er tydelige, raske og nyttige. Vi fokuserer på budskap, struktur og implementeringskvalitet slik at besøkende forstår tilbudet raskt og søkesystemer indekserer sidene riktig.',
+        insightsQ: ['Strategi kommer før visuell stil', 'Teknisk kvalitet styrker SEO', 'Godt innhold gir bedre konvertering', 'Langsiktige samarbeid krever robuste systemer'],
         insightsA: [
-          'Vi starter med brukerintensjon, forretningsmÃ¥l og Ã¸nsket konverteringsvei. Det gir renere sidestruktur, skarpere budskap og CTA-er som fÃ¸les naturlige.',
-          'Rask rendering, semantiske overskrifter, stabile layouter og ren metadata kommer fra god engineering. Vi bygger SEO inn fra dag Ã©n.',
-          'Litt mer kontekst gjÃ¸r det enklere for seriÃ¸se kjÃ¸pere Ã¥ ta beslutning. Vi legger inn riktig dybde med tjenestedetaljer og tydelige neste steg.',
-          'Vi designer for vekst, ikke raske fiks. Skalerbar layout, vedlikeholdbar kode og strukturert innhold gjÃ¸r videre vekst enklere.'
+          'Vi starter med brukerintensjon, forretningsmål og ønsket konverteringsvei. Det gir renere sidestruktur, skarpere budskap og CTA-er som føles naturlige.',
+          'Rask rendering, semantiske overskrifter, stabile layouter og ren metadata kommer fra god engineering. Vi bygger SEO inn fra dag én.',
+          'Litt mer kontekst gjør det enklere for seriøse kjøpere å ta beslutning. Vi legger inn riktig dybde med tjenestedetaljer og tydelige neste steg.',
+          'Vi designer for vekst, ikke raske fiks. Skalerbar layout, vedlikeholdbar kode og strukturert innhold gjør videre vekst enklere.'
         ],
         blogLabel: 'Innsiktsblogg',
         blogHeading: 'Les hva som<br><em>faktisk skaper vekst</em>',
         blogIntro: 'Praktiske notater fra ekte leveranser om UX, frontend-arkitektur og konverteringsfokusert webstrategi.',
-        blogMeta: ['UX/UI · Strategi', 'Ytelse · Frontend', 'SEO · Innhold'],
+        blogMeta: ['UX/UI � Strategi', 'Ytelse � Frontend', 'SEO � Innhold'],
         blogTitles: [
           'UI, UX og produktklarhet: hvor team mister konverteringer',
           'Core Web Vitals for ledere: hva som betyr noe i praksis',
           'Hvordan strukturere tjenestesider som rangerer og konverterer'
         ],
         blogDescs: [
-          'En praktisk guide til Ã¥ redusere friksjon i brukerreisen og gjÃ¸re design til mÃ¥lbar konverteringsvekst.',
-          'En tydelig gjennomgang av hastighet, layout-stabilitet og interaksjonskvalitet som pÃ¥virker rangering og tillit.',
-          'Strukturen vi bruker for lokale og globale tjenestesider slik at bÃ¥de sÃ¸kemotorer og kjÃ¸pere forstÃ¥r verdien raskt.'
+          'En praktisk guide til å redusere friksjon i brukerreisen og gjøre design til målbar konverteringsvekst.',
+          'En tydelig gjennomgang av hastighet, layout-stabilitet og interaksjonskvalitet som påvirker rangering og tillit.',
+          'Strukturen vi bruker for lokale og globale tjenestesider slik at både søkemotorer og kjøpere forstår verdien raskt.'
         ],
         blogCta: 'Les artikkel',
         contactTagline: '"Alle prosjekter starter med en samtale. Enten du er lokal i Stavanger eller bygger for globale markeder, finner vi raskeste vei til resultater."',
         contactLabels: ['E-post', 'Lokasjon', 'WhatsApp', 'Status', 'Respons'],
         seoLinksTitle: 'Lokale tjenestesider',
-        seoLinksNote: 'Utforsk dedikerte sider for hvert tjenesteomrÃ¥de og lokasjonsfokus.',
-        footerCopy: 'Â© 2026 devndespro · Hovedkontor: Stavanger, Norge · Leveransehub: Chennai, India · Betjener Europa, USA og APAC'
+        seoLinksNote: 'Utforsk dedikerte sider for hvert tjenesteområde og lokasjonsfokus.',
+        footerCopy: '� 2026 devndespro � Hovedkontor: Stavanger, Norge � Leveransehub: Chennai, India � Betjener Europa, USA og APAC'
       }
     };
 
@@ -533,7 +533,7 @@ function App() {
       setText('#seo-links .seo-links-title', section.seoLinksTitle);
       setText('#seo-links .seo-links-note', section.seoLinksNote);
       setText('footer .f-copy', section.footerCopy);
-      // ── Packages section translation ──────────────────────────
+      // -- Packages section translation --------------------------
       var isNo = activeLang === 'no';
       var pkgSection = document.getElementById('packages');
       if (pkgSection) {
@@ -629,9 +629,9 @@ function App() {
         if (bannerSpan)   bannerSpan.textContent   = isNo ? 'seo.devndespro.com \u00b7 Nettstedsrevisjoner \u00b7 N\u00f8kkelordsporing \u00b7 Google Search Console \u00b7 AI-innholdsanalyse' : 'seo.devndespro.com \u00b7 Site audits \u00b7 Keyword tracking \u00b7 Google Search Console \u00b7 AI content insights';
         if (bannerTag)    bannerTag.textContent    = isNo ? 'GRATIS' : 'FREE';
       }
-      // ── End packages translation ───────────────────────────────
+      // -- End packages translation -------------------------------
 
-      // ── Testimonials translation ───────────────────────────────
+      // -- Testimonials translation -------------------------------
       var testiSection = document.getElementById('testimonials');
       if (testiSection) {
         var testiLabel = testiSection.querySelector('.s-label');
@@ -664,7 +664,7 @@ function App() {
         // "X days ago" timestamps - keep as-is (real Google review dates)
         // Review quotes stay in original language (real Google reviews)
       }
-      // ── End testimonials translation ───────────────────────────
+      // -- End testimonials translation ---------------------------
 
       document.documentElement.setAttribute('lang', activeLang);
 
@@ -718,7 +718,7 @@ function App() {
     }
     setLanguage(preferredLang, false);
 
-    // Looping typewriter — reads live text each loop so language switch works
+    // Looping typewriter � reads live text each loop so language switch works
     setTimeout(() => { if(window.innerWidth <= 1024) return;
       const lines = document.querySelectorAll('.hd-1,.hd-2,.hd-3');
       if (!lines.length) return;
@@ -746,7 +746,7 @@ function App() {
       runLoop();
     }, 2500);
 
-    // â”€â”€ NAV MEGA MENU â€” hover with delay buffer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── NAV MEGA MENU — hover with delay buffer ───────────────────
     const navDropdowns = document.querySelectorAll('.nav-dropdown');
     navDropdowns.forEach((dropdown) => {
       const link = dropdown.querySelector('a');
@@ -793,7 +793,7 @@ function App() {
         }
       });
     });
-    // â”€â”€ END NAV MEGA MENU â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── END NAV MEGA MENU ─────────────────────────────────────────
 
     const syncActiveLinkByScroll = () => {
       if (!sectionMap.length) return;
@@ -1028,7 +1028,7 @@ function App() {
 
     if (contactForm) contactForm.addEventListener('submit', onFormSubmit);
 
-    // â”€â”€ FREE AUDIT MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── FREE AUDIT MODAL ──────────────────────────────────────────────
     const auditOverlay   = document.getElementById('audit-modal');
     const auditOpenBtn   = document.getElementById('free-audit-btn');
     const auditCloseBtn  = document.getElementById('audit-modal-close');
@@ -1164,7 +1164,7 @@ function App() {
             auditScore.innerHTML +=
               `<div style="margin-top:20px;padding:16px;background:rgba(255,107,43,0.1);border:1px solid rgba(255,107,43,0.3);border-radius:10px;text-align:center;">
                 <p style="font-size:0.88rem;color:#ccc;margin-bottom:12px;">${ctaText}</p>
-                <a href="https://api.whatsapp.com/send?phone=4740975201" target="_blank" style="display:block;background:#FF6B2B;color:#fff;padding:0.7rem 1rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">${ctaBtnText} â†’</a>
+                <a href="https://api.whatsapp.com/send?phone=4740975201" target="_blank" style="display:block;background:#FF6B2B;color:#fff;padding:0.7rem 1rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">${ctaBtnText} →</a>
               </div>`;
           }
           if (auditStepLoad) auditStepLoad.hidden = true;
@@ -1182,7 +1182,7 @@ function App() {
             </div>
             <div style="margin-top:20px;padding:16px;background:rgba(255,107,43,0.1);border:1px solid rgba(255,107,43,0.3);border-radius:10px;text-align:center;">
               <p style="font-size:0.88rem;color:#ccc;margin-bottom:12px;">${ctaText}</p>
-              <a href="https://api.whatsapp.com/send?phone=4740975201" target="_blank" style="display:block;background:#FF6B2B;color:#fff;padding:0.7rem 1rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">${ctaBtnText} â†’</a>
+              <a href="https://api.whatsapp.com/send?phone=4740975201" target="_blank" style="display:block;background:#FF6B2B;color:#fff;padding:0.7rem 1rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;">${ctaBtnText} →</a>
             </div>`;
         }
 
@@ -1202,10 +1202,10 @@ function App() {
     };
 
     if (auditSubmitBtn) auditSubmitBtn.addEventListener('click', onAuditSubmit);
-    // â”€â”€ END FREE AUDIT MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── END FREE AUDIT MODAL ──────────────────────────────────────────
 
 
-    // â”€â”€ PACKAGES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── PACKAGES ──────────────────────────────────────────────────
     var PKG_DATA = {
       nok:{sym:'kr',plans:[{tag:'Growth',name:'Visibility',price:'13,900',per:'/mo',alt:'~$1,280 USD',desc:'For small businesses ready to get found on Google, look professional, and turn visitors into real enquiries.',feats:['Up to 6-page website (React / Next.js)','Mobile-first UI/UX design','Domain setup & DNS management','Hosting on Vercel - fast & reliable','On-page SEO + content structure','2 blog posts per month','Monthly SEO report','3 months post-launch support'],guar:'Page 1 Google ranking in your city within 6 months - or we keep working for free.',hot:true,badge:'Most Popular'},{tag:'Pro',name:'Authority',price:null,per:'',alt:"Tell me your goals - I'll tailor a quote",desc:'Full design system, national SEO reach, backlink building, and dedicated monthly growth partner.',feats:['Everything in Visibility','Up to 12 pages + full blog system','Advanced design system & UI/UX','Technical SEO + Core Web Vitals + Schema','4 blog posts per month','Backlink building - 3 per month','Dedicated monthly strategy call','Priority Slack support channel'],guar:'35% growth in non-branded organic traffic within 90 days - or we work free.',ping:true}],addons:[{n:'Extra blog posts',p:'kr 2,200 / post'},{n:'Backlink building',p:'kr 5,900 / mo'},{n:'Extra pages',p:'kr 3,500 / page'}]},
       eur:{sym:'EUR ',plans:[{tag:'Growth',name:'Visibility',price:'1,190',per:'/mo',alt:'~$1,280 USD',desc:'For small businesses ready to get found on Google, look professional, and turn visitors into real enquiries.',feats:['Up to 6-page website (React / Next.js)','Mobile-first UI/UX design','Domain setup & DNS management','Hosting on Vercel - fast & reliable','On-page SEO + content structure','2 blog posts per month','Monthly SEO report','3 months post-launch support'],guar:'Page 1 Google ranking in your city within 6 months - or we keep working for free.',hot:true,badge:'Most Popular'},{tag:'Pro',name:'Authority',price:null,per:'',alt:"Tell me your goals - I'll tailor a quote",desc:'Full design system, national SEO reach, backlink building, and dedicated monthly growth partner.',feats:['Everything in Visibility','Up to 12 pages + full blog system','Advanced design system & UI/UX','Technical SEO + Core Web Vitals + Schema','4 blog posts per month','Backlink building - 3 per month','Dedicated monthly strategy call','Priority Slack support channel'],guar:'35% growth in non-branded organic traffic within 90 days - or we work free.',ping:true}],addons:[{n:'Extra blog posts',p:'EUR 200 / post'},{n:'Backlink building',p:'EUR 540 / mo'},{n:'Extra pages',p:'EUR 320 / page'}]},
@@ -1242,7 +1242,7 @@ function App() {
     var pkgSel = document.getElementById('pkg-currency');
     var onPkgChange = function(){ pkgRender(pkgSel.value); };
     if (pkgSel) pkgSel.addEventListener('change', onPkgChange);
-    // â”€â”€ END PACKAGES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── END PACKAGES ──────────────────────────────────────────────
     return () => {
       clearTimeout(initialHashTimer);
       clearTimeout(postLoaderHashTimer);

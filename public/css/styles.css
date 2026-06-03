@@ -1222,12 +1222,12 @@ nav.s .logo-img{height:52px}
 footer{
   background:#000;
   border-top:1px solid var(--line);
-  padding:44px 64px;
-  display:flex;
-  flex-direction:column;
+  padding:32px 64px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
   align-items:center;
-  text-align:center;
-  gap:16px;
+  gap:24px;
+}
 }
 .f-logo{display:inline-flex;align-items:center;text-decoration:none}
 .f-logo-img{height:58px;width:auto;display:block}
