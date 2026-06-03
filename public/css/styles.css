@@ -1224,8 +1224,10 @@ footer{
   border-top:1px solid var(--line);
   padding:44px 64px;
   display:flex;
+  flex-direction:column;
   align-items:center;
-  justify-content:space-between;
+  text-align:center;
+  gap:16px;
 }
 .f-logo{display:inline-flex;align-items:center;text-decoration:none}
 .f-logo-img{height:58px;width:auto;display:block}
