@@ -334,7 +334,7 @@
                 <div class="axel-canvas" id="sc">
                     <canvas id="cv"></canvas>
                 </div>
-                <!-- STAT TAGS — absolute over canvas -->
+                <!-- STAT TAGS ï¿½ absolute over canvas -->
                 <div class="axel-tags axel-tags--left">
                     <div class="atag" style="--c:rgba(255,107,43,.35)"><span class="atag-icon" style="background:rgba(255,107,43,.15);color:#FF6B2B"><i class="fa-solid fa-star"></i></span><span><span class="atag-val">19<sup>+</sup></span><span class="atag-lbl">Years of Craft</span></span></div>
                     <div class="atag" style="--c:rgba(103,232,249,.3)"><span class="atag-icon" style="background:rgba(103,232,249,.12);color:#67e8f9"><i class="fa-brands fa-react"></i></span><span><span class="atag-val" style="color:#67e8f9">React</span><span class="atag-lbl">Next.js Expert</span></span></div>
@@ -436,11 +436,11 @@
                         X.restore();
                       });
                     
-                      // LEGS — wider gap + per-leg shading
+                      // LEGS ï¿½ wider gap + per-leg shading
                       [-1,1].forEach((s,si)=>{
                         X.save();X.translate(cx+s*36,cy+128);
                         X.rotate(Math.sin(t*1.08+(si?p:0))*.03);
-                        // thigh — outer bright, inner dark (creates visible gap between legs)
+                        // thigh ï¿½ outer bright, inner dark (creates visible gap between legs)
                         X.beginPath();
                         X.moveTo(-18,0);X.lineTo(18,0);
                         X.bezierCurveTo(19,22,16,44,14,70);X.lineTo(-14,70);
@@ -474,7 +474,7 @@
                         X.restore();
                       });
                     
-                      // ARMS — drawn before body so shoulder joint hides under body edge
+                      // ARMS ï¿½ drawn before body so shoulder joint hides under body edge
                       drawArm(cx-52, cy+36, 0);
                       drawArm(cx+52, cy+36, Math.PI);
                     
@@ -506,7 +506,7 @@
                       arc(-12,74,3);X.fillStyle='rgba(255,107,43,.5)';X.fill();
                       arc(12,74,3);X.fillStyle='rgba(255,107,43,.5)';X.fill();
                     
-                      // -- DD LOGO — drawn as proper lettering --
+                      // -- DD LOGO ï¿½ drawn as proper lettering --
                       X.save();
                       // patch
                       rr(-30,22,60,50,10);
@@ -541,7 +541,7 @@
                     
                       X.restore();
                     
-                      // ARMS — drawn separately so no coordinate confusion
+                      // ARMS ï¿½ drawn separately so no coordinate confusion
                       function drawArm(ax,ay,phase){
                         X.save();X.translate(ax,ay);
                         const wave = Math.sin(t*1.8 + phase)*0.18;  // gentle swing, arms hang at sides
@@ -554,11 +554,11 @@
                         // elbow
                         arc(0,52,8);X.fillStyle='#2c2c46';X.fill();
                         X.strokeStyle='rgba(255,107,43,.2)';X.lineWidth=1;X.stroke();
-                        // forearm — straight vertical, ends at y=94, x=0 center
+                        // forearm ï¿½ straight vertical, ends at y=94, x=0 center
                         X.beginPath();X.moveTo(-9,52);X.lineTo(9,52);
                         X.lineTo(9,94);X.lineTo(-9,94);X.closePath();
                         X.fillStyle=TH.armB;X.fill();
-                        // wrist ring — directly at forearm bottom y=94, centered x=0
+                        // wrist ring ï¿½ directly at forearm bottom y=94, centered x=0
                         X.save();X.translate(0,94);
                         rr(-11,0,22,8,3);
                         const wg=X.createLinearGradient(-11,0,11,0);
@@ -578,7 +578,7 @@
                         X.beginPath();X.moveTo(-8,19);X.lineTo(8,19);
                         X.strokeStyle='rgba(255,255,255,.05)';X.lineWidth=1;X.stroke();
                         arc(0,23,2.5);X.fillStyle=TH.acc+'cc';X.fill();
-                        // FIST — 4 folded finger knuckle rows
+                        // FIST ï¿½ 4 folded finger knuckle rows
                         const fistG=X.createLinearGradient(-11,8,11,8);
                         fistG.addColorStop(0,'#32324a');fistG.addColorStop(1,'#28283e');
                         // main fist block
@@ -612,15 +612,15 @@
                       // NECK
                       rr(cx-10,cy+16,20,16,6);X.fillStyle='#F0C090';X.fill();
                     
-                      // HEAD — warm even skin, light forehead, natural chin (not dark edge)
+                      // HEAD ï¿½ warm even skin, light forehead, natural chin (not dark edge)
                       X.save();X.shadowColor='rgba(0,0,0,.4)';X.shadowBlur=20;
                       arc(cx,cy-56,56);
-                      // base skin — radial from forehead highlight down, stays warm throughout
+                      // base skin ï¿½ radial from forehead highlight down, stays warm throughout
                       const hfg=X.createRadialGradient(cx-12,cy-80,4,cx,cy-52,62);
                       hfg.addColorStop(0,'#FEEBD4');   // bright forehead highlight
                       hfg.addColorStop(.4,'#FDDBB4');  // main face skin
                       hfg.addColorStop(.78,'#F5C49A'); // slight warmth toward jaw
-                      hfg.addColorStop(1,'#EAB485');   // jaw edge — still warm, not dark
+                      hfg.addColorStop(1,'#EAB485');   // jaw edge ï¿½ still warm, not dark
                       X.fillStyle=hfg;X.fill();X.restore();
                     
                     
@@ -696,11 +696,11 @@
                       arc(cx-4,cy-24,2);X.fillStyle='rgba(150,75,30,.28)';X.fill();
                       arc(cx+4,cy-24,2);X.fillStyle='rgba(150,75,30,.28)';X.fill();
                     
-                      // MOUTH — natural lip with smile
+                      // MOUTH ï¿½ natural lip with smile
                       // upper lip line
                       X.beginPath();X.arc(cx,cy-10,18,.08,p-.08);
                       X.strokeStyle='rgba(180,90,55,.55)';X.lineWidth=2.5;X.lineCap='round';X.stroke();
-                      // teeth / inner smile — warm white
+                      // teeth / inner smile ï¿½ warm white
                       X.beginPath();X.arc(cx,cy-10,14,.18,p-.18);
                       X.strokeStyle='rgba(255,245,235,.6)';X.lineWidth=3.5;X.stroke();
                       // lip shine
@@ -834,7 +834,7 @@
         <!-- Step 2: Loading -->
         <div id="audit-step-loading" hidden>
             <div class="audit-modal-icon audit-spin"><i class="fa-solid fa-circle-notch"></i></div>
-            <h2 class="audit-modal-title">Analysing your site…</h2>
+            <h2 class="audit-modal-title">Analysing your siteï¿½</h2>
             <p class="audit-modal-sub">Running technical checks, crawl analysis, and content scoring.
                 <br>Results will be in your inbox within a minute.</p>
             <div class="audit-progress">
@@ -845,7 +845,7 @@
         <div id="audit-step-done" hidden>
             <div class="audit-modal-icon" style="color:#16A34A"><i class="fa-solid fa-circle-check"></i></div>
             <h2 class="audit-modal-title">Audit Complete!</h2>
-            <p class="audit-modal-sub">Your SEO report is on its way. Check your inbox — it should arrive within a minute.</p>
+            <p class="audit-modal-sub">Your SEO report is on its way. Check your inbox ï¿½ it should arrive within a minute.</p>
             <div class="audit-score-preview" id="audit-score-preview"></div>
             <button type="button" class="audit-submit" id="audit-done-close">Close</button>
         </div>
@@ -935,7 +935,7 @@
     </div>
 </section>
 
-<!-- WORK — HORIZONTAL SCROLL -->
+<!-- WORK ï¿½ HORIZONTAL SCROLL -->
 <section id="work">
   <div class="work-head rv">
     <div>
@@ -955,9 +955,9 @@
       </div>
       <div class="wcard-info">
         <div class="wcard-num">01 / 03</div>
-        <div class="wcard-cat">Education · WordPress · Chennai, India</div>
+        <div class="wcard-cat">Education ï¿½ WordPress ï¿½ Chennai, India</div>
         <div class="wcard-title">JPA Solutions</div>
-        <div class="wcard-desc">Full website design and development for a leading MSME-certified software training institute in Chennai. Built for enquiry conversion and course discovery — serving 18,000+ students annually.</div>
+        <div class="wcard-desc">Full website design and development for a leading MSME-certified software training institute in Chennai. Built for enquiry conversion and course discovery ï¿½ serving 18,000+ students annually.</div>
         <div class="wcard-chips">
           <div class="wchip">WordPress</div>
           <div class="wchip">UI Design</div>
@@ -976,9 +976,9 @@
       </div>
       <div class="wcard-info">
         <div class="wcard-num">02 / 03</div>
-        <div class="wcard-cat">SaaS · RFP Platform · Norway</div>
-        <div class="wcard-title">Tenderlyst — Web</div>
-        <div class="wcard-desc">AI-powered RFP and proposal management platform for Energy &amp; IT sectors. Full UI/UX design and frontend — helping teams win contracts faster with built-in compliance tooling.</div>
+        <div class="wcard-cat">SaaS ï¿½ RFP Platform ï¿½ Norway</div>
+        <div class="wcard-title">Tenderlyst ï¿½ Web</div>
+        <div class="wcard-desc">AI-powered RFP and proposal management platform for Energy &amp; IT sectors. Full UI/UX design and frontend ï¿½ helping teams win contracts faster with built-in compliance tooling.</div>
         <div class="wcard-chips">
           <div class="wchip">Next.js</div>
           <div class="wchip">UI/UX Design</div>
@@ -997,8 +997,8 @@
       </div>
       <div class="wcard-info">
         <div class="wcard-num">03 / 03</div>
-        <div class="wcard-cat">SaaS · RFP Platform · Global</div>
-        <div class="wcard-title">Tenderlyst — App</div>
+        <div class="wcard-cat">SaaS ï¿½ RFP Platform ï¿½ Global</div>
+        <div class="wcard-title">Tenderlyst ï¿½ App</div>
         <div class="wcard-desc">Norwegian-localised Tenderlyst application with multilingual frontend, language switcher, demo booking flow, and full proposal management dashboard for Energy &amp; IT sectors.</div>
         <div class="wcard-chips">
           <div class="wchip">React</div>
@@ -1021,7 +1021,7 @@
         <div class="rv">
             <div class="s-label">Packages</div>
             <h2 class="s-h">Built for SMBs.<br><em>Ready for medium business growth.</em></h2>
-            <p class="pkg-intro" style="margin-top:1.5rem">Website · SEO · Hosting guidance · Growth support. Clear monthly packages, no hidden fees.</p>
+            <p class="pkg-intro" style="margin-top:1.5rem">Website ï¿½ SEO ï¿½ Hosting guidance ï¿½ Growth support. Clear monthly packages, no hidden fees.</p>
         </div>
 
         
@@ -1096,19 +1096,19 @@
             <div class="p-dot"></div>
             <div class="p-num">02</div>
             <div class="p-name">Design &amp; Prototype</div>
-            <p class="p-desc">Every screen in Figma first. You interact with a real prototype and shape the product before development begins — no surprises at launch.</p>
+            <p class="p-desc">Every screen in Figma first. You interact with a real prototype and shape the product before development begins ï¿½ no surprises at launch.</p>
         </div>
         <div class="p-step rv">
             <div class="p-dot"></div>
             <div class="p-num">03</div>
             <div class="p-name">Build &amp; Test</div>
-            <p class="p-desc">Clean, documented code. Tested across every device. Performance-optimised from day one — built to last years, not months.</p>
+            <p class="p-desc">Clean, documented code. Tested across every device. Performance-optimised from day one ï¿½ built to last years, not months.</p>
         </div>
         <div class="p-step rv">
             <div class="p-dot"></div>
             <div class="p-num">04</div>
             <div class="p-name">Launch &amp; Grow</div>
-            <p class="p-desc">We monitor, optimise, and iterate post-launch — turning your product into a compounding business asset that improves over time.</p>
+            <p class="p-desc">We monitor, optimise, and iterate post-launch ï¿½ turning your product into a compounding business asset that improves over time.</p>
         </div>
     </div>
 </section>
@@ -1124,7 +1124,7 @@
                 <div class="testi-rating-stars">
                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
                 </div>
-                <div class="testi-rating-meta">Based on <strong>5 reviews</strong> · <span class="testi-g-badge"><i class="fa-brands fa-google"></i> Google</span></div>
+                <div class="testi-rating-meta">Based on <strong>5 reviews</strong> ï¿½ <span class="testi-g-badge"><i class="fa-brands fa-google"></i> Google</span></div>
             </div>
         </div>
     </div>
@@ -1193,7 +1193,7 @@
                     <div class="testi-g-logo"><i class="fa-brands fa-google"></i></div>
                 </div>
                 <p class="testi-g-quote">"Professional, reliable and easy to work with. Devndespro delivers high quality web solutions with a good focus on performance and user experience. I recommend their services for startups and growing businesses."</p>
-                <div class="testi-g-when">a week ago · Procurement People</div>
+                <div class="testi-g-when">a week ago ï¿½ Procurement People</div>
             </div>
 
             <div class="testi-card-g">
@@ -1208,7 +1208,7 @@
                     <div class="testi-g-logo"><i class="fa-brands fa-google"></i></div>
                 </div>
                 <p class="testi-g-quote">"I have approached devndespro for designing our mobile app in onearkive and they have delivered it with excellent quality."</p>
-                <div class="testi-g-when">2 weeks ago · Onearkive</div>
+                <div class="testi-g-when">2 weeks ago ï¿½ Onearkive</div>
             </div>
 
         </div>
@@ -1216,7 +1216,7 @@
 
     <div class="testi-footer rv">
         <i class="fa-brands fa-google"></i>
-        <span>Rated <strong>4.8 / 5</strong> on Google · Stavanger, Norway</span>
+        <span>Rated <strong>4.8 / 5</strong> on Google ï¿½ Stavanger, Norway</span>
         <a href="https://search.google.com/local/reviews?placeid=YOUR_PLACE_ID" target="_blank" rel="noopener" class="testi-more">See all reviews <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 </section>
@@ -1225,7 +1225,7 @@
 <section class="cta-strip rv">
     <div class="cta-strip-text">
         <h2 data-i18n="cta.mid.title">Ready to start your project?</h2>
-        <p data-i18n="cta.mid.text">Get a free consultation and a clear estimate within 24 hours — no commitment needed.</p>
+        <p data-i18n="cta.mid.text">Get a free consultation and a clear estimate within 24 hours ï¿½ no commitment needed.</p>
     </div>
     <div class="cta-strip-actions">
         <a href="#contact" class="btn-cta-white" data-i18n="cta.mid.primary">Book a Free Call</a>
@@ -1271,7 +1271,7 @@
 <section class="cta-strip rv">
     <div class="cta-strip-text">
         <h2 data-i18n="cta.bottom.title">Let's build something that converts.</h2>
-        <p data-i18n="cta.bottom.text">From design to deployment — one team, full ownership, measurable results.</p>
+        <p data-i18n="cta.bottom.text">From design to deployment ï¿½ one team, full ownership, measurable results.</p>
     </div>
     <div class="cta-strip-actions">
         <a href="#contact" class="btn-cta-white" data-i18n="cta.bottom.primary">Start a Project</a>
@@ -1386,31 +1386,31 @@
     </div>
     <div class="blog-grid">
         <article class="blog-card rv">
-            <p class="blog-meta">UX/UI · Strategy</p>
+            <p class="blog-meta">UX/UI ï¿½ Strategy</p>
             <h3 class="blog-title">UI, UX, and product clarity: where teams lose conversions</h3>
             <p class="blog-desc">A field guide to reducing friction in digital journeys and turning visual polish into measurable conversion lift.</p>
             <a class="blog-link" href="/blog/ui-ux-design"><span class="blog-link-label">Read Article</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </article>
         <article class="blog-card rv">
-            <p class="blog-meta">Performance · Frontend</p>
+            <p class="blog-meta">Performance ï¿½ Frontend</p>
             <h3 class="blog-title">Core Web Vitals for founders: what matters and what does not</h3>
             <p class="blog-desc">A no-noise breakdown of speed, layout stability, and interaction quality that affects rankings and user trust.</p>
             <a class="blog-link" href="/blog/core-web-vitals-guide"><span class="blog-link-label">Read Article</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </article>
         <article class="blog-card rv">
-            <p class="blog-meta">SEO · Content</p>
+            <p class="blog-meta">SEO ï¿½ Content</p>
             <h3 class="blog-title">How to structure service pages that rank and convert</h3>
             <p class="blog-desc">The structure we use for local and global service pages so search engines and buyers understand value fast.</p>
             <a class="blog-link" href="/blog/service-page-seo-structure"><span class="blog-link-label">Read Article</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </article>
         <article class="blog-card rv">
-            <p class="blog-meta">Web Design · Norway</p>
+            <p class="blog-meta">Web Design ï¿½ Norway</p>
             <h3 class="blog-title">What makes a great web designer in Norway</h3>
             <p class="blog-desc">A practical breakdown of design quality, strategy, and what businesses should look for before hiring.</p>
             <a class="blog-link" href="/blog/web-designer-norway"><span class="blog-link-label">Read Article</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </article>
         <article class="blog-card rv">
-            <p class="blog-meta">Web Development · Norway</p>
+            <p class="blog-meta">Web Development ï¿½ Norway</p>
             <h3 class="blog-title">Modern web development in Norway: best practices</h3>
             <p class="blog-desc">Performance, architecture, deployment, and SEO practices used to build durable, scalable products.</p>
             <a class="blog-link" href="/blog/web-developer-norway"><span class="blog-link-label">Read Article</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
@@ -1481,8 +1481,8 @@
     </div>
 </section>
 
-<!-- SEO LINKS — after contact, before footer -->
-<!-- SEO LINKS — after contact, before footer -->
+<!-- SEO LINKS ï¿½ after contact, before footer -->
+<!-- SEO LINKS ï¿½ after contact, before footer -->
 <section id="seo-links" class="seo-links">
     <div class="seo-links-wrap">
         <div class="seo-links-head">
@@ -1574,7 +1574,7 @@
 <footer>
     <a href="#" class="f-logo"><img src="/images/DDDP_logo_mark.webp" alt="devndespro logo" class="f-logo-img" width="1280" height="655" loading="lazy" decoding="async"></a>
     <div style="margin-bottom:12px;text-align:center;"><a href="https://web.dev" target="_blank" rel="noopener noreferrer" style="font-size:11px;color:rgba(255,255,255,0.3);margin:0 8px;text-decoration:none;"><i class="fa-solid fa-code" style="margin-right:4px;"></i>Web.dev</a><a href="https://developers.google.com" target="_blank" rel="noopener noreferrer" style="font-size:11px;color:rgba(255,255,255,0.3);margin:0 8px;text-decoration:none;"><i class="fa-brands fa-google" style="margin-right:4px;"></i>Google Developers</a><a href="https://developer.mozilla.org" target="_blank" rel="noopener noreferrer" style="font-size:11px;color:rgba(255,255,255,0.3);margin:0 8px;text-decoration:none;"><i class="fa-solid fa-book" style="margin-right:4px;"></i>MDN Docs</a></div>
-<p class="f-copy">© 2026 devndespro · HQ: Stavanger, Norway · Delivery Hub: Chennai, India · Serving Europe, USA &amp; APAC</p>
+<p class="f-copy">ï¿½ 2026 devndespro ï¿½ HQ: Stavanger, Norway ï¿½ Delivery Hub: Chennai, India ï¿½ Serving Europe, USA &amp; APAC</p>
     <div id="designrush-reviews" style="width:100%;max-width:760px;margin:1rem auto 0;text-align:center;">
         <div data-designrush-widget data-agency-id="38453" data-style="dark" aria-label="DesignRush agency reviews section"></div>
         <noscript>
@@ -2737,7 +2737,7 @@ setTimeout(initTestiScroll, 1500);
     }
     
     .pkg-premium-card li::before {
-      content: "?";
+      content: "\2713";
       width: 18px;
       height: 18px;
       border-radius: 50%;
@@ -2833,7 +2833,7 @@ setTimeout(initTestiScroll, 1500);
       const symbols = {
         NOK: "kr",
         USD: "$",
-        EUR: "€",
+        EUR: "ï¿½",
         INR: "?"
       };
     
