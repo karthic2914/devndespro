@@ -16,155 +16,226 @@
   <meta name="twitter:title" content="Devndespro Blog | UI/UX, SEO, Performance Insights">
   <meta name="twitter:description" content="Practical articles on UI/UX, performance, and SEO execution.">
   <meta name="twitter:image" content="https://www.devndespro.com/images/DDDP_logo_mark.webp">
-  <link rel="stylesheet" href="/css/seo-pages.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { background:#2c2c36; color:#f4f4ee; margin:0; font-family:Jost,Arial,sans-serif; }
-    .wrap { max-width:1040px; margin:0 auto; padding:1.4rem 1rem 2.4rem; }
-    .top { display:flex; justify-content:space-between; gap:1rem; border-bottom:1px solid rgba(244,244,238,.16); padding-bottom:1rem; margin-bottom:1.4rem; }
-    a { color:#f08a62; text-decoration:none; }
-    h1 { margin:.2rem 0 .7rem; line-height:1.25; color:#fff; }
-    p { color:#deddd4; line-height:1.7; }
-    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin-top:1.2rem; }
-    .card { border:1px solid rgba(244,244,238,.14); border-radius:12px; padding:1rem; background:rgba(255,255,255,.02); }
-    .meta { margin:0 0 .45rem; color:#d8b39f; font-size:.78rem; letter-spacing:.09em; text-transform:uppercase; }
-    .title { margin:0 0 .55rem; font-size:1.04rem; line-height:1.35; color:#fff; }
-    .desc { margin:0 0 .9rem; font-size:.93rem; color:#d6d5cc; }
-    .cta { display:inline-flex; border:1px solid rgba(244,244,238,.18); border-radius:8px; padding:.52rem .72rem; color:#fff; }
-    @media (max-width: 900px) { .grid { grid-template-columns:1fr; } }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #2C2C36;
+      --bg2: #34343F;
+      --orange: #FF6B2B;
+      --orange2: #F08A62;
+      --white: #F4F4EE;
+      --dim: #A0A0AA;
+      --line: rgba(244,244,238,0.1);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Jost', sans-serif;
+      overflow-x: hidden;
+      padding-top: 72px;
+    }
+
+    /* NAV */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 72px;
+      background: rgba(44,44,54,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.3s;
+    }
+    #nav.s { background: rgba(28,28,36,0.98); }
+    .logo { display: flex; align-items: center; text-decoration: none; }
+    .logo-img { height: 40px; width: auto; }
+    .nav-r { display: flex; align-items: center; gap: 1.5rem; }
+    .lang-switch { display: flex; gap: 4px; }
+    .lang-btn {
+      background: transparent; border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.5); border-radius: 6px;
+      padding: 4px 10px; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; cursor: pointer; transition: all 0.2s;
+    }
+    .lang-btn.active, .lang-btn:hover { background: var(--orange); color: #fff; border-color: var(--orange); }
+    .nav-menu { list-style: none; display: flex; align-items: center; gap: 0.25rem; }
+    .nav-menu a {
+      display: block; padding: 0.45rem 0.75rem;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: rgba(255,255,255,0.7);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-menu a:hover, .nav-menu a.active { color: var(--orange); }
+    .nav-menu a.blog-active { color: var(--orange); border-bottom: 2px solid var(--orange); padding-bottom: 2px; }
+    .nav-cta {
+      background: var(--orange); color: #fff; border-radius: 8px;
+      padding: 0.6rem 1.2rem; font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: #e55a1f; transform: translateY(-1px); }
+    .nav-toggle { display: none; }
+
+    /* NAV MEGA */
+    .nav-dropdown { position: relative; }
+    .nav-submenu {
+      display: none; position: fixed; top: 72px;
+      width: 920px; max-width: 94vw;
+      background: #1a1a22; border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px; padding: 0;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.7);
+      z-index: 9999; list-style: none;
+    }
+    .nav-dropdown.open .nav-submenu { display: block; }
+    .nav-mega { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 0; padding: 1.4rem 0.4rem; list-style: none; }
+    .nav-mega-col { padding: 0 1.2rem; border-right: 1px solid rgba(255,255,255,0.07); }
+    .nav-mega-col:last-child { border-right: none; }
+    .nav-mega-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin: 0 0 0.8rem; }
+    .nav-mega-col a { display: block; font-size: 0.72rem; font-weight: 500; color: rgba(255,255,255,0.65); text-decoration: none; padding: 0.28rem 0; text-transform: uppercase; transition: color 0.15s, padding-left 0.15s; border-bottom: none; }
+    .nav-mega-col a:hover { color: var(--orange); padding-left: 5px; }
+
+    /* BLOG PAGE */
+    .blog-hero {
+      max-width: 1200px; margin: 0 auto;
+      padding: 4rem 2rem 3rem;
+    }
+    .blog-kicker {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 1rem;
+    }
+    .blog-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.1; color: #fff; margin-bottom: 1rem;
+    }
+    .blog-hero h1 em { font-style: italic; color: var(--orange); }
+    .blog-hero p {
+      font-size: 1rem; line-height: 1.75;
+      color: rgba(255,255,255,0.65); max-width: 640px;
+    }
+
+    /* FEATURED BADGE */
+    .section-label {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 2rem 1rem;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--orange);
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--line);
+    }
+
+    /* GRID */
+    .blog-grid {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 2rem 6rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    /* CARD */
+    .blog-card {
+      position: relative; border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: radial-gradient(circle at top right, rgba(230,106,57,0.12), rgba(230,106,57,0) 38%), rgba(255,255,255,0.02);
+      padding: 1.4rem; display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 0.65rem;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .blog-card:hover { transform: translateY(-3px); border-color: rgba(230,106,57,0.45); }
+
+    /* FEATURED CARD */
+    .blog-card.featured {
+      border-color: rgba(255,107,43,0.4);
+      background: radial-gradient(circle at top right, rgba(255,107,43,0.18), rgba(230,106,57,0) 50%), rgba(255,255,255,0.03);
+    }
+    .blog-card.featured::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--orange), transparent);
+      border-radius: 14px 14px 0 0;
+    }
+
+    .card-badge {
+      position: absolute; top: 1rem; right: 1rem;
+      background: var(--orange); color: #fff;
+      font-size: 0.6rem; font-weight: 800;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.25rem 0.6rem; border-radius: 20px;
+    }
+    .card-ext-badge {
+      position: absolute; top: 1rem; right: 1rem;
+      background: rgba(255,107,43,0.15); color: var(--orange);
+      border: 1px solid rgba(255,107,43,0.35);
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.25rem 0.6rem; border-radius: 20px;
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    .card-meta {
+      margin: 0; font-size: 0.74rem;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      color: #f0b7a0;
+    }
+    .card-meta i { font-size: 0.5em; color: var(--orange); vertical-align: middle; margin: 0 3px; }
+
+    .card-title { margin: 0; font-size: 1.05rem; line-height: 1.4; color: #fff; }
+    .card-desc { margin: 0; font-size: 0.9rem; line-height: 1.7; color: #d2d2c6; }
+
+    .card-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      text-decoration: none; color: #fff;
+      font-size: 0.86rem; border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 8px; padding: 0.55rem 0.72rem; width: fit-content;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .card-link:hover { border-color: rgba(230,106,57,0.55); background: rgba(230,106,57,0.12); }
+    .card-link.external { border-color: rgba(255,107,43,0.3); }
+    .card-link.external:hover { border-color: var(--orange); }
+
+    @media (max-width: 900px) { .blog-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 767px) {
+      .blog-hero { padding: 3rem 1.25rem 2rem; }
+      .blog-grid { padding: 0 1.25rem 4rem; }
+      .section-label { padding: 0 1.25rem 1rem; }
+      .nav-toggle { display: flex; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; width: 38px; height: 38px; border-radius: 8px; align-items: center; justify-content: center; cursor: pointer; font-size: 1rem; }
+      .nav-r { position: fixed; top: 72px; left: 0; right: 0; bottom: 0; flex-direction: column; align-items: flex-start; justify-content: flex-start; background: #1a1a22; padding: 2rem 1.5rem; gap: 1.5rem; transform: translateX(-100%); transition: transform 0.3s; z-index: 8999; overflow-y: auto; }
+      #nav.open .nav-r { transform: translateX(0); }
+      .nav-menu { flex-direction: column; align-items: flex-start; width: 100%; gap: 0; }
+      .nav-menu a { font-size: 1rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); width: 100%; }
+      .nav-cta { width: 100%; text-align: center; padding: 1rem; font-size: 0.9rem; }
+      .nav-submenu { display: none !important; }
+    }
   </style>
 </head>
-<body style="padding-top:72px">
-<!-- ===================== SITE NAV (injected) ===================== -->
-<link rel="stylesheet" href="/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-  /* â”€â”€ Reset only what the blog page needs â”€â”€ */
-  body { margin: 0; font-family: 'Jost', sans-serif; background: #2C2C36; color: #fff; overflow-x: hidden; }
-
-  /* â”€â”€ Nav core (copied from main site) â”€â”€ */
-  #nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 2rem; height: 72px;
-    background: rgba(44,44,54,0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    transition: background 0.3s ease;
-  }
-  #nav.s { background: rgba(28,28,36,0.98); }
-  .logo { display: flex; align-items: center; text-decoration: none; }
-  .logo-img { height: 40px; width: auto; display: block; }
-  .nav-r { display: flex; align-items: center; gap: 1.5rem; }
-  .lang-switch { display: flex; gap: 4px; }
-  .lang-btn {
-    background: transparent; border: 1px solid rgba(255,255,255,0.15);
-    color: rgba(255,255,255,0.5); border-radius: 6px;
-    padding: 4px 10px; font-size: 0.72rem; font-weight: 700;
-    letter-spacing: 0.1em; cursor: pointer; transition: all 0.2s;
-  }
-  .lang-btn.active, .lang-btn:hover { background: #FF6B2B; color: #fff; border-color: #FF6B2B; }
-  .nav-menu { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 0.25rem; }
-  .nav-menu li { position: relative; }
-  .nav-menu a {
-    display: block; padding: 0.45rem 0.75rem;
-    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
-    text-transform: uppercase; color: rgba(255,255,255,0.7);
-    text-decoration: none; transition: color 0.2s;
-  }
-  .nav-menu a:hover, .nav-menu a.active { color: #FF6B2B; }
-  .nav-cta {
-    background: #FF6B2B; color: #fff; border-radius: 8px;
-    padding: 0.6rem 1.2rem; font-size: 0.78rem; font-weight: 700;
-    letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
-    transition: background 0.2s, transform 0.15s;
-  }
-  .nav-cta:hover { background: #e55a1f; transform: translateY(-1px); color: #fff; }
-  .nav-toggle { display: none; }
-
-  /* â”€â”€ Nav mega dropdown â”€â”€ */
-  .nav-dropdown { position: relative; }
-  .nav-submenu {
-    display: none; position: fixed; top: 72px;
-    width: 920px; max-width: 94vw;
-    background: #1a1a22; border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 14px; padding: 0;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.7);
-    z-index: 9999; list-style: none; margin: 0;
-  }
-  .nav-dropdown.open .nav-submenu { display: block; }
-  .nav-mega {
-    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-    gap: 0; padding: 1.4rem 0.4rem; list-style: none; margin: 0;
-  }
-  .nav-mega-col {
-    padding: 0 1.2rem;
-    border-right: 1px solid rgba(255,255,255,0.07);
-  }
-  .nav-mega-col:last-child { border-right: none; }
-  .nav-mega-title {
-    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
-    text-transform: uppercase; color: #FF6B2B; margin: 0 0 0.8rem;
-  }
-  .nav-mega-col a {
-    display: block; font-size: 0.72rem; font-weight: 500;
-    color: rgba(255,255,255,0.65); text-decoration: none;
-    padding: 0.28rem 0; text-transform: uppercase;
-    transition: color 0.15s, padding-left 0.15s; border-bottom: none;
-  }
-  .nav-mega-col a:hover { color: #FF6B2B; padding-left: 5px; }
-
-  /* â”€â”€ Blog page body offset (nav is fixed) â”€â”€ */
-  .blog-page-body { padding-top: 72px; }
-
-  /* â”€â”€ Mobile nav â”€â”€ */
-  .nav-toggle {
-    display: none; background: transparent; border: 1px solid rgba(255,255,255,0.2);
-    color: #fff; width: 38px; height: 38px; border-radius: 8px;
-    align-items: center; justify-content: center; cursor: pointer; font-size: 1rem;
-  }
-  @media (max-width: 767px) {
-    .nav-toggle { display: flex; }
-    .nav-r { position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
-      flex-direction: column; align-items: flex-start; justify-content: flex-start;
-      background: #1a1a22; padding: 2rem 1.5rem; gap: 1.5rem;
-      transform: translateX(-100%); transition: transform 0.3s ease; z-index: 8999; overflow-y: auto;
-    }
-    #nav.open .nav-r { transform: translateX(0); }
-    .nav-menu { flex-direction: column; align-items: flex-start; width: 100%; gap: 0; }
-    .nav-menu a { font-size: 1rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); width: 100%; }
-    .nav-cta { width: 100%; text-align: center; padding: 1rem; font-size: 0.9rem; }
-    .nav-submenu { display: none !important; }
-  }
-</style>
+<body>
 
 <nav id="nav">
   <a href="https://devndespro.com/" class="logo">
     <img src="/images/DDDP_logo_mark.webp" alt="devndespro logo" class="logo-img" width="1280" height="655" decoding="async" fetchpriority="high">
   </a>
-  <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" onclick="
-    var nav = document.getElementById('nav');
-    var open = nav.classList.toggle('open');
-    this.setAttribute('aria-expanded', open);
-    this.innerHTML = open
-      ? '<i class=\'fa-solid fa-xmark\'></i>'
-      : '<i class=\'fa-solid fa-bars\'></i>';
-    document.body.style.overflow = open ? 'hidden' : '';
-  ">
+  <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" id="nav-toggle-btn">
     <i class="fa-solid fa-bars" aria-hidden="true"></i>
   </button>
   <div class="nav-r">
     <div class="lang-switch" aria-label="Language switcher">
-      <button type="button" class="lang-btn" data-lang="en" onclick="window.location.href='/'">EN</button>
-      <button type="button" class="lang-btn active" data-lang="no" onclick="window.location.href='/?lang=no'">NO</button>
+      <button type="button" class="lang-btn" id="lang-en" data-lang="en">EN</button>
+      <button type="button" class="lang-btn active" id="lang-no" data-lang="no">NO</button>
     </div>
     <ul class="nav-menu">
       <li class="nav-dropdown">
-        <a href="https://devndespro.com/#services">Services</a>
+        <a href="https://devndespro.com/#services" data-i18n="nav.services">Services</a>
         <ul class="nav-submenu">
           <li class="nav-mega">
             <div class="nav-mega-col">
@@ -173,16 +244,13 @@
               <a href="/seo/web-utvikler-norge.html">Web Utvikler Norge</a>
               <a href="/seo/website-builder-stavanger.html">Web Design Stavanger</a>
               <a href="/seo/web-development-oslo.html">Web Development Oslo</a>
-              <a href="/seo/web-development-bergen.html">Web Development Bergen</a>
               <a href="/seo/seo-services-norway.html">SEO Services Norway</a>
-              <a href="/seo/freelance-web-developer-norway.html">Freelance Web Developer Norway</a>
-              <a href="/seo/ux-ui-designer-norway.html">UX UI Designer Norway</a>
+              <a href="/seo/freelance-web-developer-norway.html">Freelance Web Dev Norway</a>
             </div>
             <div class="nav-mega-col">
               <p class="nav-mega-title">Europe</p>
               <a href="/seo/web-design-europe.html">Web Design Europe</a>
               <a href="/seo/web-development-europe.html">Web Development Europe</a>
-              <a href="/seo/full-stack-development-norway.html">Full Stack EU</a>
               <a href="/seo/mobile-app-development-europe.html">Mobile App Europe</a>
             </div>
             <div class="nav-mega-col">
@@ -202,188 +270,246 @@
           </li>
         </ul>
       </li>
-      <li><a href="https://devndespro.com/#work">Work</a></li>
-      <li><a href="https://devndespro.com/#skills-section">Skills</a></li>
-      <li><a href="https://devndespro.com/#testimonials">Reviews</a></li>
-      <li><a href="https://devndespro.com/#packages">Packages</a></li>
-      <li><a href="/blog/" style="color:#FF6B2B;text-decoration:none;border-bottom:2px solid #FF6B2B;padding-bottom:2px">Blog</a></li>
-      <li><a href="https://devndespro.com/#contact">Contact</a></li>
+      <li><a href="https://devndespro.com/#work" data-i18n="nav.work">Work</a></li>
+      <li><a href="https://devndespro.com/#skills-section" data-i18n="nav.skills">Skills</a></li>
+      <li><a href="https://devndespro.com/#testimonials" data-i18n="nav.reviews">Reviews</a></li>
+      <li><a href="https://devndespro.com/#packages" data-i18n="nav.packages">Packages</a></li>
+      <li><a href="/blog/" class="blog-active" data-i18n="nav.blog">Blog</a></li>
+      <li><a href="https://devndespro.com/#contact" data-i18n="nav.contact">Contact</a></li>
     </ul>
-    <a href="https://devndespro.com/#contact" class="nav-cta">Get Free Quote</a>
+    <a href="https://devndespro.com/#contact" class="nav-cta" data-i18n="nav.quote">Get Free Quote</a>
   </div>
 </nav>
 
+<div class="blog-hero">
+  <span class="blog-kicker" data-i18n="blog.kicker">Insights Blog</span>
+  <h1 data-i18n-html="blog.heading">Read what<br><em>actually drives growth</em></h1>
+  <p data-i18n="blog.intro">Practical notes from real delivery work on UX, frontend architecture, and conversion-first web strategy for modern brands.</p>
+</div>
+
+<div class="section-label" data-i18n="blog.featured">Featured on CoderLegion</div>
+
+<div class="blog-grid" id="blog-grid">
+
+  <!-- CoderLegion Part 1 -->
+  <article class="blog-card featured">
+    <span class="card-ext-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> CoderLegion</span>
+    <p class="card-meta">SEO <i class="fa-solid fa-diamond"></i> <span data-i18n="meta.ai">AI Visibility</span></p>
+    <h2 class="card-title" data-i18n="cl1.title">Your Website Ranks #1 on Google. ChatGPT Has Never Heard of You.</h2>
+    <p class="card-desc" data-i18n="cl1.desc">Why ranking on Google no longer guarantees AI visibility, and what the gap between search and AI citations means for your business.</p>
+    <a class="card-link external" href="https://coderlegion.com/19216/your-website-ranks-1-on-google-chatgpt-has-never-heard-of-you" target="_blank" rel="noopener">
+      <span data-i18n="blog.read">Read Article</span> <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </article>
+
+  <!-- CoderLegion Part 2 -->
+  <article class="blog-card featured">
+    <span class="card-ext-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> CoderLegion</span>
+    <p class="card-meta">SEO <i class="fa-solid fa-diamond"></i> <span data-i18n="meta.ai">AI Visibility</span></p>
+    <h2 class="card-title" data-i18n="cl2.title">I Fixed My AI Visibility From 0 to 80 [Part 2], These 5 Things Actually Worked</h2>
+    <p class="card-desc" data-i18n="cl2.desc">The exact 5 steps that moved the needle on AI visibility — from Bing indexing to schema, review platforms, and authoritative links.</p>
+    <a class="card-link external" href="https://coderlegion.com/19509/i-fixed-my-ai-visibility-from-0-to-80-these-5-things-actually-worked" target="_blank" rel="noopener">
+      <span data-i18n="blog.read">Read Article</span> <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </article>
+
+  <!-- Spacer to keep grid -->
+  <article class="blog-card">
+    <p class="card-meta">UX/UI <i class="fa-solid fa-diamond"></i> <span data-i18n="meta.strategy">Strategy</span></p>
+    <h2 class="card-title" data-i18n="art1.title">UI, UX, and product clarity: where teams lose conversions</h2>
+    <p class="card-desc" data-i18n="art1.desc">A field guide to reducing friction in digital journeys and turning visual polish into measurable conversion lift.</p>
+    <a class="card-link" href="/blog/ui-ux-design">
+      <span data-i18n="blog.read">Read Article</span> <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <p class="card-meta">Performance <i class="fa-solid fa-diamond"></i> <span data-i18n="meta.frontend">Frontend</span></p>
+    <h2 class="card-title" data-i18n="art2.title">Core Web Vitals for founders: what matters and what does not</h2>
+    <p class="card-desc" data-i18n="art2.desc">A no-noise breakdown of speed, layout stability, and interaction quality that affects rankings and user trust.</p>
+    <a class="card-link" href="/blog/core-web-vitals-guide">
+      <span data-i18n="blog.read">Read Article</span> <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <p class="card-meta">SEO <i class="fa-solid fa-diamond"></i> <span data-i18n="meta.content">Content</span></p>
+    <h2 class="card-title" data-i18n="art3.title">How to structure service pages that rank and convert</h2>
+    <p class="card-desc" data-i18n="art3.desc">The structure we use for local and global service pages so search engines and buyers understand value fast.</p>
+    <a class="card-link" href="/blog/service-page-seo-structure">
+      <span data-i18n="blog.read">Read Article</span> <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <p class="card-meta">Web Design <i class="fa-solid fa-diamond"></i> <span data-i18n="meta.norway">Norway</span></p>
+    <h2 class="card-title" data-i18n="art4.title">What makes a great web designer in Norway</h2>
+    <p class="card-desc" data-i18n="art4.desc">A practical breakdown of design quality, strategy, and what businesses should look for before hiring.</p>
+    <a class="card-link" href="/blog/web-designer-norway">
+      <span data-i18n="blog.read">Read Article</span> <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <p class="card-meta">Web Development <i class="fa-solid fa-diamond"></i> <span data-i18n="meta.norway">Norway</span></p>
+    <h2 class="card-title" data-i18n="art5.title">Modern web development in Norway: best practices</h2>
+    <p class="card-desc" data-i18n="art5.desc">Performance, architecture, deployment, and SEO practices used to build durable, scalable products.</p>
+    <a class="card-link" href="/blog/web-developer-norway">
+      <span data-i18n="blog.read">Read Article</span> <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </article>
+
+  <article class="blog-card">
+    <p class="card-meta">Career <i class="fa-solid fa-diamond"></i> Full Stack</p>
+    <h2 class="card-title" data-i18n="art6.title">Full Stack Web Developer Freelance: Your Complete Guide</h2>
+    <p class="card-desc" data-i18n="art6.desc">A practical 2026 roadmap for skills, pricing, client acquisition, and scaling as a freelance full stack developer.</p>
+    <a class="card-link" href="/blog/full-stack-web-developer-freelance">
+      <span data-i18n="blog.read">Read Article</span> <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </article>
+
+</div>
+
 <script>
-  // Sticky nav shadow on scroll
-  window.addEventListener('scroll', function () {
+  var translations = {
+    en: {
+      'nav.services': 'Services',
+      'nav.work': 'Work',
+      'nav.skills': 'Skills',
+      'nav.reviews': 'Reviews',
+      'nav.packages': 'Packages',
+      'nav.blog': 'Blog',
+      'nav.contact': 'Contact',
+      'nav.quote': 'Get Free Quote',
+      'blog.kicker': 'Insights Blog',
+      'blog.heading': 'Read what<br><em>actually drives growth</em>',
+      'blog.intro': 'Practical notes from real delivery work on UX, frontend architecture, and conversion-first web strategy for modern brands.',
+      'blog.featured': 'Featured on CoderLegion',
+      'blog.read': 'Read Article',
+      'meta.ai': 'AI Visibility',
+      'meta.strategy': 'Strategy',
+      'meta.frontend': 'Frontend',
+      'meta.content': 'Content',
+      'meta.norway': 'Norway',
+      'cl1.title': 'Your Website Ranks #1 on Google. ChatGPT Has Never Heard of You.',
+      'cl1.desc': 'Why ranking on Google no longer guarantees AI visibility, and what the gap between search and AI citations means for your business.',
+      'cl2.title': 'I Fixed My AI Visibility From 0 to 80 [Part 2], These 5 Things Actually Worked',
+      'cl2.desc': 'The exact 5 steps that moved the needle on AI visibility — from Bing indexing to schema, review platforms, and authoritative links.',
+      'art1.title': 'UI, UX, and product clarity: where teams lose conversions',
+      'art1.desc': 'A field guide to reducing friction in digital journeys and turning visual polish into measurable conversion lift.',
+      'art2.title': 'Core Web Vitals for founders: what matters and what does not',
+      'art2.desc': 'A no-noise breakdown of speed, layout stability, and interaction quality that affects rankings and user trust.',
+      'art3.title': 'How to structure service pages that rank and convert',
+      'art3.desc': 'The structure we use for local and global service pages so search engines and buyers understand value fast.',
+      'art4.title': 'What makes a great web designer in Norway',
+      'art4.desc': 'A practical breakdown of design quality, strategy, and what businesses should look for before hiring.',
+      'art5.title': 'Modern web development in Norway: best practices',
+      'art5.desc': 'Performance, architecture, deployment, and SEO practices used to build durable, scalable products.',
+      'art6.title': 'Full Stack Web Developer Freelance: Your Complete Guide',
+      'art6.desc': 'A practical 2026 roadmap for skills, pricing, client acquisition, and scaling as a freelance full stack developer.'
+    },
+    no: {
+      'nav.services': 'Tjenester',
+      'nav.work': 'Arbeid',
+      'nav.skills': 'Kompetanse',
+      'nav.reviews': 'Anmeldelser',
+      'nav.packages': 'Pakker',
+      'nav.blog': 'Blogg',
+      'nav.contact': 'Kontakt',
+      'nav.quote': 'Gratis tilbud',
+      'blog.kicker': 'Innsiktsblogg',
+      'blog.heading': 'Les hva som<br><em>faktisk skaper vekst</em>',
+      'blog.intro': 'Praktiske notater fra ekte leveranser om UX, frontend-arkitektur og konverteringsfokusert webstrategi.',
+      'blog.featured': 'Publisert p\u00e5 CoderLegion',
+      'blog.read': 'Les artikkel',
+      'meta.ai': 'AI-synlighet',
+      'meta.strategy': 'Strategi',
+      'meta.frontend': 'Frontend',
+      'meta.content': 'Innhold',
+      'meta.norway': 'Norge',
+      'cl1.title': 'Nettstedet ditt rangerer #1 p\u00e5 Google. ChatGPT har aldri h\u00f8rt om deg.',
+      'cl1.desc': 'Hvorfor Google-rangering ikke lenger garanterer AI-synlighet, og hva gapet mellom s\u00f8k og AI-siteringer betyr for bedriften din.',
+      'cl2.title': 'Jeg fikset AI-synligheten min fra 0 til 80 [Del 2], disse 5 tingene virket faktisk',
+      'cl2.desc': 'De eksakte 5 stegene som flyttet n\u00e5len p\u00e5 AI-synlighet: fra Bing-indeksering til schema, anmeldelsesplattformer og autoritative lenker.',
+      'art1.title': 'UI, UX og produktklarhet: hvor team mister konverteringer',
+      'art1.desc': 'En praktisk guide til \u00e5 redusere friksjon i brukerreisen og gj\u00f8re design til m\u00e5lbar konverteringsvekst.',
+      'art2.title': 'Core Web Vitals for ledere: hva som betyr noe i praksis',
+      'art2.desc': 'En tydelig gjennomgang av hastighet, layout-stabilitet og interaksjonskvalitet som p\u00e5virker rangering og tillit.',
+      'art3.title': 'Hvordan strukturere tjenestesider som rangerer og konverterer',
+      'art3.desc': 'Strukturen vi bruker for lokale og globale tjenestesider slik at b\u00e5de s\u00f8kemotorer og kj\u00f8pere forst\u00e5r verdien raskt.',
+      'art4.title': 'Hva gj\u00f8r en god webdesigner i Norge',
+      'art4.desc': 'En praktisk gjennomgang av designkvalitet, strategi og hva bedrifter b\u00f8r se etter f\u00f8r de ansetter.',
+      'art5.title': 'Moderne webutvikling i Norge: beste praksis',
+      'art5.desc': 'Ytelse, arkitektur, distribusjon og SEO-praksis for \u00e5 bygge holdbare og skalerbare produkter.',
+      'art6.title': 'Fullstack webutvikler freelance: din komplette guide',
+      'art6.desc': 'Et praktisk veikart for 2026 med ferdigheter, prising, kundeanskaffelse og skalering som freelance fullstack-utvikler.'
+    }
+  };
+
+  function applyLang(lang) {
+    var dict = translations[lang] || translations.en;
+    document.documentElement.setAttribute('lang', lang);
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key]) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-html');
+      if (dict[key]) el.innerHTML = dict[key];
+    });
+
+    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+    document.getElementById('lang-no').classList.toggle('active', lang === 'no');
+
+    try { localStorage.setItem('siteLang', lang); } catch(e) {}
+  }
+
+  document.getElementById('lang-en').addEventListener('click', function() { applyLang('en'); });
+  document.getElementById('lang-no').addEventListener('click', function() { applyLang('no'); });
+
+  // Init language
+  var urlLang = new URLSearchParams(window.location.search).get('lang');
+  var stored = '';
+  try { stored = localStorage.getItem('siteLang') || ''; } catch(e) {}
+  var initLang = urlLang === 'en' ? 'en' : urlLang === 'no' ? 'no' : stored === 'en' ? 'en' : 'no';
+  applyLang(initLang);
+
+  // Sticky nav
+  window.addEventListener('scroll', function() {
     document.getElementById('nav').classList.toggle('s', window.scrollY > 60);
   });
 
-  // Mega menu hover (desktop)
-  document.querySelectorAll('.nav-dropdown').forEach(function (dd) {
+  // Mobile nav toggle
+  document.getElementById('nav-toggle-btn').addEventListener('click', function() {
+    var nav = document.getElementById('nav');
+    var open = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', open);
+    this.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  // Mega menu
+  document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
     var timer;
-    dd.addEventListener('mouseenter', function () {
+    dd.addEventListener('mouseenter', function() {
       clearTimeout(timer);
-      document.querySelectorAll('.nav-dropdown').forEach(function (d) { if (d !== dd) d.classList.remove('open'); });
+      document.querySelectorAll('.nav-dropdown').forEach(function(d) { if (d !== dd) d.classList.remove('open'); });
       dd.classList.add('open');
     });
-    dd.addEventListener('mouseleave', function () {
-      timer = setTimeout(function () { dd.classList.remove('open'); }, 180);
+    dd.addEventListener('mouseleave', function() {
+      timer = setTimeout(function() { dd.classList.remove('open'); }, 180);
     });
     var sub = dd.querySelector('.nav-submenu');
     if (sub) {
-      sub.addEventListener('mouseenter', function () { clearTimeout(timer); });
-      sub.addEventListener('mouseleave', function () { timer = setTimeout(function () { dd.classList.remove('open'); }, 180); });
+      sub.addEventListener('mouseenter', function() { clearTimeout(timer); });
+      sub.addEventListener('mouseleave', function() { timer = setTimeout(function() { dd.classList.remove('open'); }, 180); });
     }
-    document.addEventListener('click', function (e) {
+    document.addEventListener('click', function(e) {
       if (!dd.contains(e.target)) dd.classList.remove('open');
     });
   });
 </script>
-<!-- ============================================================ -->
-  <main class="wrap">
-    <div class="top">
-      
-      
-    </div>
-    <h1>Devndespro Blog</h1>
-    <p>Deep-dive articles on interface clarity, engineering quality, and growth-focused web execution.</p>
 
-    <section class="grid" aria-label="Blog articles">
-      <article class="card">
-        <p class="meta">UX/UI · Strategy</p>
-        <h2 class="title">UI/UX Design Principles for Beautiful Digital Interfaces</h2>
-        <p class="desc">Foundational principles for creating interfaces that are intuitive, accessible, and conversion-friendly.</p>
-        <a class="cta" href="/blog/ui-ux-design.html">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">Performance · Frontend</p>
-        <h2 class="title">Core Web Vitals for founders: what matters and what does not</h2>
-        <p class="desc">A practical explanation of LCP, CLS, and INP with implementation priorities that improve experience.</p>
-        <a class="cta" href="/blog/core-web-vitals-guide.html">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">SEO · Content</p>
-        <h2 class="title">How to structure service pages that rank and convert</h2>
-        <p class="desc">A repeatable structure for service pages that supports discoverability and qualified lead generation.</p>
-        <a class="cta" href="/blog/service-page-seo-structure.html">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">Career · Full Stack</p>
-        <h2 class="title">Full Stack Web Developer Freelance: Your Complete Guide</h2>
-        <p class="desc">A practical 2026 roadmap for skills, pricing, client acquisition, and scaling as a freelance full stack developer.</p>
-        <a class="cta" href="/blog/full-stack-web-developer-freelance.html">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">Web Design · Strategy</p>
-        <h2 class="title">What Makes a Great Web Designer in Norway</h2>
-        <p class="desc">Explore what sets exceptional web designers apart and how Norwegian web design combines aesthetics with business strategy.</p>
-        <a class="cta" href="/blog/web-designer-norway.html">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">Web Development · Technology</p>
-        <h2 class="title">Modern Web Development in Norway: Best Practices</h2>
-        <p class="desc">Learn modern web development practices for building fast, scalable, and SEO-friendly websites with contemporary technologies.</p>
-        <a class="cta" href="/blog/web-developer-norway.html">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">Full Stack · USA</p>
-        <h2 class="title">Full Stack Development USA: What Growing Companies Need</h2>
-        <p class="desc">A practical guide to delivery ownership, architecture, APIs, DevOps, and scalability for US product teams.</p>
-        <a class="cta" href="/blog/">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">Full Stack · India</p>
-        <h2 class="title">Full Stack Development India: What Teams Should Expect</h2>
-        <p class="desc">How Indian startups and product teams should evaluate full stack delivery quality, scalability, and release discipline.</p>
-        <a class="cta" href="/blog/">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">Web Applications · USA</p>
-        <h2 class="title">Web Application Development USA: Building for Scale</h2>
-        <p class="desc">What US companies should plan for when building secure, scalable custom web applications.</p>
-        <a class="cta" href="/blog/">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">Web Applications · India</p>
-        <h2 class="title">Web Application Development India: What Businesses Should Plan For</h2>
-        <p class="desc">A guide to architecture, integrations, workflow mapping, and maintainability for custom web apps in India.</p>
-        <a class="cta" href="/blog/">Read Article</a>
-      </article>
-      <!-- NEW: Intent-Based Service Articles -->
-      <article class="card">
-        <p class="meta">Web Design · Norway</p>
-        <h2 class="title">Web Design Company Norway: What Businesses Should Know</h2>
-        <p class="desc">Complete guide to choosing a professional web design company in Norway and what to expect from the process.</p>
-        <a class="cta" href="/blog/">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">Web Development · Norway</p>
-        <h2 class="title">Web Utvikler Norge: Hva du bør vite når du ansetter</h2>
-        <p class="desc">Guide til å ansette web utvikler i Norge. Hva skal du lete etter? Prisforventninger og best practices.</p>
-        <a class="cta" href="/blog/">Les Artikkel</a>
-      </article>
-      <article class="card">
-        <p class="meta">Website Builder · Stavanger</p>
-        <h2 class="title">Website Builder Stavanger: Why Speed Matters for Your Launch</h2>
-        <p class="desc">Why fast website launch matters for Stavanger businesses and how to maintain quality while moving quickly.</p>
-        <a class="cta" href="/blog/">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">Web Design · USA</p>
-        <h2 class="title">Web Design Agency USA: What Modern Businesses Need to Know</h2>
-        <p class="desc">Your complete guide to choosing and working with a web design agency in the USA and ensuring success.</p>
-        <a class="cta" href="/blog/">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">Web Design · Budget</p>
-        <h2 class="title">Affordable Web Design Company: Getting Quality on Budget</h2>
-        <p class="desc">Complete guide to finding affordable web design without sacrificing quality and professionalism.</p>
-        <a class="cta" href="/blog/">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">Small Business · Website</p>
-        <h2 class="title">Website Design for Small Business: What You Need Before Building</h2>
-        <p class="desc">Essential guide for small business owners about what to know before building a professional website.</p>
-        <a class="cta" href="/blog/">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">Hiring · Development</p>
-        <h2 class="title">Hire Web Developer USA: Your Complete Guide to Finding Great Talent</h2>
-        <p class="desc">How to hire a web developer in the USA, what to look for, and how to manage the hiring process successfully.</p>
-        <a class="cta" href="/blog/">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">Web Design · India</p>
-        <h2 class="title">Web Design Company India: Quality and Global Value</h2>
-        <p class="desc">Why India is smart for web design projects. Global quality at competitive prices with complete operational guide.</p>
-        <a class="cta" href="/blog/">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">Development · India</p>
-        <h2 class="title">Affordable Website Development India: Why It Makes Business Sense</h2>
-        <p class="desc">The real story on affordable website development in India. Quality assurance, cost analysis, and best practices.</p>
-        <a class="cta" href="/blog/">Read Article</a>
-      </article>
-      <article class="card">
-        <p class="meta">SEO · India</p>
-        <h2 class="title">SEO Agency India: Global Ranking Strategy on Budget</h2>
-        <p class="desc">Complete guide to outsourcing SEO to India. Quality, cost benefits, and how to ensure successful results.</p>
-        <a class="cta" href="/blog/">Read Article</a>
-      </article>
-    </section>
-  </main>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

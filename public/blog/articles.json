@@ -1,0 +1,11 @@
+{
+  "title": "Your new article title",
+  "title_no": "Norsk tittel",
+  "desc": "English description.",
+  "desc_no": "Norsk beskrivelse.",
+  "meta": "SEO · Topic",
+  "meta_no": "SEO · Emne",
+  "url": "https://coderlegion.com/your-article-url",
+  "source": "CoderLegion",
+  "featured": true
+}
