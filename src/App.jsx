@@ -165,7 +165,7 @@ function App() {
         workLabel: 'Selected Work',
         workHeading: 'Projects that<br><em>moved the needle</em>',
         workHint: 'Drag to explore <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>',
-        workCats: ['Education � WordPress � Chennai, India', 'SaaS � RFP Platform � Norway', 'SaaS � RFP Platform � Global'],
+        workCats: ['Education  ·  WordPress  ·  Chennai, India', 'SaaS  ·  RFP Platform  ·  Norway', 'SaaS  ·  RFP Platform  ·  Global'],
         workDescs: [
           'Full website design and development for a leading MSME-certified software training institute in Chennai. Built for enquiry conversion and course discovery - serving 18,000+ students annually.',
           'AI-powered RFP and proposal management platform for Energy & IT sectors. Full UI/UX design and frontend - helping teams win contracts faster with built-in compliance tooling.',
@@ -266,7 +266,7 @@ function App() {
         workLabel: 'Utvalgte Prosjekter',
         workHeading: 'Prosjekter som<br><em>ga tydelig effekt</em>',
         workHint: 'Dra for å utforske <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>',
-        workCats: ['Utdanning � WordPress � Chennai, India', 'SaaS � RFP-plattform � Norge', 'SaaS � RFP-plattform � Globalt'],
+        workCats: ['Utdanning  ·  WordPress  ·  Chennai, India', 'SaaS  ·  RFP-plattform  ·  Norge', 'SaaS  ·  RFP-plattform  ·  Globalt'],
         workDescs: [
           'Komplett nettsteddesign og utvikling for et ledende MSME-sertifisert programvareinstitutt i Chennai. Bygget for flere henvendelser og enklere kursoppdagelse - over 18 000 studenter i året.',
           'AI-drevet RFP- og tilbudsplattform for energi- og IT-sektoren. Full UI/UX-design og frontend - hjelper team å vinne kontrakter raskere med innebygd etterlevelse.',
@@ -718,7 +718,7 @@ function App() {
     }
     setLanguage(preferredLang, false);
 
-    // Looping typewriter � reads live text each loop so language switch works
+    // Looping typewriter  ·  reads live text each loop so language switch works
     setTimeout(() => { if(window.innerWidth <= 1024) return;
       const lines = document.querySelectorAll('.hd-1,.hd-2,.hd-3');
       if (!lines.length) return;

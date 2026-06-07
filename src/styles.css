@@ -1,0 +1,144 @@
+﻿
+/* ===== Clean work card design ===== */
+.hscroll {
+  gap: 24px !important;
+  align-items: stretch !important;
+}
+
+.wcard.wcard--img {
+  width: 360px !important;
+  min-width: 360px !important;
+  background: #22232b !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  padding: 16px 20px 20px !important;
+  overflow: hidden !important;
+}
+
+.wcard-img-wrap {
+  height: 165px !important;
+  border-radius: 8px !important;
+  background: #181923 !important;
+  overflow: hidden !important;
+  margin: -2px 0 20px !important;
+}
+
+.wcard-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: top center !important;
+}
+
+.wcard-img-overlay,
+.wcard-visit {
+  display: none !important;
+}
+
+.wcard-info {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.wcard-num {
+  color: #ff7a32 !important;
+  font-size: .9rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 12px !important;
+}
+
+.wcard-cat {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  margin-bottom: 14px !important;
+}
+
+.wcard-cat {
+  font-size: 0 !important;
+}
+
+.wcard-cat::before,
+.wcard-cat::after {
+  display: none !important;
+}
+
+.wcard-cat span {
+  border: 1px solid rgba(255,255,255,.2) !important;
+  color: #dfe1ea !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  font-size: .68rem !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase !important;
+}
+
+.wcard-title {
+  color: #fff !important;
+  font-size: 1.55rem !important;
+  line-height: 1.12 !important;
+  font-weight: 800 !important;
+  margin: 0 0 12px !important;
+}
+
+.wcard-desc {
+  color: rgba(255,255,255,.76) !important;
+  font-size: .98rem !important;
+  line-height: 1.5 !important;
+  margin-bottom: 18px !important;
+}
+
+.wcard-stats {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+  margin-bottom: 16px !important;
+}
+
+.wcard-stat {
+  background: rgba(0,0,0,.24) !important;
+  border-radius: 8px !important;
+  padding: 12px !important;
+}
+
+.wcard-stat strong {
+  display: block !important;
+  color: #ff7a32 !important;
+  font-size: 1.45rem !important;
+  line-height: 1 !important;
+  margin-bottom: 5px !important;
+}
+
+.wcard-stat span {
+  color: rgba(255,255,255,.58) !important;
+  font-size: .78rem !important;
+  line-height: 1.25 !important;
+}
+
+.wcard-chips {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 7px !important;
+}
+
+.wcard-chips span {
+  border: 1px solid #ff7a32 !important;
+  color: #ff7a32 !important;
+  padding: 4px 9px !important;
+  border-radius: 4px !important;
+  font-size: .68rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+}
+
+@media (max-width: 767px) {
+  .wcard.wcard--img {
+    width: 270px !important;
+    min-width: 270px !important;
+    padding: 14px !important;
+  }
+
+  .wcard-img-wrap {
+    height: 150px !important;
+  }
+}
