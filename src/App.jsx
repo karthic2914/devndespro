@@ -163,7 +163,7 @@ function App() {
           'Technical SEO', 'Local SEO', 'Analytics', 'Conversion Optimization'
         ],
         workLabel: 'Selected Work',
-        workHeading: 'Projects that<br><em>moved the needle</em>',
+        workHeading: 'Prosjekter that<br><em>moved the needle</em>',
         workHint: 'Drag to explore <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>',
         workCats: ['EDUCATION <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> WORDPRESS <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> CHENNAI, INDIA', 'SAAS <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> RFP PLATFORM <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> NORWAY', 'SAAS <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> RFP PLATFORM <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> GLOBAL'],
         workDescs: [
@@ -496,9 +496,9 @@ function App() {
       setHtml('#work .s-h', section.workHeading);
       setHtml('#work .work-scroll-hint', section.workHint);
       document.querySelectorAll('#work .wcard-cat').forEach((el, i) => { if (section.workCats[i] !== undefined) el.innerHTML = section.workCats[i]; });
-      setTextList('#work .wcard-desc', section.workDescs);
-      setText('#work .work-cta-text', section.workCtaText);
-      setText('#work .work-cta .btn-main', section.workCtaBtn);
+      document.querySelectorAll('#work .wrow-desc').forEach(function(el,i){ if(section.workDescs[i]) el.textContent=section.workDescs[i]; });
+      var wct=document.querySelector('#work .work-cta-text'); if(wct) wct.textContent=section.workCtaText;
+      var wcb=document.querySelector('#work .work-cta .btn-main'); if(wcb) wcb.textContent=section.workCtaBtn;
       setText('#process .s-label', section.processLabel);
       setHtml('#process .s-h', section.processHeading);
       setTextList('#process .p-name', section.processNames);
