@@ -27,6 +27,10 @@
 
   <style>
     /* Blog-specific styles only */
+    /* Fix custom cursor hiding on lang buttons */
+    .lang-btn, .filter-btn { cursor: pointer !important; }
+    #cur, #cur-r { display: none; } /* hide main site custom cursor on blog page */
+
     :root {
       --orange: #FF6B2B;
       --orange-dim: rgba(255,107,43,0.12);
@@ -344,8 +348,8 @@
       title: "Why Most DevOps Engineers Get Stuck at Mid-Level (And How to Break Out)",
       desc: "You can write Terraform, manage Kubernetes, deploy with zero downtime. So why aren't you growing? Here are the four traps keeping DevOps engineers stuck.",
       meta: "DevOps", meta2: "Career", tags: ["devops", "career"],
-      url: "https://devndespro.com/why-devops-engineers-get-stuck-at-mid-level",
-      external: false, source: "devndespro", featured: true
+      url: "https://dev.to/karthic2914/why-most-devops-engineers-get-stuck-at-mid-level-and-how-to-break-out-460c",
+      external: true, source: "Dev.to", featured: true
     },
     {
       title: "UI, UX, and product clarity: where teams lose conversions",

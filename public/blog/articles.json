@@ -1,19 +1,132 @@
 [
   {
-    "title": "Why Most DevOps Engineers Get Stuck at Mid-Level (And How to Break Out)",
-    "title_no": "Hvorfor de fleste DevOps-ingeniører setter seg fast på mellomnivå",
-    "desc": "You can write Terraform, manage Kubernetes, and deploy with zero downtime. So why aren't you growing? Here are the four traps keeping DevOps engineers stuck.",
-    "desc_no": "Du kan skrive Terraform og administrere Kubernetes. Men hvorfor vokser du ikke? Her er de fire fellene som holder DevOps-ingeniører tilbake.",
-    "meta": "DevOps",
-    "meta2": "Career",
-    "meta_no": "DevOps · Karriere",
-    "tags": ["devops", "career"],
-    "url": "https://devndespro.com/why-devops-engineers-get-stuck-at-mid-level",
-    "external": false,
-    "source": "devndespro",
+    "title": "Your Website Ranks #1 on Google. ChatGPT Has Never Heard of You.",
+    "title_no": "Nettstedet ditt rangerer #1 på Google. ChatGPT har aldri hørt om deg.",
+    "desc": "Why ranking on Google no longer guarantees AI visibility, and what the gap between search and AI citations means for your business.",
+    "desc_no": "Hvorfor Google-rangering ikke lenger garanterer AI-synlighet, og hva gapet mellom søk og AI-siteringer betyr for bedriften din.",
+    "meta": "SEO",
+    "meta2": "AI Visibility",
+    "tags": [
+      "seo"
+    ],
+    "url": "https://coderlegion.com/19216/your-website-ranks-1-on-google-chatgpt-has-never-heard-of-you",
+    "external": true,
+    "source": "CoderLegion",
     "featured": true
   },
   {
-    "title": "Next article title here"
+    "title": "I Fixed My AI Visibility From 0 to 80 - These 5 Things Actually Worked",
+    "title_no": "Jeg fikset AI-synligheten min fra 0 til 80 - disse 5 tingene virket faktisk",
+    "desc": "The exact 5 steps that moved the needle on AI visibility - from Bing indexing to schema, review platforms, and authoritative links.",
+    "desc_no": "De eksakte 5 stegene som flyttet nålen på AI-synlighet: fra Bing-indeksering til schema, anmeldelsesplattformer og autoritative lenker.",
+    "meta": "SEO",
+    "meta2": "AI Visibility",
+    "tags": [
+      "seo"
+    ],
+    "url": "https://coderlegion.com/19509/i-fixed-my-ai-visibility-from-0-to-80-these-5-things-actually-worked",
+    "external": true,
+    "source": "CoderLegion",
+    "featured": true
+  },
+  {
+    "title": "Why Most DevOps Engineers Get Stuck at Mid-Level (And How to Break Out)",
+    "title_no": "Hvorfor de fleste DevOps-ingeniører setter seg fast på mellomnivå",
+    "desc": "You can write Terraform, manage Kubernetes, deploy with zero downtime. So why aren't you growing? Here are the four traps keeping DevOps engineers stuck.",
+    "desc_no": "Du kan skrive Terraform og administrere Kubernetes. Men hvorfor vokser du ikke? Her er de fire fellene som holder DevOps-ingeniører tilbake.",
+    "meta": "DevOps",
+    "meta2": "Career",
+    "tags": [
+      "devops",
+      "career"
+    ],
+    "url": "https://dev.to/karthic2914/why-most-devops-engineers-get-stuck-at-mid-level-and-how-to-break-out-460c",
+    "external": true,
+    "source": "Dev.to",
+    "featured": true
+  },
+  {
+    "title": "UI, UX, and product clarity: where teams lose conversions",
+    "title_no": "UI, UX og produktklarhet: hvor team mister konverteringer",
+    "desc": "A field guide to reducing friction in digital journeys and turning visual polish into measurable conversion lift.",
+    "desc_no": "En praktisk guide til å redusere friksjon i brukerreisen og gjøre design til målbar konverteringsvekst.",
+    "meta": "UX/UI",
+    "meta2": "Strategy",
+    "tags": [
+      "ux"
+    ],
+    "url": "/blog/ui-ux-design",
+    "external": false,
+    "featured": false
+  },
+  {
+    "title": "Core Web Vitals for founders: what matters and what does not",
+    "title_no": "Core Web Vitals for ledere: hva som betyr noe i praksis",
+    "desc": "A no-noise breakdown of speed, layout stability, and interaction quality that affects rankings and user trust.",
+    "desc_no": "En tydelig gjennomgang av hastighet, layout-stabilitet og interaksjonskvalitet som påvirker rangering og tillit.",
+    "meta": "Performance",
+    "meta2": "Frontend",
+    "tags": [
+      "performance"
+    ],
+    "url": "/blog/core-web-vitals-guide",
+    "external": false,
+    "featured": false
+  },
+  {
+    "title": "How to structure service pages that rank and convert",
+    "title_no": "Hvordan strukturere tjenestesider som rangerer og konverterer",
+    "desc": "The structure we use for local and global service pages so search engines and buyers understand value fast.",
+    "desc_no": "Strukturen vi bruker for lokale og globale tjenestesider slik at både søkemotorer og kjøpere forstår verdien raskt.",
+    "meta": "SEO",
+    "meta2": "Content",
+    "tags": [
+      "seo"
+    ],
+    "url": "/blog/service-page-seo-structure",
+    "external": false,
+    "featured": false
+  },
+  {
+    "title": "What makes a great web designer in Norway",
+    "title_no": "Hva gjør en god webdesigner i Norge",
+    "desc": "A practical breakdown of design quality, strategy, and what businesses should look for before hiring.",
+    "desc_no": "En praktisk gjennomgang av designkvalitet, strategi og hva bedrifter bør se etter før de ansetter.",
+    "meta": "Web Design",
+    "meta2": "Norway",
+    "tags": [
+      "ux"
+    ],
+    "url": "/blog/web-designer-norway",
+    "external": false,
+    "featured": false
+  },
+  {
+    "title": "Modern web development in Norway: best practices",
+    "title_no": "Moderne webutvikling i Norge: beste praksis",
+    "desc": "Performance, architecture, deployment, and SEO practices used to build durable, scalable products.",
+    "desc_no": "Ytelse, arkitektur, distribusjon og SEO-praksis for å bygge holdbare og skalerbare produkter.",
+    "meta": "Web Dev",
+    "meta2": "Norway",
+    "tags": [
+      "performance"
+    ],
+    "url": "/blog/web-developer-norway",
+    "external": false,
+    "featured": false
+  },
+  {
+    "title": "Full Stack Web Developer Freelance: Your Complete Guide",
+    "title_no": "Fullstack webutvikler freelance: din komplette guide",
+    "desc": "A practical 2026 roadmap for skills, pricing, client acquisition, and scaling as a freelance full stack developer.",
+    "desc_no": "Et praktisk veikart for 2026 med ferdigheter, prising, kundeanskaffelse og skalering som freelance fullstack-utvikler.",
+    "meta": "Career",
+    "meta2": "Full Stack",
+    "tags": [
+      "career"
+    ],
+    "url": "/blog/full-stack-web-developer-freelance",
+    "external": false,
+    "featured": false
   }
 ]
