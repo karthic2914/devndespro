@@ -1,11 +1,19 @@
-{
-  "title": "Your new article title",
-  "title_no": "Norsk tittel",
-  "desc": "English description.",
-  "desc_no": "Norsk beskrivelse.",
-  "meta": "SEO · Topic",
-  "meta_no": "SEO · Emne",
-  "url": "https://coderlegion.com/your-article-url",
-  "source": "CoderLegion",
-  "featured": true
-}
+[
+  {
+    "title": "Why Most DevOps Engineers Get Stuck at Mid-Level (And How to Break Out)",
+    "title_no": "Hvorfor de fleste DevOps-ingeniører setter seg fast på mellomnivå",
+    "desc": "You can write Terraform, manage Kubernetes, and deploy with zero downtime. So why aren't you growing? Here are the four traps keeping DevOps engineers stuck.",
+    "desc_no": "Du kan skrive Terraform og administrere Kubernetes. Men hvorfor vokser du ikke? Her er de fire fellene som holder DevOps-ingeniører tilbake.",
+    "meta": "DevOps",
+    "meta2": "Career",
+    "meta_no": "DevOps · Karriere",
+    "tags": ["devops", "career"],
+    "url": "https://devndespro.com/why-devops-engineers-get-stuck-at-mid-level",
+    "external": false,
+    "source": "devndespro",
+    "featured": true
+  },
+  {
+    "title": "Next article title here"
+  }
+]

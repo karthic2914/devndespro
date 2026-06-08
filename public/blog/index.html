@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Devndespro Blog | UI/UX, SEO, Performance Insights</title>
-  <meta name="description" content="Read practical articles from Devndespro on UI/UX design, Core Web Vitals, service page SEO, and conversion-focused product execution.">
+  <title>Devndespro Blog | UI/UX, DevOps, SEO & Performance Insights</title>
+  <meta name="description" content="Read practical articles from Devndespro on UI/UX design, DevOps, Core Web Vitals, service page SEO, and conversion-focused product execution.">
   <link rel="canonical" href="https://www.devndespro.com/blog/">
   <meta name="robots" content="index,follow">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Devndespro Blog | UI/UX, SEO, Performance Insights">
-  <meta property="og:description" content="Practical articles on UI/UX, performance, and SEO execution.">
+  <meta property="og:title" content="Devndespro Blog | UI/UX, DevOps, SEO & Performance Insights">
+  <meta property="og:description" content="Practical articles on UI/UX, DevOps, performance, and SEO execution.">
   <meta property="og:url" content="https://www.devndespro.com/blog/">
   <meta property="og:image" content="https://www.devndespro.com/images/DDDP_logo_mark.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Devndespro Blog | UI/UX, SEO, Performance Insights">
-  <meta name="twitter:description" content="Practical articles on UI/UX, performance, and SEO execution.">
+  <meta name="twitter:title" content="Devndespro Blog | UI/UX, DevOps, SEO & Performance Insights">
+  <meta name="twitter:description" content="Practical articles on UI/UX, DevOps, performance, and SEO execution.">
   <meta name="twitter:image" content="https://www.devndespro.com/images/DDDP_logo_mark.webp">
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
@@ -22,308 +22,393 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --orange: #FF6B2B;
+      --orange-dim: rgba(255,107,43,0.12);
+      --orange-border: rgba(255,107,43,0.35);
+      --bg: #0a0a0f;
+      --bg2: #12121a;
+      --bg3: #1a1a26;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(255,107,43,0.4);
+      --text: #fff;
+      --text-muted: rgba(255,255,255,0.55);
+      --text-dim: rgba(255,255,255,0.3);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Jost', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    #blog-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 68px;
+      background: rgba(10,10,15,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+    #blog-nav.scrolled { border-color: var(--orange-border); }
+    .blog-nav-logo img { height: 36px; width: auto; }
+    .blog-nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .blog-nav-links a {
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--text-muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .blog-nav-links a:hover, .blog-nav-links a.active { color: var(--orange); }
+    .blog-nav-cta {
+      background: var(--orange) !important; color: #fff !important;
+      padding: 0.55rem 1.2rem; border-radius: 8px;
+      font-weight: 600 !important; transition: opacity 0.2s !important;
+    }
+    .blog-nav-cta:hover { opacity: 0.88 !important; }
+
+    /* HERO */
+    .blog-hero {
+      min-height: 52vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      padding: 8rem 2rem 5rem; position: relative; overflow: hidden;
+    }
+    .blog-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 55% at 50% 0%, rgba(255,107,43,0.13) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(255,107,43,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .blog-hero-kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--orange);
+      border: 1px solid var(--orange-border); padding: 6px 16px;
+      border-radius: 999px; margin-bottom: 1.5rem; background: var(--orange-dim);
+    }
+    .blog-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 600; line-height: 1.1; letter-spacing: -0.01em;
+      margin-bottom: 1.25rem; max-width: 800px;
+    }
+    .blog-hero h1 em { font-style: italic; color: var(--orange); }
+    .blog-hero-sub {
+      font-size: 1rem; color: var(--text-muted);
+      max-width: 560px; line-height: 1.75; margin-bottom: 2rem;
+    }
+    .blog-hero-stats { display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; }
+    .hero-stat { text-align: center; }
+    .hero-stat-val {
+      font-family: var(--font-display); font-size: 1.8rem;
+      font-weight: 600; font-style: italic; color: var(--orange);
+      display: block; line-height: 1;
+    }
+    .hero-stat-lbl {
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-dim); margin-top: 4px;
+    }
+
+    /* FILTER */
+    .filter-wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem 2.5rem; }
+    .filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+    .filter-btn {
+      font-family: var(--font-body); font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.5rem 1.1rem; border-radius: 999px;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--text-muted); cursor: pointer; transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: var(--orange-border); color: var(--text); }
+    .filter-btn.active { background: var(--orange); border-color: var(--orange); color: #fff; }
+
+    /* SECTION LABEL */
+    .section-label {
+      max-width: 1200px; margin: 0 auto 1.25rem; padding: 0 2rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--orange);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* GRID */
+    .blog-wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem 6rem; }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+
+    /* CARD */
+    .blog-card {
+      position: relative; background: var(--bg2);
+      border: 1px solid var(--border); border-radius: 16px;
+      padding: 1.75rem; display: grid;
+      grid-template-rows: auto auto 1fr auto; gap: 0.75rem;
+      transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+      cursor: pointer; text-decoration: none; color: inherit; overflow: hidden;
+    }
+    .blog-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--orange); transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s ease; border-radius: 16px 16px 0 0;
+    }
+    .blog-card:hover { transform: translateY(-4px); border-color: var(--border-hover); background: var(--bg3); }
+    .blog-card:hover::before { transform: scaleX(1); }
+    .blog-card.featured {
+      background: linear-gradient(135deg, rgba(255,107,43,0.08) 0%, var(--bg2) 60%);
+      border-color: var(--orange-border);
+    }
+    .blog-card.featured::before { transform: scaleX(1); }
+
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+    .card-meta {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--orange);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .card-meta i { font-size: 5px; }
+    .card-ext-badge {
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--orange);
+      border: 1px solid var(--orange-border); padding: 3px 8px;
+      border-radius: 999px; background: var(--orange-dim); white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .card-title {
+      font-family: var(--font-display); font-size: 1.25rem;
+      font-weight: 600; line-height: 1.3; color: var(--text); margin: 0;
+    }
+    .card-desc { font-size: 0.88rem; line-height: 1.75; color: var(--text-muted); margin: 0; }
+    .card-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.82rem; font-weight: 600; color: var(--text-muted);
+      text-decoration: none; border: 1px solid var(--border);
+      padding: 0.5rem 0.9rem; border-radius: 8px; width: fit-content;
+      transition: all 0.2s; letter-spacing: 0.04em;
+    }
+    .blog-card:hover .card-link {
+      border-color: var(--orange-border); color: var(--orange); background: var(--orange-dim);
+    }
+    .card-link i { font-size: 0.75rem; transition: transform 0.2s; }
+    .blog-card:hover .card-link i { transform: translateX(3px); }
+
+    /* LOADING / EMPTY */
+    .blog-loading, .no-results {
+      grid-column: 1 / -1; text-align: center;
+      padding: 4rem 2rem; color: var(--text-muted);
+    }
+    .blog-loading i, .no-results i {
+      font-size: 2rem; display: block; margin-bottom: 1rem; color: var(--orange);
+    }
+
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* FOOTER */
+    .blog-footer-wrap {
+      border-top: 1px solid var(--border); padding: 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .blog-footer-copy { font-size: 0.82rem; color: var(--text-dim); }
+    .blog-footer-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.82rem; font-weight: 600; color: var(--orange);
+      text-decoration: none; transition: gap 0.2s;
+    }
+    .blog-footer-back:hover { gap: 10px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .blog-nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-hero h1 { font-size: 2.4rem; }
+      .blog-hero { padding: 6rem 1.25rem 3rem; }
+      .blog-wrap, .filter-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .section-label { padding: 0 1.25rem; }
+      .blog-hero-stats { gap: 1.5rem; }
+      .blog-footer-wrap { padding: 1.5rem 1.25rem; }
+    }
+  </style>
 </head>
 <body>
 
-<nav id="nav">
-    <a href="#" class="logo">
-        <img src="/images/DDDP_logo_mark.webp" alt="devndespro logo" class="logo-img" width="1280" height="655" decoding="async" fetchpriority="high">
-    </a>
-    <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
-        <i class="fa-solid fa-bars" aria-hidden="true"></i>
-    </button>
-    <div class="nav-r">
-        <div class="lang-switch" aria-label="Language switcher">
-          <button type="button" class="lang-btn" data-lang="en">EN</button>
-          <button type="button" class="lang-btn active" data-lang="no">NO</button>
-        </div>
-        <ul class="nav-menu"><li class="nav-dropdown">
-            <a href="#services" data-i18n="nav.services">Services</a>
-            <ul class="nav-submenu">
-                <li class="nav-mega">
-                    <div class="nav-mega-col">
-                        <p class="nav-mega-title">Norway</p>
-                        <a href="/seo/web-design-company-norway.html">Web Design Norway</a>
-                        <a href="/seo/web-utvikler-norge.html">Web Utvikler Norge</a>
-                        <a href="/seo/website-builder-stavanger.html">Web Design Stavanger</a>
-                        <a href="/seo/web-development-oslo.html">Web Development Oslo</a>
-                        <a href="/seo/web-development-bergen.html">Web Development Bergen</a>
-                        <a href="/seo/web-development-trondheim.html">Web Development Trondheim</a>
-                        <a href="/seo/web-development-kristiansand.html">Web Development Kristiansand</a>
-                        <a href="/seo/seo-services-norway.html">SEO Services Norway</a>
-                        <a href="/seo/freelance-web-developer-norway.html">Freelance Web Developer Norway</a>
-                        <a href="/seo/ux-ui-designer-norway.html">UX UI Designer Norway</a>
-                    </div>
-                    <div class="nav-mega-col">
-                        <p class="nav-mega-title">Europe</p>
-                        <a href="/seo/web-design-europe.html">Web Design Europe</a>
-                        <a href="/seo/web-development-europe.html">Web Development Europe</a>
-                        <a href="/seo/full-stack-development-norway.html">Full Stack Development EU</a>
-                        <a href="/seo/web-application-development-norway.html">Web App Development EU</a>
-                        <a href="/seo/mobile-app-development-europe.html">Mobile App Development Europe</a>
-                    </div>
-                    <div class="nav-mega-col">
-                        <p class="nav-mega-title">Global</p>
-                        <a href="/seo/web-design-agency-usa.html">Web Design Agency USA</a>
-                        <a href="/seo/hire-web-developer-usa.html">Hire Web Developer USA</a>
-                        <a href="/seo/web-design-company-india.html">Web Design Company India</a>
-                        <a href="/seo/affordable-website-development-india.html">Affordable Web Dev India</a>
-                        <a href="/seo/seo-agency-india.html">SEO Agency India</a>
-                    </div>
-                    <div class="nav-mega-col">
-                        <p class="nav-mega-title">Engineering</p>
-                        <a href="/seo/full-stack-development-norway.html">Full Stack Norway</a>
-                        <a href="/seo/web-application-development-norway.html">Web App Norway</a>
-                        <a href="/seo/full-stack-development-usa.html">Full Stack USA</a>
-                        <a href="/seo/web-application-development-usa.html">Web App USA</a>
-                        <a href="/seo/full-stack-development-india.html">Full Stack India</a>
-                        <a href="/seo/devops-services-norway.html">DevOps Norway</a>
-                        <a href="/seo/mobile-app-development.html">Mobile App Development</a>
-                        <a href="/seo/responsive-web-design.html">Responsive Web Design</a>
-                    </div>
-                </ul>
-            </li>
-            <li><a href="#work" data-i18n="nav.work">Work</a></li>
-            <li><a href="#skills-section" data-i18n="nav.skills">Skills</a></li>
-            <li><a href="#testimonials" data-i18n="nav.testimonials">Reviews</a></li>
-            <li><a href="#packages">Packages</a></li>
-            <li><a href="/blog/" data-i18n="nav.blog">Blog</a></li>
-            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-            <li class="nav-cta-li" style="display:none;"><a href="#contact" class="nav-cta" data-i18n="nav.quote">Get Free Quote</a></li>
-          </ul>
-          <a href="#contact" class="nav-cta" data-i18n="nav.quote">Get Free Quote</a>
-        </ul>
-    </div>
+<!-- NAV -->
+<nav id="blog-nav">
+  <a href="/" class="blog-nav-logo">
+    <img src="/images/DDDP_logo_mark.webp" alt="devndespro logo" width="140" height="36" decoding="async">
+  </a>
+  <ul class="blog-nav-links">
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/#skills-section">Skills</a></li>
+    <li><a href="/blog/" class="active">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="/#contact" class="blog-nav-cta">Get Free Quote</a></li>
+  </ul>
 </nav>
 
-<div class="blog-hero">
-  <span class="blog-kicker" data-i18n="blog.kicker">Insights Blog</span>
-  <h1 data-i18n-html="blog.heading">Read what<br><em>actually drives growth</em></h1>
-  <p data-i18n="blog.intro">Practical notes from real delivery work on UX, frontend architecture, and conversion-first web strategy for modern brands.</p>
+<!-- HERO -->
+<section class="blog-hero">
+  <div class="blog-hero-kicker">
+    <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+    Insights Blog
+  </div>
+  <h1>Read what<br><em>actually drives growth</em></h1>
+  <p class="blog-hero-sub">Practical notes from real delivery work on UX, DevOps, frontend architecture, and conversion-first web strategy for modern brands.</p>
+  <div class="blog-hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-val">19+</span>
+      <span class="hero-stat-lbl">Years experience</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-val">50+</span>
+      <span class="hero-stat-lbl">Projects delivered</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-val">4.8</span>
+      <span class="hero-stat-lbl">Google rating</span>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-wrap">
+  <div class="filter-bar" id="filter-bar">
+    <button class="filter-btn active" data-filter="all">All Articles</button>
+    <button class="filter-btn" data-filter="devops">DevOps</button>
+    <button class="filter-btn" data-filter="seo">SEO</button>
+    <button class="filter-btn" data-filter="ux">UX/UI</button>
+    <button class="filter-btn" data-filter="performance">Performance</button>
+    <button class="filter-btn" data-filter="career">Career</button>
+  </div>
 </div>
 
-<div class="section-label" data-i18n="blog.featured">Featured on CoderLegion</div>
+<!-- SECTION LABEL -->
+<div class="section-label" id="section-label">All Articles</div>
 
-<div class="blog-grid" id="blog-grid">
-
-  <!-- CoderLegion Part 1 -->
-  <article class="blog-card featured">
-    <span class="card-ext-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> CoderLegion</span>
-    <p class="card-meta">SEO <i class="fa-solid fa-diamond"></i> <span data-i18n="meta.ai">AI Visibility</span></p>
-    <h2 class="card-title" data-i18n="cl1.title">Your Website Ranks #1 on Google. ChatGPT Has Never Heard of You.</h2>
-    <p class="card-desc" data-i18n="cl1.desc">Why ranking on Google no longer guarantees AI visibility, and what the gap between search and AI citations means for your business.</p>
-    <a class="card-link external" href="https://coderlegion.com/19216/your-website-ranks-1-on-google-chatgpt-has-never-heard-of-you" target="_blank" rel="noopener">
-      <span data-i18n="blog.read">Read Article</span> <i class="fa-solid fa-arrow-right"></i>
-    </a>
-  </article>
-
-  <!-- CoderLegion Part 2 -->
-  <article class="blog-card featured">
-    <span class="card-ext-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> CoderLegion</span>
-    <p class="card-meta">SEO <i class="fa-solid fa-diamond"></i> <span data-i18n="meta.ai">AI Visibility</span></p>
-    <h2 class="card-title" data-i18n="cl2.title">I Fixed My AI Visibility From 0 to 80 [Part 2], These 5 Things Actually Worked</h2>
-    <p class="card-desc" data-i18n="cl2.desc">The exact 5 steps that moved the needle on AI visibility — from Bing indexing to schema, review platforms, and authoritative links.</p>
-    <a class="card-link external" href="https://coderlegion.com/19509/i-fixed-my-ai-visibility-from-0-to-80-these-5-things-actually-worked" target="_blank" rel="noopener">
-      <span data-i18n="blog.read">Read Article</span> <i class="fa-solid fa-arrow-right"></i>
-    </a>
-  </article>
-
-  <!-- Spacer to keep grid -->
-  <article class="blog-card">
-    <p class="card-meta">UX/UI <i class="fa-solid fa-diamond"></i> <span data-i18n="meta.strategy">Strategy</span></p>
-    <h2 class="card-title" data-i18n="art1.title">UI, UX, and product clarity: where teams lose conversions</h2>
-    <p class="card-desc" data-i18n="art1.desc">A field guide to reducing friction in digital journeys and turning visual polish into measurable conversion lift.</p>
-    <a class="card-link" href="/blog/ui-ux-design">
-      <span data-i18n="blog.read">Read Article</span> <i class="fa-solid fa-arrow-right"></i>
-    </a>
-  </article>
-
-  <article class="blog-card">
-    <p class="card-meta">Performance <i class="fa-solid fa-diamond"></i> <span data-i18n="meta.frontend">Frontend</span></p>
-    <h2 class="card-title" data-i18n="art2.title">Core Web Vitals for founders: what matters and what does not</h2>
-    <p class="card-desc" data-i18n="art2.desc">A no-noise breakdown of speed, layout stability, and interaction quality that affects rankings and user trust.</p>
-    <a class="card-link" href="/blog/core-web-vitals-guide">
-      <span data-i18n="blog.read">Read Article</span> <i class="fa-solid fa-arrow-right"></i>
-    </a>
-  </article>
-
-  <article class="blog-card">
-    <p class="card-meta">SEO <i class="fa-solid fa-diamond"></i> <span data-i18n="meta.content">Content</span></p>
-    <h2 class="card-title" data-i18n="art3.title">How to structure service pages that rank and convert</h2>
-    <p class="card-desc" data-i18n="art3.desc">The structure we use for local and global service pages so search engines and buyers understand value fast.</p>
-    <a class="card-link" href="/blog/service-page-seo-structure">
-      <span data-i18n="blog.read">Read Article</span> <i class="fa-solid fa-arrow-right"></i>
-    </a>
-  </article>
-
-  <article class="blog-card">
-    <p class="card-meta">Web Design <i class="fa-solid fa-diamond"></i> <span data-i18n="meta.norway">Norway</span></p>
-    <h2 class="card-title" data-i18n="art4.title">What makes a great web designer in Norway</h2>
-    <p class="card-desc" data-i18n="art4.desc">A practical breakdown of design quality, strategy, and what businesses should look for before hiring.</p>
-    <a class="card-link" href="/blog/web-designer-norway">
-      <span data-i18n="blog.read">Read Article</span> <i class="fa-solid fa-arrow-right"></i>
-    </a>
-  </article>
-
-  <article class="blog-card">
-    <p class="card-meta">Web Development <i class="fa-solid fa-diamond"></i> <span data-i18n="meta.norway">Norway</span></p>
-    <h2 class="card-title" data-i18n="art5.title">Modern web development in Norway: best practices</h2>
-    <p class="card-desc" data-i18n="art5.desc">Performance, architecture, deployment, and SEO practices used to build durable, scalable products.</p>
-    <a class="card-link" href="/blog/web-developer-norway">
-      <span data-i18n="blog.read">Read Article</span> <i class="fa-solid fa-arrow-right"></i>
-    </a>
-  </article>
-
-  <article class="blog-card">
-    <p class="card-meta">Career <i class="fa-solid fa-diamond"></i> Full Stack</p>
-    <h2 class="card-title" data-i18n="art6.title">Full Stack Web Developer Freelance: Your Complete Guide</h2>
-    <p class="card-desc" data-i18n="art6.desc">A practical 2026 roadmap for skills, pricing, client acquisition, and scaling as a freelance full stack developer.</p>
-    <a class="card-link" href="/blog/full-stack-web-developer-freelance">
-      <span data-i18n="blog.read">Read Article</span> <i class="fa-solid fa-arrow-right"></i>
-    </a>
-  </article>
-
+<!-- BLOG GRID -->
+<div class="blog-wrap">
+  <div class="blog-grid" id="blog-grid">
+    <div class="blog-loading">
+      <i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i>
+      <p>Loading articles...</p>
+    </div>
+  </div>
 </div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="blog-footer-wrap">
+    <span class="blog-footer-copy">© 2026 devndespro · HQ: Stavanger, Norway · Delivery Hub: Chennai, India</span>
+    <a href="/" class="blog-footer-back">
+      Back to main site <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+    </a>
+  </div>
+</footer>
 
 <script>
-  var translations = {
-    en: {
-      'nav.services': 'Services',
-      'nav.work': 'Work',
-      'nav.skills': 'Skills',
-      'nav.reviews': 'Reviews',
-      'nav.packages': 'Packages',
-      'nav.blog': 'Blog',
-      'nav.contact': 'Contact',
-      'nav.quote': 'Get Free Quote',
-      'blog.kicker': 'Insights Blog',
-      'blog.heading': 'Read what<br><em>actually drives growth</em>',
-      'blog.intro': 'Practical notes from real delivery work on UX, frontend architecture, and conversion-first web strategy for modern brands.',
-      'blog.featured': 'Featured on CoderLegion',
-      'blog.read': 'Read Article',
-      'meta.ai': 'AI Visibility',
-      'meta.strategy': 'Strategy',
-      'meta.frontend': 'Frontend',
-      'meta.content': 'Content',
-      'meta.norway': 'Norway',
-      'cl1.title': 'Your Website Ranks #1 on Google. ChatGPT Has Never Heard of You.',
-      'cl1.desc': 'Why ranking on Google no longer guarantees AI visibility, and what the gap between search and AI citations means for your business.',
-      'cl2.title': 'I Fixed My AI Visibility From 0 to 80 [Part 2], These 5 Things Actually Worked',
-      'cl2.desc': 'The exact 5 steps that moved the needle on AI visibility — from Bing indexing to schema, review platforms, and authoritative links.',
-      'art1.title': 'UI, UX, and product clarity: where teams lose conversions',
-      'art1.desc': 'A field guide to reducing friction in digital journeys and turning visual polish into measurable conversion lift.',
-      'art2.title': 'Core Web Vitals for founders: what matters and what does not',
-      'art2.desc': 'A no-noise breakdown of speed, layout stability, and interaction quality that affects rankings and user trust.',
-      'art3.title': 'How to structure service pages that rank and convert',
-      'art3.desc': 'The structure we use for local and global service pages so search engines and buyers understand value fast.',
-      'art4.title': 'What makes a great web designer in Norway',
-      'art4.desc': 'A practical breakdown of design quality, strategy, and what businesses should look for before hiring.',
-      'art5.title': 'Modern web development in Norway: best practices',
-      'art5.desc': 'Performance, architecture, deployment, and SEO practices used to build durable, scalable products.',
-      'art6.title': 'Full Stack Web Developer Freelance: Your Complete Guide',
-      'art6.desc': 'A practical 2026 roadmap for skills, pricing, client acquisition, and scaling as a freelance full stack developer.'
-    },
-    no: {
-      'nav.services': 'Tjenester',
-      'nav.work': 'Arbeid',
-      'nav.skills': 'Kompetanse',
-      'nav.reviews': 'Anmeldelser',
-      'nav.packages': 'Pakker',
-      'nav.blog': 'Blogg',
-      'nav.contact': 'Kontakt',
-      'nav.quote': 'Gratis tilbud',
-      'blog.kicker': 'Innsiktsblogg',
-      'blog.heading': 'Les hva som<br><em>faktisk skaper vekst</em>',
-      'blog.intro': 'Praktiske notater fra ekte leveranser om UX, frontend-arkitektur og konverteringsfokusert webstrategi.',
-      'blog.featured': 'Publisert p\u00e5 CoderLegion',
-      'blog.read': 'Les artikkel',
-      'meta.ai': 'AI-synlighet',
-      'meta.strategy': 'Strategi',
-      'meta.frontend': 'Frontend',
-      'meta.content': 'Innhold',
-      'meta.norway': 'Norge',
-      'cl1.title': 'Nettstedet ditt rangerer #1 p\u00e5 Google. ChatGPT har aldri h\u00f8rt om deg.',
-      'cl1.desc': 'Hvorfor Google-rangering ikke lenger garanterer AI-synlighet, og hva gapet mellom s\u00f8k og AI-siteringer betyr for bedriften din.',
-      'cl2.title': 'Jeg fikset AI-synligheten min fra 0 til 80 [Del 2], disse 5 tingene virket faktisk',
-      'cl2.desc': 'De eksakte 5 stegene som flyttet n\u00e5len p\u00e5 AI-synlighet: fra Bing-indeksering til schema, anmeldelsesplattformer og autoritative lenker.',
-      'art1.title': 'UI, UX og produktklarhet: hvor team mister konverteringer',
-      'art1.desc': 'En praktisk guide til \u00e5 redusere friksjon i brukerreisen og gj\u00f8re design til m\u00e5lbar konverteringsvekst.',
-      'art2.title': 'Core Web Vitals for ledere: hva som betyr noe i praksis',
-      'art2.desc': 'En tydelig gjennomgang av hastighet, layout-stabilitet og interaksjonskvalitet som p\u00e5virker rangering og tillit.',
-      'art3.title': 'Hvordan strukturere tjenestesider som rangerer og konverterer',
-      'art3.desc': 'Strukturen vi bruker for lokale og globale tjenestesider slik at b\u00e5de s\u00f8kemotorer og kj\u00f8pere forst\u00e5r verdien raskt.',
-      'art4.title': 'Hva gj\u00f8r en god webdesigner i Norge',
-      'art4.desc': 'En praktisk gjennomgang av designkvalitet, strategi og hva bedrifter b\u00f8r se etter f\u00f8r de ansetter.',
-      'art5.title': 'Moderne webutvikling i Norge: beste praksis',
-      'art5.desc': 'Ytelse, arkitektur, distribusjon og SEO-praksis for \u00e5 bygge holdbare og skalerbare produkter.',
-      'art6.title': 'Fullstack webutvikler freelance: din komplette guide',
-      'art6.desc': 'Et praktisk veikart for 2026 med ferdigheter, prising, kundeanskaffelse og skalering som freelance fullstack-utvikler.'
+  /* ── NAV SCROLL ── */
+  window.addEventListener('scroll', function() {
+    document.getElementById('blog-nav').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  /* ── STATE ── */
+  var currentFilter = 'all';
+  var allArticles = [];
+
+  /* ── RENDER CARDS ──
+     Articles come from articles.json - just add a new object there,
+     no HTML changes needed. */
+  function renderCards(articles, filter) {
+    var grid = document.getElementById('blog-grid');
+    var label = document.getElementById('section-label');
+
+    var filtered = filter === 'all'
+      ? articles
+      : articles.filter(function(a) {
+          return Array.isArray(a.tags) && a.tags.indexOf(filter) !== -1;
+        });
+
+    /* update section label */
+    if (label) {
+      var labelMap = {
+        all: 'All Articles', devops: 'DevOps', seo: 'SEO',
+        ux: 'UX / UI', performance: 'Performance', career: 'Career'
+      };
+      label.textContent = labelMap[filter] || 'All Articles';
     }
-  };
 
-  function applyLang(lang) {
-    var dict = translations[lang] || translations.en;
-    document.documentElement.setAttribute('lang', lang);
+    if (!filtered.length) {
+      grid.innerHTML = '<div class="no-results"><i class="fa-regular fa-face-meh" aria-hidden="true"></i><p>No articles in this category yet. Check back soon.</p></div>';
+      return;
+    }
 
-    document.querySelectorAll('[data-i18n]').forEach(function(el) {
-      var key = el.getAttribute('data-i18n');
-      if (dict[key]) el.textContent = dict[key];
-    });
-    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
-      var key = el.getAttribute('data-i18n-html');
-      if (dict[key]) el.innerHTML = dict[key];
-    });
+    grid.innerHTML = filtered.map(function(a, i) {
+      var isFeatured = a.featured ? ' featured' : '';
+      var badge = a.source
+        ? '<span class="card-ext-badge"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> ' + a.source + '</span>'
+        : '';
+      var linkAttr = a.external ? ' target="_blank" rel="noopener noreferrer"' : '';
+      var delay = 'animation-delay:' + (i * 55) + 'ms';
+      var meta2 = a.meta2 ? ' <i class="fa-solid fa-diamond" aria-hidden="true"></i> ' + a.meta2 : '';
 
-    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-    document.getElementById('lang-no').classList.toggle('active', lang === 'no');
-
-    try { localStorage.setItem('siteLang', lang); } catch(e) {}
+      return (
+        '<a href="' + (a.url || '#') + '" class="blog-card' + isFeatured + ' fade-in" style="' + delay + '"' + linkAttr + ' aria-label="' + a.title + '">' +
+          '<div class="card-top">' +
+            '<p class="card-meta">' + (a.meta || '') + meta2 + '</p>' +
+            badge +
+          '</div>' +
+          '<h2 class="card-title">' + a.title + '</h2>' +
+          '<p class="card-desc">' + (a.desc || '') + '</p>' +
+          '<span class="card-link">Read Article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>' +
+        '</a>'
+      );
+    }).join('');
   }
 
-  document.getElementById('lang-en').addEventListener('click', function() { applyLang('en'); });
-  document.getElementById('lang-no').addEventListener('click', function() { applyLang('no'); });
-
-  // Init language
-  var urlLang = new URLSearchParams(window.location.search).get('lang');
-  var stored = '';
-  try { stored = localStorage.getItem('siteLang') || ''; } catch(e) {}
-  var initLang = urlLang === 'en' ? 'en' : urlLang === 'no' ? 'no' : stored === 'en' ? 'en' : 'no';
-  applyLang(initLang);
-
-  // Sticky nav
-  window.addEventListener('scroll', function() {
-    document.getElementById('nav').classList.toggle('s', window.scrollY > 60);
+  /* ── FILTER CLICKS ── */
+  document.getElementById('filter-bar').addEventListener('click', function(e) {
+    var btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderCards(allArticles, currentFilter);
   });
 
-  // Mobile nav toggle
-  document.getElementById('nav-toggle-btn').addEventListener('click', function() {
-    var nav = document.getElementById('nav');
-    var open = nav.classList.toggle('open');
-    this.setAttribute('aria-expanded', open);
-    this.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-
-  // Mega menu
-  document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
-    var timer;
-    dd.addEventListener('mouseenter', function() {
-      clearTimeout(timer);
-      document.querySelectorAll('.nav-dropdown').forEach(function(d) { if (d !== dd) d.classList.remove('open'); });
-      dd.classList.add('open');
+  /* ── FETCH articles.json ──
+     TO ADD A NEW ARTICLE: open articles.json, add one object to the array, push.
+     The blog updates automatically. No HTML changes ever needed. */
+  fetch('/blog/articles.json')
+    .then(function(res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    })
+    .then(function(data) {
+      allArticles = Array.isArray(data) ? data : [];
+      renderCards(allArticles, currentFilter);
+    })
+    .catch(function(err) {
+      console.error('Blog load error:', err);
+      document.getElementById('blog-grid').innerHTML =
+        '<div class="no-results">' +
+          '<i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>' +
+          '<p>Could not load articles. Please refresh the page.</p>' +
+        '</div>';
     });
-    dd.addEventListener('mouseleave', function() {
-      timer = setTimeout(function() { dd.classList.remove('open'); }, 180);
-    });
-    var sub = dd.querySelector('.nav-submenu');
-    if (sub) {
-      sub.addEventListener('mouseenter', function() { clearTimeout(timer); });
-      sub.addEventListener('mouseleave', function() { timer = setTimeout(function() { dd.classList.remove('open'); }, 180); });
-    }
-    document.addEventListener('click', function(e) {
-      if (!dd.contains(e.target)) dd.classList.remove('open');
-    });
-  });
 </script>
 
 </body>
