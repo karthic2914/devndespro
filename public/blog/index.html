@@ -446,5 +446,206 @@
     });
 </script>
 
+
+<script>
+/* ── BLOG i18n - matches main site translations ── */
+var BLOG_TRANSLATIONS = {
+  en: {
+    kicker: 'Insights Blog',
+    heading1: 'Read what',
+    heading2: 'actually drives growth',
+    sub: 'Practical notes from real delivery work on UX, DevOps, frontend architecture, and conversion-first web strategy for modern brands.',
+    stat1lbl: 'Years experience',
+    stat2lbl: 'Projects delivered',
+    stat3lbl: 'Google rating',
+    filterAll: 'All Articles',
+    filterDevops: 'DevOps',
+    filterSeo: 'SEO',
+    filterUx: 'UX/UI',
+    filterPerf: 'Performance',
+    filterCareer: 'Career',
+    readArticle: 'Read Article',
+    backToSite: 'Back to main site',
+    labelAll: 'All Articles',
+    labelDevops: 'DevOps',
+    labelSeo: 'SEO',
+    labelUx: 'UX / UI',
+    labelPerf: 'Performance',
+    labelCareer: 'Career',
+    noResults: 'No articles in this category yet.',
+    footerCopy: '© 2026 devndespro · HQ: Stavanger, Norway · Delivery Hub: Chennai, India',
+    navServices: 'Services',
+    navWork: 'Work',
+    navSkills: 'Skills',
+    navReviews: 'Reviews',
+    navPackages: 'Packages',
+    navBlog: 'Blog',
+    navContact: 'Contact',
+    navQuote: 'Get Free Quote',
+    waTooltip: 'Chat on WhatsApp',
+    topTooltip: 'Back to top'
+  },
+  no: {
+    kicker: 'Innsiktsblogg',
+    heading1: 'Les hva som',
+    heading2: 'faktisk skaper vekst',
+    sub: 'Praktiske notater fra ekte leveranser om UX, DevOps, frontend-arkitektur og konverteringsfokusert webstrategi.',
+    stat1lbl: 'År med erfaring',
+    stat2lbl: 'Prosjekter levert',
+    stat3lbl: 'Google-vurdering',
+    filterAll: 'Alle artikler',
+    filterDevops: 'DevOps',
+    filterSeo: 'SEO',
+    filterUx: 'UX/UI',
+    filterPerf: 'Ytelse',
+    filterCareer: 'Karriere',
+    readArticle: 'Les artikkel',
+    backToSite: 'Tilbake til hovedsiden',
+    labelAll: 'Alle artikler',
+    labelDevops: 'DevOps',
+    labelSeo: 'SEO',
+    labelUx: 'UX / UI',
+    labelPerf: 'Ytelse',
+    labelCareer: 'Karriere',
+    noResults: 'Ingen artikler i denne kategorien ennå.',
+    footerCopy: '© 2026 devndespro · HQ: Stavanger, Norge · Leveransehub: Chennai, India',
+    navServices: 'Tjenester',
+    navWork: 'Arbeid',
+    navSkills: 'Kompetanse',
+    navReviews: 'Anmeldelser',
+    navPackages: 'Pakker',
+    navBlog: 'Blogg',
+    navContact: 'Kontakt',
+    navQuote: 'Gratis tilbud',
+    waTooltip: 'Chat på WhatsApp',
+    topTooltip: 'Til toppen'
+  }
+};
+
+var BLOG_ARTICLE_TRANSLATIONS = {
+  en: [
+    { title: "Your Website Ranks #1 on Google. ChatGPT Has Never Heard of You.", desc: "Why ranking on Google no longer guarantees AI visibility, and what the gap between search and AI citations means for your business." },
+    { title: "I Fixed My AI Visibility From 0 to 80 - These 5 Things Actually Worked", desc: "The exact 5 steps that moved the needle on AI visibility - from Bing indexing to schema, review platforms, and authoritative links." },
+    { title: "Why Most DevOps Engineers Get Stuck at Mid-Level (And How to Break Out)", desc: "You can write Terraform, manage Kubernetes, deploy with zero downtime. So why aren't you growing? Here are the four traps keeping DevOps engineers stuck." },
+    { title: "UI, UX, and product clarity: where teams lose conversions", desc: "A field guide to reducing friction in digital journeys and turning visual polish into measurable conversion lift." },
+    { title: "Core Web Vitals for founders: what matters and what does not", desc: "A no-noise breakdown of speed, layout stability, and interaction quality that affects rankings and user trust." },
+    { title: "How to structure service pages that rank and convert", desc: "The structure we use for local and global service pages so search engines and buyers understand value fast." },
+    { title: "What makes a great web designer in Norway", desc: "A practical breakdown of design quality, strategy, and what businesses should look for before hiring." },
+    { title: "Modern web development in Norway: best practices", desc: "Performance, architecture, deployment, and SEO practices used to build durable, scalable products." },
+    { title: "Full Stack Web Developer Freelance: Your Complete Guide", desc: "A practical 2026 roadmap for skills, pricing, client acquisition, and scaling as a freelance full stack developer." }
+  ],
+  no: [
+    { title: "Nettstedet ditt rangerer #1 på Google. ChatGPT har aldri hørt om deg.", desc: "Hvorfor Google-rangering ikke lenger garanterer AI-synlighet, og hva gapet mellom søk og AI-siteringer betyr for bedriften din." },
+    { title: "Jeg fikset AI-synligheten min fra 0 til 80 - disse 5 tingene virket faktisk", desc: "De eksakte 5 stegene som flyttet nålen på AI-synlighet: fra Bing-indeksering til schema, anmeldelsesplattformer og autoritative lenker." },
+    { title: "Hvorfor de fleste DevOps-ingeniører setter seg fast på mellomnivå (og hvordan bryte ut)", desc: "Du kan skrive Terraform og administrere Kubernetes. Men hvorfor vokser du ikke? Her er de fire fellene som holder DevOps-ingeniører tilbake." },
+    { title: "UI, UX og produktklarhet: hvor team mister konverteringer", desc: "En praktisk guide til å redusere friksjon i brukerreisen og gjøre design til målbar konverteringsvekst." },
+    { title: "Core Web Vitals for ledere: hva som betyr noe i praksis", desc: "En tydelig gjennomgang av hastighet, layout-stabilitet og interaksjonskvalitet som påvirker rangering og tillit." },
+    { title: "Hvordan strukturere tjenestesider som rangerer og konverterer", desc: "Strukturen vi bruker for lokale og globale tjenestesider slik at både søkemotorer og kjøpere forstår verdien raskt." },
+    { title: "Hva gjør en god webdesigner i Norge", desc: "En praktisk gjennomgang av designkvalitet, strategi og hva bedrifter bør se etter før de ansetter." },
+    { title: "Moderne webutvikling i Norge: beste praksis", desc: "Ytelse, arkitektur, distribusjon og SEO-praksis for å bygge holdbare og skalerbare produkter." },
+    { title: "Fullstack webutvikler freelance: din komplette guide", desc: "Et praktisk veikart for 2026 med ferdigheter, prising, kundeanskaffelse og skalering som freelance fullstack-utvikler." }
+  ]
+};
+
+function applyBlogLang(lang) {
+  var t = BLOG_TRANSLATIONS[lang] || BLOG_TRANSLATIONS.en;
+  var isNo = lang === 'no';
+
+  /* Kicker */
+  var kicker = document.querySelector('.blog-hero-kicker');
+  if (kicker) kicker.lastChild.textContent = ' ' + t.kicker;
+
+  /* Hero heading */
+  var h1 = document.querySelector('.blog-hero h1');
+  if (h1) h1.innerHTML = t.heading1 + '<br><em>' + t.heading2 + '</em>';
+
+  /* Hero sub */
+  var sub = document.querySelector('.blog-hero-sub');
+  if (sub) sub.textContent = t.sub;
+
+  /* Stats labels */
+  var statLabels = document.querySelectorAll('.hero-stat-lbl');
+  if (statLabels[0]) statLabels[0].textContent = t.stat1lbl;
+  if (statLabels[1]) statLabels[1].textContent = t.stat2lbl;
+  if (statLabels[2]) statLabels[2].textContent = t.stat3lbl;
+
+  /* Filter buttons */
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var filterKeys = ['filterAll','filterDevops','filterSeo','filterUx','filterPerf','filterCareer'];
+  filterBtns.forEach(function(btn, i) { if (filterKeys[i]) btn.textContent = t[filterKeys[i]]; });
+
+  /* Nav links */
+  var navLinks = document.querySelectorAll('.nav-menu > li > a:not(.nav-cta)');
+  var navKeys = ['navServices','navWork','navSkills','navReviews','navPackages','navBlog','navContact'];
+  navLinks.forEach(function(a, i) { if (navKeys[i]) a.textContent = t[navKeys[i]]; });
+
+  /* Nav CTA */
+  document.querySelectorAll('.nav-cta').forEach(function(a) { a.textContent = t.navQuote; });
+
+  /* WhatsApp tooltip */
+  var waTooltip = document.querySelector('.wa-tip');
+  if (waTooltip) waTooltip.textContent = t.waTooltip;
+
+  /* Back to top tooltip */
+  var topTooltip = document.querySelector('.to-top-tip');
+  if (topTooltip) topTooltip.textContent = t.topTooltip;
+
+  /* Footer copy */
+  var footerCopy = document.querySelector('.blog-page-footer-copy');
+  if (footerCopy) footerCopy.textContent = t.footerCopy;
+
+  /* Back to site */
+  var backLink = document.querySelector('.blog-page-footer-back');
+  if (backLink) {
+    var icon = backLink.querySelector('i');
+    backLink.textContent = t.backToSite + ' ';
+    if (icon) backLink.appendChild(icon);
+  }
+
+  /* Lang buttons */
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
+  /* Re-render cards with translated titles */
+  if (typeof allArticles !== 'undefined' && allArticles.length) {
+    var translated = allArticles.map(function(a, i) {
+      var tr = BLOG_ARTICLE_TRANSLATIONS[lang] ? BLOG_ARTICLE_TRANSLATIONS[lang][i] : null;
+      if (!tr) return a;
+      return Object.assign({}, a, { title: tr.title, desc: tr.desc });
+    });
+    renderCards(translated, currentFilter);
+  }
+
+  /* Update section label */
+  var labelMap = {
+    all: t.labelAll, devops: t.labelDevops, seo: t.labelSeo,
+    ux: t.labelUx, performance: t.labelPerf, career: t.labelCareer
+  };
+  var sectionLabel = document.getElementById('section-label');
+  if (sectionLabel) sectionLabel.textContent = labelMap[currentFilter] || t.labelAll;
+
+  /* Store */
+  try { localStorage.setItem('siteLang', lang); } catch(e) {}
+  document.documentElement.setAttribute('lang', lang);
+}
+
+/* ── LANG SWITCH ── */
+document.querySelectorAll('.lang-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    applyBlogLang(btn.dataset.lang);
+  });
+});
+
+/* ── INIT LANG from localStorage or default ── */
+document.addEventListener('DOMContentLoaded', function() {
+  var stored = '';
+  try { stored = localStorage.getItem('siteLang') || ''; } catch(e) {}
+  var urlLang = new URLSearchParams(window.location.search).get('lang');
+  var initLang = urlLang === 'en' ? 'en' : urlLang === 'no' ? 'no' : stored === 'en' ? 'en' : 'no';
+  applyBlogLang(initLang);
+});
+</script>
+
 </body>
 </html>
