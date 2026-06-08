@@ -165,7 +165,7 @@ function App() {
         workLabel: 'Selected Work',
         workHeading: 'Projects that<br><em>moved the needle</em>',
         workHint: 'Drag to explore <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>',
-        workCats: ['Education  ·  WordPress  ·  Chennai, India', 'SaaS  ·  RFP Platform  ·  Norway', 'SaaS  ·  RFP Platform  ·  Global'],
+        workCats: ['EDUCATION <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> WORDPRESS <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> CHENNAI, INDIA', 'SAAS <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> RFP PLATFORM <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> NORWAY', 'SAAS <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> RFP PLATFORM <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> GLOBAL'],
         workDescs: [
           'Full website design and development for a leading MSME-certified software training institute in Chennai. Built for enquiry conversion and course discovery - serving 18,000+ students annually.',
           'AI-powered RFP and proposal management platform for Energy & IT sectors. Full UI/UX design and frontend - helping teams win contracts faster with built-in compliance tooling.',
@@ -266,7 +266,7 @@ function App() {
         workLabel: 'Utvalgte Prosjekter',
         workHeading: 'Prosjekter som<br><em>ga tydelig effekt</em>',
         workHint: 'Dra for å utforske <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>',
-        workCats: ['Utdanning  ·  WordPress  ·  Chennai, India', 'SaaS  ·  RFP-plattform  ·  Norge', 'SaaS  ·  RFP-plattform  ·  Globalt'],
+        workCats: ['UTDANNING <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> WORDPRESS <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> CHENNAI, INDIA', 'SAAS <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> RFP-PLATTFORM <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> NORGE', 'SAAS <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> RFP-PLATTFORM <i class="fa-solid fa-diamond" style="font-size:0.45em;color:#FF6B2B;vertical-align:middle;margin:0 4px"></i> GLOBALT'],
         workDescs: [
           'Komplett nettsteddesign og utvikling for et ledende MSME-sertifisert programvareinstitutt i Chennai. Bygget for flere henvendelser og enklere kursoppdagelse - over 18 000 studenter i året.',
           'AI-drevet RFP- og tilbudsplattform for energi- og IT-sektoren. Full UI/UX-design og frontend - hjelper team å vinne kontrakter raskere med innebygd etterlevelse.',
@@ -495,7 +495,7 @@ function App() {
       setText('#work .s-label', section.workLabel);
       setHtml('#work .s-h', section.workHeading);
       setHtml('#work .work-scroll-hint', section.workHint);
-      setTextList('#work .wcard-cat', section.workCats);
+      document.querySelectorAll('#work .wcard-cat').forEach((el, i) => { if (section.workCats[i] !== undefined) el.innerHTML = section.workCats[i]; });
       setTextList('#work .wcard-desc', section.workDescs);
       setText('#work .work-cta-text', section.workCtaText);
       setText('#work .work-cta .btn-main', section.workCtaBtn);
