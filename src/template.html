@@ -929,7 +929,6 @@
     </div>
 </section>
 
-<!-- WORK  &middot;  HORIZONTAL SCROLL -->
 <!-- WORK  ·  EDITORIAL ROWS — Design A -->
 <section id="work">
 
@@ -939,12 +938,12 @@
 
   /* Row layout */
   .work-rows{display:flex;flex-direction:column;gap:0}
-  .wrow{display:grid;grid-template-columns:1fr 1.45fr;gap:0;border-top:1px solid rgba(255,255,255,.07);padding:32px 0;align-items:center;cursor:pointer;transition:background .25s,padding-left .25s;text-decoration:none}
+  .wrow{display:grid;grid-template-columns:1.6fr 1fr;gap:0;border-top:1px solid rgba(255,255,255,.07);padding:32px 0;align-items:center;cursor:pointer;transition:background .25s,padding-left .25s;text-decoration:none}
   .wrow:last-child{border-bottom:1px solid rgba(255,255,255,.07)}
   .wrow:hover{background:rgba(255,255,255,.02);padding-left:10px}
 
   /* Left column */
-  .wrow-left{padding-right:36px}
+  .wrow-left{padding-right:48px}
   .wrow-num{font-size:11px;font-style:italic;color:#FF6B2B;font-family:Georgia,serif;margin-bottom:10px}
   .wrow-cat{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:12px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
   .wrow-cat i{font-size:5px;color:#FF6B2B}
@@ -960,7 +959,7 @@
   .wrow:hover .wrow-tag.accent{border-color:#FF6B2B}
 
   /* Right column — image */
-  .wrow-right{position:relative;height:200px;border-radius:10px;overflow:hidden;flex-shrink:0}
+  .wrow-right{position:relative;height:180px;max-height:180px;border-radius:10px;overflow:hidden;flex-shrink:0;align-self:center}
   .wrow-img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .5s ease}
   .wrow:hover .wrow-img{transform:scale(1.04)}
   .wrow-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,107,43,.06),transparent 60%);transition:opacity .3s}
