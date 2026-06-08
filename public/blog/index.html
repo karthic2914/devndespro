@@ -13,17 +13,20 @@
   <meta property="og:url" content="https://www.devndespro.com/blog/">
   <meta property="og:image" content="https://www.devndespro.com/images/DDDP_logo_mark.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Devndespro Blog | UI/UX, DevOps, SEO & Performance Insights">
-  <meta name="twitter:description" content="Practical articles on UI/UX, DevOps, performance, and SEO execution.">
-  <meta name="twitter:image" content="https://www.devndespro.com/images/DDDP_logo_mark.webp">
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+
+  <!-- Same fonts as main site -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Jost:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+
+  <!-- Main site styles -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/tablet.css" media="(max-width:1024px)">
+  <link rel="stylesheet" href="/css/mobile.css" media="(max-width:767px)">
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Blog-specific styles only */
     :root {
       --orange: #FF6B2B;
       --orange-dim: rgba(255,107,43,0.12);
@@ -39,42 +42,8 @@
       --font-display: 'Cormorant Garamond', Georgia, serif;
       --font-body: 'Jost', system-ui, sans-serif;
     }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-weight: 400;
-      line-height: 1.7;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
 
-    /* NAV */
-    #blog-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2rem; height: 68px;
-      background: rgba(10,10,15,0.88);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      transition: border-color 0.3s;
-    }
-    #blog-nav.scrolled { border-color: var(--orange-border); }
-    .blog-nav-logo img { height: 36px; width: auto; }
-    .blog-nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
-    .blog-nav-links a {
-      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em;
-      text-transform: uppercase; color: var(--text-muted); text-decoration: none;
-      transition: color 0.2s;
-    }
-    .blog-nav-links a:hover, .blog-nav-links a.active { color: var(--orange); }
-    .blog-nav-cta {
-      background: var(--orange) !important; color: #fff !important;
-      padding: 0.55rem 1.2rem; border-radius: 8px;
-      font-weight: 600 !important; transition: opacity 0.2s !important;
-    }
-    .blog-nav-cta:hover { opacity: 0.88 !important; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
     /* HERO */
     .blog-hero {
@@ -84,59 +53,43 @@
     }
     .blog-hero::before {
       content: ''; position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 60% 55% at 50% 0%, rgba(255,107,43,0.13) 0%, transparent 70%),
+      background: radial-gradient(ellipse 60% 55% at 50% 0%, rgba(255,107,43,0.13) 0%, transparent 70%),
         radial-gradient(ellipse 40% 40% at 80% 80%, rgba(255,107,43,0.06) 0%, transparent 60%);
       pointer-events: none;
     }
     .blog-hero-kicker {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--orange);
-      border: 1px solid var(--orange-border); padding: 6px 16px;
-      border-radius: 999px; margin-bottom: 1.5rem; background: var(--orange-dim);
+      display: inline-flex; align-items: center; gap: 8px; font-size: 0.72rem;
+      font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange);
+      border: 1px solid var(--orange-border); padding: 6px 16px; border-radius: 999px;
+      margin-bottom: 1.5rem; background: var(--orange-dim);
     }
     .blog-hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
-      font-weight: 600; line-height: 1.1; letter-spacing: -0.01em;
-      margin-bottom: 1.25rem; max-width: 800px;
+      font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 600; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 1.25rem; max-width: 800px;
     }
     .blog-hero h1 em { font-style: italic; color: var(--orange); }
-    .blog-hero-sub {
-      font-size: 1rem; color: var(--text-muted);
-      max-width: 560px; line-height: 1.75; margin-bottom: 2rem;
-    }
+    .blog-hero-sub { font-size: 1rem; color: var(--text-muted); max-width: 560px; line-height: 1.75; margin-bottom: 2rem; }
     .blog-hero-stats { display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; }
     .hero-stat { text-align: center; }
-    .hero-stat-val {
-      font-family: var(--font-display); font-size: 1.8rem;
-      font-weight: 600; font-style: italic; color: var(--orange);
-      display: block; line-height: 1;
-    }
-    .hero-stat-lbl {
-      font-size: 0.72rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--text-dim); margin-top: 4px;
-    }
+    .hero-stat-val { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; font-style: italic; color: var(--orange); display: block; line-height: 1; }
+    .hero-stat-lbl { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-top: 4px; }
 
     /* FILTER */
     .filter-wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem 2.5rem; }
     .filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
     .filter-btn {
-      font-family: var(--font-body); font-size: 0.78rem; font-weight: 500;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      padding: 0.5rem 1.1rem; border-radius: 999px;
-      border: 1px solid var(--border); background: transparent;
-      color: var(--text-muted); cursor: pointer; transition: all 0.2s;
+      font-family: var(--font-body); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 0.5rem 1.1rem; border-radius: 999px;
+      border: 1px solid var(--border); background: transparent; color: var(--text-muted);
+      cursor: pointer; transition: all 0.2s;
     }
     .filter-btn:hover { border-color: var(--orange-border); color: var(--text); }
     .filter-btn.active { background: var(--orange); border-color: var(--orange); color: #fff; }
 
     /* SECTION LABEL */
     .section-label {
-      max-width: 1200px; margin: 0 auto 1.25rem; padding: 0 2rem;
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--orange);
+      max-width: 1200px; margin: 0 auto 1.25rem; padding: 0 2rem; font-size: 0.72rem;
+      font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange);
       display: flex; align-items: center; gap: 10px;
     }
     .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
@@ -147,11 +100,9 @@
 
     /* CARD */
     .blog-card {
-      position: relative; background: var(--bg2);
-      border: 1px solid var(--border); border-radius: 16px;
-      padding: 1.75rem; display: grid;
-      grid-template-rows: auto auto 1fr auto; gap: 0.75rem;
-      transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+      position: relative; background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.75rem; display: grid; grid-template-rows: auto auto 1fr auto;
+      gap: 0.75rem; transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
       cursor: pointer; text-decoration: none; color: inherit; overflow: hidden;
     }
     .blog-card::before {
@@ -161,77 +112,45 @@
     }
     .blog-card:hover { transform: translateY(-4px); border-color: var(--border-hover); background: var(--bg3); }
     .blog-card:hover::before { transform: scaleX(1); }
-    .blog-card.featured {
-      background: linear-gradient(135deg, rgba(255,107,43,0.08) 0%, var(--bg2) 60%);
-      border-color: var(--orange-border);
-    }
+    .blog-card.featured { background: linear-gradient(135deg, rgba(255,107,43,0.08) 0%, var(--bg2) 60%); border-color: var(--orange-border); }
     .blog-card.featured::before { transform: scaleX(1); }
-
     .card-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
-    .card-meta {
-      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--orange);
-      display: flex; align-items: center; gap: 6px;
-    }
-    .card-meta i { font-size: 5px; }
+    .card-meta { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); display: flex; align-items: center; gap: 6px; }
+    .card-meta i { font-size: 5px; color: var(--orange); }
     .card-ext-badge {
-      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--orange);
-      border: 1px solid var(--orange-border); padding: 3px 8px;
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--orange); border: 1px solid var(--orange-border); padding: 3px 8px;
       border-radius: 999px; background: var(--orange-dim); white-space: nowrap;
-      flex-shrink: 0;
     }
-    .card-title {
-      font-family: var(--font-display); font-size: 1.25rem;
-      font-weight: 600; line-height: 1.3; color: var(--text); margin: 0;
-    }
+    .card-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; line-height: 1.3; color: var(--text); margin: 0; }
     .card-desc { font-size: 0.88rem; line-height: 1.75; color: var(--text-muted); margin: 0; }
     .card-link {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-size: 0.82rem; font-weight: 600; color: var(--text-muted);
-      text-decoration: none; border: 1px solid var(--border);
-      padding: 0.5rem 0.9rem; border-radius: 8px; width: fit-content;
-      transition: all 0.2s; letter-spacing: 0.04em;
+      display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; font-weight: 600;
+      color: var(--text-muted); text-decoration: none; border: 1px solid var(--border);
+      padding: 0.5rem 0.9rem; border-radius: 8px; width: fit-content; transition: all 0.2s;
     }
-    .blog-card:hover .card-link {
-      border-color: var(--orange-border); color: var(--orange); background: var(--orange-dim);
-    }
+    .blog-card:hover .card-link { border-color: var(--orange-border); color: var(--orange); background: var(--orange-dim); }
     .card-link i { font-size: 0.75rem; transition: transform 0.2s; }
     .blog-card:hover .card-link i { transform: translateX(3px); }
+    .no-results { grid-column: 1 / -1; text-align: center; padding: 4rem 2rem; color: var(--text-muted); }
+    .no-results i { font-size: 2.5rem; color: var(--orange); display: block; margin-bottom: 1rem; }
 
-    /* LOADING / EMPTY */
-    .blog-loading, .no-results {
-      grid-column: 1 / -1; text-align: center;
-      padding: 4rem 2rem; color: var(--text-muted);
+    /* BLOG FOOTER */
+    .blog-page-footer {
+      border-top: 1px solid var(--border); padding: 2rem; display: flex;
+      align-items: center; justify-content: space-between; flex-wrap: wrap;
+      gap: 1rem; max-width: 1200px; margin: 0 auto;
     }
-    .blog-loading i, .no-results i {
-      font-size: 2rem; display: block; margin-bottom: 1rem; color: var(--orange);
-    }
+    .blog-page-footer-copy { font-size: 0.82rem; color: var(--text-dim); }
+    .blog-page-footer-back { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600; color: var(--orange); text-decoration: none; transition: gap 0.2s; }
+    .blog-page-footer-back:hover { gap: 10px; }
 
     /* FADE IN */
     .fade-in { opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    /* FOOTER */
-    .blog-footer-wrap {
-      border-top: 1px solid var(--border); padding: 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 1rem;
-      max-width: 1200px; margin: 0 auto;
-    }
-    .blog-footer-copy { font-size: 0.82rem; color: var(--text-dim); }
-    .blog-footer-back {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.82rem; font-weight: 600; color: var(--orange);
-      text-decoration: none; transition: gap 0.2s;
-    }
-    .blog-footer-back:hover { gap: 10px; }
-
     /* RESPONSIVE */
-    @media (max-width: 960px) {
-      .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .blog-nav-links { display: none; }
-    }
+    @media (max-width: 960px) { .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 600px) {
       .blog-grid { grid-template-columns: 1fr; }
       .blog-hero h1 { font-size: 2.4rem; }
@@ -239,26 +158,89 @@
       .blog-wrap, .filter-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
       .section-label { padding: 0 1.25rem; }
       .blog-hero-stats { gap: 1.5rem; }
-      .blog-footer-wrap { padding: 1.5rem 1.25rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="blog-nav">
-  <a href="/" class="blog-nav-logo">
-    <img src="/images/DDDP_logo_mark.webp" alt="devndespro logo" width="140" height="36" decoding="async">
+<!-- SAME NAV AS MAIN SITE -->
+<nav id="nav">
+  <a href="/" class="logo">
+    <img src="/images/DDDP_logo_mark.webp" alt="devndespro logo" class="logo-img" width="1280" height="655" decoding="async" fetchpriority="high">
   </a>
-  <ul class="blog-nav-links">
-    <li><a href="/#services">Services</a></li>
-    <li><a href="/#work">Work</a></li>
-    <li><a href="/#skills-section">Skills</a></li>
-    <li><a href="/blog/" class="active">Blog</a></li>
-    <li><a href="/#contact">Contact</a></li>
-    <li><a href="/#contact" class="blog-nav-cta">Get Free Quote</a></li>
-  </ul>
+  <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+  </button>
+  <div class="nav-r">
+    <div class="lang-switch" aria-label="Language switcher">
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-btn active" data-lang="no">NO</button>
+    </div>
+    <ul class="nav-menu">
+      <li class="nav-dropdown">
+        <a href="/#services">Services</a>
+        <ul class="nav-submenu">
+          <li class="nav-mega">
+            <div class="nav-mega-col">
+              <p class="nav-mega-title">Norway</p>
+              <a href="/seo/web-design-company-norway.html">Web Design Norway</a>
+              <a href="/seo/web-utvikler-norge.html">Web Utvikler Norge</a>
+              <a href="/seo/website-builder-stavanger.html">Web Design Stavanger</a>
+              <a href="/seo/web-development-oslo.html">Web Development Oslo</a>
+              <a href="/seo/web-development-bergen.html">Web Development Bergen</a>
+              <a href="/seo/seo-services-norway.html">SEO Services Norway</a>
+              <a href="/seo/ux-ui-designer-norway.html">UX UI Designer Norway</a>
+              <a href="/seo/devops-services-norway.html">DevOps Norway</a>
+            </div>
+            <div class="nav-mega-col">
+              <p class="nav-mega-title">Europe</p>
+              <a href="/seo/web-design-europe.html">Web Design Europe</a>
+              <a href="/seo/web-development-europe.html">Web Development Europe</a>
+              <a href="/seo/full-stack-development-norway.html">Full Stack Development EU</a>
+              <a href="/seo/mobile-app-development-europe.html">Mobile App Development Europe</a>
+            </div>
+            <div class="nav-mega-col">
+              <p class="nav-mega-title">Global</p>
+              <a href="/seo/web-design-agency-usa.html">Web Design Agency USA</a>
+              <a href="/seo/hire-web-developer-usa.html">Hire Web Developer USA</a>
+              <a href="/seo/web-design-company-india.html">Web Design Company India</a>
+              <a href="/seo/seo-agency-india.html">SEO Agency India</a>
+            </div>
+            <div class="nav-mega-col">
+              <p class="nav-mega-title">Engineering</p>
+              <a href="/seo/full-stack-development-norway.html">Full Stack Norway</a>
+              <a href="/seo/web-application-development-norway.html">Web App Norway</a>
+              <a href="/seo/devops-services-norway.html">DevOps Norway</a>
+              <a href="/seo/mobile-app-development.html">Mobile App Development</a>
+              <a href="/seo/responsive-web-design.html">Responsive Web Design</a>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#skills-section">Skills</a></li>
+      <li><a href="/#testimonials">Reviews</a></li>
+      <li><a href="/#packages">Packages</a></li>
+      <li><a href="/blog/" class="active">Blog</a></li>
+      <li><a href="/#contact">Contact</a></li>
+      <li class="nav-cta-li" style="display:none;"><a href="/#contact" class="nav-cta">Get Free Quote</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Get Free Quote</a>
+  </div>
 </nav>
+
+<!-- WHATSAPP BUTTON -->
+<a href="https://api.whatsapp.com/send?phone=4740975201" class="wa" target="_blank" rel="noopener">
+  <div class="wa-tip">Chat on WhatsApp</div>
+  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+</a>
+
+<!-- BACK TO TOP -->
+<a href="#" class="to-top" aria-label="Back to top">
+  <div class="to-top-tip">Back to top</div>
+  <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  <span class="to-top-label">TOP</span>
+</a>
 
 <!-- HERO -->
 <section class="blog-hero">
@@ -269,18 +251,9 @@
   <h1>Read what<br><em>actually drives growth</em></h1>
   <p class="blog-hero-sub">Practical notes from real delivery work on UX, DevOps, frontend architecture, and conversion-first web strategy for modern brands.</p>
   <div class="blog-hero-stats">
-    <div class="hero-stat">
-      <span class="hero-stat-val">19+</span>
-      <span class="hero-stat-lbl">Years experience</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-val">50+</span>
-      <span class="hero-stat-lbl">Projects delivered</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-val">4.8</span>
-      <span class="hero-stat-lbl">Google rating</span>
-    </div>
+    <div class="hero-stat"><span class="hero-stat-val">19+</span><span class="hero-stat-lbl">Years experience</span></div>
+    <div class="hero-stat"><span class="hero-stat-val">50+</span><span class="hero-stat-lbl">Projects delivered</span></div>
+    <div class="hero-stat"><span class="hero-stat-val">4.8</span><span class="hero-stat-lbl">Google rating</span></div>
   </div>
 </section>
 
@@ -301,85 +274,150 @@
 
 <!-- BLOG GRID -->
 <div class="blog-wrap">
-  <div class="blog-grid" id="blog-grid">
-    <div class="blog-loading">
-      <i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i>
-      <p>Loading articles...</p>
-    </div>
-  </div>
+  <div class="blog-grid" id="blog-grid"></div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="blog-footer-wrap">
-    <span class="blog-footer-copy">© 2026 devndespro · HQ: Stavanger, Norway · Delivery Hub: Chennai, India</span>
-    <a href="/" class="blog-footer-back">
-      Back to main site <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-    </a>
+  <div class="blog-page-footer">
+    <span class="blog-page-footer-copy">© 2026 devndespro · HQ: Stavanger, Norway · Delivery Hub: Chennai, India</span>
+    <a href="/" class="blog-page-footer-back">Back to main site <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
   </div>
 </footer>
 
 <script>
-  /* ── NAV SCROLL ── */
+  /* ── NAV: same behaviour as main site ── */
+  var nav = document.getElementById('nav');
+  var navToggle = document.querySelector('.nav-toggle');
+
   window.addEventListener('scroll', function() {
-    document.getElementById('blog-nav').classList.toggle('scrolled', window.scrollY > 40);
+    if (nav) nav.classList.toggle('s', window.scrollY > 70);
   });
 
-  /* ── STATE ── */
+  if (navToggle) {
+    navToggle.addEventListener('click', function() {
+      var isOpen = nav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      navToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>'
+        : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+  }
+
+  /* ── MEGA MENU hover ── */
+  document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
+    var timer;
+    var submenu = dropdown.querySelector('.nav-submenu');
+    dropdown.addEventListener('mouseenter', function() {
+      clearTimeout(timer);
+      document.querySelectorAll('.nav-dropdown').forEach(function(d) { if (d !== dropdown) d.classList.remove('open'); });
+      dropdown.classList.add('open');
+    });
+    dropdown.addEventListener('mouseleave', function() {
+      timer = setTimeout(function() { dropdown.classList.remove('open'); }, 180);
+    });
+    if (submenu) {
+      submenu.addEventListener('mouseenter', function() { clearTimeout(timer); });
+      submenu.addEventListener('mouseleave', function() { timer = setTimeout(function() { dropdown.classList.remove('open'); }, 180); });
+    }
+    document.addEventListener('click', function(e) { if (!dropdown.contains(e.target)) dropdown.classList.remove('open'); });
+  });
+
+  /* ── EXISTING ARTICLES (hardcoded - always show) ── */
+  var EXISTING_ARTICLES = [
+    {
+      title: "Your Website Ranks #1 on Google. ChatGPT Has Never Heard of You.",
+      desc: "Why ranking on Google no longer guarantees AI visibility, and what the gap between search and AI citations means for your business.",
+      meta: "SEO", meta2: "AI Visibility", tags: ["seo"],
+      url: "https://coderlegion.com/19216/your-website-ranks-1-on-google-chatgpt-has-never-heard-of-you",
+      external: true, source: "CoderLegion", featured: true
+    },
+    {
+      title: "I Fixed My AI Visibility From 0 to 80 - These 5 Things Actually Worked",
+      desc: "The exact 5 steps that moved the needle on AI visibility - from Bing indexing to schema, review platforms, and authoritative links.",
+      meta: "SEO", meta2: "AI Visibility", tags: ["seo"],
+      url: "https://coderlegion.com/19509/i-fixed-my-ai-visibility-from-0-to-80-these-5-things-actually-worked",
+      external: true, source: "CoderLegion", featured: true
+    },
+    {
+      title: "Why Most DevOps Engineers Get Stuck at Mid-Level (And How to Break Out)",
+      desc: "You can write Terraform, manage Kubernetes, deploy with zero downtime. So why aren't you growing? Here are the four traps keeping DevOps engineers stuck.",
+      meta: "DevOps", meta2: "Career", tags: ["devops", "career"],
+      url: "https://devndespro.com/why-devops-engineers-get-stuck-at-mid-level",
+      external: false, source: "devndespro", featured: true
+    },
+    {
+      title: "UI, UX, and product clarity: where teams lose conversions",
+      desc: "A field guide to reducing friction in digital journeys and turning visual polish into measurable conversion lift.",
+      meta: "UX/UI", meta2: "Strategy", tags: ["ux"],
+      url: "/blog/ui-ux-design", external: false, featured: false
+    },
+    {
+      title: "Core Web Vitals for founders: what matters and what does not",
+      desc: "A no-noise breakdown of speed, layout stability, and interaction quality that affects rankings and user trust.",
+      meta: "Performance", meta2: "Frontend", tags: ["performance"],
+      url: "/blog/core-web-vitals-guide", external: false, featured: false
+    },
+    {
+      title: "How to structure service pages that rank and convert",
+      desc: "The structure we use for local and global service pages so search engines and buyers understand value fast.",
+      meta: "SEO", meta2: "Content", tags: ["seo"],
+      url: "/blog/service-page-seo-structure", external: false, featured: false
+    },
+    {
+      title: "What makes a great web designer in Norway",
+      desc: "A practical breakdown of design quality, strategy, and what businesses should look for before hiring.",
+      meta: "Web Design", meta2: "Norway", tags: ["ux"],
+      url: "/blog/web-designer-norway", external: false, featured: false
+    },
+    {
+      title: "Modern web development in Norway: best practices",
+      desc: "Performance, architecture, deployment, and SEO practices used to build durable, scalable products.",
+      meta: "Web Dev", meta2: "Norway", tags: ["performance"],
+      url: "/blog/web-developer-norway", external: false, featured: false
+    },
+    {
+      title: "Full Stack Web Developer Freelance: Your Complete Guide",
+      desc: "A practical 2026 roadmap for skills, pricing, client acquisition, and scaling as a freelance full stack developer.",
+      meta: "Career", meta2: "Full Stack", tags: ["career"],
+      url: "/blog/full-stack-web-developer-freelance", external: false, featured: false
+    }
+  ];
+
   var currentFilter = 'all';
   var allArticles = [];
 
-  /* ── RENDER CARDS ──
-     Articles come from articles.json - just add a new object there,
-     no HTML changes needed. */
   function renderCards(articles, filter) {
     var grid = document.getElementById('blog-grid');
     var label = document.getElementById('section-label');
+    var labelMap = { all: 'All Articles', devops: 'DevOps', seo: 'SEO', ux: 'UX / UI', performance: 'Performance', career: 'Career' };
+    if (label) label.textContent = labelMap[filter] || 'All Articles';
 
     var filtered = filter === 'all'
       ? articles
-      : articles.filter(function(a) {
-          return Array.isArray(a.tags) && a.tags.indexOf(filter) !== -1;
-        });
-
-    /* update section label */
-    if (label) {
-      var labelMap = {
-        all: 'All Articles', devops: 'DevOps', seo: 'SEO',
-        ux: 'UX / UI', performance: 'Performance', career: 'Career'
-      };
-      label.textContent = labelMap[filter] || 'All Articles';
-    }
+      : articles.filter(function(a) { return Array.isArray(a.tags) && a.tags.indexOf(filter) !== -1; });
 
     if (!filtered.length) {
-      grid.innerHTML = '<div class="no-results"><i class="fa-regular fa-face-meh" aria-hidden="true"></i><p>No articles in this category yet. Check back soon.</p></div>';
+      grid.innerHTML = '<div class="no-results"><i class="fa-regular fa-face-meh" aria-hidden="true"></i><p>No articles in this category yet.</p></div>';
       return;
     }
 
     grid.innerHTML = filtered.map(function(a, i) {
       var isFeatured = a.featured ? ' featured' : '';
-      var badge = a.source
-        ? '<span class="card-ext-badge"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> ' + a.source + '</span>'
-        : '';
-      var linkAttr = a.external ? ' target="_blank" rel="noopener noreferrer"' : '';
-      var delay = 'animation-delay:' + (i * 55) + 'ms';
+      var badge = a.source ? '<span class="card-ext-badge"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> ' + a.source + '</span>' : '';
+      var linkAttr = a.external ? ' target="_blank" rel="noopener"' : '';
+      var delay = 'animation-delay:' + (i * 60) + 'ms';
       var meta2 = a.meta2 ? ' <i class="fa-solid fa-diamond" aria-hidden="true"></i> ' + a.meta2 : '';
-
-      return (
-        '<a href="' + (a.url || '#') + '" class="blog-card' + isFeatured + ' fade-in" style="' + delay + '"' + linkAttr + ' aria-label="' + a.title + '">' +
-          '<div class="card-top">' +
-            '<p class="card-meta">' + (a.meta || '') + meta2 + '</p>' +
-            badge +
-          '</div>' +
-          '<h2 class="card-title">' + a.title + '</h2>' +
-          '<p class="card-desc">' + (a.desc || '') + '</p>' +
-          '<span class="card-link">Read Article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>' +
-        '</a>'
-      );
+      return '<a href="' + (a.url || '#') + '" class="blog-card' + isFeatured + ' fade-in" style="' + delay + '"' + linkAttr + '>' +
+        '<div class="card-top"><p class="card-meta">' + (a.meta || '') + meta2 + '</p>' + badge + '</div>' +
+        '<h2 class="card-title">' + a.title + '</h2>' +
+        '<p class="card-desc">' + a.desc + '</p>' +
+        '<span class="card-link">Read Article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>' +
+      '</a>';
     }).join('');
   }
 
-  /* ── FILTER CLICKS ── */
   document.getElementById('filter-bar').addEventListener('click', function(e) {
     var btn = e.target.closest('.filter-btn');
     if (!btn) return;
@@ -389,25 +427,22 @@
     renderCards(allArticles, currentFilter);
   });
 
-  /* ── FETCH articles.json ──
-     TO ADD A NEW ARTICLE: open articles.json, add one object to the array, push.
-     The blog updates automatically. No HTML changes ever needed. */
+  /* ── FETCH articles.json AND MERGE ──
+     New articles added to articles.json appear at the TOP automatically.
+     Existing 9 articles always show. No duplicates. */
   fetch('/blog/articles.json')
-    .then(function(res) {
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      return res.json();
-    })
-    .then(function(data) {
-      allArticles = Array.isArray(data) ? data : [];
+    .then(function(res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
+    .then(function(jsonArticles) {
+      var existingUrls = EXISTING_ARTICLES.map(function(a) { return a.url; });
+      var newOnly = Array.isArray(jsonArticles)
+        ? jsonArticles.filter(function(a) { return a.url && existingUrls.indexOf(a.url) === -1; })
+        : [];
+      allArticles = newOnly.concat(EXISTING_ARTICLES);
       renderCards(allArticles, currentFilter);
     })
-    .catch(function(err) {
-      console.error('Blog load error:', err);
-      document.getElementById('blog-grid').innerHTML =
-        '<div class="no-results">' +
-          '<i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>' +
-          '<p>Could not load articles. Please refresh the page.</p>' +
-        '</div>';
+    .catch(function() {
+      allArticles = EXISTING_ARTICLES;
+      renderCards(allArticles, currentFilter);
     });
 </script>
 
