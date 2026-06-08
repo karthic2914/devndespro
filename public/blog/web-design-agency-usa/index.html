@@ -277,12 +277,28 @@
     </main>
 <script>
 var NAV_T={en:{services:'Services',work:'Work',skills:'Skills',reviews:'Reviews',packages:'Packages',blog:'Blog',contact:'Contact',quote:'Get Free Quote'},no:{services:'Tjenester',work:'Arbeid',skills:'Kompetanse',reviews:'Anmeldelser',packages:'Pakker',blog:'Blogg',contact:'Kontakt',quote:'Gratis tilbud'}};
-function applyNavLang(lang){var t=NAV_T[lang]||NAV_T.en;var links=document.querySelectorAll('.nav-menu > li > a');var keys=['services','work','skills','reviews','packages','blog','contact'];links.forEach(function(a,i){if(keys[i])a.textContent=t[keys[i]];});document.querySelectorAll('.nav-cta').forEach(function(a){a.textContent=t.quote;});document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.dataset.lang===lang);});try{localStorage.setItem('siteLang',lang);}catch(e){}document.documentElement.lang=lang;}
-document.querySelectorAll('.lang-btn').forEach(function(b){b.addEventListener('click',function(){applyNavLang(b.dataset.lang);});});
-(function(){var s='';try{s=localStorage.getItem('siteLang')||'';}catch(e){}var u=new URLSearchParams(window.location.search).get('lang');applyNavLang(u==='en'?'en':u==='no'?'no':s==='en'?'en':'no');})();
+function applyNavLang(lang){
+  var t=NAV_T[lang]||NAV_T.en;
+  var links=document.querySelectorAll('.nav-menu > li > a');
+  var keys=['services','work','skills','reviews','packages','blog','contact'];
+  links.forEach(function(a,i){if(keys[i])a.textContent=t[keys[i]];});
+  document.querySelectorAll('.nav-cta').forEach(function(a){a.textContent=t.quote;});
+  document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.dataset.lang===lang);});
+  try{localStorage.setItem('siteLang',lang);}catch(e){}
+  document.documentElement.lang=lang;
+}
+document.querySelectorAll('.lang-btn').forEach(function(b){
+  b.addEventListener('click',function(){applyNavLang(b.dataset.lang);});
+});
+document.addEventListener('DOMContentLoaded',function(){
+  var s='';try{s=localStorage.getItem('siteLang')||'';}catch(e){}
+  var u=new URLSearchParams(window.location.search).get('lang');
+  applyNavLang(u==='en'?'en':u==='no'?'no':s==='en'?'en':'no');
+});
 </script>
 </body>
 </html>
+
 
 
 
