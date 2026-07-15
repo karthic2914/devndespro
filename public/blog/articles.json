@@ -128,5 +128,20 @@
     "url": "/blog/full-stack-web-developer-freelance",
     "external": false,
     "featured": false
-  }
+  },
+  {
+  "title": "WebMCP: The Next Technical SEO Frontier Nobody Is Talking About Yet",
+  "title_no": "WebMCP: Den neste tekniske SEO-grensen ingen snakker om ennå",
+  "desc": "Chrome just shipped a way for AI agents to call functions directly on your site instead of guessing from screenshots. Here's what that means for SEO.",
+  "desc_no": "Chrome har nå en måte for AI-agenter å kalle funksjoner direkte på nettstedet ditt i stedet for å gjette ut fra skjermbilder. Her er hva det betyr for SEO.",
+  "meta": "SEO",
+  "meta2": "AI Agents",
+  "tags": [
+    "seo"
+  ],
+  "url": "https://coderlegion.com/22756/webmcp-the-next-technical-seo-frontier-nobody-is-talking-about-yet",
+  "external": true,
+  "source": "CoderLegion",
+  "featured": true
+}
 ]
