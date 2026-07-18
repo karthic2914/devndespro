@@ -143,5 +143,21 @@
   "external": true,
   "source": "CoderLegion",
   "featured": true
+},
+{
+  "title": "Core Web Vitals in 2026: What the Data Actually Says (And What to Fix First)",
+  "title_no": "Core Web Vitals i 2026: Hva dataene faktisk sier (og hva du bør fikse først)",
+  "desc": "More than half the web still fails Core Web Vitals in 2026. Here's what the CrUX data actually shows, and where the fastest wins are.",
+  "desc_no": "Over halvparten av nettet består fortsatt ikke Core Web Vitals i 2026. Her er hva CrUX-dataene faktisk viser, og hvor de raskeste gevinstene ligger.",
+  "meta": "SEO",
+  "meta2": "Performance",
+  "tags": [
+    "seo",
+    "performance"
+  ],
+  "url": "https://dev.to/karthic2914/YOUR-POST-SLUG-HERE",
+  "external": true,
+  "source": "Dev.to",
+  "featured": true
 }
 ]
