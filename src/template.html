@@ -33,7 +33,9 @@
           <button type="button" class="lang-btn active" data-lang="en">EN</button>
           <button type="button" class="lang-btn" data-lang="no">NO</button>
         </div>
-        <ul class="nav-menu"><li class="nav-dropdown">
+        <ul class="nav-menu">
+            <li><a href="#products">Products</a></li>
+            <li class="nav-dropdown">
             <a href="#services" data-i18n="nav.services">Services</a>
             <ul class="nav-submenu">
                 <li class="nav-mega">
@@ -571,14 +573,14 @@
             <strong>Norway, Europe, the USA, India, and APAC</strong>.
         </p>
         <ul class="hero-services">
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span data-i18n="hero.svc1">UI/UX Design &amp; Figma Prototyping</span></li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span data-i18n="hero.svc2">React &amp; Next.js Development</span></li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span data-i18n="hero.svc3">DevOps &amp; Azure Cloud Engineering</span></li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span data-i18n="hero.svc4">SEO &amp; Digital Growth</span></li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> AI SEO &amp; search visibility platform</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tender discovery &amp; RFP management</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Product engineering &amp; cloud delivery</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Enterprise implementation &amp; growth support</li>
         </ul>
         <div class="hero-actions">
-            <a href="#contact" class="btn-main" data-i18n="hero.primary">Start a Project</a>
-            <a href="#work" class="btn-ghost" data-i18n="hero.secondary">View Our Work</a>
+            <a href="#products" class="btn-main">Explore Products</a>
+            <a href="#contact" class="btn-ghost">Book a Demo</a>
             <button type="button" class="btn-audit" id="free-audit-btn">
                 <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i> Free SEO Audit
             </button>
@@ -641,37 +643,117 @@
 <!-- TICKER -->
 <div class="ticker">
     <div class="ticker-t">
-        <div class="ti">UX Research<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">UI Design<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">Figma<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">Next.js<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">React<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">SEO &amp; Growth<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">Branding<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">E-commerce<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">Web Apps<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">DevOps<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">UX Research<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">UI Design<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">Figma<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">Next.js<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">React<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">SEO &amp; Growth<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">Branding<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">E-commerce<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">Web Apps<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
-        <div class="ti">DevOps<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">AI Visibility<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">Technical SEO<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">GEO<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">Tender Discovery<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">RFP Automation<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">B2B SaaS<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">Product Engineering<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">Cloud Delivery<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">Workflow Automation<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">Sales Enablement<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">AI Visibility<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">Technical SEO<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">GEO<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">Tender Discovery<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">RFP Automation<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">B2B SaaS<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">Product Engineering<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">Cloud Delivery<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">Workflow Automation<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
+        <div class="ti">Sales Enablement<span class="ti-sep" aria-hidden="true"><i class="fa-solid fa-circle"></i></span></div>
     </div>
 </div>
+
+
+<!-- PRODUCTS -->
+<section id="products" class="products-section">
+    <div class="products-head rv">
+        <div>
+            <div class="s-label">Our Products</div>
+            <h2 class="s-h">AI software built for<br><em>measurable business growth</em></h2>
+        </div>
+        <p class="products-intro">
+            Devndespro is a Norway-based AI software company building focused B2B SaaS
+            products for search visibility, tender discovery, and revenue growth.
+        </p>
+    </div>
+
+    <div class="products-grid">
+        <article class="product-card product-card--featured rv">
+            <div class="product-card-top">
+                <span class="product-index">01</span>
+                <span class="product-status">Live platform</span>
+            </div>
+            <div class="product-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            <h3>SEO.devndespro</h3>
+            <p>
+                An AI-powered SEO and GEO platform for technical audits, keyword tracking,
+                backlink insights, website performance, and visibility across AI search platforms.
+            </p>
+            <ul class="product-features">
+                <li>Technical SEO audits</li>
+                <li>AI search visibility</li>
+                <li>Keyword and backlink monitoring</li>
+            </ul>
+            <a href="https://seo.devndespro.com" target="_blank" rel="noopener" class="product-link">
+                Explore SEO Platform <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+        </article>
+
+        <article class="product-card rv">
+            <div class="product-card-top">
+                <span class="product-index">02</span>
+                <span class="product-status">Early stage</span>
+            </div>
+            <div class="product-icon"><i class="fa-solid fa-file-signature"></i></div>
+            <h3>Tenderlyst</h3>
+            <p>
+                An AI-assisted tender and RFP platform designed to help businesses discover
+                opportunities, manage responses, and improve proposal workflows.
+            </p>
+            <ul class="product-features">
+                <li>Tender and RFP discovery</li>
+                <li>Opportunity management</li>
+                <li>Proposal workflow automation</li>
+            </ul>
+            <a href="https://www.tenderlyst.com/" target="_blank" rel="noopener" class="product-link">
+                Explore Tenderlyst <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+        </article>
+
+        <article class="product-card product-card--services rv">
+            <div class="product-card-top">
+                <span class="product-index">03</span>
+                <span class="product-status">Supporting capability</span>
+            </div>
+            <div class="product-icon"><i class="fa-solid fa-gears"></i></div>
+            <h3>Product &amp; Growth Services</h3>
+            <p>
+                Founder-led engineering, DevOps, UX, integrations, and go-to-market support
+                that help customers adopt and extend our products.
+            </p>
+            <ul class="product-features">
+                <li>Custom integrations</li>
+                <li>Cloud and DevOps delivery</li>
+                <li>Enterprise implementation</li>
+            </ul>
+            <a href="#services" class="product-link">
+                View Supporting Services <i class="fa-solid fa-arrow-down"></i>
+            </a>
+        </article>
+    </div>
+</section>
 
 <!-- SERVICES -->
 <section id="services">
     <div class="svc-top">
         <div class="rv">
-            <div class="s-label">What We Do</div>
-            <h2 class="s-h">Full-stack delivery<br>for <em>real growth</em></h2>
+            <div class="s-label">Supporting Services</div>
+            <h2 class="s-h">Product-led execution<br>from <em>idea to scale</em></h2>
         </div>
-        <p class="svc-note rv">A full-stack and DevOps-first delivery model for teams that need speed and quality. From UX and architecture to cloud infrastructure and growth optimization, everything is handled end-to-end.</p>
+        <p class="svc-note rv">Services support our SaaS products and selected client engagements—from UX and product engineering to cloud infrastructure, integrations, SEO, and go-to-market execution.</p>
     </div>
     <div class="svc-list">
         <div class="svc-item rv">
@@ -1070,12 +1152,12 @@
 <!-- MID-PAGE CTA -->
 <section class="cta-strip rv">
     <div class="cta-strip-text">
-        <h2 data-i18n="cta.mid.title">Ready to start your project?</h2>
-        <p data-i18n="cta.mid.text">Get a free consultation and a clear estimate within 24 hours &mdash; no commitment needed.</p>
+        <h2>See how our products can support your growth.</h2>
+        <p>Book a focused product conversation about SEO visibility, tender workflows, integrations, or early access.</p>
     </div>
     <div class="cta-strip-actions">
-        <a href="#contact" class="btn-cta-white" data-i18n="cta.mid.primary">Book a Free Call</a>
-        <a href="#contact" class="btn-cta-outline" data-i18n="cta.mid.secondary">Get a Quote</a>
+        <a href="#contact" class="btn-cta-white">Book a Product Demo</a>
+        <a href="#products" class="btn-cta-outline">Explore Products</a>
     </div>
 </section>
 
@@ -1116,11 +1198,11 @@
 <!-- BOTTOM CTA -->
 <section class="cta-strip rv">
     <div class="cta-strip-text">
-        <h2 data-i18n="cta.bottom.title">Let's build something that converts.</h2>
-        <p data-i18n="cta.bottom.text">From design to deployment &mdash; one team, full ownership, measurable results.</p>
+        <h2>Building the next phase of AI-powered business software.</h2>
+        <p>We are growing our product, engineering, and sales capabilities around two focused B2B SaaS platforms.</p>
     </div>
     <div class="cta-strip-actions">
-        <a href="#contact" class="btn-cta-white" data-i18n="cta.bottom.primary">Start a Project</a>
+        <a href="#contact" class="btn-cta-white">Talk to the Founder</a>
         <a href="https://api.whatsapp.com/send?phone=4740975201" class="btn-cta-outline" target="_blank" rel="noopener" data-i18n="cta.bottom.secondary">WhatsApp Us</a>
     </div>
 </section>
@@ -1154,7 +1236,7 @@
         <div class="about-r rr">
             <div class="s-label">Skills</div>
             <h2 class="s-h">Core capabilities.<br><em>Execution depth.</em></h2>
-            <p class="about-body">I lead delivery as a <strong>full-stack and DevOps-focused builder</strong> who can take products from concept to production. <span class="brand-cal">devndes<span>pro</span></span> combines design precision with engineering depth, cloud reliability,
+            <p class="about-body">I lead Devndespro as a <strong>technical founder and product builder</strong>, taking AI SaaS products from concept and architecture through production, customer validation, and scale. <span class="brand-cal">devndes<span>pro</span></span> combines design precision with engineering depth, cloud reliability,
                 and growth thinking in one streamlined workflow.
                 <br>
                 <br>From UX discovery and interface systems to backend architecture, API integrations, CI/CD pipelines, and post-launch optimization, each skill area is applied end-to-end.
@@ -1269,13 +1351,13 @@
     <div class="c-wrap">
         <div class="c-l rl">
             <div class="s-label" data-i18n="contact.label">Get In Touch</div>
-            <h2 class="s-h" data-i18n-html="contact.title">Let's build<br>something <em>remarkable</em></h2>
-            <p class="c-tagline">"Every project starts with a conversation. Whether you're local to Stavanger or building for global markets, we'll map the fastest path to results."</p>
+            <h2 class="s-h">Let's discuss<br>products, partnerships &amp; <em>growth</em></h2>
+            <p class="c-tagline">"Whether you are exploring our products, a commercial partnership, an integration, or investment, start with a direct conversation with the founder."</p>
             <div class="c-rows">
                 <div class="c-row"><span class="c-lbl">Email</span><a href="mailto:hello@devndespro.com" class="c-val">hello@devndespro.com</a></div>
                 <div class="c-row"><span class="c-lbl">Location</span><span class="c-val">Stavanger, Norway</span></div>
                 <div class="c-row"><span class="c-lbl">WhatsApp</span><a href="https://api.whatsapp.com/send?phone=4740975201" class="c-val"><span data-i18n="contact.whatsapp">Message directly</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-                <div class="c-row"><span class="c-lbl">Status</span><span class="c-val c-avail"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="contact.status">Accepting new projects</span></span>
+                <div class="c-row"><span class="c-lbl">Status</span><span class="c-val c-avail"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span>Open to product pilots, partnerships and investor conversations</span></span>
                 </div>
                 <div class="c-row"><span class="c-lbl">Response</span><span class="c-val" data-i18n="contact.response">Within 24 hours</span></div>
             </div>
@@ -1449,6 +1531,7 @@
     </div>
 
     <ul class="f-nav">
+        <li><a href="#products">Products</a></li>
         <li><a href="#work" data-i18n="nav.work">Work</a></li>
         <li><a href="#skills-section" data-i18n="nav.skills">Skills</a></li>
         <li><a href="/blog/" data-i18n="nav.blog">Blog</a></li>
