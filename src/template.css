@@ -9,6 +9,11 @@
 
 /* ── Hero performance hints (was repeated ~6x inline) ── */
 .hero-display { contain: layout paint; transform: translateZ(0); will-change: contents; }
+.hero-display .hd-3{
+    font-size:0.55em;
+    line-height:1.05;
+    display:block;
+}
 .hero-right   { contain: layout paint; transform: translateZ(0); will-change: transform; }
 .axel-canvas,
 #cv           { transform: translateZ(0); backface-visibility: hidden; will-change: transform; }
