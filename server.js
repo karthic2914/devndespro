@@ -1,4 +1,4 @@
-import express from 'express';
+﻿import express from 'express';
 import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
@@ -534,6 +534,50 @@ app.get('/:slug.html', (req, res, next) => {
   return next();
 });
 
+// ============================================================
+// SEO DUPLICATE URL NORMALIZATION
+// ============================================================
+
+// The old language query creates a duplicate of the homepage:
+// /?lang=no -> /
+app.get('/', (req, res, next) => {
+  if (req.query.lang) {
+    const params = new URLSearchParams()
+
+    for (const [key, value] of Object.entries(req.query)) {
+      if (key.toLowerCase() === 'lang') continue
+
+      if (Array.isArray(value)) {
+        value.forEach(v => params.append(key, String(v)))
+      } else if (value !== undefined && value !== null) {
+        params.append(key, String(value))
+      }
+    }
+
+    const remainingQuery = params.toString()
+
+    return res.redirect(
+      301,
+      remainingQuery ? `/?${remainingQuery}` : '/'
+    )
+  }
+
+  return next()
+})
+
+// Prevent duplicate blog URLs:
+// /blog/example.html -> /blog/example
+app.get('/blog/:slug.html', (req, res) => {
+  const slug = String(req.params.slug || '')
+    .replace(/[^a-z0-9-]/gi, '')
+    .toLowerCase()
+
+  if (!slug) {
+    return res.redirect(301, '/blog')
+  }
+
+  return res.redirect(301, `/blog/${slug}`)
+})
 app.get('/blog', (_req, res) => {
   const blogIndexFile = path.join(distPath, 'blog', 'index.html');
   if (fs.existsSync(blogIndexFile)) {
