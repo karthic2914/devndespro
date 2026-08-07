@@ -2,11 +2,5 @@
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "redirects": [
-    {
-      "source": "/blog/:slug.html",
-      "destination": "/blog/:slug",
-      "permanent": true
-    }
-  ]
+  "cleanUrls": true
 }
