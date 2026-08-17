@@ -556,7 +556,7 @@ app.get('/:slug.html', (req, res, next) => {
 app.get('/:slug', (req, res, next) => {
   const slug = String(req.params.slug || '').replace(/[^a-z0-9-]/gi, '').toLowerCase();
   const reserved = new Set([
-    'blog', 'seo', 'no', 'api', 'css', 'images', 'assets', 'mascot', 'old', 'favicon', 'robots', 'sitemap', 'index'
+    'blog', 'seo', 'seo-tool', 'no', 'api', 'css', 'images', 'assets', 'mascot', 'old', 'favicon', 'robots', 'sitemap', 'index'
   ]);
   if (!slug || reserved.has(slug)) {
     return next();
