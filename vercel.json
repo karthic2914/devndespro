@@ -2,5 +2,472 @@
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/contact",
+      "destination": "/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/sticky-footer",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/seo/old_seo/:path*",
+      "destination": "/seo/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/seo/web-development-norway",
+      "destination": "/seo/web-developer-norway",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ui-ui-design",
+      "destination": "/blog/ui-ux-design",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ui-ui-desigin",
+      "destination": "/blog/ui-ux-design",
+      "permanent": true
+    },
+    {
+      "source": "/affordable-web-design-company",
+      "destination": "/seo/affordable-web-design-company",
+      "permanent": true
+    },
+    {
+      "source": "/no/affordable-web-design-company",
+      "destination": "/no/seo/affordable-web-design-company",
+      "permanent": true
+    },
+    {
+      "source": "/affordable-website-development-india",
+      "destination": "/seo/affordable-website-development-india",
+      "permanent": true
+    },
+    {
+      "source": "/no/affordable-website-development-india",
+      "destination": "/no/seo/affordable-website-development-india",
+      "permanent": true
+    },
+    {
+      "source": "/devops-services-norway",
+      "destination": "/seo/devops-services-norway",
+      "permanent": true
+    },
+    {
+      "source": "/no/devops-services-norway",
+      "destination": "/no/seo/devops-services-norway",
+      "permanent": true
+    },
+    {
+      "source": "/freelance-web-developer-norway",
+      "destination": "/seo/freelance-web-developer-norway",
+      "permanent": true
+    },
+    {
+      "source": "/no/freelance-web-developer-norway",
+      "destination": "/no/seo/freelance-web-developer-norway",
+      "permanent": true
+    },
+    {
+      "source": "/full-stack-development-india",
+      "destination": "/seo/full-stack-development-india",
+      "permanent": true
+    },
+    {
+      "source": "/no/full-stack-development-india",
+      "destination": "/no/seo/full-stack-development-india",
+      "permanent": true
+    },
+    {
+      "source": "/full-stack-development-norway",
+      "destination": "/seo/full-stack-development-norway",
+      "permanent": true
+    },
+    {
+      "source": "/no/full-stack-development-norway",
+      "destination": "/no/seo/full-stack-development-norway",
+      "permanent": true
+    },
+    {
+      "source": "/full-stack-development-usa",
+      "destination": "/seo/full-stack-development-usa",
+      "permanent": true
+    },
+    {
+      "source": "/no/full-stack-development-usa",
+      "destination": "/no/seo/full-stack-development-usa",
+      "permanent": true
+    },
+    {
+      "source": "/graphic-design-norway",
+      "destination": "/seo/graphic-design-norway",
+      "permanent": true
+    },
+    {
+      "source": "/no/graphic-design-norway",
+      "destination": "/no/seo/graphic-design-norway",
+      "permanent": true
+    },
+    {
+      "source": "/hire-web-developer-usa",
+      "destination": "/seo/hire-web-developer-usa",
+      "permanent": true
+    },
+    {
+      "source": "/no/hire-web-developer-usa",
+      "destination": "/no/seo/hire-web-developer-usa",
+      "permanent": true
+    },
+    {
+      "source": "/mobile-app-development",
+      "destination": "/seo/mobile-app-development",
+      "permanent": true
+    },
+    {
+      "source": "/no/mobile-app-development",
+      "destination": "/no/seo/mobile-app-development",
+      "permanent": true
+    },
+    {
+      "source": "/mobile-app-development-europe",
+      "destination": "/seo/mobile-app-development-europe",
+      "permanent": true
+    },
+    {
+      "source": "/no/mobile-app-development-europe",
+      "destination": "/no/seo/mobile-app-development-europe",
+      "permanent": true
+    },
+    {
+      "source": "/responsive-web-design",
+      "destination": "/seo/responsive-web-design",
+      "permanent": true
+    },
+    {
+      "source": "/no/responsive-web-design",
+      "destination": "/no/seo/responsive-web-design",
+      "permanent": true
+    },
+    {
+      "source": "/seo-agency-india",
+      "destination": "/seo/seo-agency-india",
+      "permanent": true
+    },
+    {
+      "source": "/no/seo-agency-india",
+      "destination": "/no/seo/seo-agency-india",
+      "permanent": true
+    },
+    {
+      "source": "/seo-services-india",
+      "destination": "/seo/seo-services-india",
+      "permanent": true
+    },
+    {
+      "source": "/no/seo-services-india",
+      "destination": "/no/seo/seo-services-india",
+      "permanent": true
+    },
+    {
+      "source": "/seo-services-norway",
+      "destination": "/seo/seo-services-norway",
+      "permanent": true
+    },
+    {
+      "source": "/no/seo-services-norway",
+      "destination": "/no/seo/seo-services-norway",
+      "permanent": true
+    },
+    {
+      "source": "/seo-services-usa",
+      "destination": "/seo/seo-services-usa",
+      "permanent": true
+    },
+    {
+      "source": "/no/seo-services-usa",
+      "destination": "/no/seo/seo-services-usa",
+      "permanent": true
+    },
+    {
+      "source": "/ux-ui-designer-norway",
+      "destination": "/seo/ux-ui-designer-norway",
+      "permanent": true
+    },
+    {
+      "source": "/no/ux-ui-designer-norway",
+      "destination": "/no/seo/ux-ui-designer-norway",
+      "permanent": true
+    },
+    {
+      "source": "/web-application-development-india",
+      "destination": "/seo/web-application-development-india",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-application-development-india",
+      "destination": "/no/seo/web-application-development-india",
+      "permanent": true
+    },
+    {
+      "source": "/web-application-development-norway",
+      "destination": "/seo/web-application-development-norway",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-application-development-norway",
+      "destination": "/no/seo/web-application-development-norway",
+      "permanent": true
+    },
+    {
+      "source": "/web-application-development-usa",
+      "destination": "/seo/web-application-development-usa",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-application-development-usa",
+      "destination": "/no/seo/web-application-development-usa",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-agency-usa",
+      "destination": "/seo/web-design-agency-usa",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-design-agency-usa",
+      "destination": "/no/seo/web-design-agency-usa",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-company-india",
+      "destination": "/seo/web-design-company-india",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-design-company-india",
+      "destination": "/no/seo/web-design-company-india",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-company-norway",
+      "destination": "/seo/web-design-company-norway",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-design-company-norway",
+      "destination": "/no/seo/web-design-company-norway",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-development-norway",
+      "destination": "/seo/web-design-development-norway",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-design-development-norway",
+      "destination": "/no/seo/web-design-development-norway",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-europe",
+      "destination": "/seo/web-design-europe",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-design-europe",
+      "destination": "/no/seo/web-design-europe",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-india",
+      "destination": "/seo/web-design-india",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-design-india",
+      "destination": "/no/seo/web-design-india",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-norway",
+      "destination": "/seo/web-design-norway",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-design-norway",
+      "destination": "/no/seo/web-design-norway",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-stavanger",
+      "destination": "/seo/web-design-stavanger",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-design-stavanger",
+      "destination": "/no/seo/web-design-stavanger",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-usa",
+      "destination": "/seo/web-design-usa",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-design-usa",
+      "destination": "/no/seo/web-design-usa",
+      "permanent": true
+    },
+    {
+      "source": "/web-designer-norway",
+      "destination": "/seo/web-designer-norway",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-designer-norway",
+      "destination": "/no/seo/web-designer-norway",
+      "permanent": true
+    },
+    {
+      "source": "/web-developer-norway",
+      "destination": "/seo/web-developer-norway",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-developer-norway",
+      "destination": "/no/seo/web-developer-norway",
+      "permanent": true
+    },
+    {
+      "source": "/web-development-bergen",
+      "destination": "/seo/web-development-bergen",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-development-bergen",
+      "destination": "/no/seo/web-development-bergen",
+      "permanent": true
+    },
+    {
+      "source": "/web-development-europe",
+      "destination": "/seo/web-development-europe",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-development-europe",
+      "destination": "/no/seo/web-development-europe",
+      "permanent": true
+    },
+    {
+      "source": "/web-development-kristiansand",
+      "destination": "/seo/web-development-kristiansand",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-development-kristiansand",
+      "destination": "/no/seo/web-development-kristiansand",
+      "permanent": true
+    },
+    {
+      "source": "/web-development-oslo",
+      "destination": "/seo/web-development-oslo",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-development-oslo",
+      "destination": "/no/seo/web-development-oslo",
+      "permanent": true
+    },
+    {
+      "source": "/web-development-trondheim",
+      "destination": "/seo/web-development-trondheim",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-development-trondheim",
+      "destination": "/no/seo/web-development-trondheim",
+      "permanent": true
+    },
+    {
+      "source": "/web-development-usa",
+      "destination": "/seo/web-development-usa",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-development-usa",
+      "destination": "/no/seo/web-development-usa",
+      "permanent": true
+    },
+    {
+      "source": "/web-utvikler-norge",
+      "destination": "/seo/web-utvikler-norge",
+      "permanent": true
+    },
+    {
+      "source": "/no/web-utvikler-norge",
+      "destination": "/no/seo/web-utvikler-norge",
+      "permanent": true
+    },
+    {
+      "source": "/website-builder-stavanger",
+      "destination": "/seo/website-builder-stavanger",
+      "permanent": true
+    },
+    {
+      "source": "/no/website-builder-stavanger",
+      "destination": "/no/seo/website-builder-stavanger",
+      "permanent": true
+    },
+    {
+      "source": "/website-cost",
+      "destination": "/seo/website-cost",
+      "permanent": true
+    },
+    {
+      "source": "/no/website-cost",
+      "destination": "/no/seo/website-cost",
+      "permanent": true
+    },
+    {
+      "source": "/website-cost-europe",
+      "destination": "/seo/website-cost-europe",
+      "permanent": true
+    },
+    {
+      "source": "/no/website-cost-europe",
+      "destination": "/no/seo/website-cost-europe",
+      "permanent": true
+    },
+    {
+      "source": "/website-design-small-business",
+      "destination": "/seo/website-design-small-business",
+      "permanent": true
+    },
+    {
+      "source": "/no/website-design-small-business",
+      "destination": "/no/seo/website-design-small-business",
+      "permanent": true
+    }
+  ]
 }

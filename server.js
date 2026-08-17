@@ -520,6 +520,24 @@ app.post('/api/likes/:slug', async (req, res) => createLike(req, res, req.params
 
 const distPath = path.join(__dirname, 'dist');
 
+app.get('/contact', (_req, res) => res.redirect(301, '/#contact'));
+app.get('/about', (_req, res) => res.redirect(301, '/'));
+app.get('/sticky-footer', (_req, res) => res.redirect(301, '/'));
+app.get('/portfolio', (_req, res) => res.redirect(301, '/'));
+app.get('/portfolio/:path', (_req, res) => res.redirect(301, '/'));
+app.get('/seo/web-development-norway', (_req, res) => {
+  return res.redirect(301, '/seo/web-developer-norway');
+});
+app.get('/seo/old_seo/:slug', (req, res) => {
+  const slug = String(req.params.slug || '')
+    .replace(/[^a-z0-9-]/gi, '')
+    .toLowerCase();
+  if (!slug) {
+    return res.redirect(301, '/');
+  }
+  return res.redirect(301, `/seo/${slug}`);
+});
+
 app.get('/:slug.html', (req, res, next) => {
   const slug = String(req.params.slug || '').replace(/[^a-z0-9-]/gi, '').toLowerCase();
   if (!slug || slug === 'index' || slug === '404') {
@@ -531,6 +549,35 @@ app.get('/:slug.html', (req, res, next) => {
     return res.redirect(301, `/seo/${slug}`);
   }
 
+  return next();
+});
+
+// Legacy root SEO URLs: /web-design-norway -> /seo/web-design-norway
+app.get('/:slug', (req, res, next) => {
+  const slug = String(req.params.slug || '').replace(/[^a-z0-9-]/gi, '').toLowerCase();
+  const reserved = new Set([
+    'blog', 'seo', 'no', 'api', 'css', 'images', 'assets', 'mascot', 'old', 'favicon', 'robots', 'sitemap', 'index'
+  ]);
+  if (!slug || reserved.has(slug)) {
+    return next();
+  }
+  const seoFile = path.join(distPath, 'seo', `${slug}.html`);
+  if (fs.existsSync(seoFile)) {
+    return res.redirect(301, `/seo/${slug}`);
+  }
+  return next();
+});
+
+// Legacy Norwegian URLs missing /seo/: /no/web-design-norway -> /no/seo/web-design-norway
+app.get('/no/:slug', (req, res, next) => {
+  const slug = String(req.params.slug || '').replace(/[^a-z0-9-]/gi, '').toLowerCase();
+  if (!slug || slug === 'seo') {
+    return next();
+  }
+  const seoFile = path.join(distPath, 'no', 'seo', `${slug}.html`);
+  if (fs.existsSync(seoFile)) {
+    return res.redirect(301, `/no/seo/${slug}`);
+  }
   return next();
 });
 
