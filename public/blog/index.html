@@ -89,6 +89,26 @@
     }
     .filter-btn:hover { border-color: var(--orange-border); color: var(--text); }
     .filter-btn.active { background: var(--orange); border-color: var(--orange); color: #fff; }
+    .filter-search {
+      margin-left: auto; display: flex; align-items: center; gap: 0.55rem;
+      min-width: min(280px, 100%); flex: 1 1 220px; max-width: 320px;
+      border: 1px solid var(--border); background: var(--bg2); border-radius: 999px;
+      padding: 0.45rem 0.9rem; transition: border-color 0.2s, background 0.2s;
+    }
+    .filter-search:focus-within { border-color: var(--orange-border); background: var(--bg3); }
+    .filter-search i { color: var(--text-dim); font-size: 0.82rem; }
+    .filter-search input {
+      flex: 1; min-width: 0; border: 0; outline: none; background: transparent;
+      color: var(--text); font-family: var(--font-body); font-size: 0.88rem;
+    }
+    .filter-search input::placeholder { color: var(--text-dim); }
+    .filter-search-clear {
+      border: 0; background: transparent; color: var(--text-dim); cursor: pointer;
+      padding: 0; display: none; align-items: center; justify-content: center;
+      width: 18px; height: 18px; font-size: 0.75rem;
+    }
+    .filter-search-clear.visible { display: inline-flex; }
+    .filter-search-clear:hover { color: var(--orange); }
 
     /* SECTION LABEL */
     .section-label {
@@ -162,6 +182,7 @@
       .blog-wrap, .filter-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
       .section-label { padding: 0 1.25rem; }
       .blog-hero-stats { gap: 1.5rem; }
+      .filter-search { margin-left: 0; max-width: none; flex: 1 1 100%; }
     }
   </style>
 <style>
@@ -172,7 +193,6 @@
   #cur, #cur-r { display: none !important; }
   #nav { left: 0 !important; right: 0 !important; width: 100% !important; padding: 0 2rem !important; }
   #nav .logo-img { height: 48px !important; }
-  .nav-cta-li { display: list-item !important; }
 </style>
 </head>
 <body>
@@ -237,7 +257,6 @@
       <li><a href="/#packages">Packages</a></li>
       <li><a href="/blog/" class="active">Blog</a></li>
       <li><a href="/#contact">Contact</a></li>
-      <li class="nav-cta-li" style="display:none;"><a href="/#contact" class="nav-cta">Get Free Quote</a></li>
     </ul>
     <a href="/#contact" class="nav-cta">Get Free Quote</a>
   </div>
@@ -280,6 +299,13 @@
     <button class="filter-btn" data-filter="ux">UX/UI</button>
     <button class="filter-btn" data-filter="performance">Performance</button>
     <button class="filter-btn" data-filter="career">Career</button>
+    <label class="filter-search" for="article-search">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input id="article-search" type="search" placeholder="Search articles..." autocomplete="off" aria-label="Search articles">
+      <button type="button" class="filter-search-clear" id="article-search-clear" aria-label="Clear search">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </label>
   </div>
 </div>
 
@@ -400,23 +426,70 @@
   ];
 
   var currentFilter = 'all';
+  var currentQuery = '';
   var allArticles = [];
+  var currentLang = 'en';
 
-  function renderCards(articles, filter) {
+  function getDisplayArticles() {
+    return allArticles.map(function(a) {
+      var existingIdx = EXISTING_ARTICLES.findIndex(function(e) { return e.url === a.url; });
+      if (existingIdx >= 0) {
+        var trList = BLOG_ARTICLE_TRANSLATIONS[currentLang] || [];
+        var tr = trList[existingIdx];
+        if (tr) return Object.assign({}, a, { title: tr.title, desc: tr.desc });
+      }
+      if (currentLang === 'no') {
+        return Object.assign({}, a, {
+          title: a.title_no || a.title,
+          desc: a.desc_no || a.desc
+        });
+      }
+      return a;
+    });
+  }
+
+  function matchesQuery(article, query) {
+    if (!query) return true;
+    var haystack = [
+      article.title,
+      article.desc,
+      article.meta,
+      article.meta2,
+      article.source,
+      Array.isArray(article.tags) ? article.tags.join(' ') : ''
+    ].join(' ').toLowerCase();
+    return haystack.indexOf(query) !== -1;
+  }
+
+  function renderCards(articles, filter, query) {
     var grid = document.getElementById('blog-grid');
     var label = document.getElementById('section-label');
-    var labelMap = { all: 'All Articles', devops: 'DevOps', seo: 'SEO', ux: 'UX / UI', performance: 'Performance', career: 'Career' };
-    if (label) label.textContent = labelMap[filter] || 'All Articles';
+    var t = (typeof BLOG_TRANSLATIONS !== 'undefined' && BLOG_TRANSLATIONS[currentLang])
+      ? BLOG_TRANSLATIONS[currentLang]
+      : null;
+    var labelMap = t
+      ? { all: t.labelAll, devops: t.labelDevops, seo: t.labelSeo, ux: t.labelUx, performance: t.labelPerf, career: t.labelCareer }
+      : { all: 'All Articles', devops: 'DevOps', seo: 'SEO', ux: 'UX / UI', performance: 'Performance', career: 'Career' };
+    var q = String(query || '').trim().toLowerCase();
+    if (label) {
+      var base = labelMap[filter] || labelMap.all;
+      label.textContent = q ? (base + ' · "' + String(query || '').trim() + '"') : base;
+    }
 
-    var filtered = filter === 'all'
+    var filtered = (filter === 'all'
       ? articles
-      : articles.filter(function(a) { return Array.isArray(a.tags) && a.tags.indexOf(filter) !== -1; });
+      : articles.filter(function(a) { return Array.isArray(a.tags) && a.tags.indexOf(filter) !== -1; })
+    ).filter(function(a) { return matchesQuery(a, q); });
 
     if (!filtered.length) {
-      grid.innerHTML = '<div class="no-results"><i class="fa-regular fa-face-meh" aria-hidden="true"></i><p>No articles in this category yet.</p></div>';
+      var emptyMsg = q
+        ? ((t && t.noSearchResults) || 'No articles match your search.')
+        : ((t && t.noResults) || 'No articles in this category yet.');
+      grid.innerHTML = '<div class="no-results"><i class="fa-regular fa-face-meh" aria-hidden="true"></i><p>' + emptyMsg + '</p></div>';
       return;
     }
 
+    var readLabel = (t && t.readArticle) || 'Read Article';
     grid.innerHTML = filtered.map(function(a, i) {
       var isFeatured = a.featured ? ' featured' : '';
       var badge = a.source ? '<span class="card-ext-badge"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> ' + a.source + '</span>' : '';
@@ -427,9 +500,19 @@
         '<div class="card-top"><p class="card-meta">' + (a.meta || '') + meta2 + '</p>' + badge + '</div>' +
         '<h2 class="card-title">' + a.title + '</h2>' +
         '<p class="card-desc">' + a.desc + '</p>' +
-        '<span class="card-link">Read Article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>' +
+        '<span class="card-link">' + readLabel + ' <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>' +
       '</a>';
     }).join('');
+  }
+
+  function refreshCards() {
+    renderCards(getDisplayArticles(), currentFilter, currentQuery);
+  }
+
+  function syncSearchClear() {
+    var clearBtn = document.getElementById('article-search-clear');
+    if (!clearBtn) return;
+    clearBtn.classList.toggle('visible', Boolean(currentQuery));
   }
 
   document.getElementById('filter-bar').addEventListener('click', function(e) {
@@ -438,8 +521,27 @@
     document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
     btn.classList.add('active');
     currentFilter = btn.dataset.filter;
-    renderCards(allArticles, currentFilter);
+    refreshCards();
   });
+
+  var searchInput = document.getElementById('article-search');
+  var searchClear = document.getElementById('article-search-clear');
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      currentQuery = searchInput.value || '';
+      syncSearchClear();
+      refreshCards();
+    });
+  }
+  if (searchClear) {
+    searchClear.addEventListener('click', function() {
+      currentQuery = '';
+      if (searchInput) searchInput.value = '';
+      syncSearchClear();
+      refreshCards();
+      if (searchInput) searchInput.focus();
+    });
+  }
 
   /* ── FETCH articles.json AND MERGE ──
      New articles added to articles.json appear at the TOP automatically.
@@ -452,11 +554,11 @@
         ? jsonArticles.filter(function(a) { return a.url && existingUrls.indexOf(a.url) === -1; })
         : [];
       allArticles = newOnly.concat(EXISTING_ARTICLES);
-      renderCards(allArticles, currentFilter);
+      refreshCards();
     })
     .catch(function() {
       allArticles = EXISTING_ARTICLES;
-      renderCards(allArticles, currentFilter);
+      refreshCards();
     });
 </script>
 
@@ -478,6 +580,8 @@ var BLOG_TRANSLATIONS = {
     filterUx: 'UX/UI',
     filterPerf: 'Performance',
     filterCareer: 'Career',
+    searchPlaceholder: 'Search articles...',
+    searchClear: 'Clear search',
     readArticle: 'Read Article',
     backToSite: 'Back to main site',
     labelAll: 'All Articles',
@@ -487,6 +591,7 @@ var BLOG_TRANSLATIONS = {
     labelPerf: 'Performance',
     labelCareer: 'Career',
     noResults: 'No articles in this category yet.',
+    noSearchResults: 'No articles match your search.',
     footerCopy: '© 2026 devndespro · HQ: Stavanger, Norway · Delivery Hub: Chennai, India',
     navServices: 'Services',
     navWork: 'Work',
@@ -513,6 +618,8 @@ var BLOG_TRANSLATIONS = {
     filterUx: 'UX/UI',
     filterPerf: 'Ytelse',
     filterCareer: 'Karriere',
+    searchPlaceholder: 'Søk i artikler...',
+    searchClear: 'Tøm søk',
     readArticle: 'Les artikkel',
     backToSite: 'Tilbake til hovedsiden',
     labelAll: 'Alle artikler',
@@ -522,6 +629,7 @@ var BLOG_TRANSLATIONS = {
     labelPerf: 'Ytelse',
     labelCareer: 'Karriere',
     noResults: 'Ingen artikler i denne kategorien ennå.',
+    noSearchResults: 'Ingen artikler matcher søket ditt.',
     footerCopy: '© 2026 devndespro · HQ: Stavanger, Norge · Leveransehub: Chennai, India',
     navServices: 'Tjenester',
     navWork: 'Arbeid',
@@ -564,6 +672,7 @@ var BLOG_ARTICLE_TRANSLATIONS = {
 function applyBlogLang(lang) {
   var t = BLOG_TRANSLATIONS[lang] || BLOG_TRANSLATIONS.en;
   var isNo = lang === 'no';
+  currentLang = lang;
 
   /* Kicker */
   var kicker = document.querySelector('.blog-hero-kicker');
@@ -587,6 +696,15 @@ function applyBlogLang(lang) {
   var filterBtns = document.querySelectorAll('.filter-btn');
   var filterKeys = ['filterAll','filterDevops','filterSeo','filterUx','filterPerf','filterCareer'];
   filterBtns.forEach(function(btn, i) { if (filterKeys[i]) btn.textContent = t[filterKeys[i]]; });
+
+  /* Search */
+  var searchInput = document.getElementById('article-search');
+  if (searchInput) {
+    searchInput.placeholder = t.searchPlaceholder || 'Search articles...';
+    searchInput.setAttribute('aria-label', t.searchPlaceholder || 'Search articles');
+  }
+  var searchClear = document.getElementById('article-search-clear');
+  if (searchClear) searchClear.setAttribute('aria-label', t.searchClear || 'Clear search');
 
   /* Nav links */
   var navLinks = document.querySelectorAll('.nav-menu > li > a:not(.nav-cta)');
@@ -621,23 +739,10 @@ function applyBlogLang(lang) {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
 
-  /* Re-render cards with translated titles */
-  if (typeof allArticles !== 'undefined' && allArticles.length) {
-    var translated = allArticles.map(function(a, i) {
-      var tr = BLOG_ARTICLE_TRANSLATIONS[lang] ? BLOG_ARTICLE_TRANSLATIONS[lang][i] : null;
-      if (!tr) return a;
-      return Object.assign({}, a, { title: tr.title, desc: tr.desc });
-    });
-    renderCards(translated, currentFilter);
+  /* Re-render cards with translated titles + active search/filter */
+  if (typeof allArticles !== 'undefined' && allArticles.length && typeof refreshCards === 'function') {
+    refreshCards();
   }
-
-  /* Update section label */
-  var labelMap = {
-    all: t.labelAll, devops: t.labelDevops, seo: t.labelSeo,
-    ux: t.labelUx, performance: t.labelPerf, career: t.labelCareer
-  };
-  var sectionLabel = document.getElementById('section-label');
-  if (sectionLabel) sectionLabel.textContent = labelMap[currentFilter] || t.labelAll;
 
   /* Store */
   try { localStorage.setItem('siteLang', lang); } catch(e) {}
