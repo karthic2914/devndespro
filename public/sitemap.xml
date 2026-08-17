@@ -311,6 +311,26 @@
     <priority>0.6</priority>
   </url>
 
+  <!-- AI / GEO UX commercial -->
+  <url>
+    <loc>https://www.devndespro.com/seo/hire-ux-ui-design-agency</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.devndespro.com/seo/choose-ux-design-agency</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.devndespro.com/seo/ux-strategy-vs-ui-design</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
 
 

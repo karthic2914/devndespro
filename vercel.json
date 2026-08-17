@@ -215,6 +215,21 @@
       "permanent": true
     },
     {
+      "source": "/hire-ux-ui-design-agency",
+      "destination": "/seo/hire-ux-ui-design-agency",
+      "permanent": true
+    },
+    {
+      "source": "/choose-ux-design-agency",
+      "destination": "/seo/choose-ux-design-agency",
+      "permanent": true
+    },
+    {
+      "source": "/ux-strategy-vs-ui-design",
+      "destination": "/seo/ux-strategy-vs-ui-design",
+      "permanent": true
+    },
+    {
       "source": "/no/ux-ui-designer-norway",
       "destination": "/no/seo/ux-ui-designer-norway",
       "permanent": true
