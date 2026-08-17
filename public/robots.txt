@@ -1,5 +1,18 @@
-# Updated: 2026-04-27
+# Updated: 2026-08-17
+
 User-agent: *
+Allow: /
+
+# OpenAI — ChatGPT Search indexing
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI — live page fetches when users ask ChatGPT
+User-agent: ChatGPT-User
+Allow: /
+
+# OpenAI — model training crawl (helps long-term brand recognition)
+User-agent: GPTBot
 Allow: /
 
 Sitemap: https://www.devndespro.com/sitemap.xml
