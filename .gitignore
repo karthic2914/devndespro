@@ -8,9 +8,10 @@ dist/
 Thumbs.db
 public/images/blog_1_UX_Design.html
 public/images/blog_1_UX_Design_files/
-echo "*backup*.html" >> .gitignore
 # Ignore PowerShell scripts
 *.ps1
 # Backup files
 *.backup*
 *.bak
+*.meta-backup
+*.work.bak

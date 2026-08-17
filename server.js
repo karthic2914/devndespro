@@ -528,7 +528,7 @@ app.get('/:slug.html', (req, res, next) => {
 
   const seoFile = path.join(distPath, 'seo', `${slug}.html`);
   if (fs.existsSync(seoFile)) {
-    return res.redirect(301, `/seo/${slug}.html`);
+    return res.redirect(301, `/seo/${slug}`);
   }
 
   return next();
@@ -562,6 +562,55 @@ app.get('/', (req, res, next) => {
     )
   }
 
+  return next()
+})
+
+// Prevent duplicate SEO URLs (match Vercel cleanUrls):
+// /seo/example.html -> /seo/example
+// /no/seo/example.html -> /no/seo/example
+app.get('/seo/:slug.html', (req, res) => {
+  const slug = String(req.params.slug || '')
+    .replace(/[^a-z0-9-]/gi, '')
+    .toLowerCase()
+
+  if (!slug) {
+    return res.redirect(301, '/')
+  }
+
+  return res.redirect(301, `/seo/${slug}`)
+})
+
+app.get('/no/seo/:slug.html', (req, res) => {
+  const slug = String(req.params.slug || '')
+    .replace(/[^a-z0-9-]/gi, '')
+    .toLowerCase()
+
+  if (!slug) {
+    return res.redirect(301, '/')
+  }
+
+  return res.redirect(301, `/no/seo/${slug}`)
+})
+
+app.get('/seo/:slug', (req, res, next) => {
+  const slug = String(req.params.slug || '')
+    .replace(/[^a-z0-9-]/gi, '')
+    .toLowerCase()
+  const seoFile = path.join(distPath, 'seo', `${slug}.html`)
+  if (slug && fs.existsSync(seoFile)) {
+    return res.sendFile(seoFile)
+  }
+  return next()
+})
+
+app.get('/no/seo/:slug', (req, res, next) => {
+  const slug = String(req.params.slug || '')
+    .replace(/[^a-z0-9-]/gi, '')
+    .toLowerCase()
+  const seoFile = path.join(distPath, 'no', 'seo', `${slug}.html`)
+  if (slug && fs.existsSync(seoFile)) {
+    return res.sendFile(seoFile)
+  }
   return next()
 })
 
