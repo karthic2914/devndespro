@@ -599,3 +599,19 @@ input:-webkit-autofill { animation-name: onAutoFillStart; animation-duration: 0.
   #ph-badge { bottom: 80px; right: 12px; }
   #ph-badge img { width: 200px; height: 43px; }
 }
+
+/* PH banner/nav stacking fix */
+:root { --ph-banner-h: 0px; }
+#ph-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10001;
+}
+#nav {
+  top: var(--ph-banner-h, 0px) !important;
+}
+body {
+  padding-top: var(--ph-banner-h, 0px);
+}

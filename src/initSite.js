@@ -34,12 +34,25 @@ export default function initSite() {
 
   const phBanner = document.getElementById('ph-banner');
   const phBannerClose = document.getElementById('ph-banner-close');
+
+  const updatePhBannerOffset = () => {
+    if (phBanner && phBanner.style.display !== 'none') {
+      document.documentElement.style.setProperty('--ph-banner-h', phBanner.offsetHeight + 'px');
+    } else {
+      document.documentElement.style.setProperty('--ph-banner-h', '0px');
+    }
+  };
+
   if (phBanner && sessionStorage.getItem('ph-banner-dismissed') === 'true') {
     phBanner.style.display = 'none';
   }
+  updatePhBannerOffset();
+  window.addEventListener('resize', updatePhBannerOffset);
+
   const onPhBannerClose = () => {
     sessionStorage.setItem('ph-banner-dismissed', 'true');
     if (phBanner) phBanner.style.display = 'none';
+    updatePhBannerOffset();
   };
   if (phBannerClose) phBannerClose.addEventListener('click', onPhBannerClose);
 
