@@ -1,4 +1,4 @@
-// initSite.js
+﻿// initSite.js
 // All imperative DOM wiring for the devndespro template.
 // Called once from App.jsx after the static template mounts.
 // Returns a cleanup function (same contract as a useEffect cleanup).
@@ -31,6 +31,17 @@ export default function initSite() {
   }
 
   const loaderTimer = window.setTimeout(hideLoader, 2200);
+
+  const phBanner = document.getElementById('ph-banner');
+  const phBannerClose = document.getElementById('ph-banner-close');
+  if (phBanner && sessionStorage.getItem('ph-banner-dismissed') === 'true') {
+    phBanner.style.display = 'none';
+  }
+  const onPhBannerClose = () => {
+    sessionStorage.setItem('ph-banner-dismissed', 'true');
+    if (phBanner) phBanner.style.display = 'none';
+  };
+  if (phBannerClose) phBannerClose.addEventListener('click', onPhBannerClose);
 
   const cur = document.getElementById('cur');
   const curR = document.getElementById('cur-r');
@@ -915,6 +926,7 @@ export default function initSite() {
     clearTimeout(auditTriggerTimeout);
     cancelAnimationFrame(rafId);
     document.removeEventListener('mousemove', handleMouseMove);
+    if (phBannerClose) phBannerClose.removeEventListener('click', onPhBannerClose);
     document.removeEventListener('keydown', onAuditEscape);
     window.removeEventListener('scroll', onScroll);
     window.removeEventListener('resize', onResize);
