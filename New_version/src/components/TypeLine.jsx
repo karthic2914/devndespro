@@ -4,6 +4,7 @@ import { useLanguage } from '../LanguageContext.jsx';
 export default function TypeLine() {
   const { copy } = useLanguage();
   const phrases = copy.typePhrases;
+  const longest = phrases.reduce((best, item) => (item.length > best.length ? item : best), '');
   const [index, setIndex] = useState(0);
   const [text, setText] = useState('');
   const [deleting, setDeleting] = useState(false);
@@ -45,8 +46,11 @@ export default function TypeLine() {
 
   return (
     <span className="type-line">
-      {text}
-      <span className="type-caret" />
+      <span className="type-sizer" aria-hidden="true">{longest}</span>
+      <span className="type-text">
+        {text}
+        <span className="type-caret" />
+      </span>
     </span>
   );
 }

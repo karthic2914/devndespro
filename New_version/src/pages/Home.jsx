@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CtaBand from '../components/CtaBand.jsx';
 import ContactSection from '../components/ContactSection.jsx';
@@ -15,6 +16,16 @@ import { regionKeys } from '../i18n.js';
 
 export default function Home() {
   const { t, copy, localizeHref, appLabel } = useLanguage();
+  const [heroId, setHeroId] = useState('seo');
+  const heroProducts = products.slice(0, 2);
+  const activeHero = heroProducts.find((item) => item.id === heroId) || heroProducts[0];
+  const heroHost = (() => {
+    try {
+      return new URL(activeHero.href).hostname.replace(/^www\./, '');
+    } catch {
+      return activeHero.name;
+    }
+  })();
   usePageTitle(t('page.title'));
 
   return (
@@ -24,7 +35,8 @@ export default function Home() {
           <div className="hero-copy-wrap">
             <span className="pill">{t('hero.pill')}</span>
             <h1 className="display">
-              {t('hero.title')} <em><TypeLine /></em>
+              <span className="hero-lead">{t('hero.title')}</span>
+              <em className="hero-type"><TypeLine /></em>
             </h1>
             <p className="hero-copy">
               {t('hero.copy')}
@@ -41,26 +53,42 @@ export default function Home() {
           </div>
           <aside className="hero-atelier" aria-label="Products we ship">
             <div className="hero-atelier-stage">
-              <div className="hero-shot hero-shot-back">
-                <img src="/images/work-tenderlyst-web.png" alt="" />
-              </div>
-              <div className="hero-shot hero-shot-front">
-                <div className="hero-shot-bar">
+              <span className="hero-glow" aria-hidden="true" />
+              <a
+                className="hero-device"
+                href={activeHero.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="hero-chrome">
                   <span className="hero-dots" aria-hidden="true"><i /><i /><i /></span>
-                  <span>seo.devndespro</span>
+                  <span className="hero-url">
+                    <i className="fa-solid fa-lock" aria-hidden="true" />
+                    {heroHost}
+                  </span>
+                  <span className={`hero-shot-live ${activeHero.id === 'seo' ? '' : 'is-wait'}`}>
+                    {activeHero.id === 'seo' ? t('hero.live') : t('hero.tender')}
+                  </span>
                 </div>
-                <div className="hero-shot-screen">
-                  <img src="/images/seo_dashboard.png" alt="SEO.devndespro live dashboard" />
+                <div className="hero-viewport">
+                  <img key={activeHero.id} src={activeHero.image} alt={`${activeHero.name} product`} />
                 </div>
-                <span className="hero-glass" aria-hidden="true" />
-                <span className="hero-sheen" aria-hidden="true" />
-              </div>
+              </a>
             </div>
-            <div className="hero-atelier-caption">
-              <b>SEO.devndespro</b>
-              <span className="hero-live">{t('hero.live')}</span>
-              <span className="hero-atelier-dot" aria-hidden="true" />
-              <span>{t('hero.tender')}</span>
+            <div className="hero-atelier-caption" role="tablist" aria-label={t('hero.products')}>
+              {heroProducts.map((item) => (
+                <button
+                  key={item.id}
+                  className={`hero-chip ${item.id === heroId ? 'is-on' : ''} ${item.id === 'seo' ? 'is-live' : ''}`}
+                  type="button"
+                  role="tab"
+                  aria-selected={item.id === heroId}
+                  onClick={() => setHeroId(item.id)}
+                >
+                  {item.name}
+                  <small>{item.id === 'seo' ? t('hero.live') : t('hero.tender')}</small>
+                </button>
+              ))}
             </div>
           </aside>
         </div>

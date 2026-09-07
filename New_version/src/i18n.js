@@ -33,7 +33,7 @@ export const ui = {
     'hero.products': 'See products',
     'hero.explore': 'Explore',
     'hero.live': 'Live platform',
-    'hero.tender': 'Tenderlyst · early access',
+    'hero.tender': 'Early access',
     'hero.stat1': 'Web apps',
     'hero.stat1s': 'Custom platforms',
     'hero.stat2': 'SaaS',
@@ -182,7 +182,7 @@ export const ui = {
     'hero.products': 'Se produktene',
     'hero.explore': 'Utforsk',
     'hero.live': 'Live plattform',
-    'hero.tender': 'Tenderlyst · tidlig tilgang',
+    'hero.tender': 'Tidlig tilgang',
     'hero.stat1': 'Webapper',
     'hero.stat1s': 'Skreddersydde plattformer',
     'hero.stat2': 'SaaS',
@@ -301,7 +301,7 @@ export const ui = {
 
 export const copy = {
   en: {
-    typePhrases: ['web applications.', 'SaaS products.', 'product platforms.'],
+    typePhrases: ['web applications', 'SaaS products', 'product platforms'],
     ticker: ['AI Visibility', 'Technical SEO', 'GEO', 'Tender Discovery', 'RFP Automation', 'B2B SaaS', 'Product Engineering', 'Cloud Delivery', 'Workflow Automation', 'Sales Enablement'],
     interests: [
       'SEO.devndespro demo',
@@ -318,7 +318,7 @@ export const copy = {
     packages: {}
   },
   no: {
-    typePhrases: ['webapplikasjoner.', 'SaaS-produkter.', 'produktplattformer.'],
+    typePhrases: ['webapplikasjoner', 'SaaS-produkter', 'produktplattformer'],
     ticker: ['AI-synlighet', 'Teknisk SEO', 'GEO', 'Anbudsoppdagelse', 'RFP-automatisering', 'B2B SaaS', 'Produktutvikling', 'Skyleveranse', 'Arbeidsflyt', 'Salgstøtte'],
     interests: [
       'SEO.devndespro-demo',
