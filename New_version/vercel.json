@@ -1,8 +1,7 @@
 {
-  "framework": null,
-  "installCommand": "npm --prefix New_version ci",
-  "buildCommand": "npm --prefix New_version run build",
-  "outputDirectory": "New_version/dist",
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "rewrites": [
     {
@@ -23,7 +22,7 @@
     },
     {
       "source": "/contact",
-      "destination": "/#contact",
+      "destination": "/#home-contact",
       "permanent": true
     },
     {

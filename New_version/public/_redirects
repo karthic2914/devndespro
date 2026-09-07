@@ -1,0 +1,5 @@
+/seo-tool  https://seo.devndespro.com  301
+/seo-tool/*  https://seo.devndespro.com  301
+/seo/:slug  /seo/:slug.html  200
+/no/seo/:slug  /no/seo/:slug.html  200
+/*    /index.html   200
