@@ -4,6 +4,7 @@ import { useLanguage } from '../LanguageContext.jsx';
 import { navItems, solutionApps, solutionMenu } from '../data/site.js';
 import { megaKeys, navKeys, regionKeys } from '../i18n.js';
 import LangSwitch from './LangSwitch.jsx';
+import ThemeSwitch from './ThemeSwitch.jsx';
 import Logo from './Logo.jsx';
 
 function navClass(path, location) {
@@ -165,7 +166,10 @@ export default function Navbar() {
           </li>
         </ul>
 
-        <LangSwitch className="nav-lang" />
+        <div className="nav-tools">
+          <ThemeSwitch />
+          <LangSwitch className="nav-lang" />
+        </div>
         <Link to="/#home-contact" className="btn btn-primary nav-cta">
           <i className="fa-solid fa-calendar-check" aria-hidden="true" />
           {t('nav.demo')}
