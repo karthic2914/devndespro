@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext.jsx';
 
 export default function ContactSection() {
@@ -105,6 +106,10 @@ export default function ContactSection() {
             <textarea id="message" name="message" required placeholder={t('form.projectPh')} />
           </div>
           <p className={`form-status ${status.type}`}>{status.message}</p>
+          <p className="form-privacy">
+            {t('form.privacy')}{' '}
+            <Link to="/privacy-policy">{t('footer.privacy')}</Link>.
+          </p>
           <button className="btn btn-primary" type="submit" disabled={sending}>
             {sending ? t('form.sending') : t('form.send')}
           </button>

@@ -3,6 +3,7 @@ import { useLanguage } from '../LanguageContext.jsx';
 import Navbar from './Navbar.jsx';
 import Footer from './Footer.jsx';
 import Cursor from './Cursor.jsx';
+import CookieConsent from './CookieConsent.jsx';
 
 export default function Layout() {
   const { t } = useLanguage();
@@ -13,6 +14,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <CookieConsent />
       <Cursor />
       <a
         className="wa-float"

@@ -42,6 +42,8 @@ const parts = [
   '',
   '  <!-- Main -->',
   url('/', '1.0', 'weekly'),
+  url('/privacy-policy', '0.5', 'yearly'),
+  url('/gdpr', '0.5', 'yearly'),
   '',
   '  <!-- Blog -->',
   url('/blog', '0.8', 'weekly'),

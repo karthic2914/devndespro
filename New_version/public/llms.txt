@@ -3,6 +3,8 @@
 site: https://www.devndespro.com/
 owner: devndespro
 contact: hello@devndespro.com
+privacy: https://www.devndespro.com/privacy-policy
+gdpr: https://www.devndespro.com/gdpr
 updated: 2026-09-07
 language: en
 location: Stavanger, Norway

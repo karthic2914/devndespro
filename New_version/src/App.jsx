@@ -5,6 +5,8 @@ import Home from './pages/Home.jsx';
 import Blog from './pages/Blog.jsx';
 import Article from './pages/Article.jsx';
 import NotFound from './pages/NotFound.jsx';
+import Privacy from './pages/Privacy.jsx';
+import Gdpr from './pages/Gdpr.jsx';
 
 const SEO_APP = 'https://seo.devndespro.com';
 
@@ -42,6 +44,9 @@ export default function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<Article />} />
         <Route path="/contact" element={<Navigate to="/#home-contact" replace />} />
+        <Route path="/privacy-policy" element={<Privacy />} />
+        <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
+        <Route path="/gdpr" element={<Gdpr />} />
         <Route path="/seo-tool/*" element={<ExternalRedirect to={SEO_APP} />} />
         <Route path="/seo-tool" element={<ExternalRedirect to={SEO_APP} />} />
         <Route path="/404" element={<NotFound />} />

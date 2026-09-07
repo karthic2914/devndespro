@@ -23,7 +23,11 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <p>{t('footer.copy')}</p>
-          <p>hello@devndespro.com · +47 409 75 201</p>
+          <p className="footer-legal">
+            <Link to="/privacy-policy">{t('footer.privacy')}</Link>
+            <Link to="/gdpr">{t('footer.gdpr')}</Link>
+            <span>hello@devndespro.com · +47 409 75 201</span>
+          </p>
         </div>
       </div>
     </footer>
