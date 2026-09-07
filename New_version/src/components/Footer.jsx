@@ -11,7 +11,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="container-wide">
         <div className="footer-top">
-          <Logo />
+          <Logo surface="on-dark" />
           <nav className="footer-nav" aria-label="Footer">
             {navItems.map((item) => (
               <Link key={item.path} to={item.path}>

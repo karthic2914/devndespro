@@ -22,13 +22,16 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const megaTimer = useRef(null);
+  const compactNav = () => window.matchMedia('(max-width: 1180px)').matches;
 
   const openMega = () => {
+    if (compactNav()) return;
     clearTimeout(megaTimer.current);
     setMegaOpen(true);
   };
 
   const closeMega = () => {
+    if (compactNav()) return;
     clearTimeout(megaTimer.current);
     megaTimer.current = setTimeout(() => setMegaOpen(false), 260);
   };
@@ -63,7 +66,10 @@ export default function Navbar() {
           type="button"
           aria-label="Toggle menu"
           aria-expanded={open}
-          onClick={() => setOpen((value) => !value)}
+          onClick={() => {
+            setOpen((value) => !value);
+            setMegaOpen(false);
+          }}
         >
           {open ? (
             <i className="fa-solid fa-xmark" aria-hidden="true" />
@@ -85,16 +91,18 @@ export default function Navbar() {
                   to={item.path}
                   className={navClass(item.path, location)}
                   onClick={(event) => {
-                    if (window.innerWidth <= 980) {
+                    if (window.matchMedia('(max-width: 1180px)').matches) {
                       event.preventDefault();
                       setMegaOpen((value) => !value);
                       return;
                     }
                     closeAll();
                   }}
+                  aria-expanded={megaOpen}
                 >
                   <i className={`fa-solid ${item.icon}`} aria-hidden="true" />
                   {t(navKeys[item.label])}
+                  <i className={`fa-solid fa-chevron-down mega-caret ${megaOpen ? 'is-on' : ''}`} aria-hidden="true" />
                 </Link>
                 <div className="mega" onMouseEnter={openMega} onMouseLeave={closeMega}>
                   <div className="mega-top">
