@@ -887,6 +887,10 @@ h1, h2, h3 {
   .hero-viewport img { animation: none; height: 100%; transform: none; }
   .hero-device,
   .hero-atelier:hover .hero-device { transform: none; }
+  .stat,
+  .stat:hover,
+  .stat i,
+  .stat:hover i { transform: none; animation: none; }
   .stat:nth-child(2) i,
   .hero-home .hero-copy-wrap .pill,
   .hero-home h1,
@@ -1047,6 +1051,11 @@ h1, h2, h3 {
   align-items: center;
   gap: 12px;
   min-width: 180px;
+  padding: 10px 14px 10px 10px;
+  margin: -10px -14px -10px -10px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
 }
 .stat i {
   width: 40px;
@@ -1059,23 +1068,34 @@ h1, h2, h3 {
   color: var(--mint);
   font-size: 1rem;
   line-height: 1;
-  transition: transform 0.25s ease;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.stat:hover i { transform: scale(1.08); }
+.stat:hover {
+  transform: translateY(-5px);
+  background: var(--paper);
+  border-color: var(--line);
+  box-shadow: var(--shadow);
+}
+.stat:hover i { transform: scale(1.12) rotate(-8deg); }
 .stat:nth-child(2) i {
   animation: rocket-nudge 3.6s ease-in-out infinite;
+  background: rgba(44, 74, 110, 0.1);
+  color: var(--cobalt);
 }
 @keyframes rocket-nudge {
   0%, 100% { transform: translateY(0) rotate(0); }
   50% { transform: translateY(-3px) rotate(-8deg); }
 }
-.stat:nth-child(2) i {
-  background: rgba(44, 74, 110, 0.1);
-  color: var(--cobalt);
+.stat:nth-child(2):hover i {
+  animation: none;
+  transform: scale(1.14) translateY(-4px) rotate(-16deg);
 }
 .stat:nth-child(3) i {
   background: rgba(201, 163, 106, 0.16);
   color: #b8863a;
+}
+.stat:nth-child(3):hover i {
+  transform: scale(1.16) rotate(14deg);
 }
 .stats-bar b {
   display: block;
