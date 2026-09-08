@@ -7,6 +7,7 @@ import Article from './pages/Article.jsx';
 import NotFound from './pages/NotFound.jsx';
 import Privacy from './pages/Privacy.jsx';
 import Gdpr from './pages/Gdpr.jsx';
+import SeoAndroidApp from './pages/SeoAndroidApp.jsx';
 
 const SEO_APP = 'https://seo.devndespro.com';
 
@@ -44,6 +45,7 @@ export default function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<Article />} />
         <Route path="/contact" element={<Navigate to="/#home-contact" replace />} />
+        <Route path="/seo-android-app" element={<SeoAndroidApp />} />
         <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
         <Route path="/gdpr" element={<Gdpr />} />

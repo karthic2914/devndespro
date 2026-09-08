@@ -129,9 +129,13 @@ export default function Navbar() {
                           <span>{t('nav.mega.seoBlurb')}</span>
                         </div>
                       </a>
-                      <a className="mega-quiet" href={PLAY_SEO} target="_blank" rel="noopener noreferrer" onClick={closeAll}>
+                      <Link className="mega-quiet" to="/seo-android-app" onClick={closeAll}>
                         <span><i className="fa-brands fa-google-play" aria-hidden="true" /> {t('nav.mega.android')}</span>
-                        <span>{t('nav.mega.play')} <i className="fa-solid fa-arrow-right" aria-hidden="true" /></span>
+                        <span>{t('app.more')} <i className="fa-solid fa-arrow-right" aria-hidden="true" /></span>
+                      </Link>
+                      <a className="mega-quiet" href={PLAY_SEO} target="_blank" rel="noopener noreferrer" onClick={closeAll}>
+                        <span><i className="fa-brands fa-google-play" aria-hidden="true" /> {t('nav.mega.play')}</span>
+                        <span>Google Play <i className="fa-solid fa-arrow-right" aria-hidden="true" /></span>
                       </a>
                       <a className="mega-quiet" href="https://www.tenderlyst.com/" target="_blank" rel="noopener noreferrer" onClick={closeAll}>
                         <span><i className="fa-solid fa-file-signature" aria-hidden="true" /> Tenderlyst</span>

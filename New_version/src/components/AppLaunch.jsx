@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { PLAY_SEO } from '../data/site.js';
 import { useLanguage } from '../LanguageContext.jsx';
 
@@ -37,6 +38,9 @@ export default function AppLaunch() {
               <a className="btn btn-invert" href="https://seo.devndespro.com" target="_blank" rel="noopener noreferrer">
                 {t('app.web')}
               </a>
+              <Link className="btn btn-invert" to="/seo-android-app">
+                {t('app.more')}
+              </Link>
             </div>
           </div>
           <figure className="app-launch-poster">

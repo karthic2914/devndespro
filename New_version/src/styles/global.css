@@ -1379,7 +1379,8 @@ h1, h2, h3 {
 }
 .product-grid { grid-template-columns: 1fr 1fr; }
 #home-products { scroll-margin-top: calc(var(--nav-h) + 12px); padding-top: 56px; }
-#home-app { scroll-margin-top: calc(var(--nav-h) + 12px); }
+#home-app,
+.app-page { scroll-margin-top: calc(var(--nav-h) + 12px); }
 .product-show {
   display: flex;
   flex-direction: column;
@@ -2057,6 +2058,7 @@ h1, h2, h3 {
   background: var(--accent-soft);
 }
 
+.app-page { padding-top: 12px; }
 .app-launch { padding-top: 40px; padding-bottom: 0; }
 .app-launch-card {
   display: grid;

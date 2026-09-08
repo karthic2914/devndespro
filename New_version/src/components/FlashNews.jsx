@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext.jsx';
 
 const STORAGE_KEY = 'flashAppNews';
@@ -32,10 +33,10 @@ export default function FlashNews() {
           <span className="flash-news-full">{t('flash.text')}</span>
           <span className="flash-news-short">{t('flash.textShort')}</span>
         </p>
-        <a className="flash-news-more" href="#home-app">
+        <Link className="flash-news-more" to="/seo-android-app">
           <span>{t('flash.more')}</span>
-          <i className="fa-solid fa-arrow-down" aria-hidden="true" />
-        </a>
+          <i className="fa-solid fa-arrow-right" aria-hidden="true" />
+        </Link>
         <button className="flash-news-close" type="button" onClick={dismiss} aria-label={t('flash.close')}>
           <i className="fa-solid fa-xmark" aria-hidden="true" />
         </button>
