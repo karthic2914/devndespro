@@ -1,3 +1,5 @@
+export const PLAY_SEO = 'https://play.google.com/store/apps/details?id=com.devndespro.seo';
+
 export const navItems = [
   { id: 'products', label: 'Products', path: '/#home-products', icon: 'fa-cubes' },
   { id: 'solutions', label: 'Solutions', path: '/#home-solutions', icon: 'fa-layer-group' },
@@ -96,14 +98,15 @@ export const products = [
   {
     id: 'seo',
     index: '01',
-    status: 'Live platform',
+    status: 'Live on web & Android',
     type: 'AI SEO, GEO & AEO platform',
     name: 'SEO.devndespro',
-    summary: 'An AI-powered platform for SEO, GEO and AEO, technical audits, AI search visibility, keyword tracking, backlink monitoring, and site performance.',
+    summary: 'An AI-powered platform for SEO, GEO and AEO, technical audits, AI search visibility, keyword tracking, backlink monitoring, and site performance. Now also on Google Play.',
     image: '/images/seo_dashboard.png',
     href: 'https://seo.devndespro.com',
+    playHref: PLAY_SEO,
     cta: 'Explore SEO Tool',
-    tags: ['SEO', 'GEO', 'AEO'],
+    tags: ['SEO', 'GEO', 'AEO', 'Android'],
     features: [
       'Technical SEO audits in minutes',
       'GEO and AEO visibility tracking',

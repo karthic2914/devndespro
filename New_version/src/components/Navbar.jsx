@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext.jsx';
-import { navItems, solutionApps, solutionMenu } from '../data/site.js';
+import { PLAY_SEO, navItems, solutionApps, solutionMenu } from '../data/site.js';
 import { megaKeys, navKeys, regionKeys } from '../i18n.js';
 import LangSwitch from './LangSwitch.jsx';
 import ThemeSwitch from './ThemeSwitch.jsx';
@@ -128,6 +128,10 @@ export default function Navbar() {
                           <strong>SEO.devndespro</strong>
                           <span>{t('nav.mega.seoBlurb')}</span>
                         </div>
+                      </a>
+                      <a className="mega-quiet" href={PLAY_SEO} target="_blank" rel="noopener noreferrer" onClick={closeAll}>
+                        <span><i className="fa-brands fa-google-play" aria-hidden="true" /> {t('nav.mega.android')}</span>
+                        <span>{t('nav.mega.play')} <i className="fa-solid fa-arrow-right" aria-hidden="true" /></span>
                       </a>
                       <a className="mega-quiet" href="https://www.tenderlyst.com/" target="_blank" rel="noopener noreferrer" onClick={closeAll}>
                         <span><i className="fa-solid fa-file-signature" aria-hidden="true" /> Tenderlyst</span>

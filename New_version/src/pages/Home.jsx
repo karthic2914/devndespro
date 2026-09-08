@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import AppLaunch from '../components/AppLaunch.jsx';
+import FlashNews from '../components/FlashNews.jsx';
 import CtaBand from '../components/CtaBand.jsx';
 import ContactSection from '../components/ContactSection.jsx';
 import PackageGrid from '../components/PackageGrid.jsx';
@@ -30,6 +32,7 @@ export default function Home() {
 
   return (
     <>
+      <FlashNews />
       <section className="hero hero-home">
         <div className="container-wide hero-grid">
           <div className="hero-copy-wrap">
@@ -141,6 +144,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <AppLaunch />
 
       <section className="section" id="home-solutions" style={{ paddingTop: 0 }}>
         <div className="container">
