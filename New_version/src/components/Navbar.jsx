@@ -21,6 +21,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
+  const [megaRegion, setMegaRegion] = useState(solutionApps[0].region);
   const megaTimer = useRef(null);
   const compactNav = () => window.matchMedia('(max-width: 1180px)').matches;
 
@@ -53,6 +54,10 @@ export default function Navbar() {
     setOpen(false);
     setMegaOpen(false);
   };
+
+  useEffect(() => {
+    if (!megaOpen) setMegaRegion(solutionApps[0].region);
+  }, [megaOpen]);
 
   useEffect(() => () => clearTimeout(megaTimer.current), []);
 
@@ -142,21 +147,47 @@ export default function Navbar() {
                         <span>{t('nav.mega.early')} <i className="fa-solid fa-arrow-right" aria-hidden="true" /></span>
                       </a>
                     </aside>
-                  </div>
                   <div className="mega-apps">
-                    {solutionApps.map((group) => (
-                      <div className="mega-app-col" key={group.region}>
-                        <p className="mega-kicker">
+                    <p className="mega-kicker">{t('nav.mega.byRegion')}</p>
+                    <div className="mega-region-tabs" role="tablist" aria-label={t('nav.mega.byRegion')}>
+                      {solutionApps.map((group) => (
+                        <button
+                          key={group.region}
+                          className={`mega-region-tab ${megaRegion === group.region ? 'is-on' : ''}`}
+                          type="button"
+                          role="tab"
+                          aria-selected={megaRegion === group.region}
+                          onClick={() => setMegaRegion(group.region)}
+                        >
                           <i className={`fa-solid ${group.icon}`} aria-hidden="true" />
                           {t(regionKeys[group.region])}
-                        </p>
+                          <small>{group.items.length}</small>
+                        </button>
+                      ))}
+                    </div>
+                    {solutionApps.map((group) => (
+                      <div
+                        className={`mega-region-panel ${megaRegion === group.region ? 'is-on' : ''}`}
+                        key={group.region}
+                        role="tabpanel"
+                        hidden={megaRegion !== group.region}
+                      >
                         {group.items.map((app) => (
                           <a href={localizeHref(app.href)} key={app.href + app.label} onClick={closeAll}>
                             {appLabel(app)}
                           </a>
                         ))}
+                        <Link
+                          className="mega-region-more"
+                          to={`/#home-apps-${group.region.toLowerCase()}`}
+                          onClick={closeAll}
+                        >
+                          {t('nav.mega.regionAll')}
+                          <i className="fa-solid fa-arrow-right" aria-hidden="true" />
+                        </Link>
                       </div>
                     ))}
+                  </div>
                   </div>
                   <div className="mega-foot">
                     <Link className="mega-all" to="/#home-apps" onClick={closeAll}>

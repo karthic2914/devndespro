@@ -10,6 +10,7 @@ export default function TrustStrip() {
           {t('trust.prefix')}
           <strong>Norway</strong>
           <strong>Europe</strong>
+          <strong>USA</strong>
           <strong>India</strong>
           <strong>APAC</strong>
         </p>

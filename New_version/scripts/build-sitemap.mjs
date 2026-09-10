@@ -3,17 +3,24 @@ import path from 'path';
 
 const root = path.resolve('public');
 const host = 'https://www.devndespro.com';
-const today = '2026-09-07';
+const today = '2026-09-10';
+const skipSeo = new Set(['web-developer-norway']);
 
 function slugs(dir) {
+  if (!fs.existsSync(dir)) return [];
   return fs.readdirSync(dir)
     .filter((file) => file.endsWith('.html'))
     .map((file) => file.replace(/\.html$/, ''))
     .sort();
 }
 
-const en = slugs(path.join(root, 'seo'));
+const en = slugs(path.join(root, 'seo')).filter((slug) => !skipSeo.has(slug));
 const no = new Set(slugs(path.join(root, 'no/seo')));
+const services = slugs(path.join(root, 'services'));
+const cities = fs.readdirSync(root)
+  .filter((file) => /^web-developer-.+\.html$/.test(file))
+  .map((file) => file.replace(/\.html$/, ''))
+  .sort();
 const blogs = [
   'ui-ux-product-clarity',
   'core-web-vitals-founders',
@@ -32,7 +39,7 @@ function url(loc, priority, freq = 'monthly') {
 }
 
 function seoPriority(slug) {
-  if (/(norway|norge|stavanger|oslo|bergen|trondheim|kristiansand)/.test(slug)) return '0.8';
+  if (/(norway|norge|stavanger|oslo|bergen|trondheim|kristiansand|usa|india|chennai|bangalore|hyderabad|mumbai)/.test(slug)) return '0.8';
   return '0.7';
 }
 
@@ -49,6 +56,12 @@ const parts = [
   url('/blog', '0.8', 'weekly'),
   ...blogs.map((slug) => url(`/blog/${slug}`, '0.7')),
   '',
+  '  <!-- Country hubs -->',
+  ...services.map((slug) => url(`/services/${slug}`, '0.9')),
+  '',
+  '  <!-- City web developer pages -->',
+  ...cities.map((slug) => url(`/${slug}`, '0.8')),
+  '',
   '  <!-- SEO landings EN -->',
   ...en.map((slug) => url(`/seo/${slug}`, seoPriority(slug))),
   '',
@@ -62,4 +75,4 @@ const parts = [
 const out = path.join(root, 'sitemap.xml');
 fs.writeFileSync(out, parts.join('\n'), 'utf8');
 const count = (parts.join('\n').match(/<loc>/g) || []).length;
-console.log(`wrote ${out} (${count} urls, ${en.length} en, ${no.size} no)`);
+console.log(`wrote ${out} (${count} urls, ${services.length} services, ${cities.length} cities, ${en.length} en, ${no.size} no)`);

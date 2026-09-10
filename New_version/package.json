@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "sitemap": "node scripts/build-sitemap.mjs"
+    "sitemap": "node scripts/build-sitemap.mjs",
+    "pages:webdev": "node scripts/build-web-developer-pages.mjs"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.3.1",

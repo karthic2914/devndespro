@@ -1,4 +1,4 @@
-/* Shared styles for /seo/* and /no/seo/* landing pages.
+/* Shared styles for /seo/*, /services/*, and city web-developer pages.
    Matches the New_version linen / mint / cobalt theme.
 */
 
@@ -661,6 +661,46 @@ footer {
   color: #fff !important;
 }
 
+.crumb {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 14px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+.crumb a { color: var(--mint); text-decoration: none; }
+.crumb a:hover { color: var(--cobalt); }
+
+.place-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 28px;
+}
+.place-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper);
+  text-decoration: none;
+  color: inherit;
+}
+.place-card strong { font-size: 0.95rem; }
+.place-card span { color: var(--muted); font-size: 0.82rem; }
+.place-card:hover { border-color: var(--mint); background: var(--accent-soft); }
+
+@media (max-width: 900px) {
+  .place-grid { grid-template-columns: 1fr 1fr; }
+}
+
 @media (max-width: 767px) {
   .top-nav {
     padding: 0.7rem 1.1rem;
@@ -700,4 +740,8 @@ footer {
     gap: 1rem;
     padding: 1rem 1.2rem;
   }
+
+  .place-grid,
+  .crumb { width: calc(100% - 2.4rem); }
+  .place-grid { grid-template-columns: 1fr; }
 }

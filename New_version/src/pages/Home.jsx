@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AppLaunch from '../components/AppLaunch.jsx';
-import FlashNews from '../components/FlashNews.jsx';
 import CtaBand from '../components/CtaBand.jsx';
 import ContactSection from '../components/ContactSection.jsx';
 import PackageGrid from '../components/PackageGrid.jsx';
@@ -32,7 +31,6 @@ export default function Home() {
 
   return (
     <>
-      <FlashNews />
       <section className="hero hero-home">
         <div className="container-wide hero-grid">
           <div className="hero-copy-wrap">
@@ -177,7 +175,7 @@ export default function Home() {
             />
             <div className="app-catalog">
               {solutionApps.map((group) => (
-                <div className="card" key={group.region}>
+                <div className="card" key={group.region} id={`home-apps-${group.region.toLowerCase()}`}>
                   <p className="pkg-level">
                     <i className={`fa-solid ${group.icon}`} aria-hidden="true" />
                     {t(regionKeys[group.region])}

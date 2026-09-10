@@ -38,10 +38,10 @@ prototype to production.
 
 ## locations-served
 - Stavanger, Norway (HQ)
-- Oslo, Bergen, Trondheim, Kristiansand
+- Oslo, Bergen, Trondheim
+- United States (New York, California, Texas, Florida)
+- India (Chennai hub, Bangalore, Hyderabad, Mumbai)
 - Europe
-- United States
-- India (Chennai delivery hub)
 - Global remote clients
 
 ## key-pages
@@ -50,7 +50,11 @@ prototype to production.
 - Blog: https://www.devndespro.com/blog
 - Web Design Stavanger: https://www.devndespro.com/seo/web-design-stavanger
 - SEO Services Norway: https://www.devndespro.com/seo/seo-services-norway
-- Web Developer Norway: https://www.devndespro.com/seo/web-developer-norway
+- Web Developer Norway: https://www.devndespro.com/services/web-developer-norway
+- Web Developer USA: https://www.devndespro.com/services/web-developer-usa
+- Web Developer India: https://www.devndespro.com/services/web-developer-india
+- Web Developer Stavanger: https://www.devndespro.com/web-developer-stavanger
+- Web Developer Oslo: https://www.devndespro.com/web-developer-oslo
 - Freelance Web Developer: https://www.devndespro.com/seo/freelance-web-developer-norway
 - Web Design Norway: https://www.devndespro.com/seo/web-design-norway
 - Full Stack Norway: https://www.devndespro.com/seo/full-stack-development-norway

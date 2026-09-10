@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext.jsx';
 import Navbar from './Navbar.jsx';
+import FlashNews from './FlashNews.jsx';
 import Footer from './Footer.jsx';
 import Cursor from './Cursor.jsx';
 import CookieConsent from './CookieConsent.jsx';
@@ -9,6 +10,7 @@ export default function Layout() {
   const { t } = useLanguage();
   return (
     <div className="app-shell">
+      <FlashNews />
       <Navbar />
       <main className="page">
         <Outlet />

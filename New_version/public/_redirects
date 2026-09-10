@@ -1,5 +1,9 @@
 /seo-tool  https://seo.devndespro.com  301
 /seo-tool/*  https://seo.devndespro.com  301
+/web-developer-norway  /services/web-developer-norway  301
+/seo/web-developer-norway  /services/web-developer-norway  301
+/services/:slug  /services/:slug.html  200
+/web-developer-:city  /web-developer-:city.html  200
 /seo/:slug  /seo/:slug.html  200
 /no/seo/:slug  /no/seo/:slug.html  200
 /*    /index.html   200

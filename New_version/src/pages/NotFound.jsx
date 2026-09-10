@@ -6,14 +6,14 @@ import usePageTitle from '../components/usePageTitle.js';
 import { useLanguage } from '../LanguageContext.jsx';
 
 const exploreLinks = [
+  { label: 'Web Developer Norway', labelNo: 'Webutvikler Norge', href: '/services/web-developer-norway' },
+  { label: 'Web Developer USA', labelNo: 'Webutvikler USA', href: '/services/web-developer-usa' },
+  { label: 'Web Developer India', labelNo: 'Webutvikler India', href: '/services/web-developer-india' },
+  { label: 'Web Developer Stavanger', labelNo: 'Webutvikler Stavanger', href: '/web-developer-stavanger' },
   { label: 'Web Design Stavanger', labelNo: 'Nettsidedesign Stavanger', href: '/seo/web-design-stavanger' },
   { label: 'Web Design Norway', labelNo: 'Nettsidedesign Norge', href: '/seo/web-design-norway' },
-  { label: 'Web Design USA', labelNo: 'Nettsidedesign USA', href: '/seo/web-design-usa' },
-  { label: 'Web Development Europe', labelNo: 'Nettutvikling Europa', href: '/seo/web-development-europe' },
   { label: 'SEO Services Norway', labelNo: 'SEO-tjenester Norge', href: '/seo/seo-services-norway' },
-  { label: 'UX UI Designer Norway', labelNo: 'UX/UI-designer Norge', href: '/seo/ux-ui-designer-norway' },
-  { label: 'Freelance Web Developer Norway', labelNo: 'Freelance webutvikler Norge', href: '/seo/freelance-web-developer-norway' },
-  { label: 'Graphic Design Norway', labelNo: 'Grafisk design Norge', href: '/seo/graphic-design-norway' }
+  { label: 'Freelance Web Developer Norway', labelNo: 'Freelance webutvikler Norge', href: '/seo/freelance-web-developer-norway' }
 ];
 
 export default function NotFound() {

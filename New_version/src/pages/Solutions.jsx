@@ -38,7 +38,7 @@ export default function Solutions() {
           <SectionHead
             eyebrow="Applications"
             title={<>Web apps and services by <em>region</em></>}
-            text="The same application pages from the live site, Norway, Europe, global, and engineering."
+            text="The same application pages from the live site, Norway, Europe, USA, India, and engineering."
           />
           <div className="app-catalog">
             {solutionApps.map((group) => (

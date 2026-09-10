@@ -44,13 +44,13 @@ export const solutionApps = [
     region: 'Norway',
     icon: 'fa-flag',
     items: [
-      { label: 'Web Design Norway', labelNo: 'Nettsidedesign Norge', href: seo('web-design-company-norway') },
+      { label: 'Web Developer Norway', labelNo: 'Webutvikler Norge', href: '/services/web-developer-norway' },
+      { label: 'Web Developer Stavanger', labelNo: 'Webutvikler Stavanger', href: '/web-developer-stavanger' },
+      { label: 'Web Developer Oslo', labelNo: 'Webutvikler Oslo', href: '/web-developer-oslo' },
+      { label: 'Web Developer Bergen', labelNo: 'Webutvikler Bergen', href: '/web-developer-bergen' },
+      { label: 'Web Developer Trondheim', labelNo: 'Webutvikler Trondheim', href: '/web-developer-trondheim' },
       { label: 'Web Utvikler Norge', labelNo: 'Webutvikler Norge', href: seo('web-utvikler-norge') },
-      { label: 'Web Design Stavanger', labelNo: 'Nettsidedesign Stavanger', href: seo('website-builder-stavanger') },
-      { label: 'Web Development Oslo', labelNo: 'Nettutvikling Oslo', href: seo('web-development-oslo') },
-      { label: 'Web Development Bergen', labelNo: 'Nettutvikling Bergen', href: seo('web-development-bergen') },
-      { label: 'Web Development Trondheim', labelNo: 'Nettutvikling Trondheim', href: seo('web-development-trondheim') },
-      { label: 'Web Development Kristiansand', labelNo: 'Nettutvikling Kristiansand', href: seo('web-development-kristiansand') },
+      { label: 'Web Design Norway', labelNo: 'Nettsidedesign Norge', href: seo('web-design-company-norway') },
       { label: 'SEO Services Norway', labelNo: 'SEO-tjenester Norge', href: seo('seo-services-norway') },
       { label: 'Freelance Web Developer Norway', labelNo: 'Freelance webutvikler Norge', href: seo('freelance-web-developer-norway') },
       { label: 'UX UI Designer Norway', labelNo: 'UX/UI-designer Norge', href: seo('ux-ui-designer-norway') }
@@ -68,11 +68,27 @@ export const solutionApps = [
     ]
   },
   {
-    region: 'Global',
+    region: 'USA',
+    icon: 'fa-earth-americas',
+    items: [
+      { label: 'Web Developer USA', labelNo: 'Webutvikler USA', href: '/services/web-developer-usa' },
+      { label: 'Web Developer New York', labelNo: 'Webutvikler New York', href: '/web-developer-new-york' },
+      { label: 'Web Developer California', labelNo: 'Webutvikler California', href: '/web-developer-california' },
+      { label: 'Web Developer Texas', labelNo: 'Webutvikler Texas', href: '/web-developer-texas' },
+      { label: 'Web Developer Florida', labelNo: 'Webutvikler Florida', href: '/web-developer-florida' },
+      { label: 'Hire Web Developer USA', labelNo: 'Ansett webutvikler USA', href: seo('hire-web-developer-usa') },
+      { label: 'Web Design Agency USA', labelNo: 'Nettsidedesignbyrå USA', href: seo('web-design-agency-usa') }
+    ]
+  },
+  {
+    region: 'India',
     icon: 'fa-globe',
     items: [
-      { label: 'Web Design Agency USA', labelNo: 'Nettsidedesignbyrå USA', href: seo('web-design-agency-usa') },
-      { label: 'Hire Web Developer USA', labelNo: 'Ansett webutvikler USA', href: seo('hire-web-developer-usa') },
+      { label: 'Web Developer India', labelNo: 'Webutvikler India', href: '/services/web-developer-india' },
+      { label: 'Web Developer Chennai', labelNo: 'Webutvikler Chennai', href: '/web-developer-chennai' },
+      { label: 'Web Developer Bangalore', labelNo: 'Webutvikler Bangalore', href: '/web-developer-bangalore' },
+      { label: 'Web Developer Hyderabad', labelNo: 'Webutvikler Hyderabad', href: '/web-developer-hyderabad' },
+      { label: 'Web Developer Mumbai', labelNo: 'Webutvikler Mumbai', href: '/web-developer-mumbai' },
       { label: 'Web Design Company India', labelNo: 'Nettsidedesign India', href: seo('web-design-company-india') },
       { label: 'Affordable Web Dev India', labelNo: 'Rimelig webutvikling India', href: seo('affordable-website-development-india') },
       { label: 'SEO Agency India', labelNo: 'SEO-byrå India', href: seo('seo-agency-india') }
