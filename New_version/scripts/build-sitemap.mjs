@@ -49,6 +49,7 @@ const parts = [
   '',
   '  <!-- Main -->',
   url('/', '1.0', 'weekly'),
+  url('/seo-android-app', '0.8', 'weekly'),
   url('/privacy-policy', '0.5', 'yearly'),
   url('/gdpr', '0.5', 'yearly'),
   '',
