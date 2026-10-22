@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "node server.js",
+    "test": "node --test test/safedelete-webhook.test.js",
     "ping:indexnow": "node scripts/ping-indexnow.mjs"
   },
   "dependencies": {

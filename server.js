@@ -5,6 +5,7 @@ import path from 'path';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import { Pool } from 'pg';
+import { initializePaymentDatabase, mountPaymentWebhook, mountSafeDeleteDownload } from './server/safedeleteDelivery.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,9 +17,6 @@ app.use(cors({
   origin: ['https://www.devndespro.com', 'https://devndespro.com'],
   methods: ['GET', 'POST'],
 }));
-
-app.use(express.json({ limit: '1mb' }));
-app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
   const host = String(req.headers.host || '').toLowerCase();
@@ -36,6 +34,19 @@ const dbPool = databaseUrl
       ssl: process.env.PGSSLMODE === 'disable' ? false : { rejectUnauthorized: false }
     })
   : null;
+
+// Raw body is required for Stripe signature checks. Keep this ahead of express.json().
+// The fulfilling webhook stays disabled until Stripe and ZeptoMail settings are present.
+mountPaymentWebhook(app, {
+  getPool: () => dbPool,
+});
+
+mountSafeDeleteDownload(app, {
+  getPool: () => dbPool,
+});
+
+app.use(express.json({ limit: '1mb' }));
+app.use(express.urlencoded({ extended: true }));
 
 async function ensureLeadTable() {
   if (!dbPool) return;
@@ -704,12 +715,19 @@ app.use((_req, res) => {
   res.sendFile(path.join(distPath, 'index.html'));
 });
 
-ensureLeadTable()
-  .catch((error) => {
-    console.error('Failed to initialize database table:', error.message);
-  })
-  .finally(() => {
-    app.listen(port, () => {
-      console.log(`Server listening on port ${port}`);
-    });
+async function boot() {
+  try {
+    await ensureLeadTable();
+  } catch (error) {
+    console.error('Failed to initialize database table:', error.code || 'error');
+  }
+  await initializePaymentDatabase(databaseUrl, dbPool);
+  app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
   });
+}
+
+boot().catch((error) => {
+  console.error('SafeDelete purchases table initialization failed', error.code || 'error');
+  process.exit(1);
+});
