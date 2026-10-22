@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm --prefix New_version ci && npm --prefix New_version run build",
     "preview": "vite preview",
     "start": "node server.js",
     "test": "node --test test/safedelete-webhook.test.js",

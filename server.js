@@ -529,7 +529,7 @@ async function createLike(req, res, slugInput = '') {
 app.post('/api/likes', async (req, res) => createLike(req, res));
 app.post('/api/likes/:slug', async (req, res) => createLike(req, res, req.params.slug));
 
-const distPath = path.join(__dirname, 'dist');
+const distPath = path.join(__dirname, 'New_version', 'dist');
 
 app.get('/contact', (_req, res) => res.redirect(301, '/#contact'));
 app.get('/about', (_req, res) => res.redirect(301, '/'));
@@ -685,12 +685,12 @@ app.get('/blog/:slug.html', (req, res) => {
 
   return res.redirect(301, `/blog/${slug}`)
 })
-app.get('/blog', (_req, res) => {
+app.get('/blog', (_req, res, next) => {
   const blogIndexFile = path.join(distPath, 'blog', 'index.html');
   if (fs.existsSync(blogIndexFile)) {
     return res.sendFile(blogIndexFile);
   }
-  return res.redirect(301, '/#blog');
+  return next();
 });
 
 app.get('/blog/:slug', (req, res, next) => {
@@ -709,6 +709,21 @@ app.get('/blog/:slug', (req, res, next) => {
   return next();
 });
 
+app.get('/services/:slug', (req, res, next) => {
+  const slug = String(req.params.slug || '')
+    .replace(/[^a-z0-9-]/gi, '')
+    .toLowerCase();
+
+  if (!slug) return next();
+
+  const serviceFile = path.join(distPath, 'services', `${slug}.html`);
+
+  if (fs.existsSync(serviceFile)) {
+    return res.sendFile(serviceFile);
+  }
+
+  return next();
+});
 app.use(express.static(distPath));
 
 app.use((_req, res) => {
@@ -731,3 +746,5 @@ boot().catch((error) => {
   console.error('SafeDelete purchases table initialization failed', error.code || 'error');
   process.exit(1);
 });
+
+
