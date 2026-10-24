@@ -36,10 +36,30 @@ export default function Home() {
         <div className="container-wide hero-grid">
           <div className="hero-copy-wrap">
 <div className="sd-badge-row">
-  <Link className="sd-hero-badge" to="/safedelete-pro">
-    <span className="sd-hero-badge-dot" />
-    <span><strong>NEW</strong> SafeDelete for WordPress</span>
-    <span aria-hidden="true">↗</span>
+  <Link className="sd-hero-badge sd-hero-badge-v2" to="/safedelete-pro">
+    <span className="sd-hero-wp-icon" aria-hidden="true">
+      <i className="fa-brands fa-wordpress-simple"></i>
+    </span>
+
+    <span className="sd-hero-badge-content">
+      <span className="sd-hero-launch">
+        <span className="sd-hero-badge-dot" />
+        JUST LAUNCHED
+      </span>
+
+      <span className="sd-hero-product-name">
+        Meet <strong>SafeDelete</strong>
+        <span className="sd-hero-editions">Free &amp; Pro</span>
+      </span>
+
+      <span className="sd-hero-description">
+        Check references before deleting WordPress content.
+      </span>
+    </span>
+
+    <span className="sd-hero-arrow" aria-hidden="true">
+      <i className="fa-solid fa-arrow-up-right-from-square"></i>
+    </span>
   </Link>
 </div>
             <span className="pill">{t('hero.pill')}</span>
@@ -294,8 +314,8 @@ export default function Home() {
             {reviews.slice(0, 4).map((review, index) => (
               <article className="card review" key={review.name}>
                 <i className="fa-solid fa-quote-left review-quote" aria-hidden="true" />
-                <div className="stars">{'â˜…'.repeat(review.stars)}{'â˜†'.repeat(5 - review.stars)}</div>
-                <p>â€œ{review.quote}â€</p>
+                <div className="stars">{'Ã¢Ëœâ€¦'.repeat(review.stars)}{'Ã¢Ëœâ€ '.repeat(5 - review.stars)}</div>
+                <p>Ã¢â‚¬Å“{review.quote}Ã¢â‚¬Â</p>
                 <div className="review-person">
                   <span className={`review-avatar tone-${index % 3}`} aria-hidden="true">
                     <svg viewBox="0 0 40 40" fill="currentColor">
