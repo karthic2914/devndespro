@@ -2680,3 +2680,701 @@ body.has-cursor button {
   .brand-mark { height: 38px; max-width: 128px; }
   .hero h1 { font-size: 2.05rem; }
 }
+
+/* SafeDelete Pro product page */
+.safedelete-page {
+  color: var(--ink);
+}
+
+.safedelete-page .section {
+  padding-block: clamp(3rem, 6vw, 5.5rem);
+}
+
+.safedelete-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.8fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.safedelete-hero h1 {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.08;
+  margin: 1rem 0;
+}
+
+.safedelete-hero h1 em {
+  color: var(--accent);
+}
+
+.safedelete-eyebrow {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.safedelete-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.safedelete-price-card,
+.safedelete-feature,
+.safedelete-pricing {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.safedelete-price-card h2 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  margin: 1rem 0;
+  color: var(--accent);
+}
+
+.safedelete-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.safedelete-feature h3 {
+  margin: 1rem 0 0.75rem;
+}
+
+.safedelete-feature p {
+  color: var(--ink-soft);
+}
+
+.safedelete-feature-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.safedelete-pricing {
+  max-width: 740px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.safedelete-price {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 750;
+  color: var(--accent);
+  margin: 1rem 0;
+}
+
+.safedelete-pricing .btn {
+  margin-top: 1.5rem;
+}
+
+.safedelete-faq {
+  max-width: 760px;
+  margin-top: 2rem;
+}
+
+.safedelete-faq h3 {
+  margin-top: 1.75rem;
+}
+
+.safedelete-faq p {
+  color: var(--ink-soft);
+}
+
+@media (max-width: 800px) {
+  .safedelete-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .safedelete-feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .safedelete-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .safedelete-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+
+/* === SafeDelete Premium Pricing V2 === */
+
+.sd-premium-section {
+  padding: 80px 0 110px;
+}
+
+.sd-premium-heading {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 46px;
+}
+
+.sd-premium-eyebrow {
+  display: block;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+
+.sd-premium-heading h2 {
+  font-size: clamp(30px, 4vw, 52px);
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.sd-premium-heading p {
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--ink-soft);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.sd-premium-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1180px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+.sd-premium-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sd-premium-photo {
+  position: relative;
+  border-radius: 25px;
+  overflow: hidden;
+  min-height: 420px;
+  flex: 1;
+  box-shadow: 0 16px 45px rgba(36, 29, 17, .12);
+}
+
+.sd-premium-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  display: block;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+
+.sd-premium-photo:hover img {
+  transform: scale(1.035);
+}
+
+.sd-premium-photo-label {
+  position: absolute;
+  top: 26px;
+  left: 26px;
+  color: #fff6e8;
+  font-size: 24px;
+  font-style: italic;
+  font-family: cursive;
+  text-shadow: 0 2px 12px rgba(0,0,0,.55);
+}
+
+.sd-premium-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--bg-2);
+  border-radius: 22px;
+  color: var(--ink);
+}
+
+.sd-premium-message span {
+  font-size: 28px;
+}
+
+.sd-premium-message p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.sd-premium-card {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  padding: clamp(28px, 4vw, 48px);
+  box-shadow: 0 15px 45px rgba(36,29,17,.055);
+}
+
+.sd-premium-pill {
+  display: inline-block;
+  padding: 9px 17px;
+  border-radius: 30px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: .8px;
+}
+
+.sd-premium-card h3 {
+  font-size: clamp(28px, 3vw, 38px);
+  margin: 24px 0 15px;
+}
+
+.sd-premium-price-row {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.sd-premium-price-row strong {
+  font-size: clamp(75px, 8vw, 110px);
+  line-height: 1;
+  color: var(--accent);
+}
+
+.sd-premium-price-row > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-left: 22px;
+  border-left: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+
+.sd-premium-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 30px 0;
+}
+
+.sd-premium-benefits {
+  list-style: none;
+  margin: 0 0 32px;
+  padding: 0;
+}
+
+.sd-premium-benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 17px;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.sd-premium-benefits li::before {
+  content: "Ã¢Å“â€œ";
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.sd-premium-buy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  width: 100%;
+  padding: 19px 24px;
+  background: #1f6b4a;
+  color: #fff;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 750;
+  font-size: 17px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.sd-premium-buy:hover {
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(31,107,74,.25);
+}
+
+.sd-premium-security,
+.sd-premium-requirement {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.sd-premium-security {
+  margin: 18px 0 6px;
+}
+
+.sd-premium-requirement {
+  margin: 0;
+}
+
+@media (max-width: 850px) {
+  .sd-premium-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sd-premium-photo,
+  .sd-premium-photo img {
+    min-height: 340px;
+  }
+}
+
+@media (max-width: 560px) {
+  .sd-premium-section {
+    padding: 50px 0 70px;
+  }
+
+  .sd-premium-heading {
+    margin-bottom: 30px;
+  }
+
+  .sd-premium-card {
+    padding: 26px 22px;
+  }
+
+  .sd-premium-photo,
+  .sd-premium-photo img {
+    min-height: 290px;
+  }
+
+  .sd-premium-price-row {
+    gap: 15px;
+  }
+
+  .sd-premium-price-row > div {
+    padding-left: 15px;
+    font-size: 13px;
+  }
+
+  .sd-premium-buy {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sd-premium-photo img,
+  .sd-premium-buy {
+    transition: none;
+  }
+}
+
+/* === SafeDelete Homepage Announcement === */
+
+.sd-home-announcement-section {
+  padding: clamp(40px, 6vw, 80px) 0;
+}
+
+.sd-home-announcement {
+  display: grid;
+  grid-template-columns: 1.4fr .8fr;
+  gap: clamp(24px, 5vw, 70px);
+  align-items: center;
+  padding: clamp(30px, 5vw, 60px);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--bg-2);
+  overflow: hidden;
+}
+
+.sd-home-announcement-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 1.4px;
+}
+
+.sd-home-announcement-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-soft);
+}
+
+.sd-home-announcement-content h2 {
+  margin: 20px 0;
+  font-size: clamp(30px, 4vw, 52px);
+  line-height: 1.15;
+}
+
+.sd-home-announcement-content h2 em {
+  color: var(--accent);
+}
+
+.sd-home-announcement-content p {
+  color: var(--ink-soft);
+  max-width: 620px;
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+.sd-home-announcement-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.sd-home-announcement-art {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+  min-height: 260px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--bg);
+}
+
+.sd-home-announcement-icon {
+  width: 92px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.sd-home-announcement-art strong {
+  font-size: 27px;
+  color: var(--ink);
+}
+
+.sd-home-announcement-art > span {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.sd-home-announcement-status {
+  margin-top: 12px;
+  padding: 9px 16px;
+  border-radius: 30px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+@media (max-width: 800px) {
+  .sd-home-announcement {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .sd-home-announcement-actions {
+    flex-direction: column;
+  }
+
+  .sd-home-announcement-actions .btn {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* SafeDelete homepage badge */
+.sd-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: max-content;
+  margin: 12px 0 20px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg-2);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform .2s ease, border-color .2s ease;
+}
+
+.sd-hero-badge:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.sd-hero-badge strong {
+  color: var(--accent);
+  margin-right: 5px;
+}
+
+.sd-hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+@media (max-width: 560px) {
+  .sd-hero-badge {
+    font-size: 11px;
+    padding: 9px 12px;
+  }
+}
+/* SafeDelete badge positioning */
+.hero-home .sd-badge-row {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1.25rem;
+}
+
+.hero-home .sd-hero-badge {
+  position: static;
+  inset: auto;
+  transform: none;
+  margin: 0;
+  max-width: 100%;
+  text-decoration: none;
+}
+
+@media (max-width: 560px) {
+  .hero-home .sd-badge-row {
+    margin-bottom: 1rem;
+  }
+}
+
+/* SafeDelete Pro - Font Awesome feature icons */
+.safedelete-feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: rgba(28, 111, 78, 0.10);
+  color: #1c6f4e;
+  font-size: 19px;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.safedelete-feature-icon i {
+  font-size: inherit;
+  color: inherit;
+}
+
+/* === SafeDelete Premium Final Refinement === */
+
+.sd-premium-grid {
+  max-width: 1100px;
+  margin-inline: auto;
+  gap: 24px;
+  align-items: start;
+}
+
+.sd-premium-photo img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.sd-premium-card {
+  padding: clamp(24px, 3vw, 36px);
+}
+
+.sd-premium-price-row strong {
+  font-size: clamp(3rem, 5vw, 4.25rem);
+}
+
+.sd-premium-message {
+  padding: 14px 18px;
+  gap: 12px;
+}
+
+.sd-premium-message i {
+  font-size: 1.5rem;
+  color: #206d4d;
+  flex-shrink: 0;
+}
+
+.sd-premium-benefits {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sd-premium-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 0;
+}
+
+.sd-premium-benefits li::before {
+  content: none !important;
+  display: none !important;
+}
+
+.sd-premium-benefits li i {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(32, 109, 77, 0.10);
+  color: #206d4d;
+  font-size: 14px;
+}
+
+.sd-premium-buy {
+  min-height: 56px;
+  gap: 12px;
+}
+
+.sd-premium-buy i {
+  font-size: 1rem;
+}
+
+.sd-premium-heading h2 i {
+  font-size: 0.75em;
+  color: #206d4d;
+}
+
+@media (max-width: 800px) {
+  .sd-premium-photo img {
+    max-height: 320px;
+  }
+}

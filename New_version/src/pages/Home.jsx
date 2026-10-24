@@ -32,8 +32,16 @@ export default function Home() {
   return (
     <>
       <section className="hero hero-home">
+
         <div className="container-wide hero-grid">
           <div className="hero-copy-wrap">
+<div className="sd-badge-row">
+  <Link className="sd-hero-badge" to="/safedelete-pro">
+    <span className="sd-hero-badge-dot" />
+    <span><strong>NEW</strong> SafeDelete for WordPress</span>
+    <span aria-hidden="true">↗</span>
+  </Link>
+</div>
             <span className="pill">{t('hero.pill')}</span>
             <h1 className="display">
               <span className="hero-lead">{t('hero.title')}</span>
@@ -124,7 +132,8 @@ export default function Home() {
         <Ticker />
       </section>
 
-      <section className="section" id="home-products">
+
+<section className="section" id="home-products">
         <div className="container">
           <SectionHead
             eyebrow={t('products.eyebrow')}
@@ -285,8 +294,8 @@ export default function Home() {
             {reviews.slice(0, 4).map((review, index) => (
               <article className="card review" key={review.name}>
                 <i className="fa-solid fa-quote-left review-quote" aria-hidden="true" />
-                <div className="stars">{'★'.repeat(review.stars)}{'☆'.repeat(5 - review.stars)}</div>
-                <p>“{review.quote}”</p>
+                <div className="stars">{'â˜…'.repeat(review.stars)}{'â˜†'.repeat(5 - review.stars)}</div>
+                <p>â€œ{review.quote}â€</p>
                 <div className="review-person">
                   <span className={`review-avatar tone-${index % 3}`} aria-hidden="true">
                     <svg viewBox="0 0 40 40" fill="currentColor">
